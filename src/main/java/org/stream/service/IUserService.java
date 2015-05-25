@@ -1,5 +1,7 @@
 package org.stream.service;
 
+import org.stream.entity.User;
+
 /**
  * <p/>
  * User : krisibm@163.com
@@ -7,4 +9,12 @@ package org.stream.service;
  * Time: 14:54
  */
 public interface IUserService {
+
+    public void addUser(User user);
+
+    public void deleteUser(String[] ids);
+
+    public void updateUser(User user);
+
+    public User getUser(long id);
 }

@@ -1,6 +1,8 @@
 package org.stream.dao;
 
 import org.springframework.stereotype.Repository;
+import org.stream.dao.base.IMybatisDao;
+import org.stream.entity.User;
 
 /**
  * <p/>
@@ -9,7 +11,6 @@ import org.springframework.stereotype.Repository;
  * Time: 13:56
  */
 @Repository
-public interface IUserDao {
-
+public interface IUserDao extends IMybatisDao<User> {
 
 }

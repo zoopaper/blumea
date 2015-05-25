@@ -12,7 +12,7 @@
 
     <mvc:annotation-driven/>
     <!-- 扫描控制器类 -->
-    <context:component-scan base-package="org.stream.controller"/>
+    <context:component-scan base-package="org.stream.controller,org.stream.service"/>
     <!-- XML转码器 -->
     <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
 

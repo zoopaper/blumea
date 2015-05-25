@@ -3,7 +3,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
-    <display-name>Archetype Created Web Application</display-name>
+    <display-name>push web</display-name>
 
 
     <filter>
@@ -25,7 +25,7 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
-    <!-- Spring 容器加载 -->
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -36,7 +36,7 @@
 
 
     <servlet>
-        <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
+        <servlet-name>push</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
@@ -45,13 +45,13 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <!-- Map all *.spring requests to the DispatcherServlet for handling -->
+
     <servlet-mapping>
-        <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
+        <servlet-name>push</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!-- 欢迎页面 -->
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

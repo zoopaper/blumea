@@ -10,7 +10,9 @@
 	http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
-
+    <mvc:annotation-driven/>
+    <!-- 扫描控制器类 -->
+    <context:component-scan base-package="org.stream.controller"/>
     <!-- XML转码器 -->
     <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
 
@@ -53,7 +55,6 @@
         <property name="exposeSpringMacroHelpers" value="true"/>
     </bean>
 
-
     <!-- jsp视图解析器 -->
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
@@ -61,11 +62,6 @@
         <property name="suffix" value=".jsp"/>
         <property name="order" value="2"/>
     </bean>
-
-    <!-- 扫描控制器类 -->
-    <context:component-scan base-package="org.stream.controller"/>
-
-    <mvc:annotation-driven/>
 
     <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
         <property name="favorPathExtension" value="true"/>

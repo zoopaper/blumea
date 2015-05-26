@@ -10,7 +10,7 @@ import java.util.Date;
  * Date: 2015/5/25
  * Time: 21:51
  */
-public class User extends IMybatisEntity {
+public class UserBean extends IMybatisEntity {
 
     private String userName;
 

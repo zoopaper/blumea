@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+
+    <tlib-version>1.0</tlib-version>
+    <short-name>t</short-name>
+    <uri>Frag</uri>
+
+    <tag>
+        <name>css</name>
+        <tag-class>org.stream.web.taglib.tag.FragCssTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <description>
+                <![CDATA[
+                The url of the css ,like http://css.gmob.com/1.css.
+                If this src is not null,this tag will be rendered as:
+                <link href="http://css.gmob.com/1.css" type="text/css" rel="stylesheet">
+                else it will be:
+                <style type="text/css">
+                    The conent of the tag body.
+                </style>
+                ]]>
+            </description>
+            <name>src</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+                The load point type of the css.
+                The valuable typs are: before,after,and the default value is before.
+            </description>
+            <name>point</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The best domain for css resource</description>
+            <name>altDomain</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>Id</description>
+            <name>id</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>js</name>
+        <tag-class>org.stream.web.taglib.tag.FragJsTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <description>
+                <![CDATA[
+                The url of the  js,like http://js.gmob.com/1.js.
+                If this src is not null,this tag will be rendered as:
+                <script type="javascript" src="http://js.ospre.com/1.js">
+                </script>
+                else it will be:
+                <script type="javascript">
+                    The conent of the tag body.
+                </script>
+                ]]>
+            </description>
+            <name>src</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+                The load point type of the js.
+                The valuable typs are: before,after,and the default value is before.
+            </description>
+            <name>point</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+</taglib>

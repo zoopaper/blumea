@@ -13,7 +13,7 @@
 <body>
 
 
-<form action="/adm/user/addUser" method="post">
+<form action="/adm/userBean/addUser" method="post">
 
     <input type="text" name="userName">
     <input type="text" name="account">

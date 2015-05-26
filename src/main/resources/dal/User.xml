@@ -15,8 +15,8 @@
         ]]>
     </sql>
 
-    <insert id="save" parameterType="org.stream.entity.User" useGeneratedKeys="true" keyProperty="id">
-        insert into user(account,userName,password,createDate)
+    <insert id="save" parameterType="org.stream.entity.UserBean" useGeneratedKeys="true" keyProperty="id">
+        insert into userBean(account,userName,password,createDate)
         VALUES(#{account},#{userName},#{password},#{createDate})
     </insert>
 </mapper>

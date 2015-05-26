@@ -1,10 +1,10 @@
-package org.stream.service.impl;
+package org.stream.service.user.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.stream.dao.IUserDao;
-import org.stream.entity.User;
-import org.stream.service.IUserService;
+import org.stream.entity.UserBean;
+import org.stream.service.user.IUserService;
 
 /**
  * <p/>
@@ -20,9 +20,9 @@ public class UserServiceImpl implements IUserService {
     private IUserDao userDao;
 
     @Override
-    public void addUser(User user) {
+    public void addUser(UserBean userBean) {
 
-        userDao.save(user);
+        userDao.save(userBean);
     }
 
     @Override
@@ -31,12 +31,12 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void updateUser(User user) {
+    public void updateUser(UserBean userBean) {
 
     }
 
     @Override
-    public User getUser(long id) {
+    public UserBean getUser(long id) {
         return null;
     }
 }

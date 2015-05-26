@@ -11,12 +11,12 @@
     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
     <mvc:annotation-driven/>
-    <!-- 扫描控制器类 -->
-    <context:component-scan base-package="org.stream.controller,org.stream.service"/>
+
+    <context:component-scan base-package="org.stream.web.controller,org.stream.service"/>
+
     <!-- XML转码器 -->
     <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
 
-    <!-- 配置freeMarker的模板路径 -->
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="defaultEncoding" value="UTF-8"/>
         <property name="freemarkerSettings">
@@ -45,8 +45,8 @@
         <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
         <property name="contentType" value="text/html; charset=utf-8"/>
         <property name="cache" value="false"/>
-        <property name="prefix" value="/WEB-INF/page/"/>
-        <property name="suffix" value=".ftl"/>
+        <property name="prefix" value="/WEB-INF/pages/ftl/"/>
+        <property name="suffix" value=".htm"/>
         <property name="order" value="1"/>
 
         <property name="requestContextAttribute" value="request"/>
@@ -58,7 +58,7 @@
     <!-- jsp视图解析器 -->
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="prefix" value="/WEB-INF/pages/jsp/"/>
         <property name="suffix" value=".jsp"/>
         <property name="order" value="2"/>
     </bean>

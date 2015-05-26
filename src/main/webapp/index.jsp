@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
 <html>
 <head>
-    <link href="ui/css/semantic.min.css" rel="stylesheet">
-    <script src="ui/js/jquery-1.6.4.min.js"></script>
-    <script src="ui/js/semantic.min.js"></script>
+    <link href="/ui/css/semantic.min.css" rel="stylesheet">
+    <script src="/ui/js/jquery-1.6.4.min.js"></script>
+    <script src="/ui/js/semantic.min.js"></script>
 </head>
 <body>
 <h2>dfaf</h2>
@@ -92,7 +92,7 @@
 <i class="time icon"></i>
 <i class="trash icon"></i>
 <i class="url icon"></i>
-<i class="user icon"></i>
+<i class="userBean icon"></i>
 <i class="users icon"></i>
 <i class="video icon"></i>
 </body>

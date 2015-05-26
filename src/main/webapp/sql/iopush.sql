@@ -16,20 +16,20 @@ Date: 2015-05-25 22:44:28
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `user`
+-- Table structure for `userBean`
 -- ----------------------------
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
+DROP TABLE IF EXISTS `userBean`;
+CREATE TABLE `userBean` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `account` varchar(100) DEFAULT NULL,
   `userName` varchar(100) DEFAULT '',
   `password` varchar(100) DEFAULT '',
   `createDate` datetime DEFAULT NULL,
   `updateDate` datetime DEFAULT NULL,
-  `isDel` char(1) DEFAULT '0' COMMENT '0：正常，1：删除',
+  `isDel` char(1) DEFAULT '0' COMMENT '0：正常，1：删�?',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of user
+-- Records of userBean
 -- ----------------------------

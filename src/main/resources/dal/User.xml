@@ -19,4 +19,10 @@
         insert into userBean(account,userName,password,createDate)
         VALUES(#{account},#{userName},#{password},#{createDate})
     </insert>
+
+    <select id="getUserByAccount" parameterType="String" resultType="org.stream.entity.UserBean">
+        select
+        <include refid="allAttribute"/>
+        from user where account=#{account} and isDel=0
+    </select>
 </mapper>

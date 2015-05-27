@@ -6,10 +6,12 @@ import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.servlet.ModelAndView;
 import org.stream.auth.AuthToken;
 import org.stream.auth.Principal;
 import org.stream.constants.token.TokenConstant;
 import org.stream.service.auth.IAuthService;
+import org.stream.web.util.ResponseUtil;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -49,5 +51,6 @@ public class BaseController {
         // 对字符串类型进行trim操作
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(null, false));
     }
+
 
 }

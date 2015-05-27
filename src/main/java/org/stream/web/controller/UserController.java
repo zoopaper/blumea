@@ -9,8 +9,10 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.stream.auth.Principal;
 import org.stream.entity.UserBean;
 import org.stream.service.user.IUserService;
+import org.stream.web.util.ResponseUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,6 +56,13 @@ public class UserController extends BaseController {
 
         ModelAndView modelAndView = new ModelAndView();
         try {
+
+            Principal principal = this.getLoginPrincipal(request);
+            if (principal == null) {
+                ResponseUtil.handleLongin(modelAndView);
+                return modelAndView;
+            }
+
             String userName = ServletRequestUtils.getStringParameter(request, "userName", "");
             String account = ServletRequestUtils.getStringParameter(request, "account", "");
             String password = ServletRequestUtils.getStringParameter(request, "password", "");

@@ -17,4 +17,6 @@ public interface IUserService {
     public void updateUser(UserBean userBean);
 
     public UserBean getUser(long id);
+
+    public UserBean getUserByAccount(String account);
 }

@@ -11,7 +11,7 @@
     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
     <mvc:annotation-driven/>
-
+    <mvc:default-servlet-handler/>
     <context:component-scan base-package="org.stream.web.controller,org.stream.service"/>
 
     <!-- XML转码器 -->

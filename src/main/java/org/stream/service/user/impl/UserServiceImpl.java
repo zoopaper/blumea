@@ -32,11 +32,16 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void updateUser(UserBean userBean) {
-
+        userDao.update(userBean);
     }
 
     @Override
     public UserBean getUser(long id) {
-        return null;
+        return userDao.get(id);
+    }
+
+    @Override
+    public UserBean getUserByAccount(String account) {
+        return userDao.getUserByAccount(account);
     }
 }

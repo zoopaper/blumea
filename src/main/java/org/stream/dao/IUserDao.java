@@ -13,4 +13,11 @@ import org.stream.entity.UserBean;
 @Repository
 public interface IUserDao extends IMybatisDao<UserBean> {
 
+    /**
+     *
+     * @param account
+     * @return
+     */
+    public UserBean getUserByAccount(String account);
+
 }

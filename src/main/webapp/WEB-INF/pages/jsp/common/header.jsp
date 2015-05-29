@@ -20,10 +20,16 @@
                             <i class="home icon"></i> Home
                         </a>
                         <a class="item">
-                            <i class="mail icon"></i> Messages
+                            <i class="mail icon"></i> 用户管理
                         </a>
                         <a class="item">
-                            <i class="user icon"></i> Friends
+                            <i class="user icon"></i> 功能管理
+                        </a>
+                        <a class="item">
+                            <i class="user icon"></i> 角色管理
+                        </a>
+                        <a class="item">
+                            <i class="user icon"></i> 账号管理
                         </a>
                     </div>
                 </div>

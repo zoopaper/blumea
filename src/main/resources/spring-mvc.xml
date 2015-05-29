@@ -12,7 +12,11 @@
 
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
-    <context:component-scan base-package="org.stream.web.controller,org.stream.service"/>
+    <context:component-scan base-package="org.stream.web.controller,org.stream.service">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
+
 
     <!-- XML转码器 -->
     <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>

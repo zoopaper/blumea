@@ -7,15 +7,13 @@
     <script src="/ui/js/jquery-1.6.4.min.js"></script>
     <script src="/ui/js/semantic.min.js"></script>
 </head>
-<body style="text-align:center;">
+<body>
 <div style="width: 500px;margin: 0px auto;">
     <div style="margin-top: 180px;">
 
         <form action="/adm/doLogin" method="post">
 
-            <div class="ui negative message">
-                <i class="close icon"></i>
-
+            <div class="ui message">
                 <div class="header">
                     ${loginTip}
                 </div>

@@ -3,12 +3,13 @@ package org.stream.model;
 import java.util.List;
 
 /**
+ * 分页
  * <p/>
  * User : krisibm@163.com
  * Date: 2015/5/29
  * Time: 19:59
  */
-public class Page<T> {
+public class Pagination<T> {
 
     /**
      * 总记录条数
@@ -26,13 +27,14 @@ public class Page<T> {
      * 每页记录条数
      */
     private int pageSize;
+
     private List<T> items;
 
     /**
      * @param pageIndex 页码
      * @param pageSize  每页大小
      */
-    public Page(int pageIndex, int pageSize) {
+    public Pagination(int pageIndex, int pageSize) {
         setPageIndex(pageIndex);
         setPageSize(pageSize);
     }
@@ -42,14 +44,14 @@ public class Page<T> {
      * @param pageSize  每页大小
      * @param total     总记录条数
      */
-    public Page(int pageIndex, int pageSize, int total) {
+    public Pagination(int pageIndex, int pageSize, int total) {
         setPageIndex(pageIndex);
         setPageSize(pageSize);
         setTotal(total);
     }
 
     /**
-     * 计算记录查询的起始位置
+     * 记录查询的起始位置
      *
      * @return 查询起始位置
      */
@@ -67,8 +69,7 @@ public class Page<T> {
             maxPage = 1;
         } else {
             this.total = total;
-            maxPage = ((total % pageSize) == 0 ? (total / pageSize) : (total
-                    / pageSize + 1));
+            maxPage = ((total % pageSize) == 0 ? (total / pageSize) : (total / pageSize + 1));
             if (0 == maxPage) {
                 maxPage = 1;
             }

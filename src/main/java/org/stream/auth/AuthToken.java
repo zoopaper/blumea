@@ -3,9 +3,7 @@ package org.stream.auth;
 /**
  * 用户认证Token
  * <p/>
- * User: zhangchao@mail-inc.com
- * Date: 12-4-1
- * Time: 下午6:51
+ * User: krisibm@163.com
  */
 public class AuthToken {
     /**

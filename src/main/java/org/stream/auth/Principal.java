@@ -3,9 +3,7 @@ package org.stream.auth;
 /**
  * 用户主体
  * <p/>
- * User: zhangchao@mail-inc.com
- * Date: 12-4-1
- * Time: 上午11:55
+ * User: krisibm@163.com
  */
 public class Principal {
 

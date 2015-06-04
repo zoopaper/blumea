@@ -11,7 +11,11 @@
     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
     <mvc:annotation-driven/>
-    <mvc:default-servlet-handler/>
+
+    <!-- 静态资源处理-->
+    <!--<mvc:default-servlet-handler/>-->
+    <!--<mvc:resources mapping="/ui/**" location="/ui/"/>-->
+    
     <context:component-scan base-package="org.stream.web.controller,org.stream.service">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
@@ -51,7 +55,7 @@
         <property name="cache" value="false"/>
         <property name="prefix" value="/WEB-INF/pages/ftl/"/>
         <property name="suffix" value=".htm"/>
-        <property name="order" value="1"/>
+        <property name="order" value="2"/>
 
         <property name="requestContextAttribute" value="request"/>
         <property name="exposeRequestAttributes" value="true"/>
@@ -64,7 +68,7 @@
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/pages/jsp/"/>
         <property name="suffix" value=".jsp"/>
-        <property name="order" value="2"/>
+        <property name="order" value="1"/>
     </bean>
 
     <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">

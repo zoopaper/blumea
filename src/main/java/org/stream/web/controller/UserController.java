@@ -79,7 +79,7 @@ public class UserController extends BaseController {
         } catch (Exception e) {
             log.info("doAddUser controller exception", e);
         }
-        modelAndView.setViewName("redirect:/user/userList");
+        modelAndView.setViewName("redirect:/adm/user/userList");
 
         return modelAndView;
     }

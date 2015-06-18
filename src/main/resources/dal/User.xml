@@ -3,7 +3,6 @@
 <mapper namespace="org.stream.dao.IUserDao">
     <sql id="allAttribute">
         <![CDATA[
-
             id,
             account,
             userName,
@@ -11,12 +10,11 @@
             createDate,
             updateDate,
             isDel
-
         ]]>
     </sql>
 
     <insert id="save" parameterType="org.stream.entity.UserBean" useGeneratedKeys="true" keyProperty="id">
-        insert into userBean(account,userName,password,createDate)
+        insert into user(account,userName,password,createDate)
         VALUES(#{account},#{userName},#{password},#{createDate})
     </insert>
 
@@ -24,5 +22,12 @@
         select
         <include refid="allAttribute"/>
         from user where account=#{account} and isDel=0
+    </select>
+
+    <select id="get" parameterType="long" resultType="org.stream.entity.UserBean">
+        select
+        <include refid="allAttribute"/>
+        from user
+        where id=#{0} and isDel=0;
     </select>
 </mapper>

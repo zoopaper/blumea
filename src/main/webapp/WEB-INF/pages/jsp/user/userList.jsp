@@ -10,12 +10,12 @@
 
 <div id="container">
 
-    <div id="sidebar">dd</div>
+    <div id="sidebar"></div>
 
     <div id="content" style="margin-top: 60px;">
         <div class="mini ui basic button">
             <i class="plus icon"></i>
-            添加
+            <a href="/adm/user/addUser">添加</a>
         </div>
 
         <div class="mini ui basic button">

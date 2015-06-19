@@ -3,8 +3,6 @@
 <html>
 <head>
     <title>用户列表</title>
-
-
 </head>
 <body style="margin: 0 auto;">
 <%@ include file="../common/header.jsp" %>
@@ -27,18 +25,26 @@
         <table class="ui celled table">
             <thead>
             <tr>
+                <th><input type="checkbox" name="fun"></th>
                 <th>账号</th>
                 <th>用户名</th>
                 <th>Eamil</th>
+                <th>手机</th>
+                <th>所在城市</th>
+                <th>操作</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${page.items}" var="user">
-            <tr>
-                <td>${user.account}</td>
-                <td>${user.userName}</td>
-                <td>${user.createDate}</td>
-            </tr>
+                <tr>
+                    <td><input type="checkbox" name="id" value="${user.id}"></td>
+                    <td>${user.account}</td>
+                    <td>${user.userName}</td>
+                    <td>${user.email}</td>
+                    <td>${user.mobileTel}</td>
+                    <td>${user.city}</td>
+                    <td><a href="">修改</a></td>
+                </tr>
             </c:forEach>
             </tbody>
         </table>
@@ -56,11 +62,11 @@
             //总数据条数
             totalRecords: '${page.total}',
             //链接前部
-            hrefFormer: 'pager_test',
+            hrefFormer: '/adm/user/userList',
             //链接尾部
             hrefLatter: '',
             getLink: function (n) {
-                return this.hrefFormer + this.hrefLatter + "?pno=" + n;
+                return this.hrefFormer + this.hrefLatter + "?page=" + n;
             }
         });
     });

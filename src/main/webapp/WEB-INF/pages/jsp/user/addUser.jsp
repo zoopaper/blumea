@@ -66,6 +66,20 @@
                 <label>密码</label>
                 <input type="password" name="password">
             </div>
+            <div class="field">
+                <label>邮箱</label>
+                <input type="email" name="email">
+            </div>
+
+            <div class="field">
+                <label>手机</label>
+                <input type="text" name="mobileTel" id="mobileTel">
+            </div>
+
+            <div class="field">
+                <label>城市</label>
+                <input type="text" name="city" id="city">
+            </div>
 
             <input class="ui blue submit button" type="submit" value="保 存">
         </form>

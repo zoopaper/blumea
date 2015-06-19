@@ -3,29 +3,26 @@
 <mapper namespace="org.stream.dao.IUserDao">
     <sql id="allAttribute">
         <![CDATA[
-
-
-
-
-
             id,
             account,
             userName,
             password,
+            mobileTel,
+            age,
+            sex,
+            email,
+            work,
+            workYear,
+            city,
             createDate,
             updateDate,
             isDel
-
-
-
-
-
         ]]>
     </sql>
 
     <insert id="save" parameterType="org.stream.entity.UserBean" useGeneratedKeys="true" keyProperty="id">
-        insert into user(account,userName,password,createDate)
-        VALUES(#{account},#{userName},#{password},#{createDate})
+        insert into user(account,userName,password,age,sex,email,work,workYear,city,mobileTel,createDate)
+        VALUES(#{account},#{userName},#{password},#{age},#{sex},#{email},#{work},#{workYear},#{city},#{mobileTel},#{createDate})
     </insert>
 
     <select id="getUserByAccount" parameterType="String" resultType="org.stream.entity.UserBean">
@@ -40,7 +37,27 @@
         from user
         where id=#{0} and isDel=0;
     </select>
+    
+    <update id="update" parameterType="org.stream.entity.UserBean">
+      update user set
+      account=#{account},
+      userName=#{userName},
+      password=#{password},
+      age=#{age},
+      sex=#{sex},
+      email=#{email},
+      work=#{work},
+      workYear=#{workYear},
+      city=#{city},
+      updateDate=#{updateDate},
+      mobileTel=#{mobileTel}
+      where id=#{id}
+    </update>
 
+    <update id="delete" parameterType="long">
+        update user set isDel=1,updateDate=now() where id=#{id}
+    </update>
+    
     <select id="getUserTotalNum" resultType="int">
         select count(id) from user
         where isDel=0

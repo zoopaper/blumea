@@ -68,12 +68,28 @@ public class UserController extends BaseController {
             String userName = ServletRequestUtils.getStringParameter(request, "userName", "");
             String account = ServletRequestUtils.getStringParameter(request, "account", "");
             String password = ServletRequestUtils.getStringParameter(request, "password", "");
+            String email = ServletRequestUtils.getStringParameter(request, "email", "");
+            int age = ServletRequestUtils.getIntParameter(request, "age", 100);
+            int sex = ServletRequestUtils.getIntParameter(request, "sex", 0);
+            String city = ServletRequestUtils.getStringParameter(request, "city", "");
+            String work = ServletRequestUtils.getStringParameter(request, "work", "");
+            String workYear = ServletRequestUtils.getStringParameter(request, "workYear", "");
+            String mobileTel = ServletRequestUtils.getStringParameter(request, "mobileTel", "");
+
             String passwd = DigestUtils.md5Hex(password);
+
             UserBean userBean = new UserBean();
             {
                 userBean.setAccount(account);
                 userBean.setUserName(userName);
                 userBean.setPassword(passwd);
+                userBean.setAge(age);
+                userBean.setSex(sex);
+                userBean.setCity(city);
+                userBean.setEmail(email);
+                userBean.setWork(work);
+                userBean.setWorkYear(workYear);
+                userBean.setMobileTel(mobileTel);
                 userBean.setCreateDate(new Date(System.currentTimeMillis()));
             }
 
@@ -112,5 +128,30 @@ public class UserController extends BaseController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+    public ModelAndView deleteUser(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/user/userList");
+
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/toModifyUser", method = RequestMethod.GET)
+    public ModelAndView toModifyUser(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/user/userList");
+
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/doModifyUser", method = RequestMethod.POST)
+    public ModelAndView doModifyUser(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/user/userList");
+
+        return modelAndView;
+    }
 
 }

@@ -2,9 +2,13 @@ package org.stream.service.user.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.stream.core.model.ServiceResponse;
 import org.stream.dao.IUserDao;
 import org.stream.entity.UserBean;
+import org.stream.model.Pagination;
 import org.stream.service.user.IUserService;
+
+import java.util.List;
 
 /**
  * <p/>
@@ -44,4 +48,26 @@ public class UserServiceImpl implements IUserService {
     public UserBean getUserByAccount(String account) {
         return userDao.getUserByAccount(account);
     }
+
+    @Override
+    public ServiceResponse<Pagination<UserBean>> getUserWithPage(String userName, int page, int pageSize) {
+
+        Pagination<UserBean> userBeanPage = new Pagination<UserBean>(page, pageSize);
+        int total = userDao.getUserTotalNum(userName);
+        userBeanPage.setTotal(total);
+
+        if (total == 0) {
+            return new ServiceResponse<Pagination<UserBean>>(userBeanPage);
+        }
+
+        List<UserBean> userBeanList = userDao.getUserWithPage(userName, userBeanPage.getFromIndex(), userBeanPage.getPageSize());
+
+        if (userBeanList == null || userBeanList.size() == 0) {
+            return ServiceResponse.genFailResponse(1);
+        }
+        userBeanPage.setItems(userBeanList);
+        return new ServiceResponse<Pagination<UserBean>>(userBeanPage);
+    }
+
+
 }

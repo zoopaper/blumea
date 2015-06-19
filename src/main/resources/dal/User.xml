@@ -3,6 +3,11 @@
 <mapper namespace="org.stream.dao.IUserDao">
     <sql id="allAttribute">
         <![CDATA[
+
+
+
+
+
             id,
             account,
             userName,
@@ -10,6 +15,11 @@
             createDate,
             updateDate,
             isDel
+
+
+
+
+
         ]]>
     </sql>
 
@@ -30,4 +40,21 @@
         from user
         where id=#{0} and isDel=0;
     </select>
+
+    <select id="getUserTotalNum" resultType="int">
+        select count(id) from user
+        where isDel=0
+        and (#{0}='' or userName like "%"#{0}"%");
+    </select>
+
+    <select id="getUserWithPage" resultType="org.stream.entity.UserBean">
+        select
+        <include refid="allAttribute"/>
+        from user
+        where isDel=0
+        and (#{0}='' or userName like "%"#{0}"%")
+        order by if(updateDate is null,createDate,updateDate) desc
+        limit #{1},#{2};
+    </select>
+
 </mapper>

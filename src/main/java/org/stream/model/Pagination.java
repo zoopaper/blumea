@@ -99,4 +99,8 @@ public class Pagination<T> {
     public void setItems(List<T> items) {
         this.items = items;
     }
+
+    public int getMaxPage() {
+        return this.maxPage;
+    }
 }

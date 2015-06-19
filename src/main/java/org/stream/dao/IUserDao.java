@@ -4,6 +4,8 @@ import org.springframework.stereotype.Repository;
 import org.stream.dao.base.IMybatisDao;
 import org.stream.entity.UserBean;
 
+import java.util.List;
+
 /**
  * <p/>
  * User : krisibm@163.com
@@ -14,10 +16,24 @@ import org.stream.entity.UserBean;
 public interface IUserDao extends IMybatisDao<UserBean> {
 
     /**
-     *
      * @param account
      * @return
      */
     public UserBean getUserByAccount(String account);
+
+
+    /**
+     * @param userName
+     * @return
+     */
+    public int getUserTotalNum(String userName);
+
+    /**
+     * @param userName
+     * @param from
+     * @param size
+     * @return
+     */
+    public List<UserBean> getUserWithPage(String userName, int from, int size);
 
 }

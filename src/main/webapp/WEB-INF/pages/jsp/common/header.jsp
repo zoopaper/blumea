@@ -7,8 +7,10 @@
 <head>
     <link href="/ui/css/semantic.min.css" rel="stylesheet">
     <link href="/ui/css/customer.css" rel="stylesheet">
+    <link href="/ui/css/kkpager_blue.css" rel="stylesheet">
     <script src="/ui/js/jquery-1.6.4.min.js"></script>
     <script src="/ui/js/semantic.min.js"></script>
+    <script src="/ui/js/kkpager.min.js"></script>
 </head>
 <body>
 <div style="margin: 0 auto;">

@@ -3,6 +3,8 @@
 <html>
 <head>
     <title>用户列表</title>
+
+
 </head>
 <body style="margin: 0 auto;">
 <%@ include file="../common/header.jsp" %>
@@ -31,29 +33,37 @@
             </tr>
             </thead>
             <tbody>
+            <c:forEach items="${page.items}" var="user">
             <tr>
-                <td>No Name Specified</td>
-                <td>Unknown</td>
-                <td>None</td>
+                <td>${user.account}</td>
+                <td>${user.userName}</td>
+                <td>${user.createDate}</td>
             </tr>
-            <tr class="warning">
-                <td>Jimmy</td>
-                <td><i class="attention icon"></i> Requires Action</td>
-                <td>None</td>
-            </tr>
-            <tr>
-                <td>Jamie</td>
-                <td>Unknown</td>
-                <td class="warning"><i class="attention icon"></i> Hostile</td>
-            </tr>
-            <tr>
-                <td>Jill</td>
-                <td>Unknown</td>
-                <td>None</td>
-            </tr>
+            </c:forEach>
             </tbody>
         </table>
+        <div id="kkpager" class="page_s" style="width: 490px;"></div>
     </div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        //生成分页
+        //有些参数是可选的，比如lang，若不传有默认值
+        kkpager.generPageHtml({
+            pno: '${page.pageIndex}',
+            //总页码
+            total: '${page.maxPage}',
+            //总数据条数
+            totalRecords: '${page.total}',
+            //链接前部
+            hrefFormer: 'pager_test',
+            //链接尾部
+            hrefLatter: '',
+            getLink: function (n) {
+                return this.hrefFormer + this.hrefLatter + "?pno=" + n;
+            }
+        });
+    });
+</script>
 </body>
 </html>

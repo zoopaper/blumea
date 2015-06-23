@@ -30,8 +30,14 @@
         <a class="item">
             <i class="user icon"></i> 角色管理
         </a>
+        <a class="item" href="/adm/channel/channelList">
+            <i class="block layout icon"></i> 频道管理
+        </a>
         <a class="item">
             <i class="block layout icon"></i> 栏目管理
+        </a>
+        <a class="item">
+            <i class="block layout icon"></i> 系统管理
         </a>
     </div>
 </div>

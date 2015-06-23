@@ -36,21 +36,10 @@ public class UserController extends BaseController {
     @Autowired
     private IUserService userService;
 
-//    @RequestMapping(value = "/userList", method = RequestMethod.GET)
-//    public ModelAndView userList(HttpServletRequest request, HttpServletResponse response) {
-//
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("/user/userList");
-//
-//        return modelAndView;
-//    }
-
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
     public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response) {
-
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/user/addUser");
-
         return modelAndView;
     }
 
@@ -99,7 +88,6 @@ public class UserController extends BaseController {
             log.info("Controller doAddUser exception", e);
         }
         modelAndView.setViewName("redirect:/adm/user/userList");
-
         return modelAndView;
     }
 
@@ -122,7 +110,7 @@ public class UserController extends BaseController {
             if (serviceResponse.isSuccess()) {
                 modelAndView.addObject("page", serviceResponse.getResponseData());
             }
-
+            modelAndView.addObject("userName", userName);
         } catch (Exception e) {
             log.info("Controller userList exception", e);
         }

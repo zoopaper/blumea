@@ -13,21 +13,23 @@
     <div id="sidebar"></div>
 
     <div id="content" style="margin-top: 60px;margin-right: 10px;">
-
         <div class="ui blue button">
             <span onclick="addUser();" title="新增用户"> <i class="add icon"></i></span>
         </div>
-
         <div class="ui red button">
             <span onclick="delUser();" title="删除用户"><i class="minus icon"></i></span>
+        </div>
+        <div class="ui action input">
+            <input type="text" placeholder="用户名" id="userName" value="${userName}">
+            <button class="ui button" onclick="userSearch()">Search</button>
         </div>
 
         <table class="ui celled table">
             <thead>
             <tr>
                 <th><input type="checkbox" id="selectAll"></th>
-                <th>账号</th>
                 <th>用户名</th>
+                <th>账号</th>
                 <th>Eamil</th>
                 <th>手机</th>
                 <th>所在城市</th>
@@ -38,8 +40,8 @@
             <c:forEach items="${page.items}" var="user">
                 <tr>
                     <td><input type="checkbox" name="id" value="${user.id}"></td>
-                    <td>${user.account}</td>
                     <td>${user.userName}</td>
+                    <td>${user.account}</td>
                     <td>${user.email}</td>
                     <td>${user.mobileTel}</td>
                     <td>${user.city}</td>
@@ -55,6 +57,7 @@
     $(function () {
         //生成分页
         //有些参数是可选的，比如lang，若不传有默认值
+        var param = "&userName=" + $("#userName").val();
         kkpager.generPageHtml({
             pno: '${page.pageIndex}',
             //总页码
@@ -66,7 +69,7 @@
             //链接尾部
             hrefLatter: '',
             getLink: function (n) {
-                return this.hrefFormer + this.hrefLatter + "?page=" + n;
+                return this.hrefFormer + this.hrefLatter + "?page=" + n + param;
             }
         });
     });
@@ -86,13 +89,19 @@
 
         if (confirm("您确定要删除选中的用户吗!")) {
             window.location.href = "/adm/user/delUser?id=" + idArray;
-        }else{
+        } else {
             return false;
         }
     }
 
     function addUser() {
         window.location.href = "/adm/user/addUser";
+    }
+
+    function userSearch() {
+        var userName = $("#userName").val();
+        $("#userName").val(userName);
+        window.location.href = "/adm/user/userList?userName=" + userName;
     }
 
     $('#selectAll').click(function () {

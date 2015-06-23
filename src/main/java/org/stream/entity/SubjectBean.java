@@ -9,7 +9,7 @@ import org.stream.entity.base.IMybatisEntity;
  * Date: 2015/6/23
  * Time: 21:11
  */
-public class Subject extends IMybatisEntity {
+public class SubjectBean extends IMybatisEntity {
 
 
 }

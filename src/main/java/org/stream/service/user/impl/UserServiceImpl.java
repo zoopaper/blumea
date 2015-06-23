@@ -20,13 +20,11 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements IUserService {
 
-
     @Autowired
     private IUserDao userDao;
 
     @Override
     public void addUser(UserBean userBean) {
-
         userDao.save(userBean);
     }
 

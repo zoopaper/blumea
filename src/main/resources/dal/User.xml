@@ -25,25 +25,25 @@
     </sql>
 
     <insert id="save" parameterType="org.stream.entity.UserBean" useGeneratedKeys="true" keyProperty="id">
-        insert into user(account,userName,password,age,sex,email,work,workYear,city,mobileTel,createDate)
+        insert into t_user(account,userName,password,age,sex,email,work,workYear,city,mobileTel,createDate)
         VALUES(#{account},#{userName},#{password},#{age},#{sex},#{email},#{work},#{workYear},#{city},#{mobileTel},#{createDate})
     </insert>
 
     <select id="getUserByAccount" parameterType="String" resultType="org.stream.entity.UserBean">
         select
         <include refid="allAttribute"/>
-        from user where account=#{account} and isDel=0
+        from t_user where account=#{account} and isDel=0
     </select>
 
     <select id="get" parameterType="long" resultType="org.stream.entity.UserBean">
         select
         <include refid="allAttribute"/>
-        from user
+        from t_user
         where id=#{0} and isDel=0;
     </select>
 
     <update id="update" parameterType="org.stream.entity.UserBean">
-      update user set
+      update t_user set
       account=#{account},
       userName=#{userName},
       password=#{password},
@@ -59,15 +59,15 @@
     </update>
 
     <update id="delete" parameterType="string">
-        update user set isDel=1,updateDate=now() where id =#{0}
+        update t_user set isDel=1,updateDate=now() where id =#{0}
     </update>
 
     <update id="delteUserBatch" parameterType="string">
-        update user set isDel=1,updateDate=now() where FIND_IN_SET(id,#{0})
+        update t_user set isDel=1,updateDate=now() where FIND_IN_SET(id,#{0})
     </update>
 
     <select id="getUserTotalNum" resultType="int">
-        select count(id) from user
+        select count(id) from t_user
         where isDel=0
         and (#{0}='' or userName like "%"#{0}"%");
     </select>
@@ -75,7 +75,7 @@
     <select id="getUserWithPage" resultType="org.stream.entity.UserBean">
         select
         <include refid="allAttribute"/>
-        from user
+        from t_user
         where isDel=0
         and (#{0}='' or userName like "%"#{0}"%")
         order by if(updateDate is null,createDate,updateDate) desc

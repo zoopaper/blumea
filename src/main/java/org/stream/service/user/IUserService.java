@@ -14,7 +14,7 @@ public interface IUserService {
 
     public void addUser(UserBean userBean);
 
-    public void deleteUser(String[] ids);
+    public void deleteUser(String ids);
 
     public void updateUser(UserBean userBean);
 

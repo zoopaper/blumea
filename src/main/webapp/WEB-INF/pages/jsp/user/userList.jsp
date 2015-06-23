@@ -12,20 +12,20 @@
 
     <div id="sidebar"></div>
 
-    <div id="content" style="margin-top: 60px;">
-        <div class="mini ui basic button">
-            <i class="plus icon"></i>
-            <a href="/adm/user/addUser">添加</a>
+    <div id="content" style="margin-top: 60px;margin-right: 10px;">
+
+        <div class="ui blue button">
+            <span onclick="addUser();" title="新增用户"> <i class="add icon"></i></span>
         </div>
 
-        <div class="mini ui basic button">
-            <i class="minus icon"></i>
-            删除
+        <div class="ui red button">
+            <span onclick="delUser();" title="删除用户"><i class="minus icon"></i></span>
         </div>
+
         <table class="ui celled table">
             <thead>
             <tr>
-                <th><input type="checkbox" name="fun"></th>
+                <th><input type="checkbox" id="selectAll"></th>
                 <th>账号</th>
                 <th>用户名</th>
                 <th>Eamil</th>
@@ -43,7 +43,7 @@
                     <td>${user.email}</td>
                     <td>${user.mobileTel}</td>
                     <td>${user.city}</td>
-                    <td><a href="">修改</a></td>
+                    <td><a href="/adm/user/toModifyUser?id=${user.id}">修改</a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -69,6 +69,34 @@
                 return this.hrefFormer + this.hrefLatter + "?page=" + n;
             }
         });
+    });
+</script>
+<script type="text/javascript">
+
+    function delUser() {
+        var idArray = new Array();
+        $("input[name='id']:checked").each(function () {
+            idArray.push($(this).val());
+        });
+
+        if (idArray.length == 0) {
+            alert("请选择要删除的记录!");
+            return false;
+        }
+
+        if (confirm("您确定要删除选中的用户吗!")) {
+            window.location.href = "/adm/user/delUser?id=" + idArray;
+        }else{
+            return false;
+        }
+    }
+
+    function addUser() {
+        window.location.href = "/adm/user/addUser";
+    }
+
+    $('#selectAll').click(function () {
+        $('input[name="id"]').attr("checked", this.checked);
     });
 </script>
 </body>

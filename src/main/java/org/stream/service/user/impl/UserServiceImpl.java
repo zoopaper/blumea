@@ -8,6 +8,7 @@ import org.stream.entity.UserBean;
 import org.stream.model.Pagination;
 import org.stream.service.user.IUserService;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,13 +31,29 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void deleteUser(String[] ids) {
-
+    public void deleteUser(String ids) {
+        userDao.delteUserBatch(ids);
     }
 
     @Override
     public void updateUser(UserBean userBean) {
-        userDao.update(userBean);
+
+        UserBean ub = userDao.get(userBean.getId());
+
+        {
+            ub.setAccount(userBean.getAccount());
+            ub.setAge(userBean.getAge());
+            ub.setCity(userBean.getCity());
+            ub.setEmail(userBean.getEmail());
+            ub.setMobileTel(userBean.getMobileTel());
+            ub.setSex(userBean.getSex());
+            ub.setUpdateDate(new Date(System.currentTimeMillis()));
+            ub.setUserName(userBean.getUserName());
+            ub.setWork(userBean.getWork());
+            ub.setWorkYear(userBean.getWorkYear());
+        }
+
+        userDao.update(ub);
     }
 
     @Override

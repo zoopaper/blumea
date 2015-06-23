@@ -11,8 +11,10 @@
 }
 
 #content {
-    margin-left: 205px !important;
+    /*margin-left: 205px !important;*/
     margin-left: 202px;
+    width: auto;
+    min-width: 900px;
 
 }
 

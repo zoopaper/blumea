@@ -3,6 +3,8 @@
 <mapper namespace="org.stream.dao.IUserDao">
     <sql id="allAttribute">
         <![CDATA[
+
+
             id,
             account,
             userName,
@@ -17,6 +19,8 @@
             createDate,
             updateDate,
             isDel
+
+
         ]]>
     </sql>
 
@@ -37,7 +41,7 @@
         from user
         where id=#{0} and isDel=0;
     </select>
-    
+
     <update id="update" parameterType="org.stream.entity.UserBean">
       update user set
       account=#{account},
@@ -54,10 +58,14 @@
       where id=#{id}
     </update>
 
-    <update id="delete" parameterType="long">
-        update user set isDel=1,updateDate=now() where id=#{id}
+    <update id="delete" parameterType="string">
+        update user set isDel=1,updateDate=now() where id =#{0}
     </update>
-    
+
+    <update id="delteUserBatch" parameterType="string">
+        update user set isDel=1,updateDate=now() where FIND_IN_SET(id,#{0})
+    </update>
+
     <select id="getUserTotalNum" resultType="int">
         select count(id) from user
         where isDel=0

@@ -36,4 +36,7 @@ public interface IUserDao extends IMybatisDao<UserBean> {
      */
     public List<UserBean> getUserWithPage(String userName, int from, int size);
 
+
+    public boolean delteUserBatch(String ids);
+
 }

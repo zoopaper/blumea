@@ -13,32 +13,37 @@
     <script src="/ui/js/kkpager.min.js"></script>
 </head>
 <body>
-<div style="margin: 0 auto;">
-    <div class="ui one column relaxed grid">
-        <div class="column">
-            <div class="ui blue inverted menu">
-                <a class="active item">
-                    <i class="home icon"></i> Home
-                </a>
-                <a class="item" href="/adm/user/userList">
-                    <i class="mail icon"></i> 用户管理
-                </a>
-                <a class="item">
-                    <i class="mail icon"></i> 消息管理
-                </a>
-                <a class="item">
-                    <i class="user icon"></i> 功能管理
-                </a>
-                <a class="item">
-                    <i class="user icon"></i> 角色管理
-                </a>
-                <a class="item">
-                    <i class="user icon"></i> 账号管理
-                </a>
-            </div>
-        </div>
+<div style="width: auto; min-width: 900px;">
+    <div class="ui blue inverted menu">
+        <a class="item" id="home" onclick="javascript:selectStyle(this);">
+            <i class="home icon"></i> Home
+        </a>
+        <a class="item" href="/adm/user/userList">
+            <i class="users icon"></i> 用户管理
+        </a>
+        <a class="item">
+            <i class="comments icon"></i> 消息管理
+        </a>
+        <a class="item">
+            <i class="user icon"></i> 功能管理
+        </a>
+        <a class="item">
+            <i class="user icon"></i> 角色管理
+        </a>
+        <a class="item">
+            <i class="block layout icon"></i> 栏目管理
+        </a>
     </div>
 </div>
+<script type="text/javascript">
 
+    function selectStyle(obj) {
+
+//        alert(obj.id);
+//        alert(obj.getAttribute('class'));
+        var items = $("a.item");
+
+    }
+</script>
 </body>
 </html>

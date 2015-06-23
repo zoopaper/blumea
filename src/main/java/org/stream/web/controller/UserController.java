@@ -1,5 +1,6 @@
 package org.stream.web.controller;
 
+import com.google.common.base.Joiner;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -128,10 +129,27 @@ public class UserController extends BaseController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/delUser", method = RequestMethod.GET)
     public ModelAndView deleteUser(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/user/userList");
+        modelAndView.setViewName("redirect:/adm/user/userList");
+        try {
+            Principal principal = this.getLoginPrincipal(request);
+            if (principal == null) {
+                ResponseUtil.handleLongin(modelAndView);
+                return modelAndView;
+            }
+
+            String[] idArr = ServletRequestUtils.getStringParameters(request, "id");
+
+            String ids = "";
+            if (idArr != null || idArr.length > 0) {
+                ids = Joiner.on(",").join(idArr);
+            }
+            userService.deleteUser(ids);
+        } catch (Exception e) {
+            log.info("Controller delUser exception", e);
+        }
 
         return modelAndView;
     }
@@ -140,7 +158,25 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/toModifyUser", method = RequestMethod.GET)
     public ModelAndView toModifyUser(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/user/userList");
+        modelAndView.setViewName("/user/modifyUser");
+        try {
+            Principal principal = this.getLoginPrincipal(request);
+            if (principal == null) {
+                ResponseUtil.handleLongin(modelAndView);
+                return modelAndView;
+            }
+            long id = ServletRequestUtils.getLongParameter(request, "id", -1);
+            UserBean userBean = userService.getUser(id);
+            if (userBean != null) {
+                modelAndView.addObject("user", userBean);
+
+            } else {
+                modelAndView.addObject("error", "操作出问题了!");
+                modelAndView.setViewName("/common/error");
+            }
+        } catch (Exception e) {
+            log.info("Controller toModifyUser exception", e);
+        }
 
         return modelAndView;
     }
@@ -149,8 +185,43 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/doModifyUser", method = RequestMethod.POST)
     public ModelAndView doModifyUser(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/user/userList");
+        modelAndView.setViewName("redirect:/adm/user/userList");
+        try {
+            Principal principal = this.getLoginPrincipal(request);
+            if (principal == null) {
+                ResponseUtil.handleLongin(modelAndView);
+                return modelAndView;
+            }
+            long id = ServletRequestUtils.getLongParameter(request, "id", -1);
+            String userName = ServletRequestUtils.getStringParameter(request, "userName", "");
+            String account = ServletRequestUtils.getStringParameter(request, "account", "");
+            String email = ServletRequestUtils.getStringParameter(request, "email", "");
+            int age = ServletRequestUtils.getIntParameter(request, "age", 100);
+            int sex = ServletRequestUtils.getIntParameter(request, "sex", 0);
+            String city = ServletRequestUtils.getStringParameter(request, "city", "");
+            String work = ServletRequestUtils.getStringParameter(request, "work", "");
+            String workYear = ServletRequestUtils.getStringParameter(request, "workYear", "");
+            String mobileTel = ServletRequestUtils.getStringParameter(request, "mobileTel", "");
 
+
+            UserBean userBean = new UserBean();
+            {
+                userBean.setId(id);
+                userBean.setAccount(account);
+                userBean.setUserName(userName);
+                userBean.setAge(age);
+                userBean.setSex(sex);
+                userBean.setCity(city);
+                userBean.setEmail(email);
+                userBean.setWork(work);
+                userBean.setWorkYear(workYear);
+                userBean.setMobileTel(mobileTel);
+                userBean.setCreateDate(new Date(System.currentTimeMillis()));
+            }
+            userService.updateUser(userBean);
+        } catch (Exception e) {
+            log.info("Controller doModifyUser exception", e);
+        }
         return modelAndView;
     }
 

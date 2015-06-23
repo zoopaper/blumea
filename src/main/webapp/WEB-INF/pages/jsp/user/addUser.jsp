@@ -8,29 +8,29 @@
 
 
         $('.ui.form').form({
-                    username: {
-                        identifier: 'username',
-                        rules: [
-                            {
-                                type: 'empty',
-                                prompt: 'Please enter a username'
-                            }
-                        ]
-                    },
-                    password: {
-                        identifier: 'password',
-                        rules: [
-                            {
-                                type: 'empty',
-                                prompt: 'Please enter a password'
-                            },
-                            {
-                                type: 'length[6]',
-                                prompt: 'Your password must be at least 6 characters'
-                            }
-                        ]
+            username: {
+                identifier: 'username',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: 'Please enter a username'
                     }
-                })
+                ]
+            },
+            password: {
+                identifier: 'password',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: 'Please enter a password'
+                    },
+                    {
+                        type: 'length[6]',
+                        prompt: 'Your password must be at least 6 characters'
+                    }
+                ]
+            }
+        })
         ;
     </script>
 </head>
@@ -42,25 +42,16 @@
     <div id="sidebar"></div>
 
     <div id="content" style="margin-top: 60px;width: 600px;height: 700px;">
-        <%--<form action="/adm/user/doAddUser" method="post">--%>
-
-        <%--<input type="text" name="userName">--%>
-        <%--<input type="text" name="account">--%>
-        <%--<input type="password" name="password">--%>
-
-        <%--<input type="submit" value="保 存">--%>
-
-        <%--</form>--%>
         <h4 class="ui dividing header">新增用户</h4>
 
         <form class="ui form segment" action="/adm/user/doAddUser" method="post">
             <div class="field">
                 <label>用户名</label>
-                <input  name="userName" type="text">
+                <input name="userName" type="text">
             </div>
             <div class="field">
                 <label>账号</label>
-                <input  name="account" type="text">
+                <input name="account" type="text">
             </div>
             <div class="field">
                 <label>密码</label>

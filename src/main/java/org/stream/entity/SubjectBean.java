@@ -23,7 +23,6 @@ public class SubjectBean extends IMybatisEntity {
 
     private long channelId;
 
-
     private long templateId;
 
     private int status;
@@ -112,5 +111,37 @@ public class SubjectBean extends IMybatisEntity {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
     }
 }

@@ -33,7 +33,7 @@
         <a class="item" href="/adm/channel/channelList">
             <i class="block layout icon"></i> 频道管理
         </a>
-        <a class="item">
+        <a class="item" href="/adm/subject/subjectList">
             <i class="block layout icon"></i> 栏目管理
         </a>
         <a class="item">

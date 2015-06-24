@@ -48,7 +48,7 @@
             </div>
             <div class="field">
                 <label>描述</label>
-                <input name="desc" type="text" value="${subject.desc}">
+                <input name="description" type="text" value="${subject.description}">
             </div>
             <input class="ui blue submit button" type="submit" value="保 存">
         </form>

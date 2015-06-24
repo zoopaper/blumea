@@ -78,7 +78,7 @@
         from t_user
         where isDel=0
         and (#{0}='' or userName like "%"#{0}"%")
-        order by if(updateDate is null,createDate,updateDate) desc
+        order by if(updateDate is null,createDate,updateDate) description
         limit #{1},#{2};
     </select>
 

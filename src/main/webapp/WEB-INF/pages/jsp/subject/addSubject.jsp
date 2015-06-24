@@ -35,6 +35,10 @@
                 <input name="shortName" type="text">
             </div>
             <div class="field">
+                <label>优先级</label>
+                <input name="priority" type="text" id="priority">
+            </div>
+            <div class="field">
                 <label>频道</label>
                 <input name="channelId" type="text">
             </div>
@@ -48,7 +52,7 @@
             </div>
             <div class="field">
                 <label>描述</label>
-                <input name="desc" type="text">
+                <input name="description" type="text">
             </div>
             <input class="ui blue submit button" type="submit" value="保 存">
         </form>

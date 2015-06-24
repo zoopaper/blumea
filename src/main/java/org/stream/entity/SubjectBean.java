@@ -33,7 +33,7 @@ public class SubjectBean extends IMybatisEntity {
 
     private String tags;    //关键词
 
-    private String desc;    //描述
+    private String description;    //描述
 
     private Timestamp createTime;
 
@@ -121,12 +121,12 @@ public class SubjectBean extends IMybatisEntity {
         this.tags = tags;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Timestamp getCreateTime() {

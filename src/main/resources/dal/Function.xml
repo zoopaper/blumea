@@ -40,8 +40,8 @@
       where id=#{id}
     </update>
 
-    <update id="delete" parameterType="string">
-        update t_function set isDel=1,updateTime=now() where id =#{0}
+    <update id="delete" parameterType="org.stream.entity.FunctionBean">
+        update t_function set isDel=1,updateTime=now() where id =#{id}
     </update>
 
     <update id="delteFunctionBatch" parameterType="string">

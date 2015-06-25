@@ -84,5 +84,4 @@ public class UserServiceImpl implements IUserService {
         return new ServiceResponse<Pagination<UserBean>>(userBeanPage);
     }
 
-
 }

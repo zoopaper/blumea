@@ -1,12 +1,17 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: kirs
+  Date: 2015/6/25
+  Time: 21:12
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-    <title>新增用户</title>
+    <title>修改功能</title>
 
     <script type="text/javascript">
-
-
         $('.ui.form').form({
             username: {
                 identifier: 'username',
@@ -42,39 +47,35 @@
     <div id="sidebar"></div>
 
     <div id="content" style="margin-top: 60px;width: 600px;height: 700px;">
-        <h4 class="ui dividing header">新增用户</h4>
+        <h4 class="ui dividing header">修改功能</h4>
 
-        <form class="ui form segment" action="/adm/user/doAddUser" method="post">
+        <form class="ui form segment" action="/adm/function/doModifyFunction" method="post">
+            <input type="hidden" name="id" value="${function.id}"/>
             <div class="field">
-                <label>用户名</label>
-                <input name="userName" type="text">
+                <label>功能名称</label>
+                <input name="name" type="text" value="${function.name}">
             </div>
             <div class="field">
-                <label>账号</label>
-                <input name="account" type="text">
+                <label>功能URL</label>
+                <input name="action" type="text" value="${function.action}">
             </div>
             <div class="field">
-                <label>密码</label>
-                <input type="password" name="password">
+                <label>功能参数</label>
+                <input type="text" name="param" value="${function.param}">
             </div>
             <div class="field">
-                <label>邮箱</label>
-                <input type="email" name="email">
-            </div>
-
-            <div class="field">
-                <label>手机</label>
-                <input type="text" name="mobileTel" id="mobileTel">
-            </div>
-
-            <div class="field">
-                <label>城市</label>
-                <input type="text" name="city" id="city">
+                <label>是否功能组</label>
+                <select id="isGroup" name="isGroup">
+                    <option value="1" <c:if test="${function.isGroup=='1'}"> selected</c:if>>是</option>
+                    <option value="0" <c:if test="${function.isGroup=='0'}"> selected</c:if>>否</option>
+                </select>
             </div>
 
             <input class="ui blue submit button" type="submit" value="保 存">
         </form>
     </div>
 </div>
+
+
 </body>
 </html>

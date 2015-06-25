@@ -1,11 +1,8 @@
 package org.stream.service.function;
 
 import org.stream.core.model.ServiceResponse;
-import org.stream.entity.Function;
 import org.stream.entity.FunctionBean;
 import org.stream.model.Pagination;
-
-import java.util.List;
 
 /**
  * <p/>
@@ -15,13 +12,25 @@ import java.util.List;
  */
 public interface IFunctionService {
 
-
+    /**
+     * @param function
+     */
     public void addFunction(FunctionBean function);
 
+    /**
+     * @param id
+     */
     public void deleteFunction(long id);
 
-    public void updateFunction(Function function);
+    /**
+     * @param function
+     */
+    public void updateFunction(FunctionBean function);
 
+    /**
+     * @param id
+     * @return
+     */
     public FunctionBean getFunction(long id);
 
     /**
@@ -32,10 +41,10 @@ public interface IFunctionService {
 
     /**
      * @param name
-     * @param from
+     * @param page
      * @param size
      * @return
      */
-    public ServiceResponse<Pagination<List<FunctionBean>>> getFunctionWithPage(String name, int from, int size);
+    public ServiceResponse<Pagination<FunctionBean>> getFunctionWithPage(String name, int page, int size);
 
 }

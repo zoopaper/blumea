@@ -6,13 +6,13 @@
 #sidebar {
     margin-top: 2px;
     float: left;
-    width: 200px;
+    width: 220px;
 
 }
 
 #content {
     /*margin-left: 205px !important;*/
-    margin-left: 202px;
+    margin-left: 222px;
     width: auto;
     min-width: 900px;
 

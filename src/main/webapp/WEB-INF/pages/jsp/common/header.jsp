@@ -24,10 +24,7 @@
         <a class="item">
             <i class="comments icon"></i> 消息管理
         </a>
-        <a class="item" href="/adm/function/functionList">
-            <i class="user icon"></i> 功能管理
-        </a>
-        <a class="item">
+        <a class="item" href="/adm/auth">
             <i class="user icon"></i> 权限管理
         </a>
         <a class="item" href="/adm/channel/channelList">

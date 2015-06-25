@@ -12,18 +12,18 @@
             status,
             templateId,
             channelId,
-            description,
             tags,
             isDel,
             shortName,
+            description,
             createTime,
             updateTime
         ]]>
     </sql>
 
     <insert id="save" parameterType="org.stream.entity.SubjectBean" useGeneratedKeys="true" keyProperty="id">
-        insert into t_subject(createTime,name,category,shortName,channelId,status,priority,description,tags,pid)
-        VALUES(#{createTime},#{name},#{category},#{shortName},#{channelId},#{status},#{priority},#{description},#{tags},#{pid})
+        insert into t_subject(createTime,name,category,shortName,description,channelId,status,priority,tags,pid)
+        VALUES(#{createTime},#{name},#{category},#{shortName},#{description},#{channelId},#{status},#{priority},#{tags},#{pid})
     </insert>
     <select id="get" parameterType="long" resultType="org.stream.entity.SubjectBean">
         select
@@ -35,7 +35,15 @@
     <update id="update" parameterType="org.stream.entity.SubjectBean">
       update t_subject set
       name=#{name},
-      dir=#{dir}
+      channelId=#{channelId},
+      description=#{description},
+      status=#{status},
+      pid=#{pid},
+      tags=#{tags},
+      type=#{type},
+      priority=#{priority},
+      shortName=#{shortName},
+      updateTime=now()
       where id=#{id}
     </update>
 
@@ -55,7 +63,7 @@
         from t_subject
         where isDel=0
         and (#{0}='' or name like "%"#{0}"%")
-        order by if(updateTime is null,createTime,updateTime) description
+        order by if(updateTime is null,createTime,updateTime) desc
         limit #{1},#{2};
     </select>
 </mapper>

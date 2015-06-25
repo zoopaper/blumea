@@ -83,8 +83,75 @@ public class SubjectController extends BaseController {
     }
 
 
+    @RequestMapping(value = "/toModifySubject", method = RequestMethod.GET)
+    public ModelAndView toModifyUser(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        try {
+            Principal principal = this.getLoginPrincipal(request);
+            if (principal == null) {
+                ResponseUtil.handleLongin(modelAndView);
+                return modelAndView;
+            }
+            modelAndView.setViewName("/subject/modifySubject");
+            long id = ServletRequestUtils.getLongParameter(request, "id", -1);
+            SubjectBean subject = subjectService.getSubject(id);
+            if (subject != null) {
+                modelAndView.addObject("subject", subject);
+            } else {
+                modelAndView.addObject("error", "操作出问题了!");
+                modelAndView.setViewName("/common/error");
+            }
+        } catch (Exception e) {
+            log.info("Controller toModifySubject exception", e);
+        }
+
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/doModifySubject", method = RequestMethod.POST)
+    public ModelAndView doModifyUser(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/adm/subject/subjectList");
+        try {
+            Principal principal = this.getLoginPrincipal(request);
+            if (principal == null) {
+                ResponseUtil.handleLongin(modelAndView);
+                return modelAndView;
+            }
+            long id = ServletRequestUtils.getLongParameter(request, "id", -1);
+            String name = ServletRequestUtils.getStringParameter(request, "name", "");
+            String shortName = ServletRequestUtils.getStringParameter(request, "shortName", "");
+            String tags = ServletRequestUtils.getStringParameter(request, "tags", "");
+            String desc = ServletRequestUtils.getStringParameter(request, "desc", "");
+            int channelId = ServletRequestUtils.getIntParameter(request, "channelId", -1);
+            int status = ServletRequestUtils.getIntParameter(request, "status", -1);
+            int priority = ServletRequestUtils.getIntParameter(request, "priority", -1);
+            int pid = ServletRequestUtils.getIntParameter(request, "pid", -1);
+
+            SubjectBean subject = new SubjectBean();
+            {
+                subject.setId(id);
+                subject.setName(name);
+                subject.setShortName(shortName);
+                subject.setTags(tags);
+                subject.setChannelId(channelId);
+                subject.setStatus(status);
+                subject.setDescription(desc);
+                subject.setPid(pid);
+                subject.setPriority(priority);
+                subject.setCategory("");
+                subject.setCreateTime(new Timestamp(System.currentTimeMillis()));
+            }
+            subjectService.updateSubject(subject);
+        } catch (Exception e) {
+            log.info("Controller doModifySubject exception", e);
+        }
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/subjectList", method = RequestMethod.GET)
-    public ModelAndView userList(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView subjectList(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/subject/subjectList");
         try {
@@ -104,7 +171,7 @@ public class SubjectController extends BaseController {
             modelAndView.addObject("page", serviceResponse.getResponseData());
             modelAndView.addObject("name", userName);
         } catch (Exception e) {
-            log.info("Controller userList exception", e);
+            log.info("Controller subjectList exception", e);
         }
         return modelAndView;
     }

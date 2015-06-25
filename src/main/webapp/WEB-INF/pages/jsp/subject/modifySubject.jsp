@@ -22,6 +22,7 @@
         <h4 class="ui dividing header">修改栏目</h4>
 
         <form class="ui form segment" action="/adm/subject/doModifySubject" method="post">
+            <input type="hidden" id="id" name="id" value="${subject.id}"/>
             <div class="field">
                 <label>名称</label>
                 <input name="name" type="text" value="${subject.name}">
@@ -36,7 +37,7 @@
             </div>
             <div class="field">
                 <label>频道</label>
-                <input name="channelId" type="text" value="${subject.channelName}">
+                <input name="channelId" type="text" value="${subject.channelId}">
             </div>
             <div class="field">
                 <label>标签</label>

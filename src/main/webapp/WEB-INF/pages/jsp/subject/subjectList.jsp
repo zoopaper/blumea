@@ -21,10 +21,10 @@
 
     <div id="content" style="margin-top: 60px;margin-right: 10px;">
         <div class="ui blue button">
-            <span onclick="addUser();" title="新增栏目"> <i class="add icon"></i></span>
+            <span onclick="addSubject();" title="新增栏目"> <i class="add icon"></i></span>
         </div>
         <div class="ui red button">
-            <span onclick="delUser();" title="删除栏目"><i class="minus icon"></i></span>
+            <span onclick="delSubject();" title="删除栏目"><i class="minus icon"></i></span>
         </div>
         <div class="ui action input">
             <input type="text" placeholder="栏目名称" id="name" value="${name}">
@@ -48,7 +48,7 @@
                 <tr>
                     <td><input type="checkbox" name="id" value="${subject.id}"></td>
                     <td>${subject.name}</td>
-                    <td>${subject.shrotName}</td>
+                    <td>${subject.shortName}</td>
                     <td>${subject.channelId}</td>
                     <td>${subject.status}</td>
                     <td>${subject.priority}</td>
@@ -83,7 +83,7 @@
 </script>
 <script type="text/javascript">
 
-    function delUser() {
+    function delSubject() {
         var idArray = new Array();
         $("input[name='id']:checked").each(function () {
             idArray.push($(this).val());
@@ -95,17 +95,17 @@
         }
 
         if (confirm("您确定要删除选中的用户吗!")) {
-            window.location.href = "/adm/user/delUser?id=" + idArray;
+            window.location.href = "/adm/subject/delSubject?id=" + idArray;
         } else {
             return false;
         }
     }
 
-    function addUser() {
+    function addSubject() {
         window.location.href = "/adm/subject/addSubject";
     }
 
-    function userSearch() {
+    function subjectSearch() {
         var name = $("#name").val();
         $("#name").val(name);
         window.location.href = "/adm/subject/subjectList?name=" + name;

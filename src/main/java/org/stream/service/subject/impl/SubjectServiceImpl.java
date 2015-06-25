@@ -39,8 +39,8 @@ public class SubjectServiceImpl implements ISubjectService {
     }
 
     @Override
-    public void getSubject(long id) {
-        subjectDao.get(id);
+    public SubjectBean getSubject(long id) {
+        return subjectDao.get(id);
     }
 
 

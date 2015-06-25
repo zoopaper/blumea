@@ -30,7 +30,7 @@ public interface ISubjectService {
     /**
      * @param id
      */
-    public void getSubject(long id);
+    public SubjectBean getSubject(long id);
 
 
     /**

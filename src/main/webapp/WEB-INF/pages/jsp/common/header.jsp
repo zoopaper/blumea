@@ -28,7 +28,7 @@
             <i class="user icon"></i> 功能管理
         </a>
         <a class="item">
-            <i class="user icon"></i> 角色管理
+            <i class="user icon"></i> 权限管理
         </a>
         <a class="item" href="/adm/channel/channelList">
             <i class="block layout icon"></i> 频道管理

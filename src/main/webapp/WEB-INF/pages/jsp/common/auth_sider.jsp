@@ -10,8 +10,8 @@
     </script>
 
     <ul class="nav nav-list">
-        <li class="active">
-            <a href="index.html">
+        <li class="">
+            <a href="/">
                 <i class="icon-dashboard"></i>
                 <span class="menu-text"> 控制台 </span>
             </a>
@@ -19,21 +19,21 @@
 
         <li>
             <a href="/adm/user/userList">
-                <i class="icon-text-width"></i>
+                <i class="icon-user"></i>
                 <span class="menu-text"> 用户管理 </span>
             </a>
         </li>
 
         <li>
             <a href="/adm/channel/channelList">
-                <i class="icon-text-width"></i>
+                <i class="icon-columns"></i>
                 <span class="menu-text"> 频道管理 </span>
             </a>
         </li>
 
         <li>
             <a href="/adm/subject/subjectList">
-                <i class="icon-text-width"></i>
+                <i class="icon-align-justify"></i>
                 <span class="menu-text">栏目管理 </span>
             </a>
         </li>

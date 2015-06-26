@@ -1,63 +1,55 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: kirs
-  Date: 2015/6/24
-  Time: 0:10
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
     <title>栏目列表</title>
+    <script src="/assets/js/kkpager.min.js"></script>
 </head>
-<body style="margin: 0 auto;">
+<body>
 <%@ include file="../common/header.jsp" %>
+<div class="main-container" id="main-container">
+    <div class="main-container-inner">
+        <%@ include file="../common/auth_sider.jsp" %>
+        <div class="main-content" style="margin-top: 10px;">
+            <div class="page-content">
+                <button onclick="addSubject();" type="button" class="btn btn-primary btn-sm">新增栏目</button>
+                <button onclick="delSubject();" type="button" class="btn btn-danger btn-sm">删除栏目</button>
+                <input type="text" placeholder="栏目名称" id="name" value="${name}">
+                <button class="btn btn-primary btn-xs" onclick="subjectSearch()">Search</button>
 
-
-<div id="container">
-
-    <div id="sidebar"></div>
-
-    <div id="content" style="margin-top: 60px;margin-right: 10px;">
-        <div class="ui blue button">
-            <span onclick="addSubject();" title="新增栏目"> <i class="add icon"></i></span>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAll"></th>
+                        <th>名称</th>
+                        <th>英文名称</th>
+                        <th>频道</th>
+                        <th>状态</th>
+                        <th>优先级</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${page.items}" var="subject">
+                        <tr>
+                            <td><input type="checkbox" name="id" value="${subject.id}"></td>
+                            <td>${subject.name}</td>
+                            <td>${subject.shortName}</td>
+                            <td>${subject.channelId}</td>
+                            <td>${subject.status}</td>
+                            <td>${subject.priority}</td>
+                            <td><a href="/adm/subject/toModifySubject?id=${subject.id}">
+                                <button class="btn btn-xs btn-info">
+                                    <i class="icon-edit bigger-120"></i>
+                                </button>
+                            </a></td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+                <div id="kkpager" class="page_s" style="width: 490px;"></div>
+            </div>
         </div>
-        <div class="ui red button">
-            <span onclick="delSubject();" title="删除栏目"><i class="minus icon"></i></span>
-        </div>
-        <div class="ui action input">
-            <input type="text" placeholder="栏目名称" id="name" value="${name}">
-            <button class="ui button" onclick="subjectSearch()">Search</button>
-        </div>
-
-        <table class="ui celled table">
-            <thead>
-            <tr>
-                <th><input type="checkbox" id="selectAll"></th>
-                <th>名称</th>
-                <th>英文名称</th>
-                <th>频道</th>
-                <th>状态</th>
-                <th>优先级</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${page.items}" var="subject">
-                <tr>
-                    <td><input type="checkbox" name="id" value="${subject.id}"></td>
-                    <td>${subject.name}</td>
-                    <td>${subject.shortName}</td>
-                    <td>${subject.channelId}</td>
-                    <td>${subject.status}</td>
-                    <td>${subject.priority}</td>
-                    <td><a href="/adm/subject/toModifySubject?id=${subject.id}">修改</a></td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-        <div id="kkpager" class="page_s" style="width: 490px;"></div>
     </div>
 </div>
 <script type="text/javascript">

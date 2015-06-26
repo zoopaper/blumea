@@ -20,25 +20,25 @@
 
                         <div class="form-group">
                             <label>用户名</label>
-                            <input name="userName" type="text" value="${user.userName}" class="form-control input-lg">
+                            <input name="userName" type="text" value="${user.userName}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>账号</label>
-                            <input name="account" type="text" value="${user.account}" class="form-control input-lg">
+                            <input name="account" type="text" value="${user.account}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>邮箱</label>
-                            <input type="email" name="email" value="${user.email}" class="form-control input-lg">
+                            <input type="email" name="email" value="${user.email}" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label>手机</label>
-                            <input type="text" name="mobileTel" id="mobileTel" value="${user.mobileTel}" class="form-control input-lg">
+                            <input type="text" name="mobileTel" id="mobileTel" value="${user.mobileTel}" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label>城市</label>
-                            <input type="text" name="city" id="city" value="${user.city}" class="form-control input-lg">
+                            <input type="text" name="city" id="city" value="${user.city}" class="form-control">
                         </div>
 
                         <input class="btn btn-primary btn-lg" type="submit" value="保 存">

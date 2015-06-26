@@ -7,7 +7,6 @@
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
-
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
         <%@ include file="../common/auth_sider.jsp" %>
@@ -38,7 +37,11 @@
                             <td>${user.email}</td>
                             <td>${user.mobileTel}</td>
                             <td>${user.city}</td>
-                            <td><a href="/adm/user/toModifyUser?id=${user.id}">修改</a></td>
+                            <td><a href="/adm/user/toModifyUser?id=${user.id}">
+                                <button class="btn btn-xs btn-info">
+                                    <i class="icon-edit bigger-120"></i>
+                                </button>
+                            </a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

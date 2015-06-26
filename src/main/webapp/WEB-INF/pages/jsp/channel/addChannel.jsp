@@ -6,7 +6,6 @@
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
-
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
         <%@ include file="../common/auth_sider.jsp" %>
@@ -15,16 +14,16 @@
                 <h4 class="ui dividing header">新增频道</h4>
 
                 <div class="col-xs-5">
-                    <form class="ui form segment" action="/adm/channel/doAddChannel" method="post" name="">
+                    <form action="/adm/channel/doAddChannel" method="post" name="">
                         <div class="form-group">
                             <label>频道名称</label>
-                            <input name="name" type="text" id="name" class="form-control input-lg">
+                            <input name="name" type="text" id="name" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>频道目录</label>
-                            <input name="dir" type="text" class="form-control input-lg">
+                            <input name="dir" type="text" class="form-control">
                         </div>
-                        <input class="btn btn-primary btn-lg" type="submit" value="保 存">
+                        <input class="btn btn-primary" type="submit" value="保 存">
                     </form>
                 </div>
             </div>

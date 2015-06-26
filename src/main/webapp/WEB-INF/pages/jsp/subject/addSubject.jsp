@@ -13,49 +13,52 @@
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
+<div class="main-container" id="main-container">
+    <div class="main-container-inner">
+        <%@ include file="../common/auth_sider.jsp" %>
+        <div class="main-content" style="margin-top: 10px;">
+            <div class="page-content">
+                <h4 class="ui dividing header">新增栏目</h4>
 
-<div id="container">
-
-    <div id="sidebar"></div>
-
-    <div id="content" style="margin-top: 60px;width: 600px;height: 700px;">
-        <h4 class="ui dividing header">新增栏目</h4>
-
-        <form class="ui form segment" action="/adm/subject/doAddSubject" method="post">
-            <div class="field">
-                <label>名称</label>
-                <input name="name" type="text">
+                <div class="col-xs-5">
+                    <form class="ui form segment" action="/adm/subject/doAddSubject" method="post">
+                        <div class="form-group">
+                            <label>名称</label>
+                            <input name="name" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>父栏目</label>
+                            <input name="pid" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>短名称</label>
+                            <input name="shortName" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>优先级</label>
+                            <input name="priority" type="text" id="priority" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>频道</label>
+                            <input name="channelId" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>标签</label>
+                            <input name="tags" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>状态</label>
+                            <input name="status" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>描述</label>
+                            <input name="description" type="text" class="form-control">
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="保 存">
+                    </form>
+                </div>
             </div>
-            <div class="field">
-                <label>父栏目</label>
-                <input name="pid" type="text">
-            </div>
-            <div class="field">
-                <label>短名称</label>
-                <input name="shortName" type="text">
-            </div>
-            <div class="field">
-                <label>优先级</label>
-                <input name="priority" type="text" id="priority">
-            </div>
-            <div class="field">
-                <label>频道</label>
-                <input name="channelId" type="text">
-            </div>
-            <div class="field">
-                <label>标签</label>
-                <input name="tags" type="text">
-            </div>
-            <div class="field">
-                <label>状态</label>
-                <input name="status" type="text">
-            </div>
-            <div class="field">
-                <label>描述</label>
-                <input name="description" type="text">
-            </div>
-            <input class="ui blue submit button" type="submit" value="保 存">
-        </form>
+        </div>
     </div>
 </div>
 </body>

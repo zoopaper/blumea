@@ -45,7 +45,6 @@
 
                 <b class="arrow icon-angle-down"></b>
             </a>
-
             <ul class="submenu">
                 <li>
                     <a href="/adm/function/functionList">

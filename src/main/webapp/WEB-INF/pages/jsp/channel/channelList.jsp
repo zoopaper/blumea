@@ -6,16 +6,12 @@
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
-
-
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
         <%@ include file="../common/auth_sider.jsp" %>
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
-
                 <button onclick="addChannel();" type="button" class="btn btn-primary btn-sm">新增频道</button>
-
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>
@@ -30,10 +26,8 @@
                             <td>${channel.name}</td>
                             <td>${channel.dir}</td>
                             <td>
-                                <a href="/adm/channel/toModifyChannel?id=${channel.id}"
-                                   style="color: white;" class="btn btn-primary">修改</a>
-                                <a href="/adm/channel/delChannel?id=${channel.id}"
-                                       class="btn btn-danger" >删除</a>
+                                <a href="/adm/channel/toModifyChannel?id=${channel.id}" class="btn btn-xs btn-primary"><i class="icon-pencil bigger-130"></i></a>
+                                <a href="/adm/channel/delChannel?id=${channel.id}" class="btn btn-xs btn-danger"><i class="icon-trash bigger-120"></i></a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -46,7 +40,7 @@
 
 <script type="text/javascript">
     function delChannel(id) {
-        if (confirm("您确定要删除选中的用户吗!")) {
+        if (confirm("您确定要删除选中的频道吗!")) {
             window.location.href = "/adm/channel/delChannel?id=" + id;
         } else {
             return false;

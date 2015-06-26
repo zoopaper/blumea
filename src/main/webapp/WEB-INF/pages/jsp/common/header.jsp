@@ -11,13 +11,7 @@
 <link rel="stylesheet" href="/assets/css/font-awesome-ie7.min.css" />
 <![endif]-->
 
-<!-- page specific plugin styles -->
-
-<!-- fonts -->
-
 <%--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />--%>
-
-<!-- ace styles -->
 
 <link rel="stylesheet" href="/assets/css/ace.min.css"/>
 <link rel="stylesheet" href="/assets/css/ace-rtl.min.css"/>

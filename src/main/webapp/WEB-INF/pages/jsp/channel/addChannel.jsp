@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>新增频道</title>
+
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
@@ -20,11 +21,12 @@
 
     <div id="content" style="margin-top: 60px;width: 600px;height: 700px;">
         <h4 class="ui dividing header">新增频道</h4>
-
-        <form class="ui form segment" action="/adm/channel/doAddChannel" method="post">
+        <script src="/ui/js/form.js"></script>
+        <script src="/ui/js/validate-form.js"></script>
+        <form class="ui form segment" action="/adm/channel/doAddChannel" method="post" name="">
             <div class="field">
                 <label>频道名称</label>
-                <input name="name" type="text">
+                <input name="name" type="text" id="name">
             </div>
             <div class="field">
                 <label>频道目录</label>
@@ -35,4 +37,16 @@
     </div>
 </div>
 </body>
-</html>
+</html><script type="text/javascript">
+    $('.ui.form').form({
+        dir: {
+            identifier: 'dir',
+            rules: [
+                {
+                    type: 'empty',
+                    prompt: 'Please enter your name'
+                }
+            ]
+        }
+    });
+</script>

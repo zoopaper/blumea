@@ -3,6 +3,9 @@
 <html>
 <head>
     <title>用户列表</title>
+
+    <script src="/assets/js/kkpager.min.js"></script>
+
 </head>
 <body style="margin: 0 auto;">
 <%@ include file="../common/header.jsp" %>
@@ -24,7 +27,7 @@
             <button class="ui button" onclick="userSearch()">Search</button>
         </div>
 
-        <table class="ui celled table">
+        <table class="table table-striped table-bordered table-hover">
             <thead>
             <tr>
                 <th><input type="checkbox" id="selectAll"></th>
@@ -53,6 +56,8 @@
         <div id="kkpager" class="page_s" style="width: 490px;"></div>
     </div>
 </div>
+
+
 <script type="text/javascript">
     $(function () {
         //生成分页
@@ -108,5 +113,6 @@
         $('input[name="id"]').attr("checked", this.checked);
     });
 </script>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

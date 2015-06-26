@@ -11,21 +11,12 @@
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
         <%@ include file="../common/auth_sider.jsp" %>
-
         <div class="main-content" style="margin-top: 10px;">
-
             <div class="page-content">
-
                 <button onclick="addUser();" type="button" class="btn btn-primary btn-sm">新增用户</button>
-
-
                 <button onclick="delUser();" type="button" class="btn btn-danger btn-sm">删除用户</button>
-
-
-                    <input type="text" placeholder="用户名" id="userName" value="${userName}">
-                    <button class="btn btn-default btn-sm" onclick="userSearch()">Search</button>
-
-
+                <input type="text" placeholder="用户名" id="userName" value="${userName}">
+                <button class="btn btn-default btn-sm" onclick="userSearch()">Search</button>
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>

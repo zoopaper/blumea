@@ -10,42 +10,42 @@
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
         <%@ include file="../common/auth_sider.jsp" %>
-
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
                 <h4 class="ui dividing header">新增用户</h4>
-
-                <form action="/adm/user/doAddUser" method="post" class="form-horizontal">
-
+                <div class="col-xs-5">
+                <form action="/adm/user/doAddUser" method="post" class="">
                     <div class="form-group">
                         <label>用户名</label>
-                        <input name="userName" type="text" class="form-control">
+                        <input name="userName" type="text" class="form-control input-lg">
                     </div>
                     <div class="form-group">
                         <label>账号</label>
-                        <input name="account" type="text" class="form-control">
+                        <input name="account" type="text" class="form-control input-lg">
                     </div>
                     <div class="form-group">
                         <label>密码</label>
-                        <input type="password" name="password" class="form-control">
+                        <input type="password" name="password" class="form-control input-lg">
                     </div>
                     <div class="form-group">
                         <label>邮箱</label>
-                        <input type="email" name="email" class="form-control">
+                        <input type="email" name="email" class="form-control input-lg">
                     </div>
 
                     <div class="form-group">
                         <label>手机</label>
-                        <input type="text" name="mobileTel" id="mobileTel" class="form-control">
+                        <input type="text" name="mobileTel" id="mobileTel" class="form-control input-lg">
                     </div>
 
                     <div class="form-group">
                         <label>城市</label>
-                        <input type="text" name="city" id="city" class="form-control">
+                        <input type="text" name="city" id="city" class="form-control input-lg">
                     </div>
 
-                    <input class="ui blue submit button" type="submit" value="保 存">
+                    <input class="btn btn-primary btn-lg" type="submit" value="保 存">
                 </form>
+
+                </div>
             </div>
         </div>
     </div>

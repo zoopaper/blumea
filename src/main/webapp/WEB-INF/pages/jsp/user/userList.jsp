@@ -3,57 +3,59 @@
 <html>
 <head>
     <title>用户列表</title>
-
     <script src="/assets/js/kkpager.min.js"></script>
-
 </head>
-<body style="margin: 0 auto;">
+<body>
 <%@ include file="../common/header.jsp" %>
 
+<div class="main-container" id="main-container">
+    <div class="main-container-inner">
+        <%@ include file="../common/auth_sider.jsp" %>
 
-<div id="container">
+        <div class="main-content" style="margin-top: 10px;">
 
-    <div id="sidebar"></div>
+            <div class="page-content">
 
-    <div id="content" style="margin-top: 60px;margin-right: 10px;">
-        <div class="ui blue button">
-            <span onclick="addUser();" title="新增用户"> <i class="add icon"></i></span>
+                <button onclick="addUser();" type="button" class="btn btn-primary btn-sm">新增用户</button>
+
+
+                <button onclick="delUser();" type="button" class="btn btn-danger btn-sm">删除用户</button>
+
+
+                    <input type="text" placeholder="用户名" id="userName" value="${userName}">
+                    <button class="btn btn-default btn-sm" onclick="userSearch()">Search</button>
+
+
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAll"></th>
+                        <th>用户名</th>
+                        <th>账号</th>
+                        <th>Eamil</th>
+                        <th>手机</th>
+                        <th>所在城市</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${page.items}" var="user">
+                        <tr>
+                            <td><input type="checkbox" name="id" value="${user.id}"></td>
+                            <td>${user.userName}</td>
+                            <td>${user.account}</td>
+                            <td>${user.email}</td>
+                            <td>${user.mobileTel}</td>
+                            <td>${user.city}</td>
+                            <td><a href="/adm/user/toModifyUser?id=${user.id}">修改</a></td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+                <div id="kkpager" class="page_s" style="width: 490px;"></div>
+
+            </div>
         </div>
-        <div class="ui red button">
-            <span onclick="delUser();" title="删除用户"><i class="minus icon"></i></span>
-        </div>
-        <div class="ui action input">
-            <input type="text" placeholder="用户名" id="userName" value="${userName}">
-            <button class="ui button" onclick="userSearch()">Search</button>
-        </div>
-
-        <table class="table table-striped table-bordered table-hover">
-            <thead>
-            <tr>
-                <th><input type="checkbox" id="selectAll"></th>
-                <th>用户名</th>
-                <th>账号</th>
-                <th>Eamil</th>
-                <th>手机</th>
-                <th>所在城市</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${page.items}" var="user">
-                <tr>
-                    <td><input type="checkbox" name="id" value="${user.id}"></td>
-                    <td>${user.userName}</td>
-                    <td>${user.account}</td>
-                    <td>${user.email}</td>
-                    <td>${user.mobileTel}</td>
-                    <td>${user.city}</td>
-                    <td><a href="/adm/user/toModifyUser?id=${user.id}">修改</a></td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-        <div id="kkpager" class="page_s" style="width: 490px;"></div>
     </div>
 </div>
 

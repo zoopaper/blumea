@@ -1,13 +1,79 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
 
-<div class="ui vertical menu">
-    <div class="header item">
-        权限管理
+
+<div class="sidebar" id="sidebar">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('sidebar', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <ul class="nav nav-list">
+        <li class="active">
+            <a href="index.html">
+                <i class="icon-dashboard"></i>
+                <span class="menu-text"> 控制台 </span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/adm/user/userList">
+                <i class="icon-text-width"></i>
+                <span class="menu-text"> 用户管理 </span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/adm/channel/channelList">
+                <i class="icon-text-width"></i>
+                <span class="menu-text"> 频道管理 </span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/adm/subject/subjectList">
+                <i class="icon-text-width"></i>
+                <span class="menu-text">栏目管理 </span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-desktop"></i>
+                <span class="menu-text">权限管理</span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="/adm/function/functionList">
+                        <i class="icon-double-angle-right"></i>
+                        功能管理
+                    </a>
+                </li>
+                <li>
+                    <a href="/adm/function/functionList">
+                        <i class="icon-double-angle-right"></i>
+                        角色管理
+                    </a>
+                </li>
+            </ul>
+
+        </li>
+
+    </ul>
+
+    <div class="sidebar-collapse" id="sidebar-collapse">
+        <i class="icon-double-angle-left" data-icon1="icon-double-angle-left"
+           data-icon2="icon-double-angle-right"></i>
     </div>
-    <div class="item">
-        <div class="menu">
-            <a class="item" href="/adm/function/functionList">功能管理</a>
-            <a class="item">角色管理</a>
-        </div>
-    </div>
+
+    <script type="text/javascript">
+        try {
+            ace.settings.check('sidebar', 'collapsed')
+        } catch (e) {
+        }
+    </script>
 </div>

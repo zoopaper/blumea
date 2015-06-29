@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.stream.dao.IRoleDao">
+    <sql id="allAttribute">
+        <![CDATA[
+          id,
+          name,
+          desc,
+          funcId,
+          createTime
+        ]]>
+    </sql>
+
+    <insert id="save" parameterType="org.stream.entity.RoleBean" useGeneratedKeys="true" keyProperty="id">
+        insert into t_role(name,desc,funcId,createTime)
+        value(#{name},#{desc},#{funcId},#{createTime})
+    </insert>
+
+    <select id="getRoleByName" parameterType="String" resultType="org.stream.entity.RoleBean">
+        select
+        <include refid="allAttribute"/>
+        from t_role where name=#{name} and isDel=0
+    </select>
+
+    <select id="get" parameterType="long" resultType="org.stream.entity.RoleBean">
+        select
+        <include refid="allAttribute"/>
+        from t_role
+        where id=#{0} and isDel=0;
+    </select>
+
+    <update id="update" parameterType="org.stream.entity.RoleBean">
+      update t_role set
+      name=#{name},
+      desc=#{desc},
+      funcId=#{funcId},
+      where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="string">
+        delete from t_role where id =#{0}
+    </delete>
+
+
+    <select id="getRoleTotalNum" resultType="int">
+        select count(id) from t_role
+        where
+        (#{0}='' or name like "%"#{0}"%");
+    </select>
+
+    <select id="getRoleWithPage" resultType="org.stream.entity.RoleBean">
+        select
+        <include refid="allAttribute"/>
+        from t_role
+        where
+        and (#{0}='' or name like "%"#{0}"%")
+        order by createTime desc
+        limit #{1},#{2};
+    </select>
+
+</mapper>

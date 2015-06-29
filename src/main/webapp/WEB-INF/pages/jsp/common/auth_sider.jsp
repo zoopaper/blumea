@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/adm/function/functionList">
+                    <a href="/adm/user/userList">
                         <i class="icon-double-angle-right"></i>
                         角色管理
                     </a>

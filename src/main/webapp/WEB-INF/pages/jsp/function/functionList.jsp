@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>功能列表</title>
+    <script src="/assets/js/kkpager.min.js"></script>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
@@ -11,10 +12,10 @@
         <%@ include file="../common/auth_sider.jsp" %>
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
-                <button onclick="addFunc();" type="button" class="btn btn-primary btn-sm">新增用户</button>
-                <button onclick="delFunc();" type="button" class="btn btn-danger btn-sm">删除用户</button>
+                <button onclick="addFunc();" type="button" class="btn btn-primary btn-sm">新增功能</button>
+                <button onclick="delFunc();" type="button" class="btn btn-danger btn-sm">删除功能</button>
                 <input type="text" placeholder="功能名称" id="name" value="${name}" name="name">
-                <button class="btn btn-primary btn-xs" onclick="funcSearch()">Search</button>
+                <button class="btn btn-primary btn-xs" onclick="funcSearch()">搜索</button>
 
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
@@ -112,4 +113,5 @@
     });
 </script>
 </body>
+<%@ include file="../common/footer.jsp" %>
 </html>

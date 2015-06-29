@@ -50,5 +50,6 @@
         window.location.href = "/adm/channel/addChannel";
     }
 </script>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

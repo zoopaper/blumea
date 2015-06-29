@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>Redis连接相关配置，如果没有，则使用默认配置</comment>
+
+    <!-- socket超时：毫秒 -->
+    <entry key="redis.timeout">6000</entry>
+    <!-- 链接池最大空闲数 -->
+    <entry key="redis.pool.max.idel">20</entry>
+    <!-- 链接池最小空闲数 -->
+    <entry key="redis.pool.min.idel">8</entry>
+    <!-- 链接池最大活动链接数 -->
+    <entry key="redis.pool.max.active">40</entry>
+    <!-- 链接池最长等待 -->
+    <entry key="redis.pool.max.wait">1000</entry>
+
+</properties>

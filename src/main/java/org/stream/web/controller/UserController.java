@@ -1,6 +1,7 @@
 package org.stream.web.controller;
 
 import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableMap;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.stream.auth.Principal;
+import org.stream.config.AppConfigContext;
 import org.stream.core.model.ServiceResponse;
 import org.stream.entity.UserBean;
 import org.stream.model.Pagination;
@@ -20,6 +22,7 @@ import org.stream.web.util.ResponseUtil;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * <p/>
@@ -35,6 +38,9 @@ public class UserController extends BaseController {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private AppConfigContext loadConf;
 
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
     public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response) {
@@ -114,6 +120,9 @@ public class UserController extends BaseController {
         } catch (Exception e) {
             log.info("Controller userList exception", e);
         }
+
+        String s = loadConf.get;
+
         return modelAndView;
     }
 

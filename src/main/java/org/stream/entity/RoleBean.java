@@ -17,7 +17,7 @@ public class RoleBean extends IMybatisEntity {
 
     private String funcId;
 
-    private String desc;
+    private String description;
 
     private Timestamp createTime;
 
@@ -37,12 +37,12 @@ public class RoleBean extends IMybatisEntity {
         this.funcId = funcId;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Timestamp getCreateTime() {

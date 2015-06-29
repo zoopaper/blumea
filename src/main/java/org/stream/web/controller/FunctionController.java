@@ -33,7 +33,6 @@ public class FunctionController extends BaseController {
     @Autowired
     private IFunctionService functionService;
 
-
     @RequestMapping(value = "/addFunction", method = RequestMethod.GET)
     public ModelAndView addFunction(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
@@ -62,7 +61,6 @@ public class FunctionController extends BaseController {
                 functionBean.setIsGroup(isGroup);
                 functionBean.setCreateTime(new Timestamp(System.currentTimeMillis()));
             }
-
             functionService.addFunction(functionBean);
         } catch (Exception e) {
             log.info("Controller doAddFunction exception", e);
@@ -70,7 +68,6 @@ public class FunctionController extends BaseController {
         modelAndView.setViewName("redirect:/adm/function/functionList");
         return modelAndView;
     }
-
 
     @RequestMapping(value = "/functionList", method = RequestMethod.GET)
     public ModelAndView userList(HttpServletRequest request, HttpServletResponse response) {
@@ -116,7 +113,6 @@ public class FunctionController extends BaseController {
         } catch (Exception e) {
             log.info("Controller delFunction exception", e);
         }
-
         return modelAndView;
     }
 

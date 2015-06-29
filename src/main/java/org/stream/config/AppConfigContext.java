@@ -4,6 +4,10 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import net.common.utils.config.MapConfig;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Map;
+
 /**
  * <p/>
  * User : krisibm@163.com
@@ -55,6 +59,30 @@ public class AppConfigContext {
         return Long.parseLong(s);
     }
 
+    public String getString(@Nonnull String name, String defaultValue) {
+        Preconditions.checkArgument(name != null, "name");
+        if (ctxMap == null) {
+            return defaultValue;
+        }
+        String s = ctxMap.get(name);
+        if (s == null) {
+            return defaultValue;
+        }
+        return s;
+    }
+
+
+    public static boolean getBoolean(@Nonnull String name, @Nullable Map<String, String> config, boolean defaultValue) {
+        Preconditions.checkArgument(name != null, "name");
+        if (config == null) {
+            return defaultValue;
+        }
+        String s = config.get(name);
+        if (s == null) {
+            return defaultValue;
+        }
+        return Boolean.valueOf(s);
+    }
 
     public void init() {
         ctxMap = MapConfig.parseConf(configXml);

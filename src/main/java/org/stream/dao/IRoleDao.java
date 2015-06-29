@@ -19,7 +19,14 @@ public interface IRoleDao extends IMybatisDao<RoleBean> {
      * @param name
      * @return
      */
-    public long getRoleTotalNum(String name);
+    public int getRoleTotalNum(String name);
+
+
+    /**
+     * @param name
+     * @return
+     */
+    public RoleBean getRoleByName(String name);
 
 
     /**

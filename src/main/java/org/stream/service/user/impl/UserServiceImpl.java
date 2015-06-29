@@ -74,9 +74,7 @@ public class UserServiceImpl implements IUserService {
         if (total == 0) {
             return new ServiceResponse<Pagination<UserBean>>(userBeanPage);
         }
-
         List<UserBean> userBeanList = userDao.getUserWithPage(userName, userBeanPage.getFromIndex(), userBeanPage.getPageSize());
-
         if (userBeanList == null || userBeanList.size() == 0) {
             return ServiceResponse.genFailResponse(1);
         }

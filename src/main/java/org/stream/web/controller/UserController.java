@@ -1,7 +1,6 @@
 package org.stream.web.controller;
 
 import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableMap;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +21,6 @@ import org.stream.web.util.ResponseUtil;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
-import java.util.Map;
 
 /**
  * <p/>
@@ -121,7 +119,7 @@ public class UserController extends BaseController {
             log.info("Controller userList exception", e);
         }
 
-        String s = loadConf.get;
+        String s = loadConf.getString("redis.timeout", "");
 
         return modelAndView;
     }
@@ -222,4 +220,11 @@ public class UserController extends BaseController {
         return modelAndView;
     }
 
+    public AppConfigContext getLoadConf() {
+        return loadConf;
+    }
+
+    public void setLoadConf(AppConfigContext loadConf) {
+        this.loadConf = loadConf;
+    }
 }

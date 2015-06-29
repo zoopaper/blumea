@@ -175,4 +175,27 @@ public class SubjectController extends BaseController {
         }
         return modelAndView;
     }
+
+    @RequestMapping(value = "/delSubject", method = RequestMethod.GET)
+    public ModelAndView deleteRole(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        try {
+            Principal principal = this.getLoginPrincipal(request);
+            if (principal == null) {
+                ResponseUtil.handleLongin(modelAndView);
+                return modelAndView;
+            }
+            modelAndView.setViewName("redirect:/adm/subject/subjectList");
+
+            String idArr = ServletRequestUtils.getStringParameter(request, "id");
+            String[] ids = idArr.split(",");
+            for (String id : ids) {
+                subjectService.deleteSubject(Long.valueOf(id));
+            }
+        } catch (Exception e) {
+            log.info("Controller delSubject exception", e);
+        }
+        return modelAndView;
+    }
+
 }

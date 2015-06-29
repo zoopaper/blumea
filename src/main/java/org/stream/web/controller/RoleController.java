@@ -35,14 +35,14 @@ public class RoleController extends BaseController {
     private IRoleService roleService;
 
     @RequestMapping(value = "/addRole", method = RequestMethod.GET)
-    public ModelAndView addFunction(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView addRole(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/role/addRole");
         return modelAndView;
     }
 
     @RequestMapping(value = "/doAddRole", method = RequestMethod.POST)
-    public ModelAndView doAddFunction(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView doAddRole(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Principal principal = this.getLoginPrincipal(request);
@@ -51,7 +51,7 @@ public class RoleController extends BaseController {
                 return modelAndView;
             }
             String name = ServletRequestUtils.getStringParameter(request, "name", "");
-            String desc = ServletRequestUtils.getStringParameter(request, "desc", "");
+            String desc = ServletRequestUtils.getStringParameter(request, "description", "");
             String funcId = ServletRequestUtils.getStringParameter(request, "funcId", "");
             RoleBean roleBean = new RoleBean();
             {
@@ -69,7 +69,7 @@ public class RoleController extends BaseController {
     }
 
     @RequestMapping(value = "/roleList", method = RequestMethod.GET)
-    public ModelAndView userList(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView roleList(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/role/roleList");
         try {
@@ -94,7 +94,7 @@ public class RoleController extends BaseController {
     }
 
     @RequestMapping(value = "/delRole", method = RequestMethod.GET)
-    public ModelAndView deleteUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView deleteRole(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Principal principal = this.getLoginPrincipal(request);
@@ -115,9 +115,8 @@ public class RoleController extends BaseController {
         return modelAndView;
     }
 
-
     @RequestMapping(value = "/toModifyRole", method = RequestMethod.GET)
-    public ModelAndView toModifyUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView toModifyRole(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Principal principal = this.getLoginPrincipal(request);
@@ -142,7 +141,7 @@ public class RoleController extends BaseController {
     }
 
     @RequestMapping(value = "/doModifyRole", method = RequestMethod.POST)
-    public ModelAndView doModifyUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView doModifyRole(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/adm/role/roleList");
         try {

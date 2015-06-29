@@ -70,7 +70,7 @@ public class FunctionController extends BaseController {
     }
 
     @RequestMapping(value = "/functionList", method = RequestMethod.GET)
-    public ModelAndView userList(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView functionList(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/function/functionList");
         try {
@@ -95,7 +95,7 @@ public class FunctionController extends BaseController {
     }
 
     @RequestMapping(value = "/delFunction", method = RequestMethod.GET)
-    public ModelAndView deleteUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView delFunction(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Principal principal = this.getLoginPrincipal(request);
@@ -118,7 +118,7 @@ public class FunctionController extends BaseController {
 
 
     @RequestMapping(value = "/toModifyFunction", method = RequestMethod.GET)
-    public ModelAndView toModifyUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView toModifyFunction(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Principal principal = this.getLoginPrincipal(request);
@@ -144,7 +144,7 @@ public class FunctionController extends BaseController {
 
 
     @RequestMapping(value = "/doModifyFunction", method = RequestMethod.POST)
-    public ModelAndView doModifyUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView doModifyFunction(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/adm/function/functionList");
         try {

@@ -34,14 +34,14 @@ public class ChannelController extends BaseController {
     private IChannelService channelService;
 
     @RequestMapping(value = "/addChannel", method = RequestMethod.GET)
-    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView addChannel(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/channel/addChannel");
         return modelAndView;
     }
 
     @RequestMapping(value = "/doAddChannel", method = RequestMethod.POST)
-    public ModelAndView doAddUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView doAddChannel(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Principal principal = this.getLoginPrincipal(request);
@@ -69,7 +69,7 @@ public class ChannelController extends BaseController {
 
 
     @RequestMapping(value = "/channelList", method = RequestMethod.GET)
-    public ModelAndView userList(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView channelList(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/channel/channelList");
         try {
@@ -87,7 +87,7 @@ public class ChannelController extends BaseController {
     }
 
     @RequestMapping(value = "/delChannel", method = RequestMethod.GET)
-    public ModelAndView deleteUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView delChannel(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/adm/channel/channelList");
         try {
@@ -106,7 +106,7 @@ public class ChannelController extends BaseController {
 
 
     @RequestMapping(value = "/toModifyChannel", method = RequestMethod.GET)
-    public ModelAndView toModifyUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView toModifyChannel(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/channel/modifyChannel");
         try {
@@ -131,7 +131,7 @@ public class ChannelController extends BaseController {
 
 
     @RequestMapping(value = "/doModifyChannel", method = RequestMethod.POST)
-    public ModelAndView doModifyUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView doModifyChannel(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/adm/channel/channelList");
         try {

@@ -12,45 +12,69 @@
         <%@ include file="../common/auth_sider.jsp" %>
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
-                <button onclick="addUser();" type="button" class="btn btn-primary btn-sm">新增用户</button>
-                <button onclick="delUser();" type="button" class="btn btn-danger btn-sm">删除用户</button>
-                <input type="text" placeholder="用户名" id="userName" value="${userName}">
-                <button class="btn btn-default btn-sm" onclick="userSearch()">Search</button>
-                <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th><input type="checkbox" id="selectAll"></th>
-                        <th>用户名</th>
-                        <th>账号</th>
-                        <th>Eamil</th>
-                        <th>手机</th>
-                        <th>所在城市</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${page.items}" var="user">
-                        <tr>
-                            <td><input type="checkbox" name="id" value="${user.id}"></td>
-                            <td>${user.userName}</td>
-                            <td>${user.account}</td>
-                            <td>${user.email}</td>
-                            <td>${user.mobileTel}</td>
-                            <td>${user.city}</td>
-                            <td><a href="/adm/user/toModifyUser?id=${user.id}">
-                                <button class="btn btn-xs btn-info">
-                                    <i class="icon-edit bigger-120"></i>
-                                </button>
-                            </a></td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-                <div id="kkpager" class="page_s" style="width: 490px;"></div>
+                <div class="ui-jqgrid-view">
+                    <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">
 
+                        <div class="col-xs-2">
+                            <button onclick="addUser();" type="button" class="btn btn-primary btn-sm">新增用户</button>
+                            <button onclick="delUser();" type="button" class="btn btn-danger btn-sm">删除用户</button>
+                            <%--<input type="text" class="form-control input-lg" placeholder="用户名" id="userName" value="${userName}">--%>
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="text" class="form-control" placeholder="" id="userName" value="${userName}">
+                        </div>
+                        <div class="col-xs-1">
+                            <button class="btn btn-default btn-sm" onclick="userSearch()">Search</button>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>
+                                <%--<input type="checkbox" id="selectAll">--%>
+                                <label>
+                                    <input type="checkbox" name="selectAll" value="${user.id}" class="ace">
+                                    <span class="lbl"></span>
+                                </label>
+                            </th>
+                            <th>用户名</th>
+                            <th>账号</th>
+                            <th>Eamil</th>
+                            <th>手机</th>
+                            <th>所在城市</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${page.items}" var="user">
+                            <tr>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" name="id" value="${user.id}" class="ace">
+                                        <span class="lbl"></span>
+                                    </label>
+                                </td>
+                                <td>${user.userName}</td>
+                                <td>${user.account}</td>
+                                <td>${user.email}</td>
+                                <td>${user.mobileTel}</td>
+                                <td>${user.city}</td>
+                                <td><a href="/adm/user/toModifyUser?id=${user.id}">
+                                    <button class="btn btn-xs btn-info">
+                                        <i class="icon-edit bigger-120"></i>
+                                    </button>
+                                </a></td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                    <div id="kkpager" class="page_s" style="width: 490px;"></div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 

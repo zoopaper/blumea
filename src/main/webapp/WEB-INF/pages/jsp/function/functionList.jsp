@@ -14,8 +14,8 @@
             <div class="page-content">
                 <button onclick="addFunc();" type="button" class="btn btn-primary btn-sm">新增功能</button>
                 <button onclick="delFunc();" type="button" class="btn btn-danger btn-sm">删除功能</button>
-                <input type="text" placeholder="功能名称" id="name" value="${name}" name="name">
-                <button class="btn btn-primary btn-xs" onclick="funcSearch()">搜索</button>
+                <input type="text" placeholder="功能名称" id="name"  value="${name}" name="name">
+                <button class="btn btn-primary" onclick="funcSearch()">搜索</button>
 
                 <table class="table table-striped table-bordered table-hover">
                     <thead>

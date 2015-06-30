@@ -6,6 +6,7 @@ import net.common.utils.config.MapConfig;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.PostConstruct;
 import java.util.Map;
 
 /**
@@ -84,6 +85,7 @@ public class AppConfigContext {
         return Boolean.valueOf(s);
     }
 
+    @PostConstruct
     public void init() {
         ctxMap = MapConfig.parseConf(configXml);
     }

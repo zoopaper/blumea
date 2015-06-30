@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.stream.dao.IEntryDao">
+
+    <insert id="save" parameterType="org.stream.entity.EntryBean" useGeneratedKeys="true" keyProperty="id">
+        insert into t_role(name,funcId,description,createTime)
+        values(#{name},#{funcId},#{description},#{createTime});
+    </insert>
+
+    <select id="getRoleByName" parameterType="String" resultType="org.stream.entity.EntryBean">
+        select a.id, a.name,a.description,a.funcId,a.createTime
+        from t_role a where name=#{name};
+    </select>
+
+    <select id="get" parameterType="long" resultType="org.stream.entity.EntryBean">
+        select a.id, a.name,a.description,a.funcId,a.createTime
+        from t_role a
+        where id=#{0};
+    </select>
+
+    <update id="update" parameterType="org.stream.entity.EntryBean">
+      update t_role set
+      name=#{name},
+      description=#{description},
+      funcId=#{funcId}
+      where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="org.stream.entity.EntryBean">
+        delete from t_role where id =#{id}
+    </delete>
+
+    <select id="getRoleTotalNum" resultType="int">
+        select count(id) from t_role
+        where  (#{0}='' or name like "%"#{0}"%");
+    </select>
+
+    <select id="getRoleWithPage" resultType="org.stream.entity.EntryBean">
+        select a.id, a.name,a.description,a.funcId,a.createTime
+        from t_role a
+        where
+        #{0}='' or name like "%"#{0}"%"
+        order by createTime desc
+        limit #{1},#{2};
+    </select>
+
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <groups>
+
+        <!-- 缓存组 ：用于做为entity的缓存组 -->
+        <group name="cache_group_entity">
+            <servers>
+                <server name="redis-app1"/>
+                <server name="redis-app3"/>
+            </servers>
+        </group>
+    </groups>
+</root>

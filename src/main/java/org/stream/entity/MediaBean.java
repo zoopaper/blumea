@@ -8,7 +8,7 @@ import org.stream.entity.base.IMybatisEntity;
  * Date: 2015/6/30
  * Time: 0:07
  */
-public class Media extends IMybatisEntity {
+public class MediaBean extends IMybatisEntity {
 
     private String name;
 

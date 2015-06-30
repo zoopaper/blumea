@@ -5,7 +5,7 @@
 		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
 
-    <bean id="loadConf" class="org.stream.config.AppConfigContext" init-method="init" lazy-init="false">
+    <bean id="loadConf" class="org.stream.config.AppConfigContext"  lazy-init="false">
         <property name="configXml" value="redis.conf.xml"/>
     </bean>
 </beans>

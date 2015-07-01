@@ -7,4 +7,7 @@ package org.stream.dao;
  * Time: 23:10
  */
 public interface IMediaDao {
+
+
+
 }

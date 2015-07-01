@@ -18,6 +18,8 @@ public class MediaBean extends IMybatisEntity {
 
     private String logoUrl;
 
+    private int isDel;
+
     public void setDesc(String desc) {
         this.desc = desc;
     }
@@ -48,5 +50,13 @@ public class MediaBean extends IMybatisEntity {
 
     public String getDesc() {
         return desc;
+    }
+
+    public int getIsDel() {
+        return isDel;
+    }
+
+    public void setIsDel(int isDel) {
+        this.isDel = isDel;
     }
 }

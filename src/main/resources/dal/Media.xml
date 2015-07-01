@@ -2,46 +2,62 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.stream.dao.IMediaDao">
 
+    <sql id="allAttribute">
+        <![CDATA[
+            id,
+            name,
+            desc,
+            siteUrl,
+            logoUrl,
+            isDel
+        ]]>
+    </sql>
+
     <insert id="save" parameterType="org.stream.entity.MediaBean" useGeneratedKeys="true" keyProperty="id">
-        insert into t_role(name,funcId,description,createTime)
-        values(#{name},#{funcId},#{description},#{createTime});
+        insert into t_media(name,desc,siteUrl,logoUrl)
+        values(#{name},#{desc},#{siteUrl},#{logoUrl});
     </insert>
 
-    <select id="getRoleByName" parameterType="String" resultType="org.stream.entity.MediaBean">
-        select a.id, a.name,a.description,a.funcId,a.createTime
-        from t_role a where name=#{name};
+    <select id="getMediaByName" parameterType="String" resultType="org.stream.entity.MediaBean">
+        select
+        <include refid="allAttribute"/>
+        from t_media a where name=#{name} and isDel=0;
     </select>
 
     <select id="get" parameterType="long" resultType="org.stream.entity.MediaBean">
-        select a.id, a.name,a.description,a.funcId,a.createTime
-        from t_role a
-        where id=#{0};
+        select
+        <include refid="allAttribute"/>
+        from t_media
+        where id=#{0} and isDel=0;
     </select>
 
     <update id="update" parameterType="org.stream.entity.MediaBean">
-      update t_role set
+      update t_media set
       name=#{name},
-      description=#{description},
-      funcId=#{funcId}
+      desc=#{desc},
+      siteUrl=#{siteUrl},
+      logoUrl=#{logoUrl}
       where id=#{id}
     </update>
 
-    <delete id="delete" parameterType="org.stream.entity.MediaBean">
-        delete from t_role where id =#{id}
-    </delete>
+    <update id="delete" parameterType="org.stream.entity.MediaBean">
+        update t_media set isDel=1 where id =#{id}
+    </update>
 
-    <select id="getRoleTotalNum" resultType="int">
-        select count(id) from t_role
+    <select id="getMediaTotalNum" resultType="int">
+        select count(id) from t_media
         where  (#{0}='' or name like "%"#{0}"%");
     </select>
 
-    <select id="getRoleWithPage" resultType="org.stream.entity.MediaBean">
-        select a.id, a.name,a.description,a.funcId,a.createTime
-        from t_role a
+    <select id="getMediaWithPage" resultType="org.stream.entity.MediaBean">
+        select
+        <include refid="allAttribute"/>
+        from t_media a
         where
-        #{0}='' or name like "%"#{0}"%"
-        order by createTime desc
-        limit #{1},#{2};
+        a.isDel=0
+        and #{0}='' or name like "%"#{0}"%"
+        order by a.name asc
+        limit #{1},#{2}
     </select>
 
 </mapper>

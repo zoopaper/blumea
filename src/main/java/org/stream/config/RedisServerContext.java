@@ -19,14 +19,20 @@ public class RedisServerContext {
 
     private Map<String, Server> serverMap;
 
+    private Servers servers;
+
     @PostConstruct
     public void init() {
 
-        Servers servers = JAXBUtil.unmarshal(Servers.class, redisServerXml);
+        servers = JAXBUtil.unmarshal(Servers.class, redisServerXml);
         serverMap = servers.getServers();
     }
 
     public void setRedisServerXml(String redisServerXml) {
         this.redisServerXml = redisServerXml;
+    }
+
+    public Servers getServers() {
+        return servers;
     }
 }

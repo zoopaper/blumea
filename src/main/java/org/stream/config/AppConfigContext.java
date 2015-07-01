@@ -21,7 +21,6 @@ public class AppConfigContext {
 
     private ImmutableMap<String, String> ctxMap;
 
-
     public int getInt(String name, int defaultValue) {
         Preconditions.checkArgument(name != null, "name");
         if (ctxMap == null) {
@@ -89,7 +88,6 @@ public class AppConfigContext {
     public void init() {
         ctxMap = MapConfig.parseConf(configXml);
     }
-
 
     public void setConfigXml(String configXml) {
         this.configXml = configXml;

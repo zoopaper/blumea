@@ -16,4 +16,5 @@
     <bean id="redisServerGroup" class="org.stream.config.RedisServerGroupContext" lazy-init="false" scope="singleton">
         <property name="redisServerGroupXml" value="redis-client.xml"/>
     </bean>
+
 </beans>

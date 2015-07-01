@@ -19,15 +19,20 @@ public class RedisServerGroupContext {
 
     private Map<String, Group> serverGroup;
 
+    private ServiceGroup serviceGroup;
 
     @PostConstruct
     public void init() {
-        ServiceGroup serviceGroup = JAXBUtil.unmarshal(ServiceGroup.class, redisServerGroupXml);
+        serviceGroup = JAXBUtil.unmarshal(ServiceGroup.class, redisServerGroupXml);
         serverGroup = serviceGroup.getGroups();
     }
 
 
     public void setRedisServerGroupXml(String redisServerGroupXml) {
         this.redisServerGroupXml = redisServerGroupXml;
+    }
+
+    public ServiceGroup getServiceGroup() {
+        return serviceGroup;
     }
 }

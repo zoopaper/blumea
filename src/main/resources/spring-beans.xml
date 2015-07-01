@@ -5,7 +5,15 @@
 		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
 
-    <bean id="loadConf" class="org.stream.config.AppConfigContext"  lazy-init="false">
+    <bean id="loadConf" class="org.stream.config.AppConfigContext" lazy-init="false" scope="singleton">
         <property name="configXml" value="redis.conf.xml"/>
+    </bean>
+
+    <bean id="redisServer" class="org.stream.config.RedisServerContext" lazy-init="false" scope="singleton">
+        <property name="redisServerXml" value="redis-servers.xml"/>
+    </bean>
+
+    <bean id="redisServerGroup" class="org.stream.config.RedisServerGroupContext" lazy-init="false" scope="singleton">
+        <property name="redisServerGroupXml" value="redis-client.xml"/>
     </bean>
 </beans>

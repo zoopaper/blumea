@@ -3,9 +3,9 @@ package org.stream.service.role.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.stream.core.model.ServiceResponse;
-import org.stream.dao.IRoleDao;
 import org.stream.entity.RoleBean;
 import org.stream.model.Pagination;
+import org.stream.service.role.IDataRoleService;
 import org.stream.service.role.IRoleService;
 
 import java.util.List;
@@ -20,20 +20,16 @@ import java.util.List;
 public class RoleServiceImpl implements IRoleService {
 
     @Autowired
-    private IRoleDao roleDao;
+    private IDataRoleService roleDao;
 
     @Override
     public void addRole(RoleBean roleBean) {
-
-        roleDao.save(roleBean);
+        roleDao.add(roleBean);
     }
 
     @Override
     public void deleteRole(long id) {
-
-        RoleBean roleBean = roleDao.get(id);
-        if (roleBean != null)
-            roleDao.delete(roleBean);
+        roleDao.delete(id);
     }
 
     @Override

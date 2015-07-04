@@ -7,4 +7,7 @@ package org.stream.service.media;
  * Time: 8:44
  */
 public interface IMediaService {
+
+
+
 }

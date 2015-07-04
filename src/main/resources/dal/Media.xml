@@ -9,13 +9,14 @@
             desc,
             siteUrl,
             logoUrl,
-            isDel
+            isDel,
+            createTime
         ]]>
     </sql>
 
     <insert id="save" parameterType="org.stream.entity.MediaBean" useGeneratedKeys="true" keyProperty="id">
-        insert into t_media(name,desc,siteUrl,logoUrl)
-        values(#{name},#{desc},#{siteUrl},#{logoUrl});
+        insert into t_media(name,desc,siteUrl,logoUrl,createTime)
+        values(#{name},#{desc},#{siteUrl},#{logoUrl},#{createTime});
     </insert>
 
     <select id="getMediaByName" parameterType="String" resultType="org.stream.entity.MediaBean">
@@ -56,7 +57,7 @@
         where
         a.isDel=0
         and #{0}='' or name like "%"#{0}"%"
-        order by a.name asc
+        order by a.name asc,a.createTime
         limit #{1},#{2}
     </select>
 

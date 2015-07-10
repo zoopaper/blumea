@@ -2,7 +2,6 @@ package org.stream.constants.cache;
 
 /**
  * 业务全局共用的缓存相关配置
- * s
  */
 public final class CacheConst {
 
@@ -101,8 +100,20 @@ public final class CacheConst {
     public static final String CACHE_KEY_ROLE_ENTITY_ID = "role_id_%s" + CACHE_KEY_ENTITY_GLOBAL_VERSION;
 
 
+    public static final String CACHE_KEY_MEDIA_ENTITY_ID = "media_id_%s" + CACHE_KEY_ENTITY_GLOBAL_VERSION;
+
+
     //------------实体缓存时间---------------------------------
 
+    /**
+     * 角色实体缓存时间
+     */
     public static final int CACHE_TIME_ROLE_ENTITY = CACHE_TIME_ONE_HOUR;
+
+    /**
+     * 媒体实体缓存时间
+     */
+    public static final int CACHE_TIME_MEDIA_ENTITY = CACHE_TIME_ONE_HOUR;
+
 
 }

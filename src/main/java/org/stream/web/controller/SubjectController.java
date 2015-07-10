@@ -43,7 +43,7 @@ public class SubjectController extends BaseController {
 
 
     @RequestMapping(value = "/doAddSubject", method = RequestMethod.POST)
-    public ModelAndView doAddUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView doAddSubject(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Principal principal = this.getLoginPrincipal(request);
@@ -84,7 +84,7 @@ public class SubjectController extends BaseController {
 
 
     @RequestMapping(value = "/toModifySubject", method = RequestMethod.GET)
-    public ModelAndView toModifyUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView toModifySubject(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Principal principal = this.getLoginPrincipal(request);
@@ -110,7 +110,7 @@ public class SubjectController extends BaseController {
 
 
     @RequestMapping(value = "/doModifySubject", method = RequestMethod.POST)
-    public ModelAndView doModifyUser(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView doModifySubject(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/adm/subject/subjectList");
         try {
@@ -177,7 +177,7 @@ public class SubjectController extends BaseController {
     }
 
     @RequestMapping(value = "/delSubject", method = RequestMethod.GET)
-    public ModelAndView deleteRole(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView deleteSubject(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Principal principal = this.getLoginPrincipal(request);

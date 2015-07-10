@@ -6,7 +6,7 @@
         <![CDATA[
             id,
             name,
-            desc,
+            descs,
             siteUrl,
             logoUrl,
             isDel
@@ -14,8 +14,8 @@
     </sql>
 
     <insert id="save" parameterType="org.stream.entity.MediaBean" useGeneratedKeys="true" keyProperty="id">
-        insert into t_media(name,desc,siteUrl,logoUrl)
-        values(#{name},#{desc},#{siteUrl},#{logoUrl});
+        insert into t_media(name,descs,siteUrl,logoUrl)
+        values(#{name},#{descs},#{siteUrl},#{logoUrl});
     </insert>
 
     <select id="getMediaByName" parameterType="String" resultType="org.stream.entity.MediaBean">
@@ -34,7 +34,7 @@
     <update id="update" parameterType="org.stream.entity.MediaBean">
       update t_media set
       name=#{name},
-      desc=#{desc},
+      descs=#{descs},
       siteUrl=#{siteUrl},
       logoUrl=#{logoUrl}
       where id=#{id}
@@ -46,18 +46,16 @@
 
     <select id="getMediaTotalNum" resultType="int">
         select count(id) from t_media
-        where  (#{0}='' or name like "%"#{0}"%");
+        where  (#{0}='' or name like "%"#{0}"%") and isDel=0
     </select>
 
     <select id="getMediaWithPage" resultType="org.stream.entity.MediaBean">
         select
         <include refid="allAttribute"/>
-        from t_media a
-        where
-        a.isDel=0
-        and #{0}='' or name like "%"#{0}"%"
-        order by a.name asc
-        limit #{1},#{2}
+        from t_media
+        where isDel=0 and (#{0}='' or name like "%"#{0}"%")
+        order by name asc
+        limit #{1},#{2};
     </select>
 
 </mapper>

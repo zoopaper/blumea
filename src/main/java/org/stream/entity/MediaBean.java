@@ -12,7 +12,7 @@ public class MediaBean extends IMybatisEntity {
 
     private String name;
 
-    private String desc;
+    private String descs;
 
     private String siteUrl;
 
@@ -20,9 +20,6 @@ public class MediaBean extends IMybatisEntity {
 
     private int isDel;
 
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
 
     public String getName() {
         return name;
@@ -48,9 +45,6 @@ public class MediaBean extends IMybatisEntity {
         this.siteUrl = siteUrl;
     }
 
-    public String getDesc() {
-        return desc;
-    }
 
     public int getIsDel() {
         return isDel;
@@ -58,5 +52,13 @@ public class MediaBean extends IMybatisEntity {
 
     public void setIsDel(int isDel) {
         this.isDel = isDel;
+    }
+
+    public String getDescs() {
+        return descs;
+    }
+
+    public void setDescs(String descs) {
+        this.descs = descs;
     }
 }

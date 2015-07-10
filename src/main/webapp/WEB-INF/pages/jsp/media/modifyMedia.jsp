@@ -27,11 +27,11 @@
             </div>
             <div class="form-group">
               <label>站点Logo</label>
-              <input type="text" name="description" value="${media.siteLogo}" class="form-control">
+              <input type="text" name="description" value="${media.logoUrl}" class="form-control">
             </div>
             <div class="form-group">
               <label>描述</label>
-              <input type="text" name="description" value="${media.desc}" class="form-control">
+              <input type="text" name="description" value="${media.descs}" class="form-control">
             </div>
             <input class="btn btn-primary" type="submit" value="保 存">
           </form>

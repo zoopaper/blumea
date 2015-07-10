@@ -37,6 +37,13 @@
         </li>
 
         <li>
+            <a href="/adm/media/mediaList">
+                <i class="icon-align-justify"></i>
+                <span class="menu-text">媒体管理 </span>
+            </a>
+        </li>
+
+        <li>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-desktop"></i>
                 <span class="menu-text">权限管理</span>

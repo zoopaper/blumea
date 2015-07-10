@@ -86,7 +86,7 @@
             return false;
         }
 
-        if (confirm("您确定要删除选中的用户吗!")) {
+        if (confirm("您确定要删除选中的栏目吗!")) {
             window.location.href = "/adm/subject/delSubject?id=" + idArray;
         } else {
             return false;

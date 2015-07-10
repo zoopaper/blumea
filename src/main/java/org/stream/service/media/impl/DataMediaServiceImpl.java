@@ -1,5 +1,6 @@
 package org.stream.service.media.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.stream.base.service.MybatisEntityDataService;
 import org.stream.constants.cache.CacheConst;
@@ -19,6 +20,7 @@ import java.util.List;
 @Component
 public class DataMediaServiceImpl extends MybatisEntityDataService<MediaBean> implements IDataMediaService {
 
+    @Autowired
     private IMediaDao mediaDao;
 
     public DataMediaServiceImpl() {

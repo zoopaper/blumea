@@ -2,8 +2,6 @@ package org.stream.entity;
 
 import org.stream.entity.base.IMybatisEntity;
 
-import java.sql.Timestamp;
-
 /**
  * <p/>
  * User : krisibm@163.com
@@ -21,9 +19,6 @@ public class MediaBean extends IMybatisEntity {
     private String logoUrl;
 
     private int isDel;
-
-
-    private Timestamp createTime;
 
 
     public String getName() {
@@ -68,11 +63,4 @@ public class MediaBean extends IMybatisEntity {
         this.descs = descs;
     }
 
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
 }

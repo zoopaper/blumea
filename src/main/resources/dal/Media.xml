@@ -9,19 +9,13 @@
             descs,
             siteUrl,
             logoUrl,
-            isDel,
-            createTime
+            isDel
         ]]>
     </sql>
 
     <insert id="save" parameterType="org.stream.entity.MediaBean" useGeneratedKeys="true" keyProperty="id">
-<<<<<<< HEAD
         insert into t_media(name,descs,siteUrl,logoUrl)
         values(#{name},#{descs},#{siteUrl},#{logoUrl});
-=======
-        insert into t_media(name,desc,siteUrl,logoUrl,createTime)
-        values(#{name},#{desc},#{siteUrl},#{logoUrl},#{createTime});
->>>>>>> a2b71a7aa85c98816aea608dea3b514886ff8d18
     </insert>
 
     <select id="getMediaByName" parameterType="String" resultType="org.stream.entity.MediaBean">
@@ -58,19 +52,10 @@
     <select id="getMediaWithPage" resultType="org.stream.entity.MediaBean">
         select
         <include refid="allAttribute"/>
-<<<<<<< HEAD
         from t_media
         where isDel=0 and (#{0}='' or name like "%"#{0}"%")
         order by name asc
         limit #{1},#{2};
-=======
-        from t_media a
-        where
-        a.isDel=0
-        and #{0}='' or name like "%"#{0}"%"
-        order by a.name asc,a.createTime
-        limit #{1},#{2}
->>>>>>> a2b71a7aa85c98816aea608dea3b514886ff8d18
     </select>
 
 </mapper>

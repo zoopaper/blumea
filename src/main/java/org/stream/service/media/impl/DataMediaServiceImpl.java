@@ -1,6 +1,5 @@
 package org.stream.service.media.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.stream.base.service.MybatisEntityDataService;
 import org.stream.constants.cache.CacheConst;
@@ -20,12 +19,10 @@ import java.util.List;
 @Component
 public class DataMediaServiceImpl extends MybatisEntityDataService<MediaBean> implements IDataMediaService {
 
-
-    @Autowired
     private IMediaDao mediaDao;
 
     public DataMediaServiceImpl() {
-        super(CacheConst.CACHE_GROUP_ENTITY, CacheConst.CACHE_KEY_ROLE_ENTITY_ID, CacheConst.CACHE_TIME_MEDIA_ENTITY);
+        super(CacheConst.CACHE_GROUP_ENTITY, CacheConst.CACHE_KEY_MEDIA_ENTITY_ID, CacheConst.CACHE_TIME_MEDIA_ENTITY);
     }
 
     @Override

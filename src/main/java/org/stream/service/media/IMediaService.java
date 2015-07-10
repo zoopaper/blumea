@@ -46,4 +46,6 @@ public interface IMediaService {
      * @return
      */
     public ServiceResponse<Pagination<MediaBean>> getMediaWithPage(String name, int page, int size);
+
+
 }

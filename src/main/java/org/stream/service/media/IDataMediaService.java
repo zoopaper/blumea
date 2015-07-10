@@ -17,6 +17,7 @@ public interface IDataMediaService extends IMybatisEntityDataService<MediaBean> 
      * @param name
      * @return
      */
+
     public List<MediaBean> getMediaByName(String name);
 
     /**

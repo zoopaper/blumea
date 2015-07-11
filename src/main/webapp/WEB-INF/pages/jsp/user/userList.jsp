@@ -15,7 +15,7 @@
                 <div class="ui-jqgrid-view">
                     <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">
 
-                        <div class="col-xs-2">
+                        <div class="col-xs-3">
                             <button onclick="addUser();" type="button" class="btn btn-primary btn-sm">新增用户</button>
                             <button onclick="delUser();" type="button" class="btn btn-danger btn-sm">删除用户</button>
                             <%--<input type="text" class="form-control input-lg" placeholder="用户名" id="userName" value="${userName}">--%>

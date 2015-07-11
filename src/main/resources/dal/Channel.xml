@@ -25,7 +25,7 @@
     <select id="getAllChannel" resultType="org.stream.entity.ChannelBean">
       select
         <include refid="allAttribute"/>
-        from t_channel where isDel =0 order by createTime description;
+        from t_channel where isDel =0 order by createTime desc;
     </select>
 
     <update id="update" parameterType="org.stream.entity.ChannelBean">

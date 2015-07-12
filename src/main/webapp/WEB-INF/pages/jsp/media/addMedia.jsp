@@ -3,8 +3,6 @@
 <html>
 <head>
     <title>新增媒体</title>
-
-
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
@@ -35,12 +33,12 @@
      * @param {Map} form options
      * @return an error string if validation failed
      */
-    //    function checkHELLO(field, rules, i, options) {
-    //        if (field.val() != "HELLO") {
-    //            // this allows to use i18 for the error msgs
-    //            return options.allrules.validate2fields.alertText;
-    //        }
-    //    }
+        function checkHELLO(field, rules, i, options) {
+            if (field.val() != "HELLO") {
+                // this allows to use i18 for the error msgs
+                return options.allrules.validate2fields.alertText;
+            }
+        }
 </script>
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
@@ -49,17 +47,17 @@
             <div class="page-content">
                 <h4 class="ui dividing header">新增媒体</h4>
 
-                <div class="col-xs-5">
+                <div class="col-xs-3">
                     <form action="/adm/media/doAddMedia" method="post" id="form1"
-                          onsubmit="return jQuery(this).validationEngine('validate');" class="formular">
+                          onsubmit="return jQuery(this).validationEngine('validate');" class="ui form segment" style="width: 400px;">
                         <div class="form-group">
                             <label>名称</label>
-                            <input name="name" id="name" type="text" class="validate[required] text-input">
+                            <input name="name" id="name" type="text"  class="validate[required] text-input" style="border-radius: 0;-webkit-box-shadow: none!important;box-shadow: none!important;color: #858585;background-color: #fff;border: 1px solid #d5d5d5;width: 400px;height: 35px;">
                         </div>
                         <div class="form-group">
                             <label>站点URL</label>
                             <input name="siteUrl" id="siteUrl" type="text"
-                                   class="validate[required] text-input">
+                                   class="validate[required] text-input" style="border-radius: 0;-webkit-box-shadow: none!important;box-shadow: none!important;color: #858585;background-color: #fff;border: 1px solid #d5d5d5;width: 400px;height: 35px;">
                         </div>
                         <div class="form-group">
                             <label>Logo</label>
@@ -69,7 +67,7 @@
                             <label>描述</label>
                             <input type="text" name="desc" class="form-control">
                         </div>
-                        <input class="btn btn-primary" id="submit1" type="submit" onclick="jQuery('#formID').submit();"
+                        <input class="btn btn-primary" id="submit1" type="submit" onclick="jQuery('#form1').submit();"
                                value="保存"/>
                     </form>
                 </div>

@@ -5,6 +5,8 @@
 <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/css/font-awesome.min.css"/>
 <link href="/assets/css/kkpager_blue.css" rel="stylesheet">
+<link href="/assets/css/formvalid/validationEngine.jquery.css" rel="stylesheet">
+<link href="/assets/css/formvalid/template.css" rel="stylesheet">
 
 
 <!--[if IE 7]>
@@ -14,11 +16,11 @@
 <%--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />--%>
 
 <link rel="stylesheet" href="/assets/css/ace.min.css"/>
-<link rel="stylesheet" href="/assets/css/ace-rtl.min.css"/>
+<%--<link rel="stylesheet" href="/assets/css/ace-rtl.min.css"/>--%>
 <link rel="stylesheet" href="/assets/css/ace-skins.min.css"/>
 
 <!--[if lte IE 8]>
-<link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
+<!--<link rel="stylesheet" href="/assets/css/ace-ie.min.css" />-->
 <![endif]-->
 
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300"/>
@@ -32,6 +34,8 @@
 <script src="/assets/js/html5shiv.js"></script>
 <script src="/assets/js/respond.min.js"></script>
 <![endif]-->
+<script src="/assets/js/formvalid/jquery.validationEngine.js"></script>
+<script src="/assets/js/formvalid/jquery.validationEngine-zh_CN.js"></script>
 
 
 <div class="navbar navbar-default" id="navbar">

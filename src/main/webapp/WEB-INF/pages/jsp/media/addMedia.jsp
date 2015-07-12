@@ -3,74 +3,45 @@
 <html>
 <head>
     <title>新增媒体</title>
-    <script src="/assets/js/bootstrap3-validation.js"></script>
-    <script type="text/javascript">
-        $(function(){
 
-            //1. 简单写法：
-            $("#form1").validation({icon:true});
-
-            // 要从后台数据确定填的邮箱是不是已注册过了，采用回调方法
-            // $("form").validation(function(obj,params){
-            //   if (obj.id=='mail'){
-            //     $.post("/verifymail",{mail :$(obj).val()},function(data){
-            //       params.err = !data.success;
-            //       params.msg = data.msg;
-            //     });
-            //   }}
-            //   ,{reqmark:true} //这个参数是设必填不要显示有星号，默认是有星号的
-            // );
-
-
-            //.注册
-            $("#submit1").on('click',function(event){
-                // 2.最后要调用 valid()方法。
-                //  valide(object,msg),提示信息显示，object位置后面增加提示信息。如不填object 则自动找最后一个button submit.
-                //  valide(msg)
-
-                //第一种提示写法
-                if ($("#form1").valid(this,'内容出错')==false){
-                    return false;
-                }
-
-                //第二种提示写法，回调方法你自己提示就随意你了。
-                //if ($("#form1").valid(this,function(err){alert(err)})==false){
-                //  return false;
-                //}
-
-
-
-            })
-
-            $("#form2").validation();
-            //.注册
-            $("#submit2").on('click',function(event){
-                // 2.最后要调用 valid()方法。
-                if ($("#form2").valid()==false){
-                    alert('填写信息不完整。');
-                    return false;
-                }
-            });
-
-
-            $("#form3").validation(function(obj,params){
-                //扩展校验方法
-            },{reqmark:false,icon:true});
-            //.注册
-            $("#submit3").on('click',function(event){
-                // 2.最后要调用 valid()方法。
-                if ($("#form3").valid('填写信息不完整。')==false){
-                    //alert('填写信息不完整。');
-                    return false;
-                }
-            });
-
-        })
-    </script>
 
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
+<script>
+    function validate() {
+
+    }
+    function formSuccess() {
+        alert('Success!');
+    }
+
+    function formFailure() {
+        alert('Failure!');
+    }
+    jQuery(document).ready(function () {
+        // binds form submission and fields to the validation engine
+        jQuery("#form1").validationEngine({
+            onFormSuccess: formSuccess,
+            onFormFailure: formFailure
+        });
+    });
+
+    /**
+     *
+     * @param {jqObject} the field where the validation applies
+     * @param {Array[String]} validation rules for this field
+     * @param {int} rule index
+     * @param {Map} form options
+     * @return an error string if validation failed
+     */
+    //    function checkHELLO(field, rules, i, options) {
+    //        if (field.val() != "HELLO") {
+    //            // this allows to use i18 for the error msgs
+    //            return options.allrules.validate2fields.alertText;
+    //        }
+    //    }
+</script>
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
         <%@ include file="../common/auth_sider.jsp" %>
@@ -79,14 +50,16 @@
                 <h4 class="ui dividing header">新增媒体</h4>
 
                 <div class="col-xs-5">
-                    <form action="/adm/media/doAddMedia" method="post" id="form1">
+                    <form action="/adm/media/doAddMedia" method="post" id="form1"
+                          onsubmit="return jQuery(this).validationEngine('validate');" class="formular">
                         <div class="form-group">
                             <label>名称</label>
-                            <input name="name" id="name" type="text" class="form-control" check-type="required">
+                            <input name="name" id="name" type="text" class="validate[required] text-input">
                         </div>
                         <div class="form-group">
                             <label>站点URL</label>
-                            <input name="siteUrl" type="text" class="form-control">
+                            <input name="siteUrl" id="siteUrl" type="text"
+                                   class="validate[required] text-input">
                         </div>
                         <div class="form-group">
                             <label>Logo</label>
@@ -96,13 +69,15 @@
                             <label>描述</label>
                             <input type="text" name="desc" class="form-control">
                         </div>
-                        <input class="btn btn-primary" type="submit" value="保 存">
+                        <input class="btn btn-primary" id="submit1" type="submit" onclick="jQuery('#formID').submit();"
+                               value="保存"/>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

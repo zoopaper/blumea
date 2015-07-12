@@ -44,6 +44,13 @@
         </li>
 
         <li>
+            <a href="/adm/media/mediaList">
+                <i class="icon-book"></i>
+                <span class="menu-text">新闻管理</span>
+            </a>
+        </li>
+
+        <li>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-desktop"></i>
                 <span class="menu-text">权限管理</span>

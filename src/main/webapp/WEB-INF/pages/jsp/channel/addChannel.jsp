@@ -6,6 +6,27 @@
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
+
+<script>
+    function validate() {
+
+    }
+    function formSuccess() {
+        alert('Success!');
+    }
+
+    function formFailure() {
+        alert('Failure!');
+    }
+    jQuery(document).ready(function () {
+        // binds form submission and fields to the validation engine
+        jQuery("#form1").validationEngine({
+            onFormSuccess: formSuccess,
+            onFormFailure: formFailure
+        });
+    });
+</script>
+
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
         <%@ include file="../common/auth_sider.jsp" %>
@@ -14,16 +35,16 @@
                 <h4 class="ui dividing header">新增频道</h4>
 
                 <div class="col-xs-5">
-                    <form action="/adm/channel/doAddChannel" method="post" name="">
+                    <form action="/adm/channel/doAddChannel" method="post" id="form1" onsubmit="return jQuery(this).validationEngine('validate');" class="ui form segment">
                         <div class="form-group">
                             <label>频道名称</label>
-                            <input name="name" type="text" id="name" class="form-control">
+                            <input name="name" type="text" id="name"  class="validate[required] text-input" style="width: 400px;">
                         </div>
                         <div class="form-group">
                             <label>频道目录</label>
-                            <input name="dir" type="text" class="form-control">
+                            <input name="dir" type="text"  class="validate[required] text-input" style="width: 400px;">
                         </div>
-                        <input class="btn btn-primary" type="submit" value="保 存">
+                        <input class="btn btn-primary" type="submit" value="保 存" id="submit1" onclick="jQuery('#form1').submit();">
                     </form>
                 </div>
             </div>

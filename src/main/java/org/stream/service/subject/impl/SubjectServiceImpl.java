@@ -3,7 +3,9 @@ package org.stream.service.subject.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.stream.core.model.ServiceResponse;
+import org.stream.dao.IChannelDao;
 import org.stream.dao.ISubjectDao;
+import org.stream.entity.ChannelBean;
 import org.stream.entity.SubjectBean;
 import org.stream.model.Pagination;
 import org.stream.service.subject.ISubjectService;
@@ -21,6 +23,9 @@ public class SubjectServiceImpl implements ISubjectService {
 
     @Autowired
     private ISubjectDao subjectDao;
+
+    @Autowired
+    private IChannelDao channelDao;
 
     @Override
     public void addSubject(SubjectBean subjectBean) {
@@ -53,12 +58,20 @@ public class SubjectServiceImpl implements ISubjectService {
             return new ServiceResponse<Pagination<SubjectBean>>(subjectPage);
         }
 
-        List<SubjectBean> userBeanList = subjectDao.getSubjectWithPage(name, subjectPage.getFromIndex(), subjectPage.getPageSize());
+        List<SubjectBean> subjectList = subjectDao.getSubjectWithPage(name, subjectPage.getFromIndex(), subjectPage.getPageSize());
 
-        if (userBeanList == null || userBeanList.size() == 0) {
+        if (subjectList == null || subjectList.size() == 0) {
             return ServiceResponse.genFailResponse(1);
         }
-        subjectPage.setItems(userBeanList);
+
+        for (SubjectBean subject : subjectList) {
+            Long channelId = subject.getChannelId();
+            if (channelId != null || channelId > 0) {
+                ChannelBean channelBean = channelDao.get(channelId);
+                subject.setChannelName(channelBean.getName());
+            }
+        }
+        subjectPage.setItems(subjectList);
         return new ServiceResponse<Pagination<SubjectBean>>(subjectPage);
 
     }

@@ -35,8 +35,18 @@
                             <td><input type="checkbox" name="id" value="${subject.id}"></td>
                             <td>${subject.name}</td>
                             <td>${subject.shortName}</td>
-                            <td>${subject.channelId}</td>
-                            <td>${subject.status}</td>
+                            <td>${subject.channelName}</td>
+                            <td>
+                                <c:choose>
+                                <c:when test="${subject.status=='1'}">
+                                    有效
+                                </c:when>
+                                <c:when test="${subject.status=='0'}">
+                                    无效
+                                </c:when>
+                                    <c:otherwise>无效</c:otherwise>
+                                </c:choose>
+                            </td>
                             <td>${subject.priority}</td>
                             <td><a href="/adm/subject/toModifySubject?id=${subject.id}">
                                 <button class="btn btn-xs btn-info">

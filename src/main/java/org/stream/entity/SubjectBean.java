@@ -23,6 +23,8 @@ public class SubjectBean extends IMybatisEntity {
 
     private long channelId;
 
+    private String channelName;
+
     private long templateId;
 
     private int status;
@@ -143,5 +145,13 @@ public class SubjectBean extends IMybatisEntity {
 
     public void setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getChannelName() {
+        return channelName;
+    }
+
+    public void setChannelName(String channelName) {
+        this.channelName = channelName;
     }
 }

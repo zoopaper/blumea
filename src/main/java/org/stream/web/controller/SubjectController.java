@@ -10,14 +10,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.stream.auth.Principal;
 import org.stream.core.model.ServiceResponse;
+import org.stream.entity.ChannelBean;
 import org.stream.entity.SubjectBean;
 import org.stream.model.Pagination;
+import org.stream.service.channel.IChannelService;
 import org.stream.service.subject.ISubjectService;
 import org.stream.web.util.ResponseUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * 栏目管理
@@ -34,9 +37,14 @@ public class SubjectController extends BaseController {
     @Autowired
     private ISubjectService subjectService;
 
+    @Autowired
+    private IChannelService channelService;
+
     @RequestMapping(value = "/addSubject", method = RequestMethod.GET)
     public ModelAndView addSubject(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
+        List<ChannelBean> channelList = channelService.getAllChannel();
+        modelAndView.addObject("channelList", channelList);
         modelAndView.setViewName("/subject/addSubject");
         return modelAndView;
     }
@@ -51,15 +59,14 @@ public class SubjectController extends BaseController {
                 ResponseUtil.handleLongin(modelAndView);
                 return modelAndView;
             }
-
             String name = ServletRequestUtils.getStringParameter(request, "name", "");
             String shortName = ServletRequestUtils.getStringParameter(request, "shortName", "");
             String tags = ServletRequestUtils.getStringParameter(request, "tags", "");
             String desc = ServletRequestUtils.getStringParameter(request, "desc", "");
-            int channelId = ServletRequestUtils.getIntParameter(request, "channelId", -1);
-            int status = ServletRequestUtils.getIntParameter(request, "status", -1);
-            int priority = ServletRequestUtils.getIntParameter(request, "priority", -1);
-            int pid = ServletRequestUtils.getIntParameter(request, "pid", -1);
+            int channelId = ServletRequestUtils.getIntParameter(request, "channelId", 0);
+            int status = ServletRequestUtils.getIntParameter(request, "status", 0);
+            int priority = ServletRequestUtils.getIntParameter(request, "priority", 0);
+            int pid = ServletRequestUtils.getIntParameter(request, "pid", 0);
 
             SubjectBean subject = new SubjectBean();
             {
@@ -92,6 +99,8 @@ public class SubjectController extends BaseController {
                 ResponseUtil.handleLongin(modelAndView);
                 return modelAndView;
             }
+            List<ChannelBean> channelList = channelService.getAllChannel();
+            modelAndView.addObject("channelList", channelList);
             modelAndView.setViewName("/subject/modifySubject");
             long id = ServletRequestUtils.getLongParameter(request, "id", -1);
             SubjectBean subject = subjectService.getSubject(id);

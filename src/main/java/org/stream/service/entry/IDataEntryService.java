@@ -1,7 +1,6 @@
-package org.stream.dao;
+package org.stream.service.entry;
 
-import org.springframework.stereotype.Repository;
-import org.stream.dao.base.IMybatisDao;
+import org.stream.base.service.IMybatisEntityDataService;
 import org.stream.entity.EntryBean;
 
 import java.util.List;
@@ -9,11 +8,10 @@ import java.util.List;
 /**
  * <p/>
  * User : krisibm@163.com
- * Date: 2015/6/30
- * Time: 23:10
+ * Date: 2015/7/14
+ * Time: 22:12
  */
-@Repository
-public interface IEntryDao extends IMybatisDao<EntryBean> {
+public interface IDataEntryService extends IMybatisEntityDataService<EntryBean> {
 
     /**
      * @param title

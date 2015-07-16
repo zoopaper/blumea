@@ -57,6 +57,13 @@
         and (#{0}='' or name like "%"#{0}"%");
     </select>
 
+    <select id="getSubjectByName" resultType="org.stream.entity.SubjectBean">
+        select
+        <include refid="allAttribute"/>
+        from t_subject
+        where isDel=0 and name=#{0}
+    </select>
+
     <select id="getSubjectWithPage" resultType="org.stream.entity.SubjectBean">
         select
         <include refid="allAttribute"/>

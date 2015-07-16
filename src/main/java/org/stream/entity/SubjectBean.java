@@ -15,6 +15,8 @@ public class SubjectBean extends IMybatisEntity {
 
     private long pid;
 
+    private String parentPath;
+
     private String category;//父对象的全路径，以";"分割
 
     private String shortName;//发布英文名称
@@ -153,5 +155,13 @@ public class SubjectBean extends IMybatisEntity {
 
     public void setChannelName(String channelName) {
         this.channelName = channelName;
+    }
+
+    public String getParentPath() {
+        return parentPath;
+    }
+
+    public void setParentPath(String parentPath) {
+        this.parentPath = parentPath;
     }
 }

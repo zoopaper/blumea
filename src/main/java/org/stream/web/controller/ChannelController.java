@@ -1,7 +1,8 @@
 package org.stream.web.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.google.common.base.Strings;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,10 +101,28 @@ public class ChannelController extends BaseController {
     }
 
 
-    @RequestMapping(value = "/channelTree", method = RequestMethod.GET)
+    @RequestMapping(value = "/toChannelTree", method = RequestMethod.GET)
+    public ModelAndView toChannelTree(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/channel/channelTree");
+        try {
+            Principal principal = this.getLoginPrincipal(request);
+            if (principal == null) {
+                ResponseUtil.handleLongin(modelAndView);
+                return modelAndView;
+            }
+
+        } catch (Exception e) {
+            log.info("Controller toChannelTree exception", e);
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/channelTree", method = RequestMethod.POST)
     public ModelAndView channelTree(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/channel/channelList");
+        modelAndView.setViewName("/common/resultdata");
         try {
             Principal principal = this.getLoginPrincipal(request);
             if (principal == null) {
@@ -113,9 +132,9 @@ public class ChannelController extends BaseController {
 
             List<ChannelBean> channelList = channelService.getAllChannel();
 
+            JsonArray jsonArray = getChannelJsonArray(channelList);
 
-
-            modelAndView.addObject("channelList", channelList);
+            modelAndView.addObject("resultData", jsonArray);
         } catch (Exception e) {
             log.info("Controller channelList exception", e);
         }
@@ -194,6 +213,17 @@ public class ChannelController extends BaseController {
         return modelAndView;
     }
 
-
+    public JsonArray getChannelJsonArray(List<ChannelBean> channelBeans) {
+        JsonArray jsonArray = new JsonArray();
+        for (ChannelBean channelBean : channelBeans) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("id", channelBean.getId());
+            jsonObject.addProperty("name", channelBean.getName());
+            jsonObject.addProperty("isParent", true);
+            jsonObject.addProperty("pid", 0);
+            jsonArray.add(jsonObject);
+        }
+        return jsonArray;
+    }
 
 }

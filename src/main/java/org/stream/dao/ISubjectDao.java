@@ -19,4 +19,6 @@ public interface ISubjectDao extends IMybatisDao<SubjectBean> {
 
     public List<SubjectBean> getSubjectWithPage(String name, int from, int size);
 
+    public SubjectBean getSubjectByName(String name);
+
 }

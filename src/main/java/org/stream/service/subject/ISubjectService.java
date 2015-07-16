@@ -41,4 +41,6 @@ public interface ISubjectService {
      */
     public ServiceResponse<Pagination<SubjectBean>> getSubjectWithPage(String name, int from, int size);
 
+    public SubjectBean getSubjectByName(String name);
+
 }

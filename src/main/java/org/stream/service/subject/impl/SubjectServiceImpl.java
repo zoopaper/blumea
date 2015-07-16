@@ -75,4 +75,9 @@ public class SubjectServiceImpl implements ISubjectService {
         return new ServiceResponse<Pagination<SubjectBean>>(subjectPage);
 
     }
+
+    @Override
+    public SubjectBean getSubjectByName(String name) {
+        return subjectDao.getSubjectByName(name);
+    }
 }

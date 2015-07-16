@@ -30,6 +30,13 @@
         </li>
 
         <li>
+            <a href="/adm/channel/toChannelTree">
+                <i class="icon-columns"></i>
+                <span class="menu-text"> 频道树管理 </span>
+            </a>
+        </li>
+
+        <li>
             <a href="/adm/subject/subjectList">
                 <i class="icon-align-justify"></i>
                 <span class="menu-text">栏目管理 </span>

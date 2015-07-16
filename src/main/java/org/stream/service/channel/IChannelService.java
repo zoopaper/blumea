@@ -38,4 +38,10 @@ public interface IChannelService {
      */
     public List<ChannelBean> getAllChannel();
 
+    /**
+     * @param name
+     * @return
+     */
+    public ChannelBean getChannelByName(String name);
+
 }

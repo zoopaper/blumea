@@ -30,6 +30,7 @@ public final class ErrorKeyUtil {
         put(ErrorKey.ERROR_LOGIN_PASSWORD_EMPTY, "密码不能为空");
         put(ErrorKey.ERROR_LOGIN_ACCOUNT_NOT_EXIST, "账户不存在");
         put(ErrorKey.ERROR_LOGIN_PASSWORD_INCORRECT, "登录密码不正确");
+        put(ErrorKey.ERROR_CHANNEL_NAME_REPEAT, "频道名称不能重复");
 
     }
 

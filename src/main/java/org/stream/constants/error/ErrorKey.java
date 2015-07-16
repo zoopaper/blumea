@@ -19,4 +19,10 @@ public class ErrorKey {
     public static final int ERROR_LOGIN_PASSWORD_INCORRECT = 10004;
 
 
+    /**
+     * 频道
+     */
+    public static final int ERROR_CHANNEL_NAME_REPEAT = 20001;
+
+
 }

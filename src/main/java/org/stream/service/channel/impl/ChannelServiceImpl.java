@@ -45,4 +45,13 @@ public class ChannelServiceImpl implements IChannelService {
     public List<ChannelBean> getAllChannel() {
         return channelDao.getAllChannel();
     }
+
+    /**
+     * @param name
+     * @return
+     */
+    @Override
+    public ChannelBean getChannelByName(String name) {
+        return channelDao.getChannelByName(name);
+    }
 }

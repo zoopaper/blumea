@@ -1,5 +1,7 @@
 package org.stream.web.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.stream.auth.Principal;
+import org.stream.constants.error.ErrorKey;
 import org.stream.entity.ChannelBean;
 import org.stream.service.channel.IChannelService;
+import org.stream.utils.ErrorKeyUtil;
 import org.stream.web.util.ResponseUtil;
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,6 +57,15 @@ public class ChannelController extends BaseController {
             String name = ServletRequestUtils.getStringParameter(request, "name", "");
             String dir = ServletRequestUtils.getStringParameter(request, "dir", "");
 
+            if (!Strings.isNullOrEmpty(name)) {
+                ChannelBean channelBean = channelService.getChannelByName(name);
+                if (null != channelBean) {
+                    modelAndView.setViewName("/channel/addChannel");
+                    modelAndView.addObject("errTip", ErrorKeyUtil.getErrorMsg(ErrorKey.ERROR_CHANNEL_NAME_REPEAT));
+                    return modelAndView;
+                }
+            }
+
             ChannelBean channelBean = new ChannelBean();
             {
                 channelBean.setName(name);
@@ -83,6 +96,30 @@ public class ChannelController extends BaseController {
         } catch (Exception e) {
             log.info("Controller channelList exception", e);
         }
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/channelTree", method = RequestMethod.GET)
+    public ModelAndView channelTree(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/channel/channelList");
+        try {
+            Principal principal = this.getLoginPrincipal(request);
+            if (principal == null) {
+                ResponseUtil.handleLongin(modelAndView);
+                return modelAndView;
+            }
+
+            List<ChannelBean> channelList = channelService.getAllChannel();
+
+
+
+            modelAndView.addObject("channelList", channelList);
+        } catch (Exception e) {
+            log.info("Controller channelList exception", e);
+        }
+
         return modelAndView;
     }
 
@@ -156,4 +193,7 @@ public class ChannelController extends BaseController {
         }
         return modelAndView;
     }
+
+
+
 }

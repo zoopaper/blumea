@@ -28,6 +28,12 @@
         from t_channel where isDel =0 order by createTime desc;
     </select>
 
+    <select id="getChannelByName" resultType="org.stream.entity.ChannelBean" parameterType="String">
+      SELECT
+      <include refid="allAttribute"/>
+        from t_channel where isDel=0 and name=#{0}
+    </select>
+
     <update id="update" parameterType="org.stream.entity.ChannelBean">
       update t_channel set
       name=#{name},

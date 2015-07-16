@@ -21,5 +21,11 @@ public interface IChannelDao extends IMybatisDao<ChannelBean> {
      */
     public List<ChannelBean> getAllChannel();
 
+    /**
+     * @param name
+     * @return
+     */
+    public ChannelBean getChannelByName(String name);
+
 
 }

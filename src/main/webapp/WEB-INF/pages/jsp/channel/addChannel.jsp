@@ -33,9 +33,13 @@
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
                 <h4 class="ui dividing header">新增频道</h4>
-
                 <div class="col-xs-5">
-                    <form action="/adm/channel/doAddChannel" method="post" id="form1" onsubmit="return jQuery(this).validationEngine('validate');" class="ui form segment">
+
+                    <form action="/adm/channel/doAddChannel" method="post" id="form1" onsubmit="return jQuery(this).validationEngine('validate');" class="form-horizontal">
+                        <div class="form-group" style="text-align: center;width: 300px;">
+                            <span style="color:red;">${errTip}</span>
+                        </div>
+
                         <div class="form-group">
                             <label>频道名称</label>
                             <input name="name" type="text" id="name"  class="validate[required] text-input" style="width: 400px;">

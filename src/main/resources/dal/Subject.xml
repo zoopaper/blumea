@@ -7,6 +7,7 @@
             name,
             category,
             pid,
+            parentPath,
             priority,
             type,
             status,
@@ -62,6 +63,13 @@
         <include refid="allAttribute"/>
         from t_subject
         where isDel=0 and name=#{0}
+    </select>
+
+    <select id="getSubjectByPid" resultType="org.stream.entity.SubjectBean">
+        select
+        <include refid="allAttribute"/>
+        from t_subject
+        where isDel=0 and pid=#{0}
     </select>
 
     <select id="getSubjectWithPage" resultType="org.stream.entity.SubjectBean">

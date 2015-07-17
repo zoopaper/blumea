@@ -185,6 +185,34 @@ public class SubjectController extends BaseController {
         return modelAndView;
     }
 
+
+    @RequestMapping(value = "/subjectTreeList", method = RequestMethod.GET)
+    public ModelAndView subjectTreeList(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/subject/subjectList");
+        try {
+            Principal principal = this.getLoginPrincipal(request);
+            if (principal == null) {
+                ResponseUtil.handleLongin(modelAndView);
+                return modelAndView;
+            }
+            int page = ServletRequestUtils.getIntParameter(request, "page", 1);
+            String userName = ServletRequestUtils.getStringParameter(request, "name", "");
+
+            ServiceResponse<Pagination<SubjectBean>> serviceResponse = subjectService.getSubjectWithPage(userName, page, 15);
+
+            if (serviceResponse.isSuccess()) {
+                modelAndView.addObject("page", serviceResponse.getResponseData());
+            }
+            modelAndView.addObject("page", serviceResponse.getResponseData());
+            modelAndView.addObject("name", userName);
+        } catch (Exception e) {
+            log.info("Controller subjectList exception", e);
+        }
+        return modelAndView;
+    }
+
+
     @RequestMapping(value = "/delSubject", method = RequestMethod.GET)
     public ModelAndView deleteSubject(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();

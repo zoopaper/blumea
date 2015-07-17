@@ -14,7 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.stream.auth.Principal;
 import org.stream.constants.error.ErrorKey;
 import org.stream.entity.ChannelBean;
+import org.stream.entity.SubjectBean;
 import org.stream.service.channel.IChannelService;
+import org.stream.service.subject.ISubjectService;
 import org.stream.utils.ErrorKeyUtil;
 import org.stream.web.util.ResponseUtil;
 
@@ -37,6 +39,9 @@ public class ChannelController extends BaseController {
 
     @Autowired
     private IChannelService channelService;
+
+    @Autowired
+    private ISubjectService subjectService;
 
     @RequestMapping(value = "/addChannel", method = RequestMethod.GET)
     public ModelAndView addChannel(HttpServletRequest request, HttpServletResponse response) {
@@ -130,10 +135,17 @@ public class ChannelController extends BaseController {
                 return modelAndView;
             }
 
-            List<ChannelBean> channelList = channelService.getAllChannel();
+            int id = ServletRequestUtils.getIntParameter(request, "id", 0);
+            int isChannel = ServletRequestUtils.getIntParameter(request, "isChannel", 0);
+            String name = ServletRequestUtils.getStringParameter(request, "name", "");
 
-            JsonArray jsonArray = getChannelJsonArray(channelList);
-
+            JsonArray jsonArray;
+            if (id == 0) {
+                List<ChannelBean> channelList = channelService.getAllChannel();
+                jsonArray = getChannelJsonArray(channelList);
+            } else {
+                jsonArray = getSubjectJsonArray(id);
+            }
             modelAndView.addObject("resultData", jsonArray);
         } catch (Exception e) {
             log.info("Controller channelList exception", e);
@@ -219,10 +231,43 @@ public class ChannelController extends BaseController {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("id", channelBean.getId());
             jsonObject.addProperty("name", channelBean.getName());
-            jsonObject.addProperty("isParent", true);
             jsonObject.addProperty("pid", 0);
+            jsonObject.addProperty("isChannel", 0);
+            List<SubjectBean> subjectBeanList = subjectService.getSubjectByPid((int) channelBean.getId());
+
+            if (subjectBeanList != null && subjectBeanList.size() > 0) {
+                jsonObject.addProperty("isParent", true);
+            } else {
+                jsonObject.addProperty("isParent", false);
+            }
             jsonArray.add(jsonObject);
         }
+        return jsonArray;
+    }
+
+    public JsonArray getSubjectJsonArray(int pid) {
+        JsonArray jsonArray = new JsonArray();
+
+
+        List<SubjectBean> subjectBeanList = subjectService.getSubjectByPid(pid);
+
+        for (SubjectBean subjectBean : subjectBeanList) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("id", subjectBean.getId());
+            jsonObject.addProperty("name", subjectBean.getName());
+            jsonObject.addProperty("pid", pid);
+            jsonObject.addProperty("isChannel", 1);
+
+            List<SubjectBean> subjectBeanList1 = subjectService.getSubjectByPid((int) subjectBean.getId());
+            if (subjectBeanList1 != null && subjectBeanList1.size() > 0) {
+
+                jsonObject.addProperty("isParent", true);
+            } else {
+                jsonObject.addProperty("isParent", false);
+            }
+            jsonArray.add(jsonObject);
+        }
+
         return jsonArray;
     }
 

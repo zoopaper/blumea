@@ -15,10 +15,31 @@ import java.util.List;
 @Repository
 public interface ISubjectDao extends IMybatisDao<SubjectBean> {
 
+    /**
+     * @param name
+     * @return
+     */
     public int getSubjectTotalNum(String name);
 
+    /**
+     * @param name
+     * @param from
+     * @param size
+     * @return
+     */
     public List<SubjectBean> getSubjectWithPage(String name, int from, int size);
 
+    /**
+     * @param name
+     * @return
+     */
     public SubjectBean getSubjectByName(String name);
+
+
+    /**
+     * @param pid
+     * @return
+     */
+    public List<SubjectBean> getSubjectByPid(int pid);
 
 }

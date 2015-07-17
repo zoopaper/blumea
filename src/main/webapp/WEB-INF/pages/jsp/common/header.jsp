@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="/assets/css/font-awesome-ie7.min.css" />
 <![endif]-->
 
-<%--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />--%>
 
 <link rel="stylesheet" href="/assets/css/ace.min.css"/>
 <%--<link rel="stylesheet" href="/assets/css/ace-rtl.min.css"/>--%>
@@ -23,7 +22,6 @@
 <!--<link rel="stylesheet" href="/assets/css/ace-ie.min.css" />-->
 <![endif]-->
 
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300"/>
 <!-- ace settings handler -->
 <script src="/assets/js/jquery-2.0.3.min.js"></script>
 <script src="/assets/js/ace-extra.min.js"></script>

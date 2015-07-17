@@ -4,6 +4,8 @@ import org.stream.core.model.ServiceResponse;
 import org.stream.entity.SubjectBean;
 import org.stream.model.Pagination;
 
+import java.util.List;
+
 /**
  * <p/>
  * User : krisibm@163.com
@@ -41,6 +43,16 @@ public interface ISubjectService {
      */
     public ServiceResponse<Pagination<SubjectBean>> getSubjectWithPage(String name, int from, int size);
 
+    /**
+     * @param name
+     * @return
+     */
     public SubjectBean getSubjectByName(String name);
+
+    /**
+     * @param pid
+     * @return
+     */
+    public List<SubjectBean> getSubjectByPid(int pid);
 
 }

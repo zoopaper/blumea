@@ -80,4 +80,10 @@ public class SubjectServiceImpl implements ISubjectService {
     public SubjectBean getSubjectByName(String name) {
         return subjectDao.getSubjectByName(name);
     }
+
+    @Override
+    public List<SubjectBean> getSubjectByPid(int pid) {
+        return subjectDao.getSubjectByPid(pid);
+    }
+
 }

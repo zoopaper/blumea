@@ -196,16 +196,16 @@ public class SubjectController extends BaseController {
                 ResponseUtil.handleLongin(modelAndView);
                 return modelAndView;
             }
-            int page = ServletRequestUtils.getIntParameter(request, "page", 1);
-            String userName = ServletRequestUtils.getStringParameter(request, "name", "");
+            int pid = ServletRequestUtils.getIntParameter(request, "pid", 0);
 
             ServiceResponse<Pagination<SubjectBean>> serviceResponse = subjectService.getSubjectWithPage(userName, page, 15);
 
+
+            subjectService.getSubjectByPid(pid);
             if (serviceResponse.isSuccess()) {
                 modelAndView.addObject("page", serviceResponse.getResponseData());
             }
             modelAndView.addObject("page", serviceResponse.getResponseData());
-            modelAndView.addObject("name", userName);
         } catch (Exception e) {
             log.info("Controller subjectList exception", e);
         }

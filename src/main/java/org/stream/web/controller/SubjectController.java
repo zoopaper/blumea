@@ -202,11 +202,12 @@ public class SubjectController extends BaseController {
 
             ServiceResponse<Pagination<SubjectBean>> serviceResponse = subjectService.getSubjectByPidWithPage(pid, userName, page, 15);
 
+
+            subjectService.getSubjectByPid(pid);
             if (serviceResponse.isSuccess()) {
                 modelAndView.addObject("page", serviceResponse.getResponseData());
             }
             modelAndView.addObject("page", serviceResponse.getResponseData());
-            modelAndView.addObject("name", userName);
         } catch (Exception e) {
             log.info("Controller subjectList exception", e);
         }

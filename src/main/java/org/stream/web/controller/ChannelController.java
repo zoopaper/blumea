@@ -247,8 +247,6 @@ public class ChannelController extends BaseController {
 
     public JsonArray getSubjectJsonArray(int pid) {
         JsonArray jsonArray = new JsonArray();
-
-
         List<SubjectBean> subjectBeanList = subjectService.getSubjectByPid(pid);
 
         for (SubjectBean subjectBean : subjectBeanList) {

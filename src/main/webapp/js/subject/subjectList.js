@@ -9,7 +9,7 @@ function loadSubjects() {
             datatype: "json",
             height: 350,
             mtype: 'POST',
-            colNames: [' ', 'ID', 'Last Sales', 'Name', 'Stock', 'Ship via'],
+            colNames: [' ', 'ID', 'Last Sales', 'Name', 'Stock', 'Ship via','dd'],
             colModel: [
                 {
                     name: 'myac', index: '', width: 80, fixed: true, sortable: false, resize: false,

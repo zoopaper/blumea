@@ -74,7 +74,7 @@
             var pid = treeNode.id;
 
             $("#pid").val(pid);
-            alert(33);
+
             $("#grid-table").jqGrid('setGridParam',{
                 url:"/adm/subject/subjectGrid",
                 postData:{'pid':pid}, //发送数据
@@ -96,7 +96,8 @@
             </div>
         </div>
 
-        <div class="col-md-7 col-md-offset-1">
+
+        <div class="col-md-8 col-md-offset-1">
 
             <table id="grid-table"></table>
 

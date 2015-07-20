@@ -206,8 +206,14 @@ public class SubjectController extends BaseController {
             ServiceResponse<Pagination<SubjectBean>> serviceResponse = subjectService.getSubjectByPidWithPage(pid, userName, page, 15);
             subjectService.getSubjectByPid(pid);
             if (serviceResponse.isSuccess()) {
-                String str=subject2Json(serviceResponse.getResponseData().getItems());
-                modelAndView.addObject("resultData", str);
+                if (serviceResponse.getResponseData().getItems() != null) {
+
+                    String str = subject2Json(serviceResponse.getResponseData().getItems());
+                    modelAndView.addObject("resultData", str);
+                } else {
+                    modelAndView.addObject("resultData", new JsonObject().toString());
+
+                }
 //                ResponseUtil.genJsonResult(modelAndView, serviceResponse.isSuccess(), "", ResponseUtil.ajaxGridResponse(serviceResponse.getResponseData()));
             } else {
                 ResponseUtil.genJsonResult(modelAndView, serviceResponse.isSuccess(), ErrorKeyUtil.getErrorMsg(serviceResponse.getErrKey()), null);
@@ -247,6 +253,7 @@ public class SubjectController extends BaseController {
         for (SubjectBean subjectBean : subjectBeanList) {
             JsonObject jsonObject = new JsonObject();
 
+            jsonObject.addProperty("shortName", subjectBean.getShortName());
             jsonObject.addProperty("name", subjectBean.getName());
             jsonObject.addProperty("channelName", subjectBean.getChannelName());
             jsonObject.addProperty("priority", subjectBean.getPriority());

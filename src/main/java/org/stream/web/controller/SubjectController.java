@@ -189,7 +189,7 @@ public class SubjectController extends BaseController {
     @RequestMapping(value = "/subjectTreeList", method = RequestMethod.GET)
     public ModelAndView subjectTreeList(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/subject/subjectList");
+        modelAndView.setViewName("/channel/channelTree");
         try {
             Principal principal = this.getLoginPrincipal(request);
             if (principal == null) {
@@ -198,8 +198,9 @@ public class SubjectController extends BaseController {
             }
             int page = ServletRequestUtils.getIntParameter(request, "page", 1);
             String userName = ServletRequestUtils.getStringParameter(request, "name", "");
+            int pid = ServletRequestUtils.getIntParameter(request, "pid", 0);
 
-            ServiceResponse<Pagination<SubjectBean>> serviceResponse = subjectService.getSubjectWithPage(userName, page, 15);
+            ServiceResponse<Pagination<SubjectBean>> serviceResponse = subjectService.getSubjectByPidWithPage(pid, userName, page, 15);
 
             if (serviceResponse.isSuccess()) {
                 modelAndView.addObject("page", serviceResponse.getResponseData());

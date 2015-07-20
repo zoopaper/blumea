@@ -58,6 +58,12 @@
         and (#{0}='' or name like "%"#{0}"%");
     </select>
 
+    <select id="getSubjectByPidTotalNum" resultType="int">
+        select count(id) from t_subject
+        where isDel=0
+        and (#{0}='' or name like "%"#{0}"%") and pid=#{1};
+    </select>
+
     <select id="getSubjectByName" resultType="org.stream.entity.SubjectBean">
         select
         <include refid="allAttribute"/>
@@ -71,6 +77,17 @@
         from t_subject
         where isDel=0 and pid=#{0}
     </select>
+
+    <select id="getSubjectByPidWithPage" resultType="org.stream.entity.SubjectBean">
+        select
+        <include refid="allAttribute"/>
+        from t_subject
+        where isDel=0 and pid=#{0}
+        and (#{1}='' or name like "%"#{1}"%")
+        order by if(updateTime is null,createTime,updateTime) desc
+        limit #{2},#{3};
+    </select>
+
 
     <select id="getSubjectWithPage" resultType="org.stream.entity.SubjectBean">
         select

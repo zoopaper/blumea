@@ -23,6 +23,13 @@ public interface ISubjectDao extends IMybatisDao<SubjectBean> {
 
     /**
      * @param name
+     * @param pid
+     * @return
+     */
+    public int getSubjectByPidTotalNum(String name, int pid);
+
+    /**
+     * @param name
      * @param from
      * @param size
      * @return
@@ -42,4 +49,12 @@ public interface ISubjectDao extends IMybatisDao<SubjectBean> {
      */
     public List<SubjectBean> getSubjectByPid(int pid);
 
+    /**
+     * @param pid
+     * @param name
+     * @param from
+     * @param size
+     * @return
+     */
+    public List<SubjectBean> getSubjectByPidWithPage(int pid, String name, int from, int size);
 }

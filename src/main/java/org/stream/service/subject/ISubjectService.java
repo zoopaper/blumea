@@ -55,4 +55,15 @@ public interface ISubjectService {
      */
     public List<SubjectBean> getSubjectByPid(int pid);
 
+
+    /**
+     * @param pid
+     * @param name
+     * @param from
+     * @param size
+     * @return
+     */
+    public ServiceResponse<Pagination<SubjectBean>> getSubjectByPidWithPage(int pid, String name, int from, int size);
+
+
 }

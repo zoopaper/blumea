@@ -1,5 +1,7 @@
 package org.stream.web.controller;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.stream.entity.SubjectBean;
 import org.stream.model.Pagination;
 import org.stream.service.channel.IChannelService;
 import org.stream.service.subject.ISubjectService;
+import org.stream.utils.ErrorKeyUtil;
 import org.stream.web.util.ResponseUtil;
 
 import javax.servlet.http.HttpServletRequest;
@@ -186,10 +189,10 @@ public class SubjectController extends BaseController {
     }
 
 
-    @RequestMapping(value = "/subjectTreeList", method = RequestMethod.GET)
+    @RequestMapping(value = "/subjectGrid", method = RequestMethod.POST)
     public ModelAndView subjectTreeList(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/channel/channelTree");
+        modelAndView.setViewName("/common/resultdata");
         try {
             Principal principal = this.getLoginPrincipal(request);
             if (principal == null) {
@@ -201,15 +204,16 @@ public class SubjectController extends BaseController {
             int pid = ServletRequestUtils.getIntParameter(request, "pid", 0);
 
             ServiceResponse<Pagination<SubjectBean>> serviceResponse = subjectService.getSubjectByPidWithPage(pid, userName, page, 15);
-
-
             subjectService.getSubjectByPid(pid);
             if (serviceResponse.isSuccess()) {
-                modelAndView.addObject("page", serviceResponse.getResponseData());
+                String str=subject2Json(serviceResponse.getResponseData().getItems());
+                modelAndView.addObject("resultData", str);
+//                ResponseUtil.genJsonResult(modelAndView, serviceResponse.isSuccess(), "", ResponseUtil.ajaxGridResponse(serviceResponse.getResponseData()));
+            } else {
+                ResponseUtil.genJsonResult(modelAndView, serviceResponse.isSuccess(), ErrorKeyUtil.getErrorMsg(serviceResponse.getErrKey()), null);
             }
-            modelAndView.addObject("page", serviceResponse.getResponseData());
         } catch (Exception e) {
-            log.info("Controller subjectList exception", e);
+            log.info("Controller subjectGrid exception", e);
         }
         return modelAndView;
     }
@@ -237,4 +241,19 @@ public class SubjectController extends BaseController {
         return modelAndView;
     }
 
+
+    public String subject2Json(List<SubjectBean> subjectBeanList) {
+        JsonArray jsonArray = new JsonArray();
+        for (SubjectBean subjectBean : subjectBeanList) {
+            JsonObject jsonObject = new JsonObject();
+
+            jsonObject.addProperty("name", subjectBean.getName());
+            jsonObject.addProperty("channelName", subjectBean.getChannelName());
+            jsonObject.addProperty("priority", subjectBean.getPriority());
+            jsonObject.addProperty("status", subjectBean.getStatus());
+            jsonObject.addProperty("id", subjectBean.getId());
+            jsonArray.add(jsonObject);
+        }
+        return jsonArray.toString();
+    }
 }

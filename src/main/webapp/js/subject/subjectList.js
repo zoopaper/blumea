@@ -9,7 +9,7 @@ function loadSubjects() {
             datatype: "json",
             height: 350,
             mtype: 'POST',
-            colNames: [' ', 'ID', 'Last Sales', 'Name', 'Stock', 'Ship via','dd'],
+            colNames: [' ', 'ID', '名称', '英文名称', '渠道', '状态','优先级'],
             colModel: [
                 {
                     name: 'myac', index: '', width: 80, fixed: true, sortable: false, resize: false,
@@ -78,7 +78,7 @@ function loadSubjects() {
             },
 
             //editurl: "/dummy.html",//nothing is saved
-            caption: "jqGrid with inline editing",
+            caption: "频道栏目列表",
             autowidth: true
 
         });

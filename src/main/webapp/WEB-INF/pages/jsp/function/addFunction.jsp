@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>新增功能</title>
+    <%@ include file="../common/common.jsp" %>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>

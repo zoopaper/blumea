@@ -83,7 +83,7 @@
         //-->
     </script>
 </head>
-<>
+
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
         <input type="hidden" id="pid"/>
@@ -113,7 +113,6 @@
                 </div>
             </div>
         </div>
-        <!-- /.row -->
     </div>
 </div>
 

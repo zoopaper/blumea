@@ -1,5 +1,3 @@
-
-
 <link href="/assets/css/kkpager_blue.css" rel="stylesheet">
 <link href="/assets/css/formvalid/validationEngine.jquery.css" rel="stylesheet">
 <link href="/assets/css/formvalid/template.css" rel="stylesheet">

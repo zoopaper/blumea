@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>修改栏目</title>
+    <%@ include file="../common/common.jsp" %>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>

@@ -10,7 +10,6 @@
     <link href="/assets/css/ui.jqgrid.css" rel="stylesheet">
 
 
-
     <script src="/assets/js/jquery-ui-1.10.3.full.min.js"></script>
     <script src="/assets/js/date-time/bootstrap-datepicker.min.js"></script>
     <script src="/assets/js/jqGrid/jquery.jqGrid.min.js"></script>
@@ -75,41 +74,47 @@
 
             $("#pid").val(pid);
 
-            $("#grid-table").jqGrid('setGridParam',{
-                url:"/adm/subject/subjectGrid",
-                postData:{'pid':pid}, //发送数据
-                page:1
+            $("#grid-table").jqGrid('setGridParam', {
+                url: "/adm/subject/subjectGrid",
+                postData: {'pid': pid}, //发送数据
+                page: 1
             }).trigger("reloadGrid"); //重新载入
         }
         //-->
     </script>
 </head>
-<body>
+<>
 <div class="main-container" id="main-container">
-    <input type="hidden" id="pid"/>
     <div class="main-container-inner">
+        <input type="hidden" id="pid"/>
+
         <%@ include file="../common/auth_sider.jsp" %>
-        <div class="col-md-1">
-            <div class="zTreeChannel">
-                <ul id="treeChannel" class="ztree">
-                </ul>
+        <div class="main-content" style="margin-top: 10px;">
+            <div class="page-content">
+                <div class="col-md-1">
+                    <div class="zTreeChannel">
+                        <ul id="treeChannel" class="ztree">
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-9 col-md-offset-1">
+                        <table id="grid-table"></table>
+
+                        <div id="grid-pager"></div>
+
+                        <script type="text/javascript">
+                            var $path_base = "/";
+                        </script>
+                    </div>
+
+                </div>
             </div>
         </div>
-
-
-        <div class="col-md-8 col-md-offset-1">
-
-            <table id="grid-table"></table>
-
-            <div id="grid-pager"></div>
-            <script type="text/javascript">
-                var $path_base = "/";//this will be used in gritter alerts containing images
-            </script>
-
-        </div>
-
+        <!-- /.row -->
     </div>
-</div>
 </div>
 
 <%@ include file="../common/footer.jsp" %>

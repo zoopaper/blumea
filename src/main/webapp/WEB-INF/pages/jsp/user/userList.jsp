@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>用户列表</title>
+    <%@ include file="../common/common.jsp" %>
     <script src="/assets/js/kkpager.min.js"></script>
 </head>
 <body>

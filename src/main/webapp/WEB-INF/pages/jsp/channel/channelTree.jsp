@@ -97,8 +97,6 @@
                         </ul>
                     </div>
                 </div>
-
-
                 <div class="row">
                     <div class="col-xs-9 col-md-offset-1">
                         <table id="grid-table"></table>

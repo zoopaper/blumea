@@ -88,12 +88,24 @@ public class LoginController extends BaseController {
             AuthToken token = buildAuthToken(principal);
             CookieUtil.setTokenCookie(response, TokenConstant.USER_COOKIE_NAME, token.getCookie(), TokenConstant.TOKEN_LIFE_TIME, "");
 
-            modelAndView.setViewName("redirect:/");
+            modelAndView.setViewName("redirect:/adm/channel/toChannelTree");
         } catch (Exception e) {
             log.info("doLogin controller exception ", e);
         }
         return modelAndView;
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/adm/login");
+        try {
+            CookieUtil.removeCookie(response,TokenConstant.USER_COOKIE_NAME,"");
+        } catch (Exception e) {
+            log.info("Controller logout exception", e);
+        }
+        return modelAndView;
+
+    }
 
 }

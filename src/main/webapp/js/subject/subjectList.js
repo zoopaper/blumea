@@ -20,7 +20,7 @@ function loadSubjects() {
                         //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
                     }
                 },
-                {name: 'id', index: 'id', width: 60, sorttype: "int", editable: true},
+                {name: 'id', index: 'id', width: 60, sorttype: "int", editable: false},
                 {name: 'name', index: 'name', width: 90, editable: true, sorttype: "date", unformat: pickDate},
                 {
                     name: 'shortName',
@@ -51,7 +51,7 @@ function loadSubjects() {
                     width: 90,
                     editable: true,
                     edittype: "select",
-                    editoptions: {value: "FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"}
+                    editoptions: {value: "1:1;2:2"}
                 }
             ],
 
@@ -77,7 +77,7 @@ function loadSubjects() {
                 }, 0);
             },
 
-            //editurl: "/dummy.html",//nothing is saved
+            editurl: "/adm/subject/doAddSubject",
             caption: "频道栏目列表",
             autowidth: true
 

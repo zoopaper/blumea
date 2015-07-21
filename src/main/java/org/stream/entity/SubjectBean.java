@@ -31,6 +31,8 @@ public class SubjectBean extends IMybatisEntity {
 
     private int status;
 
+    private String statusStr;
+
     private int priority;
 
     private int type;
@@ -163,5 +165,19 @@ public class SubjectBean extends IMybatisEntity {
 
     public void setParentPath(String parentPath) {
         this.parentPath = parentPath;
+    }
+
+    public String getStatusStr() {
+        String ret;
+        if (status == 1) {
+            ret = "有效";
+        } else {
+            ret = "无效";
+        }
+        return ret;
+    }
+
+    public void setStatusStr(String statusStr) {
+        this.statusStr = statusStr;
     }
 }

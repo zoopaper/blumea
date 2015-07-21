@@ -257,7 +257,7 @@ public class SubjectController extends BaseController {
             jsonObject.addProperty("name", subjectBean.getName());
             jsonObject.addProperty("channelName", subjectBean.getChannelName());
             jsonObject.addProperty("priority", subjectBean.getPriority());
-            jsonObject.addProperty("status", subjectBean.getStatus());
+            jsonObject.addProperty("status", subjectBean.getStatusStr());
             jsonObject.addProperty("id", subjectBean.getId());
             jsonArray.add(jsonObject);
         }

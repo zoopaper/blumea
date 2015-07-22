@@ -136,26 +136,27 @@ public class SubjectController extends BaseController {
             String shortName = ServletRequestUtils.getStringParameter(request, "shortName", "");
             String tags = ServletRequestUtils.getStringParameter(request, "tags", "");
             String desc = ServletRequestUtils.getStringParameter(request, "desc", "");
-            int channelId = ServletRequestUtils.getIntParameter(request, "channelId", -1);
-            int status = ServletRequestUtils.getIntParameter(request, "status", -1);
-            int priority = ServletRequestUtils.getIntParameter(request, "priority", -1);
-            int pid = ServletRequestUtils.getIntParameter(request, "pid", -1);
+            String oper = ServletRequestUtils.getStringParameter(request, "oper");
+            int status = ServletRequestUtils.getIntParameter(request, "status", 0);
+            int priority = ServletRequestUtils.getIntParameter(request, "priority", 1);
 
-            SubjectBean subject = new SubjectBean();
-            {
-                subject.setId(id);
-                subject.setName(name);
-                subject.setShortName(shortName);
-                subject.setTags(tags);
-                subject.setChannelId(channelId);
-                subject.setStatus(status);
-                subject.setDescription(desc);
-                subject.setPid(pid);
-                subject.setPriority(priority);
-                subject.setCategory("");
-                subject.setCreateTime(new Timestamp(System.currentTimeMillis()));
+            if (oper.equals("edit")) {
+                SubjectBean subject = new SubjectBean();
+                {
+                    subject.setId(id);
+                    subject.setName(name);
+                    subject.setShortName(shortName);
+                    subject.setTags(tags);
+                    subject.setStatus(status);
+                    subject.setDescription(desc);
+                    subject.setPriority(priority);
+                    subject.setCategory("");
+                    subject.setCreateTime(new Timestamp(System.currentTimeMillis()));
+                }
+                subjectService.updateSubject(subject);
+            } else {
+                subjectService.deleteSubject(Long.valueOf(id));
             }
-            subjectService.updateSubject(subject);
         } catch (Exception e) {
             log.info("Controller doModifySubject exception", e);
         }

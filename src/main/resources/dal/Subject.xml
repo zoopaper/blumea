@@ -36,10 +36,8 @@
     <update id="update" parameterType="org.stream.entity.SubjectBean">
       update t_subject set
       name=#{name},
-      channelId=#{channelId},
       description=#{description},
       status=#{status},
-      pid=#{pid},
       tags=#{tags},
       type=#{type},
       priority=#{priority},

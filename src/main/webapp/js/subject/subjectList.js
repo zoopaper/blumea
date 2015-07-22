@@ -1,5 +1,5 @@
 
-function loadSubjects() {
+
     jQuery(function ($) {
         var grid_selector = "#grid-table";
         var pager_selector = "#grid-pager";
@@ -9,15 +9,15 @@ function loadSubjects() {
             datatype: "json",
             height: 350,
             mtype: 'POST',
-            colNames: [' ', 'ID', '名称', '英文名称', '渠道', '状态','优先级'],
+            colNames: ['操作', 'ID', '名称', '英文名称', '频道', '状态','优先级'],
             colModel: [
                 {
                     name: 'myac', index: '', width: 80, fixed: true, sortable: false, resize: false,
                     formatter: 'actions',
                     formatoptions: {
                         keys: true,
-                        delOptions: {recreateForm: true, beforeShowForm: beforeDeleteCallback}
-                        //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
+                        delOptions: {recreateForm: true, beforeShowForm: beforeDeleteCallback},
+                        editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
                     }
                 },
                 {name: 'id', index: 'id', width: 60, sorttype: "int", editable: false},
@@ -33,7 +33,7 @@ function loadSubjects() {
                     name: 'channelName',
                     index: 'channelName',
                     width: 150,
-                    editable: true,
+                    editable: false,
                     editoptions: {size: "20", maxlength: "30"}
                 },
                 {
@@ -41,8 +41,8 @@ function loadSubjects() {
                     index: 'status',
                     width: 70,
                     editable: true,
-                    edittype: "checkbox",
-                    editoptions: {value: "Yes:No"},
+                    edittype: "select",
+                    editoptions: {value: "1:有效;0:无效"},
                     unformat: aceSwitch
                 },
                 {
@@ -66,7 +66,8 @@ function loadSubjects() {
             //multikey: "ctrlKey",
             multiboxonly: true,
 
-            loadComplete: function () {
+            loadComplete: function (d) {
+
                 var table = this;
                 setTimeout(function () {
                     styleCheckbox(table);
@@ -76,8 +77,7 @@ function loadSubjects() {
                     enableTooltips(table);
                 }, 0);
             },
-
-            editurl: "/adm/subject/doAddSubject",
+            editurl: "/adm/subject/doModifySubject",
             caption: "频道栏目列表",
             autowidth: true
 
@@ -108,17 +108,17 @@ function loadSubjects() {
 //navButtons
         jQuery(grid_selector).jqGrid('navGrid', pager_selector,
             { 	//navbar options
-                edit: true,
+                edit: false,
                 editicon: 'icon-pencil blue',
                 add: true,
                 addicon: 'icon-plus-sign purple',
                 del: true,
                 delicon: 'icon-trash red',
-                search: true,
+                search: false,
                 searchicon: 'icon-search orange',
                 refresh: true,
                 refreshicon: 'icon-refresh green',
-                view: true,
+                view: false,
                 viewicon: 'icon-zoom-in grey'
             },
             {
@@ -126,6 +126,7 @@ function loadSubjects() {
                 //closeAfterEdit: true,
                 recreateForm: true,
                 beforeShowForm: function (e) {
+                    alert(11);
                     var form = $(e[0]);
                     form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
                     style_edit_form(form);
@@ -230,10 +231,8 @@ function loadSubjects() {
         function beforeDeleteCallback(e) {
             var form = $(e[0]);
             if (form.data('styled')) return false;
-
             form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
             style_delete_form(form);
-
             form.data('styled', true);
         }
 
@@ -306,10 +305,4 @@ function loadSubjects() {
 
 
     });
-}
-
-$(document).ready(function () {
-
-   loadSubjects();
-});
 

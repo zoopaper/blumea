@@ -86,7 +86,7 @@
 
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
-        <input type="hidden" id="pid"/>
+        <input type="hidden" id="pid" name="pid"/>
 
         <%@ include file="../common/auth_sider.jsp" %>
         <div class="main-content" style="margin-top: 10px;">

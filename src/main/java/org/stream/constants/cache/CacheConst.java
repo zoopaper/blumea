@@ -99,8 +99,15 @@ public final class CacheConst {
      */
     public static final String CACHE_KEY_ROLE_ENTITY_ID = "role_id_%s" + CACHE_KEY_ENTITY_GLOBAL_VERSION;
 
-
+    /**
+     * Media实体
+     */
     public static final String CACHE_KEY_MEDIA_ENTITY_ID = "media_id_%s" + CACHE_KEY_ENTITY_GLOBAL_VERSION;
+
+    /**
+     * Entry实体
+     */
+    public static final String CACHE_KEY_ENTRY_ENTITY_ID = "entry_id_%s" + CACHE_KEY_ENTITY_GLOBAL_VERSION;
 
 
     //------------实体缓存时间---------------------------------
@@ -114,6 +121,11 @@ public final class CacheConst {
      * 媒体实体缓存时间
      */
     public static final int CACHE_TIME_MEDIA_ENTITY = CACHE_TIME_ONE_HOUR;
+
+    /**
+     * Entry实体缓存时间
+     */
+    public static final int CACHE_TIME_ENTRY_ENTITY = CACHE_TIME_ONE_HOUR;
 
 
 }

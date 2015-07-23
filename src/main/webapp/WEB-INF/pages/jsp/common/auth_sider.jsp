@@ -51,7 +51,7 @@
         </li>
 
         <li>
-            <a href="/adm/media/mediaList">
+            <a href="/adm/entry/addEntry">
                 <i class="icon-book"></i>
                 <span class="menu-text">新闻管理</span>
             </a>

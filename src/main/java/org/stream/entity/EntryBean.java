@@ -13,25 +13,67 @@ import java.util.List;
  */
 public class EntryBean extends IMybatisEntity {
 
-    private long id;
-    private int pid;                //	父栏目ID
-    private String title;            //	标题
-    private String subhead;            //	副标题
-    private String content;            //	正文内容
-    private Timestamp ctime;        //	创建时间
-    private Timestamp uptime;        //	修改时间
-    private int priority = 60;        //	权重
+    /**
+     * 栏目
+     */
+    private int subjectId;
+
+    private String title;
+
+    private String subhead;
+
+    private String content;
+
+    private Timestamp ctime;
+
+    private Timestamp uptime;
+
+    private int priority = 60;
+
     private int status;
-    private int channelId;            //	频道
-    private int mediaId;        //	媒体Id
-    private String author;        //	作者
-    private int editor;                //	编辑
-    private int dutyEditor;        //	责任编辑
-    private String url;                //	生成的静态永久地址
-    private String category;    //	目录id
-    private String shortName;        //	短引用
-    private String keyword;            //	关键词
-    private List<Long> pictures;        //	图片id list
-    private String reurl;            //	跳转链接
-    private String tags;            //	tag
+    /**
+     * 频道
+     */
+    private int channelId;
+
+    /**
+     * 媒体
+     */
+    private int mediaId;
+    /**
+     * 作者
+     */
+    private String author;
+    /**
+     * 编辑
+     */
+    private int editor;
+    /**
+     * 责任编辑
+     */
+    private int dutyEditor;
+    /**
+     *
+     */
+    private String url;
+
+    private String category;
+
+    private String shortName;
+    /**
+     * 关键字
+     */
+    private String keyword;
+
+    private List<Long> pictures;
+
+    private String reurl;
+    /**
+     * 标签
+     */
+    private String tags;
+    /**
+     * 摘要
+     */
+    private String summary;
 }

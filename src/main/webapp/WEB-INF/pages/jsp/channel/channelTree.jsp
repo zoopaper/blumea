@@ -76,9 +76,9 @@
 
             $("#grid-table").jqGrid('setGridParam', {
                 url: "/adm/subject/subjectGrid",
-                postData: {'pid': pid}, //发送数据
+                postData: {'pid': pid},
                 page: 1
-            }).trigger("reloadGrid"); //重新载入
+            }).trigger("reloadGrid");
             alert(pid);
             $("#pid").val(pid);
         }

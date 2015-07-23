@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2015-07-17 13:12:52
+Date: 2015-07-23 23:25:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,7 +26,7 @@ CREATE TABLE `t_channel` (
   `isDel` int(11) DEFAULT '0',
   `createTime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_channel
@@ -34,6 +34,39 @@ CREATE TABLE `t_channel` (
 INSERT INTO `t_channel` VALUES ('3', '美食', 'meishi', '0', '2015-07-13 22:31:04');
 INSERT INTO `t_channel` VALUES ('4', '经济', 'jingji', '0', '2015-06-23 23:42:33');
 INSERT INTO `t_channel` VALUES ('19', '美食', 'meishi', '1', '2015-07-15 18:45:42');
+INSERT INTO `t_channel` VALUES ('20', '股票', 'stock', '0', '2015-07-20 20:38:16');
+INSERT INTO `t_channel` VALUES ('21', '舆情监测', 'yuqing', '0', '2015-07-20 20:41:45');
+INSERT INTO `t_channel` VALUES ('22', '', '', '1', '2015-07-21 12:41:47');
+
+-- ----------------------------
+-- Table structure for `t_entry`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_entry`;
+CREATE TABLE `t_entry` (
+  `id` bigint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(300) DEFAULT NULL,
+  `subhead` varchar(200) DEFAULT NULL,
+  `content` longtext,
+  `author` varchar(30) DEFAULT NULL,
+  `editor` varchar(30) DEFAULT NULL,
+  `dutyEditor` varchar(30) DEFAULT NULL,
+  `url` varchar(100) DEFAULT NULL,
+  `keyword` varchar(200) DEFAULT NULL,
+  `tag` varchar(100) DEFAULT NULL,
+  `summary` varchar(300) DEFAULT NULL,
+  `channelId` int(11) DEFAULT NULL,
+  `subjectId` int(11) DEFAULT NULL,
+  `category` varchar(30) DEFAULT NULL,
+  `isDel` int(11) DEFAULT '0',
+  `status` int(11) DEFAULT NULL,
+  `ctime` timestamp NULL DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_entry
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `t_function`
@@ -120,16 +153,39 @@ CREATE TABLE `t_subject` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_subject
 -- ----------------------------
-INSERT INTO `t_subject` VALUES ('12', '北京菜', '', '3', null, '-1', '0', '0', null, '3', '', '官府菜,北京菜', '0', 'beijingcai', '2015-07-13 22:04:05', '2015-07-13 22:28:34');
-INSERT INTO `t_subject` VALUES ('8', '川菜', '', '4', null, '-1', '0', '1', null, '4', '', '', '0', 'chuancai', '2015-07-13 21:34:50', '2015-07-13 21:51:29');
-INSERT INTO `t_subject` VALUES ('9', '鲁菜', '', '3', null, '-1', '0', '1', null, '3', '', '', '0', 'lucai', '2015-07-13 21:36:25', '2015-07-13 21:51:15');
-INSERT INTO `t_subject` VALUES ('10', '杭帮菜', '', '3', null, '-1', null, '1', null, '3', '', '', '0', 'dfd', '2015-07-13 21:37:31', null);
-INSERT INTO `t_subject` VALUES ('11', '海派菜', '', '3', null, '-1', null, '1', null, '3', '', '', '0', 'haipai', '2015-07-13 21:38:06', null);
+INSERT INTO `t_subject` VALUES ('12', '新疆菜', '', '3', null, '1', '0', '1', null, '3', '', '', '0', 'xinjiang', '2015-07-13 22:04:05', '2015-07-22 22:16:40');
+INSERT INTO `t_subject` VALUES ('8', 'ceshi', '', '4', null, '1', '0', '1', null, '4', '', '', '0', 'ceshis', '2015-07-13 21:34:50', '2015-07-22 22:22:26');
+INSERT INTO `t_subject` VALUES ('9', '鲁菜xxx', '', '3', null, '1', '0', '0', null, '3', '', '', '1', 'lucai', '2015-07-13 21:36:25', '2015-07-22 21:47:54');
+INSERT INTO `t_subject` VALUES ('10', '杭帮菜sss', '', '3', null, '2', '0', '1', null, '3', '', '', '1', 'dfd', '2015-07-13 21:37:31', '2015-07-22 22:26:40');
+INSERT INTO `t_subject` VALUES ('11', '海派菜', '', '3', null, '2', '0', '0', null, '3', '', '', '0', 'haipai', '2015-07-13 21:38:06', '2015-07-22 21:50:23');
+INSERT INTO `t_subject` VALUES ('13', '港股', '', '20', null, '0', null, '1', null, '20', '', '港股', '0', 'hongkong', '2015-07-20 20:39:54', null);
+INSERT INTO `t_subject` VALUES ('14', '上市公司', '', '21', null, '2', '0', '1', null, '21', '', '', '1', 'news', '2015-07-20 20:42:22', '2015-07-22 22:27:57');
+INSERT INTO `t_subject` VALUES ('15', '公司研究', '', '14', null, '0', null, '1', null, '21', '', '研究', '0', 'research', '2015-07-20 20:43:43', null);
+INSERT INTO `t_subject` VALUES ('16', '川菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'chuancai', '2015-07-21 22:07:52', null);
+INSERT INTO `t_subject` VALUES ('17', '川菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'chuancai', '2015-07-21 22:08:07', null);
+INSERT INTO `t_subject` VALUES ('18', '川菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'chuancai', '2015-07-21 22:08:10', null);
+INSERT INTO `t_subject` VALUES ('19', '川菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'chuancai', '2015-07-21 22:08:15', null);
+INSERT INTO `t_subject` VALUES ('20', '川菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'chuancai', '2015-07-21 22:08:44', null);
+INSERT INTO `t_subject` VALUES ('21', '北京菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 17:45:34', null);
+INSERT INTO `t_subject` VALUES ('22', '北京菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 17:50:59', null);
+INSERT INTO `t_subject` VALUES ('23', '北京菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 17:51:57', null);
+INSERT INTO `t_subject` VALUES ('24', '北京菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 19:19:55', null);
+INSERT INTO `t_subject` VALUES ('25', '北京菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 19:19:57', null);
+INSERT INTO `t_subject` VALUES ('26', '北京菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 19:19:58', null);
+INSERT INTO `t_subject` VALUES ('27', '北京菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 19:20:12', null);
+INSERT INTO `t_subject` VALUES ('28', '北京菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 19:20:13', null);
+INSERT INTO `t_subject` VALUES ('29', '北京菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 19:20:13', null);
+INSERT INTO `t_subject` VALUES ('30', '北京菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 19:20:14', null);
+INSERT INTO `t_subject` VALUES ('31', '北京菜s', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 19:20:16', null);
+INSERT INTO `t_subject` VALUES ('32', '北京菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 19:24:45', null);
+INSERT INTO `t_subject` VALUES ('33', '北京菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 19:25:01', null);
+INSERT INTO `t_subject` VALUES ('34', '北京菜', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 19:25:27', null);
+INSERT INTO `t_subject` VALUES ('35', '北京菜sss', '', '0', null, '1', null, '0', null, '0', '', '', '0', 'beijingcai', '2015-07-22 19:47:52', null);
 
 -- ----------------------------
 -- Table structure for `t_user`
@@ -151,7 +207,7 @@ CREATE TABLE `t_user` (
   `updateDate` datetime DEFAULT NULL,
   `isDel` char(1) DEFAULT '0' COMMENT '0：正常，1：删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user
@@ -175,3 +231,4 @@ INSERT INTO `t_user` VALUES ('16', 'n', 'n-cccccc', '7b8b965ad4bca0e41ab51de7b31
 INSERT INTO `t_user` VALUES ('17', 'n', '', '7b8b965ad4bca0e41ab51de7b31363a1', '', '100', '0', '', '', '', '', '2015-06-19 19:54:35', '2015-06-30 08:27:48', '1');
 INSERT INTO `t_user` VALUES ('18', 'sdafdsaf', 'fdsafsda', '202cb962ac59075b964b07152d234b70', 'a43253153531', '100', '0', 'krisibm@163.com', '', '', '', '2015-06-23 18:01:08', '2015-06-30 08:01:05', '1');
 INSERT INTO `t_user` VALUES ('19', 'sysadmin', '', '96e79218965eb72c92a549dd5a330112', '', '100', '0', '', '', '', '', '2015-06-26 19:50:31', '2015-06-26 19:55:34', '1');
+INSERT INTO `t_user` VALUES ('20', 'krisjin', 'krisjin', '81dc9bdb52d04dc20036dbd8313ed055', '', '100', '0', 'krisibm@163.com', '', '', '', '2015-07-21 22:12:05', null, '0');

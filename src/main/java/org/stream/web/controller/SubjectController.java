@@ -139,6 +139,7 @@ public class SubjectController extends BaseController {
             String oper = ServletRequestUtils.getStringParameter(request, "oper");
             int status = ServletRequestUtils.getIntParameter(request, "status", 0);
             int priority = ServletRequestUtils.getIntParameter(request, "priority", 1);
+            int pid = ServletRequestUtils.getIntParameter(request, "pid", 0);
 
             if (oper.equals("edit")) {
                 SubjectBean subject = new SubjectBean();

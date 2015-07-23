@@ -1,9 +1,9 @@
-
-
     jQuery(function ($) {
         var grid_selector = "#grid-table";
         var pager_selector = "#grid-pager";
         var pid = $("#pid").val();
+        alert(pid+"----");
+        $("#pid").val(pid);
         jQuery(grid_selector).jqGrid({
             url: '/adm/subject/subjectGrid?pid=' + pid,
             datatype: "json",
@@ -58,12 +58,11 @@
             viewrecords: true,
             rowNum: 10,
             rowList: [10, 20, 30],
+            prmNames:{pid:"12"},
+            postData:{pid:"3"},
             pager: pager_selector,
             altRows: true,
-            //toppager: true,
-
             multiselect: true,
-            //multikey: "ctrlKey",
             multiboxonly: true,
 
             loadComplete: function (d) {
@@ -77,7 +76,7 @@
                     enableTooltips(table);
                 }, 0);
             },
-            editurl: "/adm/subject/doModifySubject",
+            editurl: "/adm/subject/doModifySubject?pid="+$("#pid").val(),
             caption: "频道栏目列表",
             autowidth: true
 
@@ -105,9 +104,9 @@
         }
 
 
-//navButtons
+        //navButtons
         jQuery(grid_selector).jqGrid('navGrid', pager_selector,
-            { 	//navbar options
+            {
                 edit: false,
                 editicon: 'icon-pencil blue',
                 add: true,

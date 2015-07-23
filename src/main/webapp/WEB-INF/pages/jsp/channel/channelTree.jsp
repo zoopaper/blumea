@@ -79,6 +79,8 @@
                 postData: {'pid': pid}, //发送数据
                 page: 1
             }).trigger("reloadGrid"); //重新载入
+            alert(pid);
+            $("#pid").val(pid);
         }
         //-->
     </script>

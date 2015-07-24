@@ -51,4 +51,9 @@ public class DataMediaServiceImpl extends MybatisEntityDataService<MediaBean> im
     public List<MediaBean> getMediaWithPage(String name, int from, int size) {
         return mediaDao.getMediaWithPage(name, from, size);
     }
+
+    @Override
+    public List<MediaBean> getAllMedia() {
+        return mediaDao.getAllMedia();
+    }
 }

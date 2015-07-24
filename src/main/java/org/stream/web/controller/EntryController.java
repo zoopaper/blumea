@@ -15,7 +15,7 @@ import org.stream.entity.EntryBean;
 import org.stream.entity.MediaBean;
 import org.stream.model.Pagination;
 import org.stream.service.channel.IChannelService;
-import org.stream.service.media.IMediaService;
+import org.stream.service.media.IDataMediaService;
 import org.stream.service.subject.ISubjectService;
 import org.stream.web.util.ResponseUtil;
 
@@ -39,7 +39,7 @@ public class EntryController extends BaseController {
     private IChannelService channelService;
 
     @Autowired
-    private IMediaService mediaService;
+    private IDataMediaService dataMediaService;
 
     @Autowired
 
@@ -51,8 +51,11 @@ public class EntryController extends BaseController {
         modelAndView.setViewName("/entry/addEntry");
 
         List<ChannelBean> channelBeanList = channelService.getAllChannel();
+        List<MediaBean> mediaBeans = dataMediaService.getAllMedia();
 
         modelAndView.addObject("channelList", channelBeanList);
+
+        modelAndView.addObject("mediaList", mediaBeans);
 
         subjectService.getSubjectByPid(1);
         return modelAndView;
@@ -102,15 +105,7 @@ public class EntryController extends BaseController {
                 ResponseUtil.handleLongin(modelAndView);
                 return modelAndView;
             }
-            modelAndView.setViewName("/entry/modifyEntry");
-            long id = ServletRequestUtils.getLongParameter(request, "id", -1);
-            MediaBean media = mediaService.getMedia(id);
-            if (media != null) {
-                modelAndView.addObject("", media);
-            } else {
-                modelAndView.addObject("error", "操作出问题了!");
-                modelAndView.setViewName("/common/error");
-            }
+
         } catch (Exception e) {
             log.info("Controller toModifyEntry exception", e);
         }
@@ -143,7 +138,7 @@ public class EntryController extends BaseController {
                 media.setSiteUrl(siteUrl);
                 media.setDescs(desc);
             }
-            mediaService.updateMedia(media);
+
         } catch (Exception e) {
             log.info("Controller doModifyEntry exception", e);
         }
@@ -163,13 +158,13 @@ public class EntryController extends BaseController {
             int page = ServletRequestUtils.getIntParameter(request, "page", 1);
             String name = ServletRequestUtils.getStringParameter(request, "name", "");
 
-            ServiceResponse<Pagination<MediaBean>> serviceResponse = mediaService.getMediaWithPage(name, page, 15);
-
-            if (serviceResponse.isSuccess()) {
-                modelAndView.addObject("page", serviceResponse.getResponseData());
-            }
-            modelAndView.addObject("page", serviceResponse.getResponseData());
-            modelAndView.addObject("name", name);
+//            ServiceResponse<Pagination<MediaBean>> serviceResponse = mediaService.getMediaWithPage(name, page, 15);
+//
+//            if (serviceResponse.isSuccess()) {
+//                modelAndView.addObject("page", serviceResponse.getResponseData());
+//            }
+//            modelAndView.addObject("page", serviceResponse.getResponseData());
+//            modelAndView.addObject("name", name);
         } catch (Exception e) {
             log.info("Controller entryList exception", e);
         }
@@ -190,7 +185,6 @@ public class EntryController extends BaseController {
             String idArr = ServletRequestUtils.getStringParameter(request, "id");
             String[] ids = idArr.split(",");
             for (String id : ids) {
-                mediaService.deleteMedia(Long.valueOf(id));
             }
         } catch (Exception e) {
             log.info("Controller delEntry exception", e);

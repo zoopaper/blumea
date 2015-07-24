@@ -58,4 +58,10 @@
         limit #{1},#{2};
     </select>
 
+    <select id="getAllMedia" resultType="org.stream.entity.MediaBean">
+        select
+        <include refid="allAttribute"/>
+        from t_media where isDel=0;
+    </select>
+
 </mapper>

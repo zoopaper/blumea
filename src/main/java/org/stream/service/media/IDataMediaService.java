@@ -35,4 +35,6 @@ public interface IDataMediaService extends IMybatisEntityDataService<MediaBean> 
      */
     public List<MediaBean> getMediaWithPage(String name, int from, int size);
 
+    public List<MediaBean> getAllMedia();
+
 }

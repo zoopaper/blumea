@@ -16,14 +16,12 @@ import java.util.List;
 public interface IMediaDao extends IMybatisDao<MediaBean> {
 
     /**
-     *
      * @param name
      * @return
      */
     public List<MediaBean> getMediaByName(String name);
 
     /**
-     *
      * @param name
      * @return
      */
@@ -36,6 +34,9 @@ public interface IMediaDao extends IMybatisDao<MediaBean> {
      * @return
      */
     public List<MediaBean> getMediaWithPage(String name, int from, int size);
+
+
+    public List<MediaBean> getAllMedia();
 
 
 }

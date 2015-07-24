@@ -11,10 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.stream.auth.Principal;
 import org.stream.core.model.ServiceResponse;
 import org.stream.entity.ChannelBean;
+import org.stream.entity.EntryBean;
 import org.stream.entity.MediaBean;
 import org.stream.model.Pagination;
 import org.stream.service.channel.IChannelService;
 import org.stream.service.media.IMediaService;
+import org.stream.service.subject.ISubjectService;
 import org.stream.web.util.ResponseUtil;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +41,10 @@ public class EntryController extends BaseController {
     @Autowired
     private IMediaService mediaService;
 
+    @Autowired
+
+    private ISubjectService subjectService;
+
     @RequestMapping(value = "/addEntry", method = RequestMethod.GET)
     public ModelAndView addEntry(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
@@ -48,6 +54,7 @@ public class EntryController extends BaseController {
 
         modelAndView.addObject("channelList", channelBeanList);
 
+        subjectService.getSubjectByPid(1);
         return modelAndView;
     }
 
@@ -62,30 +69,32 @@ public class EntryController extends BaseController {
                 return modelAndView;
             }
 
-            String name = ServletRequestUtils.getStringParameter(request, "name", "");
-            String siteUrl = ServletRequestUtils.getStringParameter(request, "siteUrl", "");
-            String logoUrl = ServletRequestUtils.getStringParameter(request, "logoUrl", "");
-            String desc = ServletRequestUtils.getStringParameter(request, "desc", "");
+            String title = ServletRequestUtils.getStringParameter(request, "title", "");
+            String subhead = ServletRequestUtils.getStringParameter(request, "subhead", "");
+            String author = ServletRequestUtils.getStringParameter(request, "author", "");
+            String content = ServletRequestUtils.getStringParameter(request, "content", "");
 
 
-            MediaBean media = new MediaBean();
+            EntryBean entryBean = new EntryBean();
             {
-                media.setName(name);
-                media.setSiteUrl(siteUrl);
-                media.setLogoUrl(logoUrl);
-                media.setDescs(desc);
+                entryBean.setTitle(title);
+                entryBean.setSubhead(subhead);
+                entryBean.setAuthor(author);
+                entryBean.setContent(content);
+                entryBean.setKeyword("");
             }
-            mediaService.addMedia(media);
+
+
         } catch (Exception e) {
-            log.info("Controller doAddMedia exception", e);
+            log.info("Controller doAddEntry exception", e);
         }
-        modelAndView.setViewName("redirect:/adm/media/mediaList");
+        modelAndView.setViewName("redirect:/adm/entry/entryList");
         return modelAndView;
     }
 
 
-    @RequestMapping(value = "/toModifyMedia", method = RequestMethod.GET)
-    public ModelAndView toModifyMedia(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(value = "/toModifyEntry", method = RequestMethod.GET)
+    public ModelAndView toModifyEntry(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Principal principal = this.getLoginPrincipal(request);
@@ -93,27 +102,27 @@ public class EntryController extends BaseController {
                 ResponseUtil.handleLongin(modelAndView);
                 return modelAndView;
             }
-            modelAndView.setViewName("/media/modifyMedia");
+            modelAndView.setViewName("/entry/modifyEntry");
             long id = ServletRequestUtils.getLongParameter(request, "id", -1);
             MediaBean media = mediaService.getMedia(id);
             if (media != null) {
-                modelAndView.addObject("media", media);
+                modelAndView.addObject("", media);
             } else {
                 modelAndView.addObject("error", "操作出问题了!");
                 modelAndView.setViewName("/common/error");
             }
         } catch (Exception e) {
-            log.info("Controller toModifyMedia exception", e);
+            log.info("Controller toModifyEntry exception", e);
         }
 
         return modelAndView;
     }
 
 
-    @RequestMapping(value = "/doModifyMedia", method = RequestMethod.POST)
+    @RequestMapping(value = "/doModifyEntry", method = RequestMethod.POST)
     public ModelAndView doModifyMedia(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/adm/media/mediaList");
+        modelAndView.setViewName("redirect:/adm/entry/entryList");
         try {
             Principal principal = this.getLoginPrincipal(request);
             if (principal == null) {
@@ -136,15 +145,15 @@ public class EntryController extends BaseController {
             }
             mediaService.updateMedia(media);
         } catch (Exception e) {
-            log.info("Controller doModifyMedia exception", e);
+            log.info("Controller doModifyEntry exception", e);
         }
         return modelAndView;
     }
 
-    @RequestMapping(value = "/mediaList", method = RequestMethod.GET)
+    @RequestMapping(value = "/entryList", method = RequestMethod.GET)
     public ModelAndView subjectList(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/media/mediaList");
+        modelAndView.setViewName("/entry/entryList");
         try {
             Principal principal = this.getLoginPrincipal(request);
             if (principal == null) {
@@ -162,12 +171,12 @@ public class EntryController extends BaseController {
             modelAndView.addObject("page", serviceResponse.getResponseData());
             modelAndView.addObject("name", name);
         } catch (Exception e) {
-            log.info("Controller mediaList exception", e);
+            log.info("Controller entryList exception", e);
         }
         return modelAndView;
     }
 
-    @RequestMapping(value = "/delMedia", method = RequestMethod.GET)
+    @RequestMapping(value = "/delEntry", method = RequestMethod.GET)
     public ModelAndView deleteMedia(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
@@ -176,7 +185,7 @@ public class EntryController extends BaseController {
                 ResponseUtil.handleLongin(modelAndView);
                 return modelAndView;
             }
-            modelAndView.setViewName("redirect:/adm/media/mediaList");
+            modelAndView.setViewName("redirect:/adm/entry/entryList");
 
             String idArr = ServletRequestUtils.getStringParameter(request, "id");
             String[] ids = idArr.split(",");
@@ -184,7 +193,7 @@ public class EntryController extends BaseController {
                 mediaService.deleteMedia(Long.valueOf(id));
             }
         } catch (Exception e) {
-            log.info("Controller delMedia exception", e);
+            log.info("Controller delEntry exception", e);
         }
         return modelAndView;
     }

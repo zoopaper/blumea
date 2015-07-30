@@ -140,6 +140,7 @@ public class SubjectController extends BaseController {
             int status = ServletRequestUtils.getIntParameter(request, "status", 0);
             int priority = ServletRequestUtils.getIntParameter(request, "priority", 1);
             int pid = ServletRequestUtils.getIntParameter(request, "pid", 0);
+            String pname = ServletRequestUtils.getStringParameter(request, "pname", "");
 
             if (oper.equals("edit")) {
                 SubjectBean subject = new SubjectBean();
@@ -152,9 +153,33 @@ public class SubjectController extends BaseController {
                     subject.setDescription(desc);
                     subject.setPriority(priority);
                     subject.setCategory("");
-                    subject.setCreateTime(new Timestamp(System.currentTimeMillis()));
+                    subject.setUpdateTime(new Timestamp(System.currentTimeMillis()));
                 }
                 subjectService.updateSubject(subject);
+            } else if (oper.equals("add")) {
+                SubjectBean subject = new SubjectBean();
+
+                ChannelBean channelBean = channelService.getChannelByName(pname);
+                if (null != channelBean) {
+                    subject.setChannelId(channelBean.getId());
+                } else {
+                    SubjectBean subjectBean = subjectService.getSubjectByName(pname);
+                    subject.setChannelId(subjectBean.getChannelId());
+                }
+
+                {
+
+                    subject.setName(name);
+                    subject.setShortName(shortName);
+                    subject.setTags(tags);
+                    subject.setStatus(status);
+                    subject.setDescription(desc);
+                    subject.setPriority(priority);
+                    subject.setCategory("");
+                    subject.setPid(pid);
+                    subject.setCreateTime(new Timestamp(System.currentTimeMillis()));
+                }
+                subjectService.addSubject(subject);
             } else {
                 subjectService.deleteSubject(Long.valueOf(id));
             }
@@ -205,12 +230,12 @@ public class SubjectController extends BaseController {
             String userName = ServletRequestUtils.getStringParameter(request, "name", "");
             int pid = ServletRequestUtils.getIntParameter(request, "pid", 0);
 
-            ServiceResponse<Pagination<SubjectBean>> serviceResponse = subjectService.getSubjectByPidWithPage(pid, userName, page, 15);
+            ServiceResponse<Pagination<SubjectBean>> serviceResponse = subjectService.getSubjectByPidWithPage(pid, userName, page, 100);
             subjectService.getSubjectByPid(pid);
             if (serviceResponse.isSuccess()) {
                 if (serviceResponse.getResponseData().getItems() != null) {
 
-                    String str = subject2Json(serviceResponse.getResponseData().getItems());
+                    String str = subject2Json(serviceResponse.getResponseData());
                     modelAndView.addObject("resultData", str);
                 } else {
                     modelAndView.addObject("resultData", new JsonObject().toString());
@@ -250,7 +275,9 @@ public class SubjectController extends BaseController {
     }
 
 
-    public String subject2Json(List<SubjectBean> subjectBeanList) {
+    public String subject2Json(Pagination<SubjectBean> pagination) {
+        List<SubjectBean> subjectBeanList = pagination.getItems();
+
         JsonArray jsonArray = new JsonArray();
         for (SubjectBean subjectBean : subjectBeanList) {
             JsonObject jsonObject = new JsonObject();
@@ -261,9 +288,19 @@ public class SubjectController extends BaseController {
             jsonObject.addProperty("priority", subjectBean.getPriority());
             jsonObject.addProperty("status", subjectBean.getStatusStr());
             jsonObject.addProperty("id", subjectBean.getId());
+            jsonObject.addProperty("channelId", subjectBean.getChannelId());
             jsonObject.addProperty("pid", subjectBean.getPid());
             jsonArray.add(jsonObject);
         }
+//        JsonObject page = new JsonObject();
+//        page.addProperty("page", pagination.getPageIndex());
+//        JsonObject total = new JsonObject();
+//        total.addProperty("total", pagination.getMaxPage());
+//        JsonObject records = new JsonObject();
+//        records.addProperty("records", pagination.getTotal());
+//        jsonArray.add(page);
+//        jsonArray.add(total);
+//        jsonArray.add(records);
         return jsonArray.toString();
     }
 }

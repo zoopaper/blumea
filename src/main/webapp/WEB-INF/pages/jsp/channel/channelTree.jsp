@@ -12,7 +12,7 @@
 
     <script src="/assets/js/jquery-ui-1.10.3.full.min.js"></script>
     <script src="/assets/js/date-time/bootstrap-datepicker.min.js"></script>
-    <script src="/assets/js/jqGrid/jquery.jqGrid.js"></script>
+    <script src="/assets/js/jqGrid/jquery.jqGrid.min.js"></script>
     <script src="/assets/js/jqGrid/i18n/grid.locale-en.js"></script>
     <script src="/assets/js/ztree/jquery.ztree.all-3.5.js"></script>
     <script src="/js/subject/subjectList.js"></script>
@@ -28,11 +28,11 @@
         }
 
         #treeChannel {
-            min-height: 600px;
+            min-height: 588px;
         }
 
         ul.ztree {
-            margin-top: 10px;
+            margin-top: 0px;
             border: 1px solid #617775;
             background: #f9f9f9;;
             width: 220px;
@@ -71,9 +71,11 @@
 
         //单击节点
         function onClick(event, treeId, treeNode, clickFlag) {
-             pid = treeNode.id;
+            pid = treeNode.id;
+            var name =treeNode.name;
 
             $("#pid").val(pid);
+            $("#pname").val(name);
 
             $("#grid-table").jqGrid('setGridParam', {
                 url: "/adm/subject/subjectGrid",
@@ -89,6 +91,7 @@
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
         <input type="hidden" id="pid" name="pid"/>
+        <input type="hidden" id="pname" name="pname"/>
 
         <%@ include file="../common/auth_sider.jsp" %>
         <div class="main-content" style="margin-top: 10px;">

@@ -1,14 +1,14 @@
 jQuery(function ($) {
-    alert(pid);
+
     var grid_selector = "#grid-table";
     var pager_selector = "#grid-pager";
     var pid = $("#pid").val();
     $("#pid").val(pid);
-    var actionUrl="/adm/subject/doModifySubject";
+    var actionUrl = "/adm/subject/doModifySubject";
     jQuery(grid_selector).jqGrid({
         url: '/adm/subject/subjectGrid',
         datatype: "json",
-        height: 350,
+        height: 450,
         mtype: 'POST',
         colNames: ['操作', 'ID', '名称', '英文名称', '频道', '状态', '优先级'],
         colModel: [
@@ -54,21 +54,10 @@ jQuery(function ($) {
                 edittype: "select",
                 editoptions: {value: "1:1;2:2"}
             }
-            //{
-            //    name: 'pid',
-            //    index: 'pid',
-            //    width: 90,
-            //    editable: true,
-            //    edittype: "text",
-            //    editoptions: {size: "20", maxlength: "30"}
-            //}
         ],
-
         viewrecords: true,
         rowNum: 10,
-        rowList: [10, 20, 30],
-        //prmNames: {pid: "12"},
-        postData: {pid: "3"},
+        rowList: [10, 20, 30, 40, 50, 60, 70],
         pager: pager_selector,
         altRows: true,
         multiselect: true,
@@ -86,14 +75,8 @@ jQuery(function ($) {
             }, 0);
         },
         editurl: actionUrl,
-        hideCol: "pid",
         caption: "频道栏目列表",
-        setCaption:function(){
-            alert(00000);
-            return "ddddd";
-        },
         autowidth: true
-
     });
 
 
@@ -125,11 +108,11 @@ jQuery(function ($) {
             addicon: 'icon-plus-sign purple',
             del: true,
             delicon: 'icon-trash red',
-            search: false,
+            search: true,
             searchicon: 'icon-search orange',
             refresh: true,
             refreshicon: 'icon-refresh green',
-            view: false,
+            view: true,
             viewicon: 'icon-zoom-in grey'
         },
         {
@@ -196,32 +179,15 @@ jQuery(function ($) {
                 form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
             }
         }
-        //{
-        //    setGridParam: {
-        //        postData: {'pid':$("#pid").val()}
-        //
-        //    }
-        //}
-        //{
-        //    serializeGridData: function (postData) {
-        //        return JSON.stringify(postData);
-        //    }
-        //}
     )
 
 
     function style_edit_form(form) {
-
-        alert(form);
-        alert($("#pid").val());
         var pid = $("#pid").val();
+        var pname = $("#pname").val();
 
-        //$("#grid-table").jqGrid('setGridParam', {
-        //
-        //    postData: {pid: pid}
-        //});
-        //$("#grid-table").jqGrid("setGridParam", { postData: {pid:pid} });
         form.find("tbody").append("<tr class='FormData' id='tr_pid' style='display:none'><td class='DataTD'><input type='text' name='pid' id='pid' class='FormElement ui-widget-content ui-corner-all' value='" + pid + "'></td></tr>");
+        form.find("tbody").append("<tr class='FormData' id='tr_pname' style='display:none'><td class='DataTD'><input type='text' name='pname' id='pname' class='FormElement ui-widget-content ui-corner-all' value='" + pname + "'></td></tr>");
         form.find('input[name=sdate]').datepicker({format: 'yyyy-mm-dd', autoclose: true})
             .end().find('input[name=stock]')
             .addClass('ace ace-switch ace-switch-5').wrap('<label class="inline" />').after('<span class="lbl"></span>');

@@ -136,8 +136,6 @@ public class ChannelController extends BaseController {
             }
 
             int id = ServletRequestUtils.getIntParameter(request, "id", 0);
-            int isChannel = ServletRequestUtils.getIntParameter(request, "isChannel", 0);
-            String name = ServletRequestUtils.getStringParameter(request, "name", "");
 
             JsonArray jsonArray;
             if (id == 0) {
@@ -146,6 +144,7 @@ public class ChannelController extends BaseController {
             } else {
                 jsonArray = getSubjectJsonArray(id);
             }
+
             modelAndView.addObject("resultData", jsonArray);
         } catch (Exception e) {
             log.info("Controller channelList exception", e);

@@ -13,10 +13,22 @@
         <%@ include file="../common/auth_sider.jsp" %>
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
-                <button onclick="addMedia();" type="button" class="btn btn-primary btn-sm">新增媒体</button>
-                <button onclick="delMedia();" type="button" class="btn btn-danger btn-sm">删除媒体</button>
-                <input type="text" placeholder="名称" id="name" value="${name}" name="name">
-                <button class="btn btn-primary btn-xs" onclick="mediaSearch()">搜 索</button>
+                <p class="bg-info">
+
+                <form class="form-inline">
+                    <div class="form-group">
+                        <button onclick="addMedia();" type="button" class="btn btn-primary btn-sm">新 增</button>
+                    </div>
+                    <div class="form-group">
+                        <button onclick="delMedia();" type="button" class="btn btn-danger btn-sm">删 除</button>
+                    </div>
+                    <div class="checkbox">
+                        <input type="text" placeholder="媒体名称" id="name" value="${name}" name="name"
+                               class="form-control">
+                    </div>
+                    <button class="btn btn-default btn-sm" onclick="mediaSearch()">Search</button>
+                </form>
+                </p>
 
                 <table class="table table-striped table-bordered table-hover">
                     <thead>

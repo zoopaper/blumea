@@ -106,13 +106,13 @@ jQuery(function ($) {
             editicon: 'icon-pencil blue',
             add: true,
             addicon: 'icon-plus-sign purple',
-            del: true,
+            del: false,
             delicon: 'icon-trash red',
             search: false,
             searchicon: 'icon-search orange',
-            refresh: true,
+            refresh: false,
             refreshicon: 'icon-refresh green',
-            view: true,
+            view: false,
             viewicon: 'icon-zoom-in grey'
         },
         {

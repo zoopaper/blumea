@@ -12,7 +12,7 @@
 
     <script src="/assets/js/jquery-ui-1.10.3.full.min.js"></script>
     <script src="/assets/js/date-time/bootstrap-datepicker.min.js"></script>
-    <script src="/assets/js/jqGrid/jquery.jqGrid.min.js"></script>
+    <script src="/assets/js/jqGrid/jquery.jqGrid.js"></script>
     <script src="/assets/js/jqGrid/i18n/grid.locale-en.js"></script>
     <script src="/assets/js/ztree/jquery.ztree.all-3.5.js"></script>
     <script src="/js/subject/subjectList.js"></script>
@@ -44,6 +44,7 @@
 
     <script type="text/javascript">
         <!--
+        var pid;
         var setting = {
             async: {
                 enable: true,
@@ -70,7 +71,7 @@
 
         //单击节点
         function onClick(event, treeId, treeNode, clickFlag) {
-            var pid = treeNode.id;
+             pid = treeNode.id;
 
             $("#pid").val(pid);
 
@@ -87,7 +88,7 @@
 
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
-        <input type="text" id="pid" name="pid"/>
+        <input type="hidden" id="pid" name="pid"/>
 
         <%@ include file="../common/auth_sider.jsp" %>
         <div class="main-content" style="margin-top: 10px;">

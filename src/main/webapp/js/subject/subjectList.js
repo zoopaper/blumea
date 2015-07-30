@@ -1,10 +1,12 @@
 jQuery(function ($) {
+    alert(pid);
     var grid_selector = "#grid-table";
     var pager_selector = "#grid-pager";
     var pid = $("#pid").val();
     $("#pid").val(pid);
+    var actionUrl="/adm/subject/doModifySubject";
     jQuery(grid_selector).jqGrid({
-        url: '/adm/subject/subjectGrid?pid=' + pid,
+        url: '/adm/subject/subjectGrid',
         datatype: "json",
         height: 350,
         mtype: 'POST',
@@ -52,12 +54,20 @@ jQuery(function ($) {
                 edittype: "select",
                 editoptions: {value: "1:1;2:2"}
             }
+            //{
+            //    name: 'pid',
+            //    index: 'pid',
+            //    width: 90,
+            //    editable: true,
+            //    edittype: "text",
+            //    editoptions: {size: "20", maxlength: "30"}
+            //}
         ],
 
         viewrecords: true,
         rowNum: 10,
         rowList: [10, 20, 30],
-        prmNames: {pid: "12"},
+        //prmNames: {pid: "12"},
         postData: {pid: "3"},
         pager: pager_selector,
         altRows: true,
@@ -75,8 +85,13 @@ jQuery(function ($) {
                 enableTooltips(table);
             }, 0);
         },
-        editurl: "/adm/subject/doModifySubject",
+        editurl: actionUrl,
+        hideCol: "pid",
         caption: "频道栏目列表",
+        setCaption:function(){
+            alert(00000);
+            return "ddddd";
+        },
         autowidth: true
 
     });
@@ -181,14 +196,32 @@ jQuery(function ($) {
                 form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
             }
         }
+        //{
+        //    setGridParam: {
+        //        postData: {'pid':$("#pid").val()}
+        //
+        //    }
+        //}
+        //{
+        //    serializeGridData: function (postData) {
+        //        return JSON.stringify(postData);
+        //    }
+        //}
     )
 
 
     function style_edit_form(form) {
+
         alert(form);
         alert($("#pid").val());
-        var pid=$("#pid").val();
-        form.append("<input type='hidden' name='pid' id='pid' value='"+pid+"'>");
+        var pid = $("#pid").val();
+
+        //$("#grid-table").jqGrid('setGridParam', {
+        //
+        //    postData: {pid: pid}
+        //});
+        //$("#grid-table").jqGrid("setGridParam", { postData: {pid:pid} });
+        form.find("tbody").append("<tr class='FormData' id='tr_pid' style='display:none'><td class='DataTD'><input type='text' name='pid' id='pid' class='FormElement ui-widget-content ui-corner-all' value='" + pid + "'></td></tr>");
         form.find('input[name=sdate]').datepicker({format: 'yyyy-mm-dd', autoclose: true})
             .end().find('input[name=stock]')
             .addClass('ace ace-switch ace-switch-5').wrap('<label class="inline" />').after('<span class="lbl"></span>');

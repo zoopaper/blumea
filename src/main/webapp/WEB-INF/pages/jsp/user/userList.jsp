@@ -14,26 +14,25 @@
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
                 <div class="ui-jqgrid-view">
-                    <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">
-
-                        <div class="col-xs-3">
-                            <button onclick="addUser();" type="button" class="btn btn-primary btn-sm">新增用户</button>
-                            <button onclick="delUser();" type="button" class="btn btn-danger btn-sm">删除用户</button>
-                            <%--<input type="text" class="form-control input-lg" placeholder="用户名" id="userName" value="${userName}">--%>
-                        </div>
-                        <div class="col-xs-2">
-                            <input type="text" class="form-control" placeholder="" id="userName" value="${userName}">
-                        </div>
-                        <div class="col-xs-1">
-                            <button class="btn btn-default btn-sm" onclick="userSearch()">Search</button>
-                        </div>
-                    </div>
+                    <p  class="bg-info">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <button onclick="addUser();" type="button" class="btn btn-primary btn-sm">新 增</button>
+                                </div>
+                                <div class="form-group">
+                                    <button onclick="delUser();" type="button" class="btn btn-danger btn-sm">删 除</button>
+                                </div>
+                                <div class="checkbox">
+                                    <input type="text" id="userName" name="userName" value="${userName}" class="form-control"  placeholder="用户名">
+                                </div>
+                                <button class="btn btn-default btn-sm" onclick="userSearch()">Search</button>
+                            </form>
+                    </p>
 
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                         <tr>
                             <th>
-                                <%--<input type="checkbox" id="selectAll">--%>
                                 <label>
                                     <input type="checkbox" name="selectAll" value="${user.id}" class="ace">
                                     <span class="lbl"></span>

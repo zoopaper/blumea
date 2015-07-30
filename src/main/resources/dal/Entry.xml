@@ -41,9 +41,18 @@
 
     <update id="update" parameterType="org.stream.entity.EntryBean">
       update t_entry set
-      name=#{name},
-      description=#{description},
-      funcId=#{funcId}
+      title=#{title},
+      subhead=#{subhead},
+      content=#{content},
+      author=#{author},
+      editor=#{editor},
+      dutyEditor=#{dutyEditor},
+      url=#{url},
+      tag=#{tag},
+      summary=#{summary},
+      channelId=#{channelId},
+      subjectId=#{subjectId},
+      utime=#{uptime}
       where id=#{id}
     </update>
 

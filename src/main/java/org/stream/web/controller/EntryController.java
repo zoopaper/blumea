@@ -86,7 +86,6 @@ public class EntryController extends BaseController {
             String keyword = ServletRequestUtils.getStringParameter(request, "keyword", "");
             String tag = ServletRequestUtils.getStringParameter(request, "tag", "");
             String summary = ServletRequestUtils.getStringParameter(request, "summary", "");
-//            String content = ServletRequestUtils.getStringParameter(request, "content", "");
             int channelId = ServletRequestUtils.getIntParameter(request, "channelId", 0);
 
 
@@ -118,6 +117,13 @@ public class EntryController extends BaseController {
     @RequestMapping(value = "/toModifyEntry", method = RequestMethod.GET)
     public ModelAndView toModifyEntry(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/entry/modifyEntry");
+        List<ChannelBean> channelBeanList = channelService.getAllChannel();
+        List<MediaBean> mediaBeans = dataMediaService.getAllMedia();
+
+        modelAndView.addObject("channelList", channelBeanList);
+
+        modelAndView.addObject("mediaList", mediaBeans);
         try {
             Principal principal = this.getLoginPrincipal(request);
             if (principal == null) {
@@ -125,6 +131,9 @@ public class EntryController extends BaseController {
                 return modelAndView;
             }
 
+            int id = ServletRequestUtils.getIntParameter(request, "id", 0);
+            EntryBean entryBean = entryService.getEntry(id);
+            modelAndView.addObject("entry", entryBean);
         } catch (Exception e) {
             log.info("Controller toModifyEntry exception", e);
         }
@@ -144,20 +153,36 @@ public class EntryController extends BaseController {
                 return modelAndView;
             }
             long id = ServletRequestUtils.getLongParameter(request, "id", -1);
-            String name = ServletRequestUtils.getStringParameter(request, "name", "");
-            String logoUrl = ServletRequestUtils.getStringParameter(request, "logoUrl", "");
-            String siteUrl = ServletRequestUtils.getStringParameter(request, "siteUrl", "");
-            String desc = ServletRequestUtils.getStringParameter(request, "desc", "");
+            String title = ServletRequestUtils.getStringParameter(request, "title", "");
+            String subhead = ServletRequestUtils.getStringParameter(request, "subhead", "");
+            String author = ServletRequestUtils.getStringParameter(request, "author", "");
+            String dutyEditor = ServletRequestUtils.getStringParameter(request, "dutyEditor", "");
+            String media = ServletRequestUtils.getStringParameter(request, "media", "");
+            String url = ServletRequestUtils.getStringParameter(request, "url", "");
+            String keyword = ServletRequestUtils.getStringParameter(request, "keyword", "");
+            String tag = ServletRequestUtils.getStringParameter(request, "tag", "");
+            String summary = ServletRequestUtils.getStringParameter(request, "summary", "");
+            String content = ServletRequestUtils.getStringParameter(request, "content", "");
 
-            MediaBean media = new MediaBean();
+            int channelId = ServletRequestUtils.getIntParameter(request, "channelId", 0);
+
+            EntryBean entryBean = new EntryBean();
             {
-                media.setId(id);
-                media.setName(name);
-                media.setLogoUrl(logoUrl);
-                media.setSiteUrl(siteUrl);
-                media.setDescs(desc);
+                entryBean.setId(id);
+                entryBean.setTitle(title);
+                entryBean.setSubhead(subhead);
+                entryBean.setAuthor(author);
+                entryBean.setContent(content);
+                entryBean.setKeyword(keyword);
+                entryBean.setDutyEditor(dutyEditor);
+                entryBean.setMediaId(Integer.valueOf(media));
+                entryBean.setUrl(url);
+                entryBean.setTag(tag);
+                entryBean.setSummary(summary);
+                entryBean.setChannelId(channelId);
+                entryBean.setUptime(new Timestamp(System.currentTimeMillis()));
             }
-
+            entryService.updateEntry(entryBean);
         } catch (Exception e) {
             log.info("Controller doModifyEntry exception", e);
         }

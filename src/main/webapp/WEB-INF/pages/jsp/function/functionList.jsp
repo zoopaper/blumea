@@ -13,11 +13,21 @@
         <%@ include file="../common/auth_sider.jsp" %>
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
-                <button onclick="addFunc();" type="button" class="btn btn-primary btn-sm">新增功能</button>
-                <button onclick="delFunc();" type="button" class="btn btn-danger btn-sm">删除功能</button>
-                <input type="text" placeholder="功能名称" id="name"  value="${name}" name="name">
-                <button class="btn btn-primary" onclick="funcSearch()">搜索</button>
-
+                <p class="bg-info">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <button onclick="addFunc();" type="button" class="btn btn-primary btn-sm">新 增</button>
+                    </div>
+                    <div class="form-group">
+                        <button onclick="delFunc();" type="button" class="btn btn-danger btn-sm">删 除</button>
+                    </div>
+                    <div class="checkbox">
+                        <input type="text" placeholder="功能名称" id="name" value="${name}" name="name"
+                               class="form-control">
+                    </div>
+                    <button class="btn btn-default btn-sm" onclick="funcSearch()">Search</button>
+                </form>
+                </p>
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>

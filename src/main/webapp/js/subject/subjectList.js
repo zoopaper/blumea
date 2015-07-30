@@ -8,7 +8,7 @@ jQuery(function ($) {
     jQuery(grid_selector).jqGrid({
         url: '/adm/subject/subjectGrid',
         datatype: "json",
-        height: 450,
+        height: 381,
         mtype: 'POST',
         colNames: ['操作', 'ID', '名称', '英文名称', '频道', '状态', '优先级'],
         colModel: [
@@ -108,7 +108,7 @@ jQuery(function ($) {
             addicon: 'icon-plus-sign purple',
             del: true,
             delicon: 'icon-trash red',
-            search: true,
+            search: false,
             searchicon: 'icon-search orange',
             refresh: true,
             refreshicon: 'icon-refresh green',

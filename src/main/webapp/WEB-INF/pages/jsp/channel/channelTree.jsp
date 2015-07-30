@@ -28,7 +28,7 @@
         }
 
         #treeChannel {
-            min-height: 588px;
+            min-height: 519px;
         }
 
         ul.ztree {

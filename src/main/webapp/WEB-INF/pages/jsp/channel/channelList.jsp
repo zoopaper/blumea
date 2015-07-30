@@ -12,7 +12,9 @@
         <%@ include file="../common/auth_sider.jsp" %>
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
-                <button onclick="addChannel();" type="button" class="btn btn-primary btn-sm">新增频道</button>
+                <p>
+                <button onclick="addChannel();" type="button" class="btn btn-primary btn-sm">新 增</button>
+                </p>
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>

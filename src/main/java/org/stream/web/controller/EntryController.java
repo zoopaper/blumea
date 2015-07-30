@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.stream.auth.Principal;
+import org.stream.core.model.ServiceResponse;
 import org.stream.entity.ChannelBean;
 import org.stream.entity.EntryBean;
 import org.stream.entity.MediaBean;
+import org.stream.model.Pagination;
 import org.stream.service.channel.IChannelService;
 import org.stream.service.entry.IEntryService;
 import org.stream.service.media.IDataMediaService;
@@ -66,7 +68,7 @@ public class EntryController extends BaseController {
 
 
     @RequestMapping(value = "/doAddEntry", method = RequestMethod.POST)
-    public ModelAndView doAddMedia(@RequestParam(value = "content") String content,HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView doAddMedia(@RequestParam(value = "content") String content, HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Principal principal = this.getLoginPrincipal(request);
@@ -173,15 +175,14 @@ public class EntryController extends BaseController {
                 return modelAndView;
             }
             int page = ServletRequestUtils.getIntParameter(request, "page", 1);
-            String name = ServletRequestUtils.getStringParameter(request, "name", "");
+            String title = ServletRequestUtils.getStringParameter(request, "title", "");
 
-//            ServiceResponse<Pagination<MediaBean>> serviceResponse = mediaService.getMediaWithPage(name, page, 15);
-//
-//            if (serviceResponse.isSuccess()) {
-//                modelAndView.addObject("page", serviceResponse.getResponseData());
-//            }
-//            modelAndView.addObject("page", serviceResponse.getResponseData());
-//            modelAndView.addObject("name", name);
+            ServiceResponse<Pagination<EntryBean>> serviceResponse = entryService.getEntryWithPage(title, page, 15);
+            if (serviceResponse.isSuccess()) {
+                modelAndView.addObject("page", serviceResponse.getResponseData());
+            }
+            modelAndView.addObject("page", serviceResponse.getResponseData());
+            modelAndView.addObject("title", title);
         } catch (Exception e) {
             log.info("Controller entryList exception", e);
         }

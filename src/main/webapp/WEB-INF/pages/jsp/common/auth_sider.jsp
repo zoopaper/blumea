@@ -44,7 +44,7 @@
         </li>
 
         <li>
-            <a href="/adm/entry/addEntry">
+            <a href="/adm/entry/entryList">
                 <i class="icon-book"></i>
                 <span class="menu-text">新闻管理</span>
             </a>

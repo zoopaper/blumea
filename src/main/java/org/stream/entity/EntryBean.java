@@ -18,6 +18,8 @@ public class EntryBean extends IMybatisEntity {
      */
     private int subjectId;
 
+    private String subjectName;
+
     private String title;
 
     /**
@@ -34,7 +36,7 @@ public class EntryBean extends IMybatisEntity {
      */
     private Timestamp ctime;
     /**
-     *更新时间
+     * 更新时间
      */
     private Timestamp uptime;
 
@@ -45,6 +47,8 @@ public class EntryBean extends IMybatisEntity {
      * 频道
      */
     private int channelId;
+
+    private String channelName;
 
     /**
      * 媒体
@@ -63,7 +67,7 @@ public class EntryBean extends IMybatisEntity {
      */
     private String dutyEditor;
     /**
-     *来源
+     * 来源
      */
     private String url;
 
@@ -253,5 +257,21 @@ public class EntryBean extends IMybatisEntity {
 
     public void setSubhead(String subhead) {
         this.subhead = subhead;
+    }
+
+    public String getSubjectName() {
+        return subjectName;
+    }
+
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
+    }
+
+    public String getChannelName() {
+        return channelName;
+    }
+
+    public void setChannelName(String channelName) {
+        this.channelName = channelName;
     }
 }

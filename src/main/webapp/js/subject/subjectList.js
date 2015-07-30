@@ -22,13 +22,22 @@ jQuery(function ($) {
                 }
             },
             {name: 'id', index: 'id', width: 60, sorttype: "int", editable: false},
-            {name: 'name', index: 'name', width: 90, editable: true, sorttype: "date", unformat: pickDate},
+            {
+                name: 'name',
+                index: 'name',
+                width: 90,
+                editable: true,
+                sorttype: "date",
+                unformat: pickDate,
+                editrules: {required: true}
+            },
             {
                 name: 'shortName',
                 index: 'shortName',
                 width: 150,
                 editable: true,
-                editoptions: {size: "20", maxlength: "30"}
+                editoptions: {size: "20", maxlength: "30"},
+                editrules: {required: true}
             },
             {
                 name: 'channelName',

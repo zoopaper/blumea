@@ -29,8 +29,8 @@
         ]]>
     </sql>
     <insert id="save" parameterType="org.stream.entity.EntryBean" useGeneratedKeys="true" keyProperty="id">
-        insert into t_entry(name,funcId,description,createTime)
-        values(#{name},#{funcId},#{description},#{createTime});
+        insert into t_entry(title,subhead,content,author,editor,dutyEditor,url,keyword,tag,summary,channelId,subjectId,ctime)
+        values(#{title},#{subhead},#{content},#{author},#{editor},#{dutyEditor},#{url},#{keyword},#{tag},#{summary},#{channelId},#{subjectId},#{ctime});
     </insert>
 
     <select id="get" parameterType="long" resultType="org.stream.entity.EntryBean">

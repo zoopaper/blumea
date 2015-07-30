@@ -20,12 +20,22 @@ public class EntryBean extends IMybatisEntity {
 
     private String title;
 
+    /**
+     * 副标题
+     */
     private String subhead;
-
+    /**
+     * 正文
+     */
     private String content;
 
+    /**
+     * 创建时间
+     */
     private Timestamp ctime;
-
+    /**
+     *更新时间
+     */
     private Timestamp uptime;
 
     private int priority = 60;
@@ -51,9 +61,9 @@ public class EntryBean extends IMybatisEntity {
     /**
      * 责任编辑
      */
-    private int dutyEditor;
+    private String dutyEditor;
     /**
-     *
+     *来源
      */
     private String url;
 
@@ -165,11 +175,11 @@ public class EntryBean extends IMybatisEntity {
         this.editor = editor;
     }
 
-    public int getDutyEditor() {
+    public String getDutyEditor() {
         return dutyEditor;
     }
 
-    public void setDutyEditor(int dutyEditor) {
+    public void setDutyEditor(String dutyEditor) {
         this.dutyEditor = dutyEditor;
     }
 

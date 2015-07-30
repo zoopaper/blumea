@@ -35,11 +35,17 @@
         editor = K.create('textarea[name="content"]', {
             resizeType: 1,
             allowPreviewEmoticons: false,
-            allowImageUpload: false,
-            items: [
-                'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-                'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-                'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+            allowImageUpload: true,
+            afterBlur: function () {
+                this.sync();
+            },
+            items: ['source', 'code', 'justifyleft', 'justifycenter',
+                'justifyright', 'insertorderedlist', 'insertunorderedlist',
+                'clearhtml', 'quickformat', 'formatblock', 'fontname',
+                'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                'italic', 'underline', 'lineheight', 'removeformat', '|',
+                'image', 'multiimage', 'insertfile', 'table', 'hr',
+                'emoticons', 'baidumap', 'link', 'unlink', 'fullscreen']
         });
     });
 </script>
@@ -78,26 +84,33 @@
 
                         <div class="form-group">
                             <label>副标题</label><br>
-                            <input name="subhead" type="text" class="validate[required] text-input"
-                                   style="width: 400px;">
+                            <input name="subhead" type="text"  style="width: 400px;">
                         </div>
 
                         <div class="form-group">
                             <label>来源</label><br>
-                            <input name="subhead" type="text" class="validate[required] text-input"
-                                   style="width: 400px;">
+
+                            <div class="">
+                                <select id="media" name="media" style="width: 400px;">
+                                    <c:forEach items="${mediaList}" var="media">
+                                        <option value="${media.id}">${media.name}</option>
+                                    </c:forEach>
+                                </select>
+
+
+                                链接:<input name="url" type="text"
+                                          style="width: 250px;">
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label>作者</label><br>
-                            <input name="author" type="text" class="validate[required] text-input"
-                                   style="width: 400px;">
+                            <input name="author" type="text" style="width: 400px;">
                         </div>
 
                         <div class="form-group">
                             <label>责任编辑</label><br>
-                            <input name="dutyEditor" type="text" class="validate[required] text-input"
-                                   style="width: 400px;">
+                            <input name="dutyEditor" type="text" style="width: 400px;">
                         </div>
 
                         <div class="form-group">
@@ -108,24 +121,23 @@
 
                         <div class="form-group">
                             <label>标签</label><br>
-                            <input name="tag" type="text" class="validate[required] text-input" style="width: 400px;">
+                            <input name="tag" type="text" style="width: 400px;">
                         </div>
 
                         <div class="form-group">
                             <label>摘要</label><br>
-                            <textarea name="summary" class="validate[required]"
+                            <textarea name="summary"
                                       style="width:900px;height:100px;"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label>正文</label>
-                            <textarea name="content" class="validate[required]"
+                            <textarea name="content" id="content"
                                       style="width:900px;height:400px;visibility:hidden;"></textarea>
                         </div>
 
                         <div class="form-group">
-
-                            <input class="btn btn-primary" type="submit" value="保 存" id="submit1"
+                            <input class="btn btn-primary btn-sm" type="submit" value="保 存" id="submit1"
                                    onclick="jQuery('#form1').submit();">
 
                         </div>

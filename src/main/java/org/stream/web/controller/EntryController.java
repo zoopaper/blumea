@@ -7,20 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.stream.auth.Principal;
-import org.stream.core.model.ServiceResponse;
 import org.stream.entity.ChannelBean;
 import org.stream.entity.EntryBean;
 import org.stream.entity.MediaBean;
-import org.stream.model.Pagination;
 import org.stream.service.channel.IChannelService;
+import org.stream.service.entry.IEntryService;
 import org.stream.service.media.IDataMediaService;
 import org.stream.service.subject.ISubjectService;
 import org.stream.web.util.ResponseUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -42,8 +43,10 @@ public class EntryController extends BaseController {
     private IDataMediaService dataMediaService;
 
     @Autowired
-
     private ISubjectService subjectService;
+
+    @Autowired
+    private IEntryService entryService;
 
     @RequestMapping(value = "/addEntry", method = RequestMethod.GET)
     public ModelAndView addEntry(HttpServletRequest request, HttpServletResponse response) {
@@ -63,7 +66,7 @@ public class EntryController extends BaseController {
 
 
     @RequestMapping(value = "/doAddEntry", method = RequestMethod.POST)
-    public ModelAndView doAddMedia(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView doAddMedia(@RequestParam(value = "content") String content,HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Principal principal = this.getLoginPrincipal(request);
@@ -75,7 +78,14 @@ public class EntryController extends BaseController {
             String title = ServletRequestUtils.getStringParameter(request, "title", "");
             String subhead = ServletRequestUtils.getStringParameter(request, "subhead", "");
             String author = ServletRequestUtils.getStringParameter(request, "author", "");
-            String content = ServletRequestUtils.getStringParameter(request, "content", "");
+            String dutyEditor = ServletRequestUtils.getStringParameter(request, "dutyEditor", "");
+            String media = ServletRequestUtils.getStringParameter(request, "media", "");
+            String url = ServletRequestUtils.getStringParameter(request, "url", "");
+            String keyword = ServletRequestUtils.getStringParameter(request, "keyword", "");
+            String tag = ServletRequestUtils.getStringParameter(request, "tag", "");
+            String summary = ServletRequestUtils.getStringParameter(request, "summary", "");
+//            String content = ServletRequestUtils.getStringParameter(request, "content", "");
+            int channelId = ServletRequestUtils.getIntParameter(request, "channelId", 0);
 
 
             EntryBean entryBean = new EntryBean();
@@ -84,14 +94,21 @@ public class EntryController extends BaseController {
                 entryBean.setSubhead(subhead);
                 entryBean.setAuthor(author);
                 entryBean.setContent(content);
-                entryBean.setKeyword("");
+                entryBean.setKeyword(keyword);
+                entryBean.setDutyEditor(dutyEditor);
+                entryBean.setMediaId(Integer.valueOf(media));
+                entryBean.setUrl(url);
+                entryBean.setTag(tag);
+                entryBean.setSummary(summary);
+                entryBean.setChannelId(channelId);
+                entryBean.setCtime(new Timestamp(System.currentTimeMillis()));
             }
 
-
+            entryService.addEntry(entryBean);
         } catch (Exception e) {
             log.info("Controller doAddEntry exception", e);
         }
-        modelAndView.setViewName("redirect:/adm/entry/entryList");
+        modelAndView.setViewName("redirect:/adm/entry/addEntry");
         return modelAndView;
     }
 

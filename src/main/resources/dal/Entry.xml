@@ -34,8 +34,9 @@
     </insert>
 
     <select id="get" parameterType="long" resultType="org.stream.entity.EntryBean">
-        select a.id, a.name,a.description,a.funcId,a.createTime
-        from t_entry a
+        select
+        <include refid="allAttribute"/>
+        from t_entry
         where id=#{0};
     </select>
 
@@ -62,7 +63,7 @@
 
     <select id="getEntryTotalNum" resultType="int">
         select count(id) from t_entry
-        where  (#{0}='' or title like "%"#{0}"%");
+        where  (#{0}='' or title like "%"#{0}"%") and isDel=0;
     </select>
 
     <select id="getEntryWithPage" resultType="org.stream.entity.EntryBean">
@@ -70,7 +71,7 @@
         <include refid="allAttribute"/>
         from t_entry a
         where
-        #{0}='' or title like "%"#{0}"%"
+        (#{0}='' or title like "%"#{0}"%") and isDel=0
         order by ctime desc
         limit #{1},#{2};
     </select>

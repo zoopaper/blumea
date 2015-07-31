@@ -112,7 +112,7 @@
       return false;
     }
 
-    if (confirm("您确定要删除选中的用户吗!")) {
+    if (confirm("您确定要删除选中的新闻吗!")) {
       window.location.href = "/adm/entry/delEntry?id=" + idArray;
     } else {
       return false;

@@ -215,7 +215,7 @@ public class EntryController extends BaseController {
     }
 
     @RequestMapping(value = "/delEntry", method = RequestMethod.GET)
-    public ModelAndView deleteMedia(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView delEntry(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             Principal principal = this.getLoginPrincipal(request);
@@ -228,6 +228,7 @@ public class EntryController extends BaseController {
             String idArr = ServletRequestUtils.getStringParameter(request, "id");
             String[] ids = idArr.split(",");
             for (String id : ids) {
+                entryService.deleteEntry(Long.valueOf(id));
             }
         } catch (Exception e) {
             log.info("Controller delEntry exception", e);

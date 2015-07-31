@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.stream.dao.IEntryDao">
+<mapper namespace="org.blumea.cms.dao.IEntryDao">
     <sql id="allAttribute">
         <![CDATA[
 
@@ -28,19 +28,19 @@
 
         ]]>
     </sql>
-    <insert id="save" parameterType="org.stream.entity.EntryBean" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="org.blumea.cms.entity.EntryBean" useGeneratedKeys="true" keyProperty="id">
         insert into t_entry(title,subhead,content,author,editor,dutyEditor,url,keyword,tag,summary,channelId,subjectId,ctime)
         values(#{title},#{subhead},#{content},#{author},#{editor},#{dutyEditor},#{url},#{keyword},#{tag},#{summary},#{channelId},#{subjectId},#{ctime});
     </insert>
 
-    <select id="get" parameterType="long" resultType="org.stream.entity.EntryBean">
+    <select id="get" parameterType="long" resultType="org.blumea.cms.entity.EntryBean">
         select
         <include refid="allAttribute"/>
         from t_entry
         where id=#{0};
     </select>
 
-    <update id="update" parameterType="org.stream.entity.EntryBean">
+    <update id="update" parameterType="org.blumea.cms.entity.EntryBean">
       update t_entry set
       title=#{title},
       subhead=#{subhead},
@@ -57,7 +57,7 @@
       where id=#{id}
     </update>
 
-    <update id="delete" parameterType="org.stream.entity.EntryBean">
+    <update id="delete" parameterType="org.blumea.cms.entity.EntryBean">
         update t_entry set isDel =1 where id =#{id}
     </update>
 
@@ -66,7 +66,7 @@
         where  (#{0}='' or title like "%"#{0}"%") and isDel=0;
     </select>
 
-    <select id="getEntryWithPage" resultType="org.stream.entity.EntryBean">
+    <select id="getEntryWithPage" resultType="org.blumea.cms.entity.EntryBean">
         select
         <include refid="allAttribute"/>
         from t_entry a

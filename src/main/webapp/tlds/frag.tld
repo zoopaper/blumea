@@ -11,7 +11,7 @@
 
     <tag>
         <name>css</name>
-        <tag-class>org.stream.web.taglib.tag.FragCssTag</tag-class>
+        <tag-class>org.blumea.cms.web.taglib.tag.FragCssTag</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <description>
@@ -53,7 +53,7 @@
     </tag>
     <tag>
         <name>js</name>
-        <tag-class>org.stream.web.taglib.tag.FragJsTag</tag-class>
+        <tag-class>org.blumea.cms.web.taglib.tag.FragJsTag</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <description>

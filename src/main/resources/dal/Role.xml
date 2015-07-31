@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.stream.dao.IRoleDao">
+<mapper namespace="org.blumea.cms.dao.IRoleDao">
 
-    <insert id="save" parameterType="org.stream.entity.RoleBean" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="org.blumea.cms.entity.RoleBean" useGeneratedKeys="true" keyProperty="id">
         insert into t_role(name,funcId,description,createTime)
         values(#{name},#{funcId},#{description},#{createTime});
     </insert>
 
-    <select id="getRoleByName" parameterType="String" resultType="org.stream.entity.RoleBean">
+    <select id="getRoleByName" parameterType="String" resultType="org.blumea.cms.entity.RoleBean">
         select a.id, a.name,a.description,a.funcId,a.createTime
         from t_role a where name=#{name};
     </select>
 
-    <select id="get" parameterType="long" resultType="org.stream.entity.RoleBean">
+    <select id="get" parameterType="long" resultType="org.blumea.cms.entity.RoleBean">
         select a.id, a.name,a.description,a.funcId,a.createTime
         from t_role a
         where id=#{0};
     </select>
 
-    <update id="update" parameterType="org.stream.entity.RoleBean">
+    <update id="update" parameterType="org.blumea.cms.entity.RoleBean">
       update t_role set
       name=#{name},
       description=#{description},
@@ -26,7 +26,7 @@
       where id=#{id}
     </update>
 
-    <delete id="delete" parameterType="org.stream.entity.RoleBean">
+    <delete id="delete" parameterType="org.blumea.cms.entity.RoleBean">
         delete from t_role where id =#{id}
     </delete>
 
@@ -35,7 +35,7 @@
         where  (#{0}='' or name like "%"#{0}"%");
     </select>
 
-    <select id="getRoleWithPage" resultType="org.stream.entity.RoleBean">
+    <select id="getRoleWithPage" resultType="org.blumea.cms.entity.RoleBean">
         select a.id, a.name,a.description,a.funcId,a.createTime
         from t_role a
         where

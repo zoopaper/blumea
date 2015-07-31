@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.stream.dao.IMediaDao">
+<mapper namespace="org.blumea.cms.dao.IMediaDao">
 
     <sql id="allAttribute">
         <![CDATA[
@@ -13,25 +13,25 @@
         ]]>
     </sql>
 
-    <insert id="save" parameterType="org.stream.entity.MediaBean" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="org.blumea.cms.entity.MediaBean" useGeneratedKeys="true" keyProperty="id">
         insert into t_media(name,descs,siteUrl,logoUrl)
         values(#{name},#{descs},#{siteUrl},#{logoUrl});
     </insert>
 
-    <select id="getMediaByName" parameterType="String" resultType="org.stream.entity.MediaBean">
+    <select id="getMediaByName" parameterType="String" resultType="org.blumea.cms.entity.MediaBean">
         select
         <include refid="allAttribute"/>
         from t_media a where name=#{name} and isDel=0;
     </select>
 
-    <select id="get" parameterType="long" resultType="org.stream.entity.MediaBean">
+    <select id="get" parameterType="long" resultType="org.blumea.cms.entity.MediaBean">
         select
         <include refid="allAttribute"/>
         from t_media
         where id=#{0} and isDel=0;
     </select>
 
-    <update id="update" parameterType="org.stream.entity.MediaBean">
+    <update id="update" parameterType="org.blumea.cms.entity.MediaBean">
       update t_media set
       name=#{name},
       descs=#{descs},
@@ -40,7 +40,7 @@
       where id=#{id}
     </update>
 
-    <update id="delete" parameterType="org.stream.entity.MediaBean">
+    <update id="delete" parameterType="org.blumea.cms.entity.MediaBean">
         update t_media set isDel=1 where id =#{id}
     </update>
 
@@ -49,7 +49,7 @@
         where  (#{0}='' or name like "%"#{0}"%") and isDel=0
     </select>
 
-    <select id="getMediaWithPage" resultType="org.stream.entity.MediaBean">
+    <select id="getMediaWithPage" resultType="org.blumea.cms.entity.MediaBean">
         select
         <include refid="allAttribute"/>
         from t_media
@@ -58,7 +58,7 @@
         limit #{1},#{2};
     </select>
 
-    <select id="getAllMedia" resultType="org.stream.entity.MediaBean">
+    <select id="getAllMedia" resultType="org.blumea.cms.entity.MediaBean">
         select
         <include refid="allAttribute"/>
         from t_media where isDel=0;

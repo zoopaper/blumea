@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.stream.dao.IFunctionDao">
+<mapper namespace="org.blumea.cms.dao.IFunctionDao">
     <sql id="allAttribute">
         <![CDATA[
             id,
@@ -15,21 +15,21 @@
         ]]>
     </sql>
 
-    <insert id="save" parameterType="org.stream.entity.FunctionBean" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="org.blumea.cms.entity.FunctionBean" useGeneratedKeys="true" keyProperty="id">
         insert into
         t_function(name,action,param,isGroup,isDel,pid,createTime)
         VALUES
         (#{name},#{action},#{param},#{isGroup},#{isDel},#{pid},#{createTime})
     </insert>
 
-    <select id="get" parameterType="long" resultType="org.stream.entity.FunctionBean">
+    <select id="get" parameterType="long" resultType="org.blumea.cms.entity.FunctionBean">
         select
         <include refid="allAttribute"/>
         from t_function
         where id=#{0} and isDel=0;
     </select>
 
-    <update id="update" parameterType="org.stream.entity.FunctionBean">
+    <update id="update" parameterType="org.blumea.cms.entity.FunctionBean">
       update t_function set
       name=#{name},
       action=#{action},
@@ -40,7 +40,7 @@
       where id=#{id}
     </update>
 
-    <update id="delete" parameterType="org.stream.entity.FunctionBean">
+    <update id="delete" parameterType="org.blumea.cms.entity.FunctionBean">
         update t_function set isDel=1,updateTime=now() where id =#{id}
     </update>
 
@@ -55,7 +55,7 @@
         and (#{0}='' or name like "%"#{0}"%");
     </select>
 
-    <select id="getFunctionWithPage" resultType="org.stream.entity.FunctionBean">
+    <select id="getFunctionWithPage" resultType="org.blumea.cms.entity.FunctionBean">
         select
         <include refid="allAttribute"/>
         from t_function

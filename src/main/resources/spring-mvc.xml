@@ -16,7 +16,7 @@
     <!--<mvc:default-servlet-handler/>-->
     <!--<mvc:resources mapping="/ui/**" location="/ui/"/>-->
 
-    <context:component-scan base-package="org.stream.web.controller,org.stream.service,org.stream.config">
+    <context:component-scan base-package="org.blumea.cms.web.controller,org.blumea.cms.service,org.blumea.cms.config">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>

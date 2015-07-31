@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.stream.dao.ISubjectDao">
+<mapper namespace="org.blumea.cms.dao.ISubjectDao">
     <sql id="allAttribute">
         <![CDATA[
             id,
@@ -22,18 +22,18 @@
         ]]>
     </sql>
 
-    <insert id="save" parameterType="org.stream.entity.SubjectBean" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="org.blumea.cms.entity.SubjectBean" useGeneratedKeys="true" keyProperty="id">
         insert into t_subject(createTime,name,category,shortName,description,channelId,status,priority,tags,pid)
         VALUES(#{createTime},#{name},#{category},#{shortName},#{description},#{channelId},#{status},#{priority},#{tags},#{pid})
     </insert>
-    <select id="get" parameterType="long" resultType="org.stream.entity.SubjectBean">
+    <select id="get" parameterType="long" resultType="org.blumea.cms.entity.SubjectBean">
         select
         <include refid="allAttribute"/>
         from t_subject
         where id=#{0} and isDel=0;
     </select>
 
-    <update id="update" parameterType="org.stream.entity.SubjectBean">
+    <update id="update" parameterType="org.blumea.cms.entity.SubjectBean">
       update t_subject set
       name=#{name},
       description=#{description},
@@ -46,7 +46,7 @@
       where id=#{id}
     </update>
 
-    <update id="delete" parameterType="org.stream.entity.SubjectBean">
+    <update id="delete" parameterType="org.blumea.cms.entity.SubjectBean">
         update t_subject set isDel=1  where id =#{id}
     </update>
 
@@ -62,21 +62,21 @@
         and (#{0}='' or name like "%"#{0}"%") and pid=#{1};
     </select>
 
-    <select id="getSubjectByName" resultType="org.stream.entity.SubjectBean">
+    <select id="getSubjectByName" resultType="org.blumea.cms.entity.SubjectBean">
         select
         <include refid="allAttribute"/>
         from t_subject
         where isDel=0 and name=#{0}
     </select>
 
-    <select id="getSubjectByPid" resultType="org.stream.entity.SubjectBean">
+    <select id="getSubjectByPid" resultType="org.blumea.cms.entity.SubjectBean">
         select
         <include refid="allAttribute"/>
         from t_subject
         where isDel=0 and pid=#{0}
     </select>
 
-    <select id="getSubjectByPidWithPage" resultType="org.stream.entity.SubjectBean">
+    <select id="getSubjectByPidWithPage" resultType="org.blumea.cms.entity.SubjectBean">
         select
         <include refid="allAttribute"/>
         from t_subject
@@ -87,7 +87,7 @@
     </select>
 
 
-    <select id="getSubjectWithPage" resultType="org.stream.entity.SubjectBean">
+    <select id="getSubjectWithPage" resultType="org.blumea.cms.entity.SubjectBean">
         select
         <include refid="allAttribute"/>
         from t_subject

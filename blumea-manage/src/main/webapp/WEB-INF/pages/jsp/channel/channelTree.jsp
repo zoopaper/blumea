@@ -96,13 +96,13 @@
         <%@ include file="../common/auth_sider.jsp" %>
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
-                <div class="col-md-1">
+                <div class="row">
+                <div class="col-xs-2">
                     <div class="zTreeChannel">
                         <ul id="treeChannel" class="ztree">
                         </ul>
                     </div>
                 </div>
-                <div class="row">
                     <div class="col-xs-9 col-md-offset-1">
                         <table id="grid-table"></table>
 

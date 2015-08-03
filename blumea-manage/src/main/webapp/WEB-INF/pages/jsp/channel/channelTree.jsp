@@ -21,7 +21,7 @@
     <style type="text/css">
 
         .zTreeChannel {
-            width: 300px;
+            /*width: 230px;*/
             height: 500px;
             position: absolute;
 
@@ -35,7 +35,7 @@
             margin-top: 0px;
             border: 1px solid #617775;
             background: #f9f9f9;;
-            width: 220px;
+            width: 140px;
             height: 360px;
             overflow-y: scroll;
             overflow-x: auto;
@@ -72,7 +72,7 @@
         //单击节点
         function onClick(event, treeId, treeNode, clickFlag) {
             pid = treeNode.id;
-            var name =treeNode.name;
+            var name = treeNode.name;
 
             $("#pid").val(pid);
             $("#pname").val(name);
@@ -97,13 +97,13 @@
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
                 <div class="row">
-                <div class="col-xs-2">
-                    <div class="zTreeChannel">
-                        <ul id="treeChannel" class="ztree">
-                        </ul>
+                    <div class="col-md-1">
+                        <div class="zTreeChannel">
+                            <ul id="treeChannel" class="ztree">
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                    <div class="col-xs-9 col-md-offset-1">
+                    <div class="col-md-11">
                         <table id="grid-table"></table>
 
                         <div id="grid-pager"></div>

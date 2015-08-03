@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link href="/assets/css/kkpager_blue.css" rel="stylesheet">
 <link href="/assets/css/formvalid/validationEngine.jquery.css" rel="stylesheet">
 <link href="/assets/css/formvalid/template.css" rel="stylesheet">
@@ -22,7 +23,7 @@
 <script src="/assets/js/formvalid/jquery.validationEngine.js"></script>
 <script src="/assets/js/formvalid/jquery.validationEngine-zh_CN.js"></script>
 <script src="/assets/js/typeahead-bs2.min.js"></script>
-<div class="navbar navbar-default" id="navbar">
+<div class="navbar navbar-default" id="navbar" style="height: 60px;">
     <script type="text/javascript">
         try {
             ace.settings.check('navbar', 'fixed')
@@ -30,14 +31,36 @@
         }
     </script>
 
-    <div class="navbar-container" id="navbar-container">
+    <div class="navbar-container" id="navbar-container" style="margin-top: 10px;">
         <div class="navbar-header pull-left">
             <a href="#" class="navbar-brand">
                 <small>
-                    <i class="icon-leaf"></i>
-                    CMS
+                    <i class="icon-beer"></i>
+                    Blumea CMS
                 </small>
             </a>
+
+        </div>
+
+
+        <div class="navbar-header">
+            <div style="margin-top:8px;text-align: center;width: 600px;">
+                <div class="btn-group">
+                    <a>
+                        <button class="btn btn-info">内容文档</button>
+                    </a>
+                    <a>
+                        <button class="btn btn-info">频道栏目管理</button>
+                    </a>
+                    <a>
+                        <button class="btn btn-info">系统管理</button>
+                    </a>
+                    <a>
+                        <button class="btn btn-info">其它功能</button>
+                    </a>
+                </div>
+            </div>
+
         </div>
 
         <div class="navbar-header pull-right" role="navigation">

@@ -28,7 +28,7 @@
 </script>
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
-        <%@ include file="../common/auth_sider.jsp" %>
+        <%@ include file="../common/channel_sider.jsp" %>
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
                 <h4 class="ui dividing header">修改频道</h4>

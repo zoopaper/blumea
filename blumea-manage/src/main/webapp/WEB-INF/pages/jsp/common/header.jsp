@@ -46,16 +46,16 @@
         <div class="navbar-header">
             <div style="margin-top:8px;text-align: center;width: 600px;">
                 <div class="btn-group">
-                    <a>
+                    <a href="/adm/channel/toChannelTree">
                         <button class="btn btn-info">内容文档</button>
                     </a>
-                    <a>
+                    <a href="/adm/channel/channelList">
                         <button class="btn btn-info">频道栏目管理</button>
                     </a>
-                    <a>
+                    <a href="/adm/user/userList">
                         <button class="btn btn-info">系统管理</button>
                     </a>
-                    <a>
+                    <a href="/adm/media/mediaList">
                         <button class="btn btn-info">其它功能</button>
                     </a>
                 </div>

@@ -10,7 +10,7 @@
 <%@ include file="../common/header.jsp" %>
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
-        <%@ include file="../common/auth_sider.jsp" %>
+        <%@ include file="../common/channel_sider.jsp" %>
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
                 <button onclick="addSubject();" type="button" class="btn btn-primary btn-sm">新增栏目</button>

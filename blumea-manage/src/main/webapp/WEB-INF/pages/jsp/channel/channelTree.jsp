@@ -93,7 +93,7 @@
         <input type="hidden" id="pid" name="pid"/>
         <input type="hidden" id="pname" name="pname"/>
 
-        <%@ include file="../common/auth_sider.jsp" %>
+        <%@ include file="../common/channel_sider.jsp" %>
         <div class="main-content" style="margin-top: 10px;">
             <div class="page-content">
                 <div class="row">

@@ -82,19 +82,6 @@ public final class CacheConst {
     // 缓存key
 
     /**
-     * AppBean 缓存key : 参数 appId
-     */
-    public static final String CACHE_KEY_APP_ENTITY_APPID = "app_aid_%s" + CACHE_KEY_ENTITY_GLOBAL_VERSION;
-    /**
-     * AppGrayBean 缓存key : 参数 appId
-     */
-    public static final String CACHE_KEY_APP_GRAY_ENTITY_APPID = "agray_aid_%s" + CACHE_KEY_ENTITY_GLOBAL_VERSION;
-    /**
-     * DistAppGrayBean 缓存key : 参数 appId
-     */
-    public static final String CACHE_KEY_DIST_GRAY_ENTITY_APPID_PID = "dgray_pid_%s_%s" + CACHE_KEY_ENTITY_GLOBAL_VERSION;
-
-    /**
      * RoleBean 对象缓存的主key : 参数 id
      */
     public static final String CACHE_KEY_ROLE_ENTITY_ID = "role_id_%s" + CACHE_KEY_ENTITY_GLOBAL_VERSION;

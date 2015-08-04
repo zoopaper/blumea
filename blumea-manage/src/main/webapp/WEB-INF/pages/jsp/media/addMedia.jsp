@@ -44,7 +44,19 @@
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
         <%@ include file="../common/other_sider.jsp" %>
-        <div class="main-content" style="margin-top: 10px;">
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs" style="padding-top: 8px;">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home home-icon"></i>
+                        媒体管理
+                    </li>
+                    <li>
+
+                        新增媒体
+                    </li>
+                </ul>
+            </div>
             <div class="page-content">
                 <h4 class="ui dividing header">新增媒体</h4>
 

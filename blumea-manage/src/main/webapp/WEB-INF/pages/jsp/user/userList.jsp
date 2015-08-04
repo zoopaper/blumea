@@ -11,7 +11,18 @@
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
         <%@ include file="../common/system_sider.jsp" %>
-        <div class="main-content" style="margin-top: 10px;">
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs" style="padding-top: 8px;">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home home-icon"></i>
+                        系统管理
+                    </li>
+                    <li>
+                        用户列表
+                    </li>
+                </ul>
+            </div>
             <div class="page-content">
                 <div class="ui-jqgrid-view">
                     <p  class="bg-info">

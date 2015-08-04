@@ -10,10 +10,18 @@
 <div class="main-container" id="main-container">
     <div class="main-container-inner">
         <%@ include file="../common/channel_sider.jsp" %>
-        <div class="main-content" style="margin-top: 10px;">
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs" style="padding-top: 8px;">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home home-icon"></i>
+                        栏目管理
+                    </li>
+                </ul>
+            </div>
             <div class="page-content">
                 <p>
-                <button onclick="addChannel();" type="button" class="btn btn-primary btn-sm">新 增</button>
+                    <button onclick="addChannel();" type="button" class="btn btn-primary btn-sm">新 增</button>
                 </p>
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
@@ -29,8 +37,10 @@
                             <td>${channel.name}</td>
                             <td>${channel.dir}</td>
                             <td>
-                                <a href="/adm/channel/toModifyChannel?id=${channel.id}" class="btn btn-xs btn-primary"><i class="icon-pencil bigger-130"></i></a>
-                                <a href="/adm/channel/delChannel?id=${channel.id}" class="btn btn-xs btn-danger"><i class="icon-trash bigger-120"></i></a>
+                                <a href="/adm/channel/toModifyChannel?id=${channel.id}"
+                                   class="btn btn-xs btn-primary"><i class="icon-pencil bigger-130"></i></a>
+                                <a href="/adm/channel/delChannel?id=${channel.id}" class="btn btn-xs btn-danger"><i
+                                        class="icon-trash bigger-120"></i></a>
                             </td>
                         </tr>
                     </c:forEach>

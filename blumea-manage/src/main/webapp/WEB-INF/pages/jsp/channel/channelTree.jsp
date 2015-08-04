@@ -94,7 +94,18 @@
         <input type="hidden" id="pname" name="pname"/>
 
         <%@ include file="../common/channel_sider.jsp" %>
-        <div class="main-content" style="margin-top: 10px;">
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs" style="padding-top: 8px;">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home home-icon"></i>
+                        频道管理
+                    </li>
+                    <li>
+                        栏目管理
+                    </li>
+                </ul>
+            </div>
             <div class="page-content">
                 <div class="row">
                     <div class="col-md-1">

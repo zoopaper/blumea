@@ -10,6 +10,7 @@
         <module>blumea-service</module>
         <module>blumea-config</module>
         <module>blumea-entity</module>
+        <module>blumea-base</module>
     </modules>
     <packaging>pom</packaging>
 

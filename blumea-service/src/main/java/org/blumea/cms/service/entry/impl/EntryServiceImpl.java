@@ -1,10 +1,10 @@
 package org.blumea.cms.service.entry.impl;
 
-import org.blumea.cms.base.model.ServiceResponse;
+import org.blumea.cms.core.model.ServiceResponse;
 import org.blumea.cms.dao.IChannelDao;
 import org.blumea.cms.entity.ChannelBean;
 import org.blumea.cms.entity.EntryBean;
-import org.blumea.cms.base.model.Pagination;
+import org.blumea.cms.model.Pagination;
 import org.blumea.cms.service.entry.IDataEntryService;
 import org.blumea.cms.service.entry.IEntryService;
 import org.springframework.beans.factory.annotation.Autowired;

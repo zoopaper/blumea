@@ -1,8 +1,7 @@
 package org.blumea.cms.base.service;
 
 
-
-import org.blumea.cms.base.entity.IMybatisEntity;
+import org.blumea.cms.entity.base.IMybatisEntity;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;

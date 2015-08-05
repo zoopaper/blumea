@@ -2,10 +2,10 @@ package org.blumea.cms.base.service;
 
 import net.common.data.redis.IRedis;
 import net.common.data.redis.client.BaseShardedJedisPipeline;
-import org.blumea.cms.base.config.ServiceRedis;
-import org.blumea.cms.base.mybatisdal.IMybatisDao;
-import org.blumea.cms.base.entity.IMybatisEntity;
-import org.blumea.cms.base.utils.CacheUtils;
+import org.blumea.cms.config.ServiceRedis;
+import org.blumea.cms.dao.base.IMybatisDao;
+import org.blumea.cms.entity.base.IMybatisEntity;
+import org.blumea.cms.utils.CacheUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

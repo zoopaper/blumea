@@ -1,5 +1,6 @@
 package org.blumea.cms.entity;
 
+
 import org.blumea.cms.entity.base.IMybatisEntity;
 
 import java.sql.Timestamp;

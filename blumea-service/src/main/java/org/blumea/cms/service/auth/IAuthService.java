@@ -1,7 +1,7 @@
 package org.blumea.cms.service.auth;
 
-import org.blumea.cms.base.auth.AuthToken;
-import org.blumea.cms.base.auth.Principal;
+import org.blumea.cms.auth.AuthToken;
+import org.blumea.cms.auth.Principal;
 
 /**
  * <p/>

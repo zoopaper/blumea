@@ -1,8 +1,8 @@
 package org.blumea.cms.service.function;
 
-import org.blumea.cms.base.model.ServiceResponse;
+import org.blumea.cms.core.model.ServiceResponse;
 import org.blumea.cms.entity.FunctionBean;
-import org.blumea.cms.base.model.Pagination;
+import org.blumea.cms.model.Pagination;
 
 /**
  * <p/>

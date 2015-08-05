@@ -1,9 +1,9 @@
 package org.blumea.cms.service.entry.impl;
 
-import org.blumea.cms.base.mybatisdal.IMybatisDao;
 import org.blumea.cms.base.service.MybatisEntityDataService;
-import org.blumea.cms.base.constants.cache.CacheConst;
+import org.blumea.cms.constants.cache.CacheConst;
 import org.blumea.cms.dao.IEntryDao;
+import org.blumea.cms.dao.base.IMybatisDao;
 import org.blumea.cms.entity.EntryBean;
 import org.blumea.cms.service.entry.IDataEntryService;
 import org.springframework.beans.factory.annotation.Autowired;

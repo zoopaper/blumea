@@ -1,7 +1,7 @@
 package org.blumea.cms.entity;
 
 
-import org.blumea.cms.base.entity.IMybatisEntity;
+import org.blumea.cms.entity.base.IMybatisEntity;
 
 /**
  * <p/>

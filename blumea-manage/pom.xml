@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>org.blumea.cms</groupId>
-            <artifactId>blumea-entity</artifactId>
+            <artifactId>blumea-service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link href="/assets/css/kkpager_blue.css" rel="stylesheet">
 <link href="/assets/css/formvalid/validationEngine.jquery.css" rel="stylesheet">
 <link href="/assets/css/formvalid/template.css" rel="stylesheet">
@@ -62,13 +66,14 @@
             </div>
 
         </div>
+        <c:set var="userType" scope="page" value="${fn:split(cookie['USERNAME'].value, '^')}"></c:set>
 
         <div class="navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
                 <li class="light-blue">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <i class="icon-user-md"></i>
-
+                        ${userType[0]}
                         <i class="icon-caret-down"></i>
                     </a>
 
@@ -76,23 +81,15 @@
                         <li>
                             <a href="#">
                                 <i class="icon-cog"></i>
-                                Settings
+                                设置
                             </a>
                         </li>
-
-                        <li>
-                            <a href="#">
-                                <i class="icon-user"></i>
-                                Profile
-                            </a>
-                        </li>
-
                         <li class="divider"></li>
 
                         <li>
                             <a href="/adm/logout">
                                 <i class="icon-off"></i>
-                                Logout
+                                注销
                             </a>
                         </li>
                     </ul>

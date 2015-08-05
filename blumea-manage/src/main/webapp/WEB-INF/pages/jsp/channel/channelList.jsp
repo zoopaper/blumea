@@ -15,7 +15,7 @@
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home home-icon"></i>
-                        栏目管理
+                        频道管理
                     </li>
                 </ul>
             </div>

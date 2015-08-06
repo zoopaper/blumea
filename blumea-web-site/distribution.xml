@@ -1,0 +1,30 @@
+<assembly>
+    <id>dist</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <includes>
+                <include>README*</include>
+                <include>LICENSE*</include>
+                <include>NOTICE*</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>js</directory>
+            <outputDirectory>js</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>assets</directory>
+            <outputDirectory>assents</outputDirectory>
+        </fileSet>
+    </fileSets>
+    <!--<dependencySets>-->
+        <!--<dependencySet>-->
+            <!--<outputDirectory>lib</outputDirectory>-->
+            <!--<scope>runtime</scope>-->
+        <!--</dependencySet>-->
+    <!--</dependencySets>-->
+</assembly>

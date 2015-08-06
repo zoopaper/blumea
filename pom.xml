@@ -11,6 +11,7 @@
         <module>blumea-config</module>
         <module>blumea-entity</module>
         <module>blumea-base</module>
+        <module>blumea-web-site</module>
     </modules>
     <packaging>pom</packaging>
 

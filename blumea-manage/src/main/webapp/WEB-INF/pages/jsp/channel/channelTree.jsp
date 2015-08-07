@@ -19,29 +19,24 @@
     <%@ include file="../common/header.jsp" %>
 
     <style type="text/css">
-
         .zTreeChannel {
-            /*width: 230px;*/
             height: 500px;
             position: absolute;
 
         }
-
         #treeChannel {
             min-height: 519px;
         }
-
         ul.ztree {
             margin-top: 0px;
             border: 1px solid #617775;
             background: #f9f9f9;;
-            width: 140px;
+            width: 170px;
             height: 360px;
             overflow-y: scroll;
             overflow-x: auto;
         }
     </style>
-
     <script type="text/javascript">
         <!--
         var pid;
@@ -92,7 +87,6 @@
     <div class="main-container-inner">
         <input type="hidden" id="pid" name="pid"/>
         <input type="hidden" id="pname" name="pname"/>
-
         <%@ include file="../common/channel_sider.jsp" %>
         <div class="main-content">
             <div class="breadcrumbs" id="breadcrumbs" style="padding-top: 8px;">
@@ -108,13 +102,13 @@
             </div>
             <div class="page-content">
                 <div class="row">
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <div class="zTreeChannel">
                             <ul id="treeChannel" class="ztree">
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-11">
+                    <div class="col-md-10">
                         <table id="grid-table"></table>
 
                         <div id="grid-pager"></div>

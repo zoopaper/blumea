@@ -12,6 +12,7 @@
         <module>blumea-base</module>
         <module>blumea-web-site</module>
         <module>blumea-manage</module>
+        <module>blumea-web</module>
     </modules>
     <packaging>pom</packaging>
 

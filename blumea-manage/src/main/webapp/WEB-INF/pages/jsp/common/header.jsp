@@ -50,7 +50,7 @@
         <div class="navbar-header">
             <div style="margin-top:8px;text-align: center;width: 600px;">
                 <div class="btn-group">
-                    <a href="/adm/channel/toChannelTree">
+                    <a href="/adm/entry/toDoc">
                         <button class="btn btn-info">内容文档</button>
                     </a>
                     <a href="/adm/channel/channelList">

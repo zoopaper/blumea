@@ -1,7 +1,17 @@
 package org.blumea.cms.web.controller;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import org.blumea.cms.auth.Principal;
+import org.blumea.cms.core.model.ServiceResponse;
+import org.blumea.cms.entity.ChannelBean;
+import org.blumea.cms.entity.EntryBean;
 import org.blumea.cms.entity.MediaBean;
+import org.blumea.cms.entity.SubjectBean;
+import org.blumea.cms.model.Pagination;
+import org.blumea.cms.service.channel.IChannelService;
 import org.blumea.cms.service.entry.IEntryService;
+import org.blumea.cms.service.media.IDataMediaService;
 import org.blumea.cms.service.subject.ISubjectService;
 import org.blumea.cms.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -13,13 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.blumea.cms.auth.Principal;
-import org.blumea.cms.core.model.ServiceResponse;
-import org.blumea.cms.entity.ChannelBean;
-import org.blumea.cms.entity.EntryBean;
-import org.blumea.cms.model.Pagination;
-import org.blumea.cms.service.channel.IChannelService;
-import org.blumea.cms.service.media.IDataMediaService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -87,8 +90,6 @@ public class EntryController extends BaseController {
             String tag = ServletRequestUtils.getStringParameter(request, "tag", "");
             String summary = ServletRequestUtils.getStringParameter(request, "summary", "");
             int channelId = ServletRequestUtils.getIntParameter(request, "channelId", 0);
-
-
             EntryBean entryBean = new EntryBean();
             {
                 entryBean.setTitle(title);
@@ -192,7 +193,7 @@ public class EntryController extends BaseController {
     @RequestMapping(value = "/entryList", method = RequestMethod.GET)
     public ModelAndView subjectList(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/entry/entryList");
+        modelAndView.setViewName("/entry/docTree");
         try {
             Principal principal = this.getLoginPrincipal(request);
             if (principal == null) {
@@ -201,6 +202,8 @@ public class EntryController extends BaseController {
             }
             int page = ServletRequestUtils.getIntParameter(request, "page", 1);
             String title = ServletRequestUtils.getStringParameter(request, "title", "");
+            int channelId = ServletRequestUtils.getIntParameter(request, "channelId");
+            int subjectId = ServletRequestUtils.getIntParameter(request, "subjectId");
 
             ServiceResponse<Pagination<EntryBean>> serviceResponse = entryService.getEntryWithPage(title, page, 15);
             if (serviceResponse.isSuccess()) {
@@ -235,4 +238,96 @@ public class EntryController extends BaseController {
         }
         return modelAndView;
     }
+
+    @RequestMapping(value = "/toDoc", method = RequestMethod.GET)
+    public ModelAndView toChannelTree(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/entry/docTree");
+        try {
+            Principal principal = this.getLoginPrincipal(request);
+            if (principal == null) {
+                ResponseUtil.handleLongin(modelAndView);
+                return modelAndView;
+            }
+
+        } catch (Exception e) {
+            log.info("Controller toDoc exception", e);
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/docTree", method = RequestMethod.POST)
+    public ModelAndView channelTree(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/common/resultdata");
+        try {
+            Principal principal = this.getLoginPrincipal(request);
+            if (principal == null) {
+                ResponseUtil.handleLongin(modelAndView);
+                return modelAndView;
+            }
+
+            int id = ServletRequestUtils.getIntParameter(request, "id", 0);
+
+            JsonArray jsonArray;
+            if (id == 0) {
+                List<ChannelBean> channelList = channelService.getAllChannel();
+                jsonArray = getChannelJsonArray(channelList);
+            } else {
+                jsonArray = getSubjectJsonArray(id);
+            }
+
+            modelAndView.addObject("resultData", jsonArray);
+        } catch (Exception e) {
+            log.info("Controller docTree exception", e);
+        }
+
+        return modelAndView;
+    }
+
+    public JsonArray getChannelJsonArray(List<ChannelBean> channelBeans) {
+        JsonArray jsonArray = new JsonArray();
+        for (ChannelBean channelBean : channelBeans) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("id", channelBean.getId());
+            jsonObject.addProperty("name", channelBean.getName());
+            jsonObject.addProperty("pid", 0);
+            jsonObject.addProperty("isChannel", 0);
+            List<SubjectBean> subjectBeanList = subjectService.getSubjectByPid((int) channelBean.getId());
+
+            if (subjectBeanList != null && subjectBeanList.size() > 0) {
+                jsonObject.addProperty("isParent", true);
+            } else {
+                jsonObject.addProperty("isParent", false);
+            }
+            jsonArray.add(jsonObject);
+        }
+        return jsonArray;
+    }
+
+    public JsonArray getSubjectJsonArray(int pid) {
+        JsonArray jsonArray = new JsonArray();
+        List<SubjectBean> subjectBeanList = subjectService.getSubjectByPid(pid);
+
+        for (SubjectBean subjectBean : subjectBeanList) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("id", subjectBean.getId());
+            jsonObject.addProperty("name", subjectBean.getName());
+            jsonObject.addProperty("pid", pid);
+            jsonObject.addProperty("isChannel", 1);
+
+            List<SubjectBean> subjectBeanList1 = subjectService.getSubjectByPid((int) subjectBean.getId());
+            if (subjectBeanList1 != null && subjectBeanList1.size() > 0) {
+
+                jsonObject.addProperty("isParent", true);
+            } else {
+                jsonObject.addProperty("isParent", false);
+            }
+            jsonArray.add(jsonObject);
+        }
+
+        return jsonArray;
+    }
+
 }

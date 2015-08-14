@@ -1,3 +1,4 @@
+<%@ taglib prefix="t" uri="http://www.eleword.net/blumea" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -9,7 +10,8 @@
     <link href="/assets/css/datepicker.css" rel="stylesheet">
     <link href="/assets/css/ui.jqgrid.css" rel="stylesheet">
 
-
+    <t:css src="http://www.adsran.com/css/jqueryUI_Overcast/jquery-ui-1.8.20.custom.css"/>
+    <t:js src="http://www.adsran.com/js/jquery-ui-1.8.20.custom.min.js"/>
     <script src="/assets/js/jquery-ui-1.10.3.full.min.js"></script>
     <script src="/assets/js/date-time/bootstrap-datepicker.min.js"></script>
     <script src="/assets/js/jqGrid/jquery.jqGrid.min.js"></script>

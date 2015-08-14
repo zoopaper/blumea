@@ -1,7 +1,9 @@
 package org.blumea.cms.web.taglib.tag;
 
-import org.blumea.cms.web.taglib.ResourceFileURLUtil;
+
+import org.blumea.cms.ResourceFileURLService;
 import org.blumea.cms.web.taglib.ResourceType;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
@@ -10,7 +12,6 @@ import java.io.IOException;
 
 /**
  * JavaScript资源标签
-
  */
 public class FragJsTag extends BaseResourceFragTag {
 
@@ -19,6 +20,9 @@ public class FragJsTag extends BaseResourceFragTag {
     public FragJsTag() {
         super(ResourceType.JAVA_SCRIPT);
     }
+
+    @Autowired
+    private ResourceFileURLService resourceFileURLService;
 
     @Override
     protected void renderHtmlBeginTag() throws JspException {
@@ -62,11 +66,18 @@ public class FragJsTag extends BaseResourceFragTag {
     @Override
     protected String getRealSrc(final String src) {
         // 获取真实地址 : 用于测试环境和生产环境的切换
-        String realSrc = ResourceFileURLUtil.getJsUrl(this.getSrc(), (HttpServletRequest) this.pageContext.getRequest(), this.getPlat());
+        String realSrc = resourceFileURLService.getJsUrl(this.getSrc(), (HttpServletRequest) this.pageContext.getRequest(), this.getPlat());
         if (realSrc == null) {
             realSrc = src;
         }
         return realSrc;
     }
 
+    public void setResourceFileURLService(ResourceFileURLService resourceFileURLService) {
+        resourceFileURLService = resourceFileURLService;
+    }
+
+    public ResourceFileURLService getResourceFileURLService() {
+        return resourceFileURLService;
+    }
 }

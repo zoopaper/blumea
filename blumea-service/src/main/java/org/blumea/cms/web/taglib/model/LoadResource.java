@@ -1,14 +1,10 @@
 package org.blumea.cms.web.taglib.model;
 
 
-import org.blumea.cms.web.taglib.ResourceType;
+import net.common.utils.taglib.ResourceType;
 
 /**
  * 用于加载的资源
- * <p/>
- * User : dongyong.wang@mail-inc.com
- * Date: 12-05-09
- * Time: 下午2:15
  */
 public class LoadResource {
 

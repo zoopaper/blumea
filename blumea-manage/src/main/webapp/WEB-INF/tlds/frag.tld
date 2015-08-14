@@ -7,7 +7,7 @@
 
     <tlib-version>1.0</tlib-version>
     <short-name>t</short-name>
-    <uri>Frag</uri>
+    <uri>http://www.eleword.net/blumea</uri>
 
     <tag>
         <name>css</name>

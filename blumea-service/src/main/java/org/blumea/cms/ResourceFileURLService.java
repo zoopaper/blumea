@@ -1,5 +1,12 @@
-package org.blumea.cms.web.taglib;
+package org.blumea.cms;
 
+import com.google.common.base.Preconditions;
+import org.blumea.cms.service.staticres.IStaticResCfgService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -8,27 +15,21 @@ import java.util.regex.Pattern;
 
 /**
  * 将资源文件 (暂时是JS, CSS, JPG格式的图片) 的地址从数据库中保存的开发地址转换为线上地址的工具类
- * <p/>
- * 为了方便后期扩展为zookeeper方式，不修改主要源码，仅将资源配置替换为从配置文件加载
- * <p/>
- * User : dongyong.wang@mail-inc.com
- * User : chao.zhang@mail-inc.com
- * Date: 12-01-14
- * Time: 下午5:15
  */
-public final class ResourceFileURLUtil {
+@Service
+public  class ResourceFileURLService {
     /**
      * 默认的JPG格式图片域名
      */
-    private static final String JPG_DEFAULT_DOMAIN = "sor.ospre.com";
+    private static final String JPG_DEFAULT_DOMAIN = "eleword.net";
     /**
      * 默认的JS域名
      */
-    private static final String JS_DEFAULT_DOMAIN = "sor.ospre.com";
+    private static final String JS_DEFAULT_DOMAIN = "eleword.net";
     /**
      * 默认的CSS域名
      */
-    private static final String CSS_DEFAULT_DOMAIN = "sor.ospre.com";
+    private static final String CSS_DEFAULT_DOMAIN = "eleword.net";
     /**
      * css的正则表达式模式
      */
@@ -71,21 +72,21 @@ public final class ResourceFileURLUtil {
      */
     private static Map<String, String> jsResCommMap;
 
-    private ResourceFileURLUtil() {
+    @Autowired
+    private IStaticResCfgService staticResCfgService;
+
+//    private ResourceFileURLService() {
+//    }
+
+    @PostConstruct
+    public void init() {
+        Preconditions.checkArgument(staticResCfgService != null, "staticResCfgService can not be null");
+        cssResCfgMap = staticResCfgService.getCssResCfgMap();
+        jsResCfgMap = staticResCfgService.getJsResCfgMap();
+        cssResCommMap = staticResCfgService.getCssResCommMap();
+        jsResCommMap = staticResCfgService.getJsResCommMap();
     }
 
-    /**
-     * 静态注入
-     *
-     * @param staticResCfgService 静态资源配置服务
-     */
-//    public static void injectResCfgMap(@Nonnull IStaticResCfgService staticResCfgService) {
-//        Preconditions.checkArgument(staticResCfgService != null, "staticResCfgService can not be null");
-//        cssResCfgMap = staticResCfgService.getCssResCfgMap();
-//        jsResCfgMap = staticResCfgService.getJsResCfgMap();
-//        cssResCommMap = staticResCfgService.getCssResCommMap();
-//        jsResCommMap = staticResCfgService.getJsResCommMap();
-//    }
 
     /**
      * 取得css的真实URL
@@ -124,7 +125,7 @@ public final class ResourceFileURLUtil {
      * @param plat
      * @return
      */
-    public static String getJpgUrl(String jpgUrl, String altDomainKey, String plat) {
+    public  String getJpgUrl(String jpgUrl, String altDomainKey, String plat) {
         Map<String, String> cssResMap;
         if ("commons".equals(plat)) {
             cssResMap = cssResCommMap;
@@ -152,7 +153,7 @@ public final class ResourceFileURLUtil {
      * @param request
      * @return
      */
-    public static String getJsUrl(final String jsUrl, final HttpServletRequest request, final String plat) {
+    public  String getJsUrl(final String jsUrl, final HttpServletRequest request, final String plat) {
         return getJsUrl(jsUrl, request, null, plat);
     }
 
@@ -165,7 +166,7 @@ public final class ResourceFileURLUtil {
      * @param projectPrefix
      * @return
      */
-    public static String getJsUrl(final String jsUrl, final HttpServletRequest request, String projectPrefix, final String plat) {
+    public  String getJsUrl(final String jsUrl, final HttpServletRequest request, String projectPrefix, final String plat) {
         Cookie[] cookies = request != null ? request.getCookies() : null;
         boolean srcMode = false;
         Map<String, String> jsResMap;

@@ -2,8 +2,8 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <comment>静态资源服务相关配置</comment>
-    <!--<entry key="static.conf.domain">127.0.0.1</entry>-->
-    <entry key="static.conf.domain">10.90.240.171</entry>
+    <entry key="static.conf.domain">127.0.0.1</entry>
+    <!--<entry key="static.conf.domain">10.90.240.171</entry>-->
     <entry key="static.conf.prefix">blumea</entry>
     <entry key="static.conf.src_mode">y</entry>
 </properties>

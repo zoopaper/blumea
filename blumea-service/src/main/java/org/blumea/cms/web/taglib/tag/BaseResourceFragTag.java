@@ -1,5 +1,7 @@
 package org.blumea.cms.web.taglib.tag;
 
+
+
 import org.blumea.cms.web.taglib.ResourceType;
 import org.blumea.cms.web.taglib.model.LoadPoint;
 
@@ -7,20 +9,18 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.BodyTagSupport;
 
 /**
+ * 基本的资源Tag,用于标识一些在页面在页面中引用的资源
  * <p/>
- * User : krisibm@163.com
- * Date: 2015/5/26
- * Time: 14:29
  */
 public abstract class BaseResourceFragTag extends BodyTagSupport {
+
     /**
-     * 要被加载的资源的类型,如javascript,css等
+     * 加载的资源的类型,如javascript,css等
      */
     private final ResourceType resourceType;
 
     /**
      * Tag的属性:资源的加载点
-     *
      */
     private String point;
 
@@ -110,4 +110,5 @@ public abstract class BaseResourceFragTag extends BodyTagSupport {
      * @return
      */
     protected abstract String getRealSrc(String src);
+
 }

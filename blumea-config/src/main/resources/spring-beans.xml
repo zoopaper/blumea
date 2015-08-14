@@ -6,7 +6,7 @@
 
 
     <bean id="loadConf" class="org.blumea.cms.config.AppConfigContext" lazy-init="false" scope="singleton">
-        <property name="configXml" value="redis.conf.xml"/>
+        <property name="configXml" value="redis.conf.xml,static.conf.xml"/>
     </bean>
 
     <bean id="redisServer" class="org.blumea.cms.config.RedisServerContext" lazy-init="false" scope="singleton">
@@ -16,5 +16,7 @@
     <bean id="redisServerGroup" class="org.blumea.cms.config.RedisServerGroupContext" lazy-init="false" scope="singleton">
         <property name="redisServerGroupXml" value="redis-client.xml"/>
     </bean>
+
+    <!--<bean id="resourceFileURLService" class="org.blumea.cms.ResourceFileURLService" lazy-init="false" scope="singleton"/>-->
 
 </beans>

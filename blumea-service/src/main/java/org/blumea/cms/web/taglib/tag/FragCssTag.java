@@ -1,17 +1,16 @@
 package org.blumea.cms.web.taglib.tag;
 
-import org.blumea.cms.web.taglib.ResourceFileURLUtil;
+
+import org.blumea.cms.ResourceFileURLService;
 import org.blumea.cms.web.taglib.ResourceType;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import java.io.IOException;
 
 /**
- * <p/>
- * User : krisibm@163.com
- * Date: 2015/5/26
- * Time: 14:28
+ * CSS资源标签
  */
 public class FragCssTag extends BaseResourceFragTag {
 
@@ -45,6 +44,9 @@ public class FragCssTag extends BaseResourceFragTag {
     public void setAltDomain(String altDomain) {
         this.altDomain = altDomain;
     }
+
+    @Autowired
+    private ResourceFileURLService resourceFileURLService;
 
     @Override
     protected void renderHtmlBeginTag() throws JspException {
@@ -93,7 +95,7 @@ public class FragCssTag extends BaseResourceFragTag {
     @Override
     protected String getRealSrc(final String src) {
         // 当前简单处理：直接替换掉域名
-        String realSrc = ResourceFileURLUtil.getCssUrl(this.getSrc(), this.getAltDomain(), this.getPlat());
+        String realSrc = resourceFileURLService.getCssUrl(this.getSrc(), this.getAltDomain(), this.getPlat());
         if (realSrc == null) {
             realSrc = src;
         }

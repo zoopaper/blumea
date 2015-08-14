@@ -120,7 +120,7 @@ public class UserController extends BaseController {
         }
 
         String s = loadConf.getString("redis.timeout", "");
-
+        String domain = loadConf.getString("static.conf.domain", "");
         return modelAndView;
     }
 

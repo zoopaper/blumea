@@ -2,10 +2,6 @@ package org.blumea.cms.web.taglib.model;
 
 /**
  * 资源的加载点的类型
- * <p/>
- * User : dongyong.wang@mail-inc.com
- * Date: 12-05-09
- * Time: 下午2:15
  */
 public enum LoadPoint {
 

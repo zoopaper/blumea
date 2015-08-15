@@ -20,14 +20,16 @@
             height: 500px;
             position: absolute;
         }
+
         #treeChannel {
             min-height: 519px;
         }
+
         ul.ztree {
             margin-top: 0px;
             border: 1px solid #617775;
             background: #f9f9f9;;
-            width: 170px;
+            width: 190px;
             height: 360px;
             overflow-y: scroll;
             overflow-x: auto;
@@ -72,92 +74,97 @@
 </head>
 
 <div class="main-container" id="main-container">
-    <input type="hidden" id="pid" name="pid"/>
-    <input type="hidden" id="isChannel" name="isChannel"/>
-    <div class="breadcrumbs" id="breadcrumbs" style="padding-top: 8px;">
-        <ul class="breadcrumb">
-            <li>
-                <i class="icon-home home-icon"></i>
-                频道管理
-            </li>
-            <li>
-                栏目管理
-            </li>
-        </ul>
-    </div>
-    <div class="page-content">
-        <div class="row">
-            <div class="col-md-2">
-                <div class="zTreeChannel">
-                    <ul id="treeChannel" class="ztree">
-                    </ul>
-                </div>
+    <div class="main-container-inner">
+        <div class="" id="sidebar">
+            <div class="zTreeChannel">
+                <ul id="treeChannel" class="ztree">
+                </ul>
             </div>
-            <div class="col-md-10">
+        </div>
+
+        <div class="main-content">
+            <input type="hidden" id="pid" name="pid"/>
+            <input type="hidden" id="isChannel" name="isChannel"/>
+
+            <div class="breadcrumbs" id="breadcrumbs" style="padding-top: 8px;">
+                <ul class="breadcrumb">
+                    <li>
+                        <button class="btn btn-sm">新增</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="page-content">
                 <div class="row">
-                    <div class="col-xs-12">
-                        <div class="table-responsive">
-                            <table id="sample-table-1" class="table table-striped table-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th class="center">
-                                        <label>
-                                            <input type="checkbox" class="ace"/>
-                                            <span class="lbl"></span>
-                                        </label>
-                                    </th>
-                                    <th>Domain</th>
-                                    <th>Price</th>
-                                    <th class="hidden-480">Clicks</th>
+                    <%--<div class="col-md-2">--%>
 
-                                    <th>
-                                        <i class="icon-time bigger-110 hidden-480"></i>
-                                        Update
-                                    </th>
-                                    <th class="hidden-480">Status</th>
-
-                                    <th></th>
-                                </tr>
-                                </thead>
-
-                                <tbody>
-                                <c:forEach items="${page.items}" var="entry">
+                    <%--</div>--%>
+                    <%--<div class="col-md-12">--%>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                    <thead>
                                     <tr>
-                                        <td class="center">
+                                        <th class="center">
                                             <label>
                                                 <input type="checkbox" class="ace"/>
                                                 <span class="lbl"></span>
                                             </label>
-                                        </td>
+                                        </th>
+                                        <th>Domain</th>
+                                        <th>Price</th>
+                                        <th class="hidden-480">Clicks</th>
 
-                                        <td>
-                                            <a href="#">pro.com</a>
-                                        </td>
-                                        <td>$55</td>
-                                        <td class="hidden-480">4,250</td>
-                                        <td>Jan 21</td>
+                                        <th>
+                                            <i class="icon-time bigger-110 hidden-480"></i>
+                                            Update
+                                        </th>
+                                        <th class="hidden-480">Status</th>
 
-                                        <td class="hidden-480">
-                                            <span class="label label-sm label-success">Registered</span>
-                                        </td>
-
-                                        <td>
-                                            <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-                                                <button class="btn btn-xs btn-info">
-                                                    <i class="icon-edit bigger-120"></i>
-                                                </button>
-
-                                                <button class="btn btn-xs btn-danger">
-                                                    <i class="icon-trash bigger-120"></i>
-                                                </button>
-                                            </div>
-                                        </td>
+                                        <th></th>
                                     </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                            <div id="kkpager" class="page_s" style="width: 490px;"></div>
+                                    </thead>
+
+                                    <tbody>
+                                    <c:forEach items="${page.items}" var="entry">
+                                        <tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace"/>
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+
+                                            <td>
+                                                <a href="#">pro.com</a>
+                                            </td>
+                                            <td>$55</td>
+                                            <td class="hidden-480">4,250</td>
+                                            <td>Jan 21</td>
+
+                                            <td class="hidden-480">
+                                                <span class="label label-sm label-success">Registered</span>
+                                            </td>
+
+                                            <td>
+                                                <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                                    <button class="btn btn-xs btn-info">
+                                                        <i class="icon-edit bigger-120"></i>
+                                                    </button>
+
+                                                    <button class="btn btn-xs btn-danger">
+                                                        <i class="icon-trash bigger-120"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                                <div id="kkpager" class="page_s" style="width: 490px;"></div>
+                            </div>
                         </div>
+                        <%--</div>--%>
                     </div>
                 </div>
             </div>

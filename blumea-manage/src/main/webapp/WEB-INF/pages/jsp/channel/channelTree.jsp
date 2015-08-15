@@ -19,7 +19,6 @@
     <script src="/assets/js/ztree/jquery.ztree.all-3.5.js"></script>
     <script src="/js/subject/subjectList.js"></script>
     <%@ include file="../common/header.jsp" %>
-
     <style type="text/css">
         .zTreeChannel {
             height: 500px;
@@ -125,7 +124,6 @@
         </div>
     </div>
 </div>
-
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

@@ -28,13 +28,13 @@ public class DataEntryServiceImpl extends MybatisEntityDataService<EntryBean> im
     }
 
     @Override
-    public int getEntryTotalNum(String title) {
-        return entryDao.getEntryTotalNum(title);
+    public int getEntryTotalNum(String title, int isChannel, int subjectId) {
+        return entryDao.getEntryTotalNum(title, isChannel, subjectId);
     }
 
     @Override
-    public List<EntryBean> getEntryWithPage(String title, int from, int size) {
-        return entryDao.getEntryWithPage(title, from, size);
+    public List<EntryBean> getEntryWithPage(String title, int isChannel, int pid, int from, int size) {
+        return entryDao.getEntryWithPage(title, isChannel, pid, from, size);
     }
 
     @Override

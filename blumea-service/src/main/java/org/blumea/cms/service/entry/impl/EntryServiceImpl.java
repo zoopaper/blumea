@@ -48,17 +48,14 @@ public class EntryServiceImpl implements IEntryService {
     }
 
     @Override
-    public ServiceResponse<Pagination<EntryBean>> getEntryWithPage(String title, int page, int pageSize) {
-
-
+    public ServiceResponse<Pagination<EntryBean>> getEntryWithPage(String title, int isChannel, int pid, int page, int pageSize) {
         Pagination<EntryBean> entryPagination = new Pagination<EntryBean>(page, pageSize);
-        int total = dataEntryService.getEntryTotalNum(title);
-
+        int total = dataEntryService.getEntryTotalNum(title, isChannel, pid);
         entryPagination.setTotal(total);
         if (total == 0) {
             return new ServiceResponse<Pagination<EntryBean>>(entryPagination);
         }
-        List<EntryBean> entryBeanList = dataEntryService.getEntryWithPage(title, entryPagination.getFromIndex(), entryPagination.getPageSize());
+        List<EntryBean> entryBeanList = dataEntryService.getEntryWithPage(title, isChannel, pid, entryPagination.getFromIndex(), entryPagination.getPageSize());
 
         for (EntryBean entryBean : entryBeanList) {
             ChannelBean channelBean = channelDao.get(entryBean.getChannelId());
@@ -66,7 +63,6 @@ public class EntryServiceImpl implements IEntryService {
                 entryBean.setChannelName(channelBean.getName());
             }
         }
-
         entryPagination.setItems(entryBeanList);
         return new ServiceResponse<Pagination<EntryBean>>(entryPagination);
     }

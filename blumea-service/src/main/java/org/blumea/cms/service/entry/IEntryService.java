@@ -36,7 +36,7 @@ public interface IEntryService {
     /**
      * @return
      */
-    public ServiceResponse<Pagination<EntryBean>> getEntryWithPage(String title, int page, int size);
+    public ServiceResponse<Pagination<EntryBean>> getEntryWithPage(String title, int isChannel, int pid, int page, int size);
 
 
 }

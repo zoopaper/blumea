@@ -202,13 +202,16 @@ public class EntryController extends BaseController {
             }
             int page = ServletRequestUtils.getIntParameter(request, "page", 1);
             String title = ServletRequestUtils.getStringParameter(request, "title", "");
-            int channelId = ServletRequestUtils.getIntParameter(request, "channelId");
-            int subjectId = ServletRequestUtils.getIntParameter(request, "subjectId");
+            int pid = ServletRequestUtils.getIntParameter(request, "pid", -1);
+            int isChannel = ServletRequestUtils.getIntParameter(request, "isChannel", -1);
 
-            ServiceResponse<Pagination<EntryBean>> serviceResponse = entryService.getEntryWithPage(title, page, 15);
+
+            ServiceResponse<Pagination<EntryBean>> serviceResponse = entryService.getEntryWithPage(title, isChannel, pid, page, 15);
             if (serviceResponse.isSuccess()) {
                 modelAndView.addObject("page", serviceResponse.getResponseData());
             }
+            modelAndView.addObject("pid", pid);
+            modelAndView.addObject("isChannel", isChannel);
             modelAndView.addObject("page", serviceResponse.getResponseData());
             modelAndView.addObject("title", title);
         } catch (Exception e) {
@@ -249,11 +252,9 @@ public class EntryController extends BaseController {
                 ResponseUtil.handleLongin(modelAndView);
                 return modelAndView;
             }
-
         } catch (Exception e) {
             log.info("Controller toDoc exception", e);
         }
-
         return modelAndView;
     }
 

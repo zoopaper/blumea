@@ -3,8 +3,6 @@
 <mapper namespace="org.blumea.cms.dao.IEntryDao">
     <sql id="allAttribute">
         <![CDATA[
-
-
             id,
             title,
             subhead,
@@ -23,9 +21,6 @@
             status,
             ctime,
             utime
-
-
-
         ]]>
     </sql>
     <insert id="save" parameterType="org.blumea.cms.entity.EntryBean" useGeneratedKeys="true" keyProperty="id">
@@ -62,8 +57,14 @@
     </update>
 
     <select id="getEntryTotalNum" resultType="int">
-        select count(id) from t_entry
-        where  (#{0}='' or title like "%"#{0}"%") and isDel=0;
+        select count(id) from t_entry a
+        where  (#{0}='' or a.title like "%"#{0}"%") and a.isDel=0
+        <if test="param1==0">
+            and a.subjectId=#{2}
+        </if>
+        <if test="param1!=0">
+            and a.channelId=#{2}
+        </if>
     </select>
 
     <select id="getEntryWithPage" resultType="org.blumea.cms.entity.EntryBean">
@@ -71,9 +72,15 @@
         <include refid="allAttribute"/>
         from t_entry a
         where
-        (#{0}='' or title like "%"#{0}"%") and isDel=0
-        order by ctime desc
-        limit #{1},#{2};
+        (#{0}='' or a.title like "%"#{0}"%") and a.isDel=0
+        <if test="param1==0">
+           and a.subjectId=#{2}
+        </if>
+        <if test="param1!=0">
+           and a.channelId=#{2}
+        </if>
+        order by a.ctime desc
+        limit #{3},#{4};
     </select>
 
 </mapper>

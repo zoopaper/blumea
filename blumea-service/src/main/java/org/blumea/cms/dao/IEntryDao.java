@@ -19,7 +19,7 @@ public interface IEntryDao extends IMybatisDao<EntryBean> {
      * @param title
      * @return
      */
-    public int getEntryTotalNum(String title);
+    public int getEntryTotalNum(String title, int isChannel, int subjectId);
 
     /**
      * @param title
@@ -27,5 +27,5 @@ public interface IEntryDao extends IMybatisDao<EntryBean> {
      * @param size
      * @return
      */
-    public List<EntryBean> getEntryWithPage(String title, int from, int size);
+    public List<EntryBean> getEntryWithPage(String title, int isChannel, int pid, int from, int size);
 }

@@ -21,8 +21,7 @@ public class FragJsTag extends BaseResourceFragTag {
         super(ResourceType.JAVA_SCRIPT);
     }
 
-    @Autowired
-    private ResourceFileURLService resourceFileURLService;
+
 
     @Override
     protected void renderHtmlBeginTag() throws JspException {
@@ -66,18 +65,12 @@ public class FragJsTag extends BaseResourceFragTag {
     @Override
     protected String getRealSrc(final String src) {
         // 获取真实地址 : 用于测试环境和生产环境的切换
-        String realSrc = resourceFileURLService.getJsUrl(this.getSrc(), (HttpServletRequest) this.pageContext.getRequest(), this.getPlat());
+        String realSrc = ResourceFileURLService.getJsUrl(this.getSrc(), (HttpServletRequest) this.pageContext.getRequest(), this.getPlat());
         if (realSrc == null) {
             realSrc = src;
         }
         return realSrc;
     }
 
-    public void setResourceFileURLService(ResourceFileURLService resourceFileURLService) {
-        resourceFileURLService = resourceFileURLService;
-    }
 
-    public ResourceFileURLService getResourceFileURLService() {
-        return resourceFileURLService;
-    }
 }

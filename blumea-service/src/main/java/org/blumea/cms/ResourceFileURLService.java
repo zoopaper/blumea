@@ -2,6 +2,7 @@ package org.blumea.cms;
 
 import com.google.common.base.Preconditions;
 import org.blumea.cms.service.staticres.IStaticResCfgService;
+import org.blumea.cms.service.staticres.impl.StaticResCfgServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.regex.Pattern;
 /**
  * 将资源文件 (暂时是JS, CSS, JPG格式的图片) 的地址从数据库中保存的开发地址转换为线上地址的工具类
  */
-@Service
+
 public  class ResourceFileURLService {
     /**
      * 默认的JPG格式图片域名
@@ -72,14 +73,14 @@ public  class ResourceFileURLService {
      */
     private static Map<String, String> jsResCommMap;
 
-    @Autowired
-    private IStaticResCfgService staticResCfgService;
+//    @Autowired
+//    private IStaticResCfgService staticResCfgService;
 
 //    private ResourceFileURLService() {
 //    }
 
-    @PostConstruct
-    public void init() {
+
+    public ResourceFileURLService (StaticResCfgServiceImpl staticResCfgService) {
         Preconditions.checkArgument(staticResCfgService != null, "staticResCfgService can not be null");
         cssResCfgMap = staticResCfgService.getCssResCfgMap();
         jsResCfgMap = staticResCfgService.getJsResCfgMap();
@@ -125,7 +126,7 @@ public  class ResourceFileURLService {
      * @param plat
      * @return
      */
-    public  String getJpgUrl(String jpgUrl, String altDomainKey, String plat) {
+    public static  String getJpgUrl(String jpgUrl, String altDomainKey, String plat) {
         Map<String, String> cssResMap;
         if ("commons".equals(plat)) {
             cssResMap = cssResCommMap;
@@ -153,7 +154,7 @@ public  class ResourceFileURLService {
      * @param request
      * @return
      */
-    public  String getJsUrl(final String jsUrl, final HttpServletRequest request, final String plat) {
+    public static String getJsUrl(final String jsUrl, final HttpServletRequest request, final String plat) {
         return getJsUrl(jsUrl, request, null, plat);
     }
 
@@ -166,7 +167,7 @@ public  class ResourceFileURLService {
      * @param projectPrefix
      * @return
      */
-    public  String getJsUrl(final String jsUrl, final HttpServletRequest request, String projectPrefix, final String plat) {
+    public static   String getJsUrl(final String jsUrl, final HttpServletRequest request, String projectPrefix, final String plat) {
         Cookie[] cookies = request != null ? request.getCookies() : null;
         boolean srcMode = false;
         Map<String, String> jsResMap;

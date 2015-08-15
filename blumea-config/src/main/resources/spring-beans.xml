@@ -13,10 +13,17 @@
         <property name="redisServerXml" value="redis-servers.xml"/>
     </bean>
 
-    <bean id="redisServerGroup" class="org.blumea.cms.config.RedisServerGroupContext" lazy-init="false" scope="singleton">
+    <bean id="redisServerGroup" class="org.blumea.cms.config.RedisServerGroupContext" lazy-init="false"
+          scope="singleton">
         <property name="redisServerGroupXml" value="redis-client.xml"/>
     </bean>
 
-    <!--<bean id="resourceFileURLService" class="org.blumea.cms.ResourceFileURLService" lazy-init="false" scope="singleton"/>-->
+    <bean id="staticResCfgService" class="org.blumea.cms.service.staticres.impl.StaticResCfgServiceImpl">
+        <property name="context" ref="loadConf"/>
+    </bean>
+
+    <bean id="resourceFileURLService" class="org.blumea.cms.ResourceFileURLService" lazy-init="false" scope="singleton">
+        <constructor-arg ref="staticResCfgService"/>
+    </bean>
 
 </beans>

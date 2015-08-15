@@ -5,11 +5,9 @@ import com.google.common.base.Function;
 import com.google.common.collect.Maps;
 import org.blumea.cms.config.AppConfigContext;
 import org.blumea.cms.constants.Constants;
-import org.blumea.cms.service.staticres.IStaticResCfgService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.Nullable;
 import java.io.UnsupportedEncodingException;
@@ -18,8 +16,8 @@ import java.util.Map;
 /**
  * 静态资源配置服务
  */
-@Service
-public class StaticResCfgServiceImpl implements IStaticResCfgService {
+
+public class StaticResCfgServiceImpl {
     private static final Logger LOGGER = LoggerFactory.getLogger(StaticResCfgServiceImpl.class);
 
     /**
@@ -96,32 +94,41 @@ public class StaticResCfgServiceImpl implements IStaticResCfgService {
 //        commonsMap.put("src_mode", context.getString("static.conf.src_mode", null));
 //    }
 
-    @Override
     public Map<String, String> getJsResCfgMap() {
+        zkMap.put("prefix", context.getString("static.conf.prefix", null));
+        zkMap.put("domain", context.getString("static.conf.domain", null));
+        zkMap.put("src_mode", context.getString("static.conf.src_mode", null));
         return zkMap;
     }
 
-    @Override
     public Map<String, String> getCssResCfgMap() {
+        zkMap.put("prefix", context.getString("static.conf.prefix", null));
+        zkMap.put("domain", context.getString("static.conf.domain", null));
+        zkMap.put("src_mode", context.getString("static.conf.src_mode", null));
         return zkMap;
     }
 
-    @Override
     public Map<String, String> getCssResCommMap() {
+        commonsMap.put("prefix", context.getString("static.conf.prefix", null));
+        commonsMap.put("domain", context.getString("static.conf.domain", null));
+        commonsMap.put("src_mode", context.getString("static.conf.src_mode", null));
         return commonsMap;
     }
 
-    @Override
     public Map<String, String> getJsResCommMap() {
+        commonsMap.put("prefix", context.getString("static.conf.prefix", null));
+        commonsMap.put("domain", context.getString("static.conf.domain", null));
+        commonsMap.put("src_mode", context.getString("static.conf.src_mode", null));
         return commonsMap;
     }
 
-    @Override
     public Map<String, String> getImgResCfgMap() {
+        zkMap.put("prefix", context.getString("static.conf.prefix", null));
+        zkMap.put("domain", context.getString("static.conf.domain", null));
+        zkMap.put("src_mode", context.getString("static.conf.src_mode", null));
         return zkMap;
     }
 
-    @Override
     public Map<String, String> getImgResCommMap() {
         return commonsMap;
     }

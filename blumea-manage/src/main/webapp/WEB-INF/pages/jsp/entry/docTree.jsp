@@ -2,15 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-    <title>频道列表</title>
+    <title>文档管理</title>
     <%@ include file="../common/common.jsp" %>
     <link href="/assets/css/ztree/zTreeStyle.css" rel="stylesheet">
     <link href="/assets/css/jquery-ui-1.10.3.full.min.css" rel="stylesheet">
     <link href="/assets/css/ui.jqgrid.css" rel="stylesheet">
     <script src="/assets/js/kkpager.min.js"></script>
 
-    <%--<script src="/assets/js/jquery-ui-1.10.3.full.min.js"></script>--%>
-    <%--<script src="/assets/js/jqGrid/jquery.jqGrid.min.js"></script>--%>
     <script src="/assets/js/ztree/jquery.ztree.all-3.5.js"></script>
     <script src="/js/subject/docTree.js"></script>
     <%@ include file="../common/header.jsp" %>
@@ -95,76 +93,70 @@
             </div>
             <div class="page-content">
                 <div class="row">
-                    <%--<div class="col-md-2">--%>
+                    <div class="col-xs-12">
+                        <div class="table-responsive">
+                            <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th class="center">
+                                        <label>
+                                            <input type="checkbox" class="ace"/>
+                                            <span class="lbl"></span>
+                                        </label>
+                                    </th>
+                                    <th>标题</th>
+                                    <th>作者</th>
+                                    <th>
+                                        <i class="icon-time bigger-110 hidden-480"></i>创建时间
+                                    </th>
 
-                    <%--</div>--%>
-                    <%--<div class="col-md-12">--%>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="table-responsive">
-                                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
-                                    <thead>
+                                    <th>
+                                        <i class="icon-time bigger-110 hidden-480"></i>
+                                        更新时间
+                                    </th>
+                                    <th class="hidden-480">Status</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <c:forEach items="${page.items}" var="entry">
                                     <tr>
-                                        <th class="center">
+                                        <td class="center">
                                             <label>
                                                 <input type="checkbox" class="ace"/>
                                                 <span class="lbl"></span>
                                             </label>
-                                        </th>
-                                        <th>Domain</th>
-                                        <th>Price</th>
-                                        <th class="hidden-480">Clicks</th>
+                                        </td>
 
-                                        <th>
-                                            <i class="icon-time bigger-110 hidden-480"></i>
-                                            Update
-                                        </th>
-                                        <th class="hidden-480">Status</th>
+                                        <td>
+                                                ${entry.title}
+                                        </td>
+                                        <td>${entry.author}</td>
+                                        <td>${entry.ctime}</td>
+                                        <td>Jan 21</td>
 
-                                        <th></th>
+                                        <td class="hidden-480">
+                                            <span class="label label-sm label-success">Registered</span>
+                                        </td>
+
+                                        <td>
+                                            <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                                <button class="btn btn-xs btn-info">
+                                                    <i class="icon-edit bigger-120"></i>
+                                                </button>
+
+                                                <button class="btn btn-xs btn-danger">
+                                                    <i class="icon-trash bigger-120"></i>
+                                                </button>
+                                            </div>
+                                        </td>
                                     </tr>
-                                    </thead>
-
-                                    <tbody>
-                                    <c:forEach items="${page.items}" var="entry">
-                                        <tr>
-                                            <td class="center">
-                                                <label>
-                                                    <input type="checkbox" class="ace"/>
-                                                    <span class="lbl"></span>
-                                                </label>
-                                            </td>
-
-                                            <td>
-                                                <a href="#">pro.com</a>
-                                            </td>
-                                            <td>$55</td>
-                                            <td class="hidden-480">4,250</td>
-                                            <td>Jan 21</td>
-
-                                            <td class="hidden-480">
-                                                <span class="label label-sm label-success">Registered</span>
-                                            </td>
-
-                                            <td>
-                                                <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-                                                    <button class="btn btn-xs btn-info">
-                                                        <i class="icon-edit bigger-120"></i>
-                                                    </button>
-
-                                                    <button class="btn btn-xs btn-danger">
-                                                        <i class="icon-trash bigger-120"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
-                                <div id="kkpager" class="page_s" style="width: 490px;"></div>
-                            </div>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                            <div id="kkpager" class="page_s" style="width: 490px;"></div>
                         </div>
-                        <%--</div>--%>
                     </div>
                 </div>
             </div>
@@ -191,6 +183,37 @@
             }
         });
     });
+
+
+    function delEntry() {
+        var idArray = new Array();
+        $("input[name='id']:checked").each(function () {
+            idArray.push($(this).val());
+        });
+
+        if (idArray.length == 0) {
+            alert("请选择要删除的记录!");
+            return false;
+        }
+
+        if (confirm("您确定要删除选中的新闻吗!")) {
+            window.location.href = "/adm/entry/delEntry?id=" + idArray;
+        } else {
+            return false;
+        }
+    }
+
+    function addEntry() {
+        var pid = $("#pid").val();
+        var isChannel = $("#isChannel").val();
+        window.location.href = "/adm/entry/addEntry?pid=";
+    }
+
+    function entrySearch() {
+        var title = $("#title").val();
+        $("#title").val(title);
+        window.location.href = "/adm/entry/entryList?title=" + title;
+    }
 </script>
 <%@ include file="../common/footer.jsp" %>
 </body>

@@ -60,7 +60,8 @@ public class EntryController extends BaseController {
 
         List<ChannelBean> channelBeanList = channelService.getAllChannel();
         List<MediaBean> mediaBeans = dataMediaService.getAllMedia();
-
+        int pid = ServletRequestUtils.getIntParameter(request, "pid", -1);
+        int isChannel = ServletRequestUtils.getIntParameter(request, "isChannel", -1);
         modelAndView.addObject("channelList", channelBeanList);
 
         modelAndView.addObject("mediaList", mediaBeans);
@@ -90,6 +91,7 @@ public class EntryController extends BaseController {
             String tag = ServletRequestUtils.getStringParameter(request, "tag", "");
             String summary = ServletRequestUtils.getStringParameter(request, "summary", "");
             int channelId = ServletRequestUtils.getIntParameter(request, "channelId", 0);
+
             EntryBean entryBean = new EntryBean();
             {
                 entryBean.setTitle(title);

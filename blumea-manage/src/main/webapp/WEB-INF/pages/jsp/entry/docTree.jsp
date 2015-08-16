@@ -10,7 +10,7 @@
     <script src="/assets/js/kkpager.min.js"></script>
 
     <script src="/assets/js/ztree/jquery.ztree.all-3.5.js"></script>
-    <script src="/js/subject/docTree.js"></script>
+    <%--<script src="/js/subject/docTree.js"></script>--%>
     <%@ include file="../common/header.jsp" %>
 
     <style type="text/css">
@@ -63,9 +63,13 @@
         function onClick(event, treeId, treeNode, clickFlag) {
             pid = treeNode.id;
             var isChannel = treeNode.isChannel;
+            var channelId = treeNode.channelId;
+            alert(channelId);
+
             $("#pid").val(pid);
             $("#isChannel").val(isChannel);
-            window.location = "/adm/entry/entryList?pid=" + pid + "&isChannel=" + isChannel;
+            $("#channelId").val(isChannel);
+            window.location = "/adm/entry/entryList?pid=" + pid + "&isChannel=" + isChannel + "&channelId=" + channelId;
         }
         //-->
     </script>
@@ -86,7 +90,7 @@
 
             <div class="breadcrumbs" id="breadcrumbs" style="padding-top: 8px;">
                 <ul class="breadcrumb">
-                    <li>
+                    <li onclick="addEntry();">
                         <button class="btn btn-sm">新增</button>
                     </li>
                 </ul>

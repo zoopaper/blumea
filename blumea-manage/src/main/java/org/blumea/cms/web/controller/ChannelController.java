@@ -3,9 +3,13 @@ package org.blumea.cms.web.controller;
 import com.google.common.base.Strings;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.blumea.cms.auth.Principal;
 import org.blumea.cms.constants.error.ErrorKey;
+import org.blumea.cms.entity.ChannelBean;
+import org.blumea.cms.entity.SubjectBean;
 import org.blumea.cms.service.channel.IChannelService;
 import org.blumea.cms.service.subject.ISubjectService;
+import org.blumea.cms.utils.ErrorKeyUtil;
 import org.blumea.cms.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,10 +19,6 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.blumea.cms.auth.Principal;
-import org.blumea.cms.entity.ChannelBean;
-import org.blumea.cms.entity.SubjectBean;
-import org.blumea.cms.utils.ErrorKeyUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -233,6 +233,7 @@ public class ChannelController extends BaseController {
             jsonObject.addProperty("name", channelBean.getName());
             jsonObject.addProperty("pid", 0);
             jsonObject.addProperty("isChannel", 0);
+            jsonObject.addProperty("channelId", channelBean.getId());
             List<SubjectBean> subjectBeanList = subjectService.getSubjectByPid((int) channelBean.getId());
 
             if (subjectBeanList != null && subjectBeanList.size() > 0) {
@@ -255,6 +256,7 @@ public class ChannelController extends BaseController {
             jsonObject.addProperty("name", subjectBean.getName());
             jsonObject.addProperty("pid", pid);
             jsonObject.addProperty("isChannel", 1);
+            jsonObject.addProperty("channelId", -1);
 
             List<SubjectBean> subjectBeanList1 = subjectService.getSubjectByPid((int) subjectBean.getId());
             if (subjectBeanList1 != null && subjectBeanList1.size() > 0) {

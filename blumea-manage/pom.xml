@@ -41,8 +41,8 @@
         </dependency>
 
         <dependency>
-            <groupId>net.common.util</groupId>
-            <artifactId>common-util</artifactId>
+            <groupId>net.common.base</groupId>
+            <artifactId>common-base</artifactId>
             <version>0.0.1-REALEASE</version>
             <exclusions>
                 <exclusion>

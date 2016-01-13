@@ -7,8 +7,9 @@ import org.blumea.cms.entity.UserBean;
 import org.blumea.cms.service.auth.IAuthService;
 import org.blumea.cms.service.token.ITokenService;
 import org.blumea.cms.service.user.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * <p/>
@@ -19,10 +20,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserAuthServiceImpl implements IAuthService {
 
-    @Autowired
+    @Resource
     private ITokenService tokenService;
 
-    @Autowired
+    @Resource
     private IUserService userService;
 
     @Override

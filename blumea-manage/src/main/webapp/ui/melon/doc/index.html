@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Melon - Documentation</title>
+		<meta name="description" content="Documentation of {name}">
+		<meta name="viewport" content="width=device-width">
+
+		<link rel="stylesheet" href="template/css/normalize.css">
+		<link rel="stylesheet" href="template/css/main.css">
+		<link rel="stylesheet" href="template/css/layout.css">
+		<link rel="stylesheet" href="template/css/fonts.css">
+		<link rel="stylesheet" href="template/css/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="template/css/syntaxhighlighter/shCore.css">
+		<link rel="stylesheet" href="template/css/syntaxhighlighter/shCoreStamm.css">
+
+		<script src="template/js/vendor/modernizr-2.6.2.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 7]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<div id="wrapper">
+			<div id="header">
+				<div id="header-logo">
+					<strong>ME</strong>LON
+				</div>
+				<div id="header-content">
+					<div class="left">
+						Documentation
+						<span>Simon Stamm</span>
+					</div>
+					<div class="right">
+						<a href="http://support.stammtec.de" target="_blank" class="btn">Support Forum <i class="icon-angle-right"></i></a>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<div id="sidebar">
+					<ul id="nav"><li class="current"><a href="#start"><i class="icon-angle-right"></i> Start</a></li><li><a href="#introduction"><i class="icon-angle-right"></i> Introduction</a></li><li><a href="#structures"><i class="icon-angle-right"></i> Structures</a><ul class="sub-menu"><li><a href="#files_and_directories"><i class="icon-angle-right"></i> Files and Directories</a></li><li><a href="#template"><i class="icon-angle-right"></i> Template</a></li><li><a href="#css"><i class="icon-angle-right"></i> CSS</a></li><li><a href="#javascript"><i class="icon-angle-right"></i> JavaScript</a></li></ul></li><li><a href="#grid_system"><i class="icon-angle-right"></i> Grid Sytem</a><ul class="sub-menu"><li><a href="#overview"><i class="icon-angle-right"></i> Overview</a></li><li><a href="#examples"><i class="icon-angle-right"></i> Examples</a></li></ul></li><li><a href="#main_elements"><i class="icon-angle-right"></i> Main Elements</a><ul class="sub-menu"><li><a href="#widgets"><i class="icon-angle-right"></i> Widgets</a></li><li><a href="#navigation"><i class="icon-angle-right"></i> Navigation</a></li><li><a href="#tables"><i class="icon-angle-right"></i> Tables</a></li><li><a href="#forms"><i class="icon-angle-right"></i> Forms</a></li><li><a href="#buttons"><i class="icon-angle-right"></i> Buttons</a></li><li><a href="#icons"><i class="icon-angle-right"></i> Icons</a></li></ul></li><li><a href="#theme_configuration"><i class="icon-angle-right"></i> Theme Configuration</a><ul class="sub-menu"><li><a href="#fixed_header_sidebar"><i class="icon-angle-right"></i> Fixed Header / Sidebar</a></li><li><a href="#recompile_less"><i class="icon-angle-right"></i> Recompile LESS</a></li><li><a href="#change_color"><i class="icon-angle-right"></i> Change Color</a></li><li><a href="#own_css"><i class="icon-angle-right"></i> Own CSS</a></li><li><a href="#miscellaneous"><i class="icon-angle-right"></i> Miscellaneous</a></li></ul></li><li><a href="#faq"><i class="icon-angle-right"></i> FAQ</a></li><li><a href="#changelog"><i class="icon-angle-right"></i> Changelog</a></li><li><a href="#credits"><i class="icon-angle-right"></i> Credits / Special Thanks</a></li></ul>
+				</div>
+				<div id="main">
+					<div id="start">
+						<div class="box">
+							<h1>Start</h1>
+						</div>
+
+						<h1>Melon - shared on weidea.net</h1>
+						<h3 class="no-top-margin">Flat &amp; Responsive Admin Template</h3>
+
+						<hr>
+
+						<ul>
+							<li>Created: 01.09.2013</li>
+							<li>Latest Update: 15.09.2013</li>
+							<li>By: Simon 'Stammi' Stamm</li>
+							<li>Support: <a href="http://support.stammtec.de" target="_blank">http://support.stammtec.de</a></li>
+						</ul>
+
+						<p class="cover">Thank you for purchasing my theme. If you have any questions that are beyond the scope of this help file, please feel free to ask in the support forum: <a href="http://support.stammtec.de" target="_blank">http://support.stammtec.de</a>. Thanks so much!</p>
+
+						<div class="space"></div>
+					</div>
+
+					<div id="introduction"><div class="box"><h1>Introduction</h1></div>
+
+<p>Welcome to <strong>Melon</strong>, a responsive, flat and full featured admin template build exclusively for sale at ThemeForest. This template is build on Bootstrap 3 framework using modern techniques like HTML5 and CSS3 to be used for backend solutions of any size.</p>
+
+<h2>Support Requests</h2>
+
+<p>Browser support is targeted at <strong>IE8+, Google Chrome, Mozilla Firefox, Apple Safari, Opera and all Android and iOS mobile browsers</strong>. For browsers not in this list, support is not available.</p>
+
+<p>Support requests are handled over my <strong>support forums</strong> at <a href="http://support.stammtec.de">http://support.stammtec.de</a>.</p>
+
+<h2>Documentation Scope</h2>
+
+<p>This documentation is targeted to explain <strong>structures like file and directories, template, CSS and JavaScript or how you can configure</strong> the template. Since this template is build on top of the excellent Bootstrap 3 framework, you main source of documentation is here: <a href="http://getbootstrap.com/css/">http://getbootstrap.com/css/</a></p>
+
+<p>This documentation is also written in a style that assumes you already know the basics of CSS, JavaScript and HTML, so only the usage and concept of this template's elements that's going to be covered here.</p>
+
+<h2>Getting Started</h2>
+
+<p>To get started, just browse through the demonstration pages. Use <strong>Chrome Developer Tools (Chrome), Firebug (Firefox)</strong> or similar plugins to analyze the code. To get a deeper understanding of the code, open the HTML and JS files and read through the commented code.</p>
+
+<p>Use the <code>empty.html</code> and start right away building your own pages.</p>
+
+<p class="info">Throughout the documentation, <code>#ID</code> refers to an element with <code>id="ID";</code> and <code>.class</code> to an elements with <code>class="..."</code> containing .class. In addition, values in <i>[square brackets]</i> are values to be replaced by your code.</p>
+</div><div id="files_and_directories"><div class="box"><h1>Files and Directories</h1></div>
+
+<h2>Directories</h2>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>Folder Name</th>
+  <th>Description (what it contains)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>_less</td>
+  <td><a href="http://lesscss.org">LESS</a> sources for generating the CSS-files</td>
+</tr>
+<tr>
+  <td>_less/general</td>
+  <td>Complete layout- and element-styling</td>
+</tr>
+<tr>
+  <td>_less/plugins</td>
+  <td>3rd-party plugin styling</td>
+</tr>
+<tr>
+  <td>_less/responsive</td>
+  <td>Responsive styling</td>
+</tr>
+<tr>
+  <td>assets</td>
+  <td>Most of the main CSS, JavaScript and images</td>
+</tr>
+<tr>
+  <td>assets/css</td>
+  <td>Main CSS stylesheets</td>
+</tr>
+<tr>
+  <td>assets/css/font</td>
+  <td><a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a></td>
+</tr>
+<tr>
+  <td>assets/css/fontawesome</td>
+  <td>Stylesheets for Font Awesome</td>
+</tr>
+<tr>
+  <td>assets/css/plugins</td>
+  <td>Compiled LESS from <code>_less/plugins</code></td>
+</tr>
+<tr>
+  <td>assets/img</td>
+  <td>Main images and icons</td>
+</tr>
+<tr>
+  <td>assets/js</td>
+  <td>Main JavaScript files</td>
+</tr>
+<tr>
+  <td>assets/js/demo</td>
+  <td>JavaScript demo files (for demonstrating), can be safely removed</td>
+</tr>
+<tr>
+  <td>assets/js/libs</td>
+  <td>JavaScript library files, like jQuery</td>
+</tr>
+<tr>
+  <td>bootstrap</td>
+  <td>Bootstrap's CSS-, JavaScript- and Font files (stayed untouched)</td>
+</tr>
+<tr>
+  <td>plugins</td>
+  <td>JavaScript and partial images for all 3rd-party plugins</td>
+</tr>
+</tbody>
+</table></div>
+
+<h2>Important Files</h2>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>File Name</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>_less/main.less</td>
+  <td>Includes all other LESS-files (excluding plugins and login)</td>
+</tr>
+<tr>
+  <td>_less/login.less</td>
+  <td>Isolated login-css (which needs to be seperate compiled) for faster page loading</td>
+</tr>
+<tr>
+  <td>_less/responsive.less</td>
+  <td>Includes files in <code>_less/responsive/</code></td>
+</tr>
+<tr>
+  <td>assets/css/main.css</td>
+  <td>Compiled <code>_less/main.less</code></td>
+</tr>
+<tr>
+  <td>assets/css/plugins.css</td>
+  <td>Includes specific plugin stylesheets located in <code>assets/css/plugins/</code></td>
+</tr>
+<tr>
+  <td>assets/css/responsive.css</td>
+  <td>Compiled <code>_less/responsive.less</code></td>
+</tr>
+<tr>
+  <td>assets/js/app.js</td>
+  <td>JavaScript for general things like color definitions, scrolling sidebar, layout styling, tabs, checkable tables, swipe events on mobile phones, collapsable widgets and so on.</td>
+</tr>
+<tr>
+  <td>assets/js/custom.js</td>
+  <td>Here can your own JavaScript be located. In the livepreview, this file is included on every page. Includes demonstration code, so it can be safely removed.</td>
+</tr>
+<tr>
+  <td>assets/js/plugins.js</td>
+  <td>JavaScript for setting default options for plugins or initialize some plugins based on given class.</td>
+</tr>
+<tr>
+  <td>assets/js/plugins.form-components.js</td>
+  <td>Same as <code>assets/js/plugins.js</code> just for all form related plugins.</td>
+</tr>
+</tbody>
+</table></div>
+
+<p class="info">More details on how do recompile LESS, see the section <a href="#recompile_less">Recompile LESS</a>.</p>
+</div><div id="template"><div class="box"><h1>Template</h1></div>
+
+<p>All template files have a fixed structure consisting of <code>header</code>, <code>sidebar</code> and <code>content</code>.</p>
+
+<p><img src="template/img/structure_layout.png" alt="layout structure" /></p>
+
+<h2>Beginning of Page</h2>
+
+<p>Below code is used at the beginning of all HTML5 pages. You should change the <code>lang="en"</code> to your language.</p>
+
+<div class="code"><pre class="brush:html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+</pre></div>
+
+<h2>Header</h2>
+
+<p>Header contains your logo and top menu bars (left and/ or right). HTML code of header container shown below:</p>
+
+<div class="code"><pre class="brush:html">&lt;header class="header navbar navbar-fixed-top" role="banner"&gt;
+    &lt;!-- Top Navigation Bar --&gt;
+    &lt;div class="container"&gt;
+
+        &lt;!-- Only visible on smartphones, menu toggle --&gt;
+        &lt;ul class="nav navbar-nav"&gt;
+            &lt;li class="nav-toggle"&gt;&lt;a href="javascript:void();" title=""&gt;&lt;i class="icon-reorder"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;!-- Logo --&gt;
+        &lt;a class="navbar-brand" href="index.html"&gt;
+            &lt;img src="assets/img/logo.png" alt="logo" /&gt;
+            &lt;strong&gt;ME&lt;/strong&gt;LON
+        &lt;/a&gt;
+        &lt;!-- /logo --&gt;
+
+        &lt;!-- Sidebar Toggler --&gt;
+        &lt;a href="#" class="toggle-sidebar bs-tooltip" data-placement="bottom" data-original-title="Toggle navigation"&gt;
+            &lt;i class="icon-reorder"&gt;&lt;/i&gt;
+        &lt;/a&gt;
+        &lt;!-- /Sidebar Toggler --&gt;
+
+        &lt;!-- Top Left Menu --&gt;
+        &lt;ul class="nav navbar-nav navbar-left hidden-xs hidden-sm"&gt;
+            &lt;li&gt;
+                &lt;a href="#"&gt;
+                    Dashboard
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;!-- /Top Left Menu --&gt;
+
+        &lt;!-- Top Right Menu --&gt;
+        &lt;ul class="nav navbar-nav navbar-right"&gt;
+            &lt;!-- User Login Dropdown --&gt;
+            &lt;li class="dropdown user"&gt;
+                &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;
+                    &lt;i class="icon-male"&gt;&lt;/i&gt;
+                    &lt;span class="username"&gt;John Doe&lt;/span&gt;
+                    &lt;i class="icon-caret-down small"&gt;&lt;/i&gt;
+                &lt;/a&gt;
+                &lt;ul class="dropdown-menu"&gt;
+                    &lt;li&gt;&lt;a href="login.html"&gt;&lt;i class="icon-key"&gt;&lt;/i&gt; Log Out&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;!-- /user login dropdown --&gt;
+        &lt;/ul&gt;
+        &lt;!-- /Top Right Menu --&gt;
+    &lt;/div&gt;
+    &lt;!-- /top navigation bar --&gt;
+&lt;/header&gt; &lt;!-- /.header --&gt;
+</pre></div>
+
+<h2>Sidebar</h2>
+
+<p>Your sidebar can include e.g. a search, the main navigation and a notifications list.</p>
+
+<div class="code"><pre class="brush:html">&lt;div id="sidebar" class="sidebar-fixed"&gt;
+    &lt;div id="sidebar-content"&gt;
+        [Search/ Navigation/ Notifications]
+    &lt;/div&gt;
+    &lt;div id="divider" class="resizeable"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre></div>
+
+<h2>Content</h2>
+
+<p>In your <code>#content</code>-area goes all your main content like widgets.</p>
+
+<div class="code"><pre class="brush:html">&lt;div id="content"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-md-12"&gt;
+                Lorem Ipsum.
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre></div>
+
+<h2>Code Comment Samples</h2>
+
+<p>All HTMLs, CSSs and JavaScripts have easy to refer and meaningful comments. See this examples:</p>
+
+<h3>HTML</h3>
+
+<div class="code"><pre class="brush:html">&lt;!--=== Lorem Ipsum ===--&gt;
+&lt;div&gt;
+    &lt;p&gt;Lorem Ipsum.&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- /Lorem Ipsum --&gt;
+</pre></div>
+
+<h3>CSS / LESS</h3>
+
+<div class="code"><pre class="brush:css">//
+// Lorem Ipsum
+// --------------------------------------------------
+
+/* * * * * * * * * * * *
+ * Lorem Ipsum
+ * * * * * * * * * * * */
+
+.lorem-ipsum {
+    color: #000;
+}
+</pre></div>
+
+<h3>JavaScript</h3>
+
+<div class="code"><pre class="brush:js">/**
+ * Lorem Ipsum
+ */
+
+var loremIpsum = function() {
+    alert('Lorem Ipsum');
+}
+
+//===== Lorem Ipsum =====//
+$('.lorem-ipsum').click(function (e) {
+    e.preventDefault();
+});
+</pre></div>
+</div><div id="css"><div class="box"><h1>CSS</h1></div>
+
+<p>This section is just a placeholder for you to find the appropriate section, because all CSS-files are compiled from LESS-files and were never touched manually.</p>
+
+<p>If you want to know how to recompile some files, see the section <strong><a href="#recompile_less">Recompile LESS</a></strong>. If you want to learn more about the single LESS-files, look at <strong><a href="#files_and_directories">Files and Directories</a></strong>. The LESS-files in <code>_less/general/</code> and <code>_less/plugins/</code> are visceral named.</p>
+</div><div id="javascript"><div class="box"><h1>JavaScript</h1></div>
+
+<h2>app.js</h2>
+
+<p>Core script to handle the entire layout and base functions.</p>
+
+<h3>Internal Functions</h3>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>Function</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>handleResponsive()</td>
+  <td>Checks for IE-version, click-handler for sidebar-toggle-button, Breakpoints</td>
+</tr>
+<tr>
+  <td>calculateHeight()</td>
+  <td>Since CSS knows no direct <code>height: 100%</code> this function calculates the height</td>
+</tr>
+<tr>
+  <td>debounce()</td>
+  <td>Creates and returns a new debounced version of the passed function which will postpone its execution until after wait milliseconds have elapsed since the last time it was invoked.</td>
+</tr>
+<tr>
+  <td>handleLayout()</td>
+  <td>Calls <code>calculateHeight()</code></td>
+</tr>
+<tr>
+  <td>handleResizeEvents()</td>
+  <td>Calls <code>_resizeEvents()</code> every 30ms on resizing</td>
+</tr>
+<tr>
+  <td>handleSwipeEvents()</td>
+  <td>Enables feature to swipe to the left or right on mobile phones to open the sidebar</td>
+</tr>
+<tr>
+  <td>handleSidebarMenu()</td>
+  <td>Handles navigation</td>
+</tr>
+<tr>
+  <td>handleScrollbars()</td>
+  <td>Adds styled scrollbars for sidebar on desktops</td>
+</tr>
+<tr>
+  <td>handleWidgets()</td>
+  <td>Adds function to collapse or expand widgets</td>
+</tr>
+<tr>
+  <td>handleCheckableTables()</td>
+  <td>Checks all checkboxes in a table if master checkbox was toggled</td>
+</tr>
+<tr>
+  <td>handleTabs()</td>
+  <td>Fixes tab height</td>
+</tr>
+<tr>
+  <td>handleScrollers()</td>
+  <td>Initializes slimscroll for scrollable widgets</td>
+</tr>
+<tr>
+  <td>handleProjectSwitcher()</td>
+  <td>Adds functionality for project switcher at the header</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3>Global Functions (e.g. for use in other files)</h3>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>Function</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>init()</td>
+  <td>Calls all the internal functions</td>
+</tr>
+<tr>
+  <td>getLayoutColorCode(name)</td>
+  <td>Returns the HEX color code for <code>blue</code>, <code>red</code>, <code>green</code>, <code>purple</code>, <code>grey</code> and <code>yellow</code>.</td>
+</tr>
+<tr>
+  <td>blockUI(element, centerY)</td>
+  <td>Grays an element out and shows loader</td>
+</tr>
+<tr>
+  <td>unblockUI()</td>
+  <td>Antagonist for <code>blockUI()</code></td>
+</tr>
+</tbody>
+</table></div>
+
+<p>If you want to use the e.g. <code>getLayoutColorCode()</code>-function in other files, you can simply do it like that:</p>
+
+<div class="code"><pre class="brush:js">App.getLayoutColorCode('green');
+</pre></div>
+
+<h2>plugins.js</h2>
+
+<p>Core script for setting default options for plugins or initialize some plugins based on given class and default options.</p>
+
+<h3>Internal Functions</h3>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>Function</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>initBrowserDetection()</td>
+  <td>$.browser for jQuery >= 1.9</td>
+</tr>
+<tr>
+  <td>initDaterangepicker()</td>
+  <td>Daterangepicker for <code>.range</code></td>
+</tr>
+<tr>
+  <td>initSparklines()</td>
+  <td>Sparklines; <code>.statbox-sparkline</code></td>
+</tr>
+<tr>
+  <td>initTooltips()</td>
+  <td>Bootstrap tooltips; <code>.bs-tooltip</code>, <code>.bs-focus-tooltip</code></td>
+</tr>
+<tr>
+  <td>initPopovers()</td>
+  <td>Bootstrap popovers; <code>.bs-popover</code></td>
+</tr>
+<tr>
+  <td>initNoty()</td>
+  <td>Noty</td>
+</tr>
+<tr>
+  <td>initCircularCharts()</td>
+  <td>Easy Pie Chart; <code>.circular-chart</code></td>
+</tr>
+<tr>
+  <td>initDataTables()</td>
+  <td>DataTables; <code>.datatable</code>, can have: <code>.table-tabletools</code>, <code>.table-colvis</code>, <code>.table-checkable</code>, <code>.table-responsive</code></td>
+</tr>
+<tr>
+  <td>initKnob()</td>
+  <td>Circle Dial (Knob); <code>.knob</code></td>
+</tr>
+<tr>
+  <td>initTemplate()</td>
+  <td>Just a template function for simply copy &amp; paste for other functions, can be safely removed</td>
+</tr>
+<tr>
+  <td>initColorPicker</td>
+  <td>ColorPicker; <code>.bs-colorpicker</code></td>
+</tr>
+<tr>
+  <td>defaultPlotOptions</td>
+  <td>Variable contains default options for Flot</td>
+</tr>
+<tr>
+  <td>defaultPlotWidgetOptions</td>
+  <td>Extends defaults from <code>defaultPlotOptions</code> for Flot in widgets<em>-headers</em></td>
+</tr>
+<tr>
+  <td>defaultSparklineStatboxOptions</td>
+  <td>Variable contains default options for sparkline statboxes</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3>Global Functions (e.g. for use in other files)</h3>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>Function</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>init()</td>
+  <td>Calls all the internal functions</td>
+</tr>
+<tr>
+  <td>getFlotDefaults()</td>
+  <td>Returns <code>defaultPlotOptions</code></td>
+</tr>
+<tr>
+  <td>getFlotWidgetDefaults()</td>
+  <td>Returns <code>getFlotDefaults</code> with <code>defaultPlotWidgetOptions</code></td>
+</tr>
+<tr>
+  <td>getSparklineStatboxDefaults()</td>
+  <td>Returns defaultSparklineStatboxOptions</td>
+</tr>
+</tbody>
+</table></div>
+
+<h2>plugins.form-components.js</h2>
+
+<p>Core script for setting default options for mainly form plugins, so the same like <code>plugins.js</code> just for form-elements.</p>
+
+<h3>Internal Functions</h3>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>Function</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>initAutosize()</td>
+  <td>Elastic textareas; <code>textarea.auto</code></td>
+</tr>
+<tr>
+  <td>initInputlimiter()</td>
+  <td>Input limiter; <code>textarea.limited</code></td>
+</tr>
+<tr>
+  <td>initUniform()</td>
+  <td>Styled checkboxes and radios; <code>:radio.uniform</code>, <code>:checkbox.uniform</code></td>
+</tr>
+<tr>
+  <td>initTags()</td>
+  <td>Tags Input; <code>.tags</code></td>
+</tr>
+<tr>
+  <td>initSelect2()</td>
+  <td>Styled select boxes; <code>.select2</code></td>
+</tr>
+<tr>
+  <td>initFileinput()</td>
+  <td>Fileinput; <code>[data-style="fileinput"]</code></td>
+</tr>
+<tr>
+  <td>initSpinner()</td>
+  <td>jQuery Spinner; <code>.spinner</code></td>
+</tr>
+<tr>
+  <td>initDualListBox()</td>
+  <td>Dual Select Boxes</td>
+</tr>
+<tr>
+  <td>initValidation()</td>
+  <td>Validation</td>
+</tr>
+<tr>
+  <td>initWysiwyg()</td>
+  <td>WYSIWYG (rich text editor)</td>
+</tr>
+<tr>
+  <td>initMultiselect()</td>
+  <td>Multiselect</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3>Global Functions (e.g. for use in other files)</h3>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>Function</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>init()</td>
+  <td>Calls all the internal functions</td>
+</tr>
+</tbody>
+</table></div>
+
+<h2>login.js</h2>
+
+<p>Core script to handle all things related to the login.</p>
+
+<h3>Internal Functions</h3>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>Function</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>initUniform()</td>
+  <td>Same as in <code>plugins.form-components.js</code></td>
+</tr>
+<tr>
+  <td>initSignInUpSwitcher()</td>
+  <td>Handle sign in and sign up specific things</td>
+</tr>
+<tr>
+  <td>initForgotPassword()</td>
+  <td>Fancy sliding effects, you should place same logic like Ajax-Requests here</td>
+</tr>
+<tr>
+  <td>initValidationDefaults()</td>
+  <td>Extending jQuery Validation defaults</td>
+</tr>
+<tr>
+  <td>initLoginValidation()</td>
+  <td>Validation for Login (Sign In)</td>
+</tr>
+<tr>
+  <td>initForgotPasswordValidation()</td>
+  <td>Validation for the Password-Forgotten-Widget</td>
+</tr>
+<tr>
+  <td>initRegisterValidation()</td>
+  <td>Validation for Registering (Sign Up)</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3>Global Functions (e.g. for use in other files)</h3>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>Function</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>init()</td>
+  <td>Calls all the internal functions</td>
+</tr>
+</tbody>
+</table></div>
+</div><div id="overview"><div class="box"><h1>Grid System Overview</h1></div>
+
+<blockquote>
+  <p>Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes predefined classes for easy layout options, as well as powerful mixins for generating more semantic layouts.</p>
+</blockquote>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                Extra small devices
+                <small>Phones (&lt;768px)</small>
+            </th>
+            <th>
+                Small devices
+                <small>Tablets (&ge;768px)</small>
+            </th>
+            <th>
+                Medium devices
+                <small>Desktops (&ge;992px)</small>
+            </th>
+            <th>
+                Large devices
+                <small>Desktops (&ge;1200px)</small>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Grid behavior</th>
+            <td>Horizontal at all times</td>
+            <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
+        </tr>
+        <tr>
+            <th>Class prefix</th>
+            <td><code>.col-xs-</code></td>
+            <td><code>.col-sm-</code></td>
+            <td><code>.col-md-</code></td>
+            <td><code>.col-lg-</code></td>
+        </tr>
+        <tr>
+            <th># of columns</th>
+            <td colspan="4">12</td>
+        </tr>
+        <tr>
+            <th>Max column width</th>
+            <td class="text-muted">Auto</td>
+            <td>60px</td>
+            <td>78px</td>
+            <td>95px</td>
+        </tr>
+        <tr>
+            <th>Gutter width</th>
+            <td colspan="4">30px (15px on each side of a column)</td>
+        </tr>
+        <tr>
+            <th>Nestable</th>
+            <td colspan="4">Yes</td>
+        </tr>
+        <tr>
+            <th>Offsets</th>
+            <td colspan="1" class="text-muted">N/A</td>
+            <td colspan="3">Yes</td>
+        </tr>
+        <tr>
+            <th>Column ordering</th>
+            <td class="text-muted">N/A</td>
+            <td colspan="3">Yes</td>
+        </tr>
+    </tbody>
+</table></div>
+</div><div id="examples"><div class="box"><h1>Grid Examples</h1></div>
+
+<p>Since Melon is using the Bootstrap 3 Grid system, all examples explained on their documentation will work with Melon. But keep in mind that you should use <a href="#main_elements_widgets">widgets</a> in the grids.</p>
+
+<p>Have a look at this really good section starting here: <a href="http://getbootstrap.com/css/#grid-example-basic">http://getbootstrap.com/css/#grid-example-basic</a></p>
+</div><div id="widgets"><div class="box"><h1>Widgets</h1></div>
+
+<h3>Unboxed</h3>
+
+<p>Widgets in Melon are very easy to use and are flexible with a lot of options. General markup (unboxed example):</p>
+
+<div class="code"><pre class="brush:html">&lt;div class="widget"&gt;
+    &lt;div class="widget-header"&gt;
+        &lt;h4&gt;&lt;i class="icon-reorder"&gt;&lt;/i&gt; Lorem Ipsum&lt;/h4&gt;
+    &lt;/div&gt;
+    &lt;div class="widget-content"&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre></div>
+
+<h3>Boxed</h3>
+
+<p>Now you can make the widgets appear in a box by simply adding the class <code>.box</code> to <code>&lt;div class="widget"&gt;</code>, like in this example (see line 1):</p>
+
+<div class="code"><pre class="brush:html">&lt;div class="widget box"&gt;
+    &lt;div class="widget-header"&gt;
+        &lt;h4&gt;&lt;i class="icon-reorder"&gt;&lt;/i&gt; Lorem Ipsum&lt;/h4&gt;
+    &lt;/div&gt;
+    &lt;div class="widget-content"&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre></div>
+
+<p>If you want to remove the padding from boxed-widgets (useful for tables), you can add the class <code>.no-padding</code> to <code>&lt;div class="widget-content"&gt;</code>:</p>
+
+<div class="code"><pre class="brush:html">[...]
+    &lt;div class="widget-content no-padding"&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr.&lt;/p&gt;
+    &lt;/div&gt;
+[...]
+</pre></div>
+
+<h3>Toolbar</h3>
+
+<p>If you want to add a toolbar with buttons and/ or dropdowns, you can do it like that:</p>
+
+<div class="code"><pre class="brush:html">&lt;div class="widget box"&gt;
+    &lt;div class="widget-header"&gt;
+        &lt;h4&gt;&lt;i class="icon-reorder"&gt;&lt;/i&gt; Lorem Ipsum&lt;/h4&gt;
+
+        &lt;!--=== Toolbar ===--&gt;
+        &lt;div class="toolbar no-padding"&gt;
+            &lt;div class="btn-group"&gt;
+                &lt;span class="btn btn-xs widget-collapse"&gt;&lt;i class="icon-angle-down"&gt;&lt;/i&gt;&lt;/span&gt;
+                &lt;span class="btn btn-xs widget-refresh"&gt;&lt;i class="icon-refresh"&gt;&lt;/i&gt;&lt;/span&gt;
+                &lt;span class="btn btn-xs"&gt;&lt;i class="icon-plus"&gt;&lt;/i&gt; Add&lt;/span&gt;
+                &lt;span class="btn btn-xs dropdown-toggle" data-toggle="dropdown"&gt;
+                    Manage &lt;i class="icon-angle-down"&gt;&lt;/i&gt;
+                &lt;/span&gt;
+                &lt;ul class="dropdown-menu pull-right"&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-pencil"&gt;&lt;/i&gt; Edit&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-trash"&gt;&lt;/i&gt; Delete&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-ban-circle"&gt;&lt;/i&gt; Ban&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- /Toolbar --&gt;
+    &lt;/div&gt;
+    &lt;div class="widget-content"&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre></div>
+
+<p>Toolbars works in unboxed and boxed widgets.</p>
+</div><div id="navigation"><div class="box"><h1>Navigation</h1></div>
+
+<p>Navigation works only in the sidebar and has the following markup:</p>
+
+<div class="code"><pre class="brush:html">&lt;ul id="nav"&gt;
+    &lt;li&gt;
+        &lt;a href="#"&gt;
+            &lt;i class="icon-angle-right"&gt;&lt;/i&gt;
+            Entry 1
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="current open"&gt;
+        &lt;a href="#"&gt;
+            &lt;i class="icon-angle-right"&gt;&lt;/i&gt;
+            Entry 2
+            &lt;span class="label label-info pull-right"&gt;6&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;ul class="sub-menu"&gt;
+            &lt;li&gt;
+                &lt;a href="#"&gt;
+                &lt;i class="icon-angle-right"&gt;&lt;/i&gt;
+                Entry 2.1
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</pre></div>
+
+<p>The entry with the right blue (default) border has the class <code>.current</code>. If a main entry has a submenu and the submenu should be visible on page-load, just add <code>.open-default</code> to the corresponding <code>&lt;li&gt;</code>.</p>
+</div><div id="tables"><div class="box"><h1>Tables</h1></div>
+
+<h2>Static Tables</h2>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>Class</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>.table</code></td>
+  <td>Default table styling</td>
+</tr>
+<tr>
+  <td><code>.table-striped</code></td>
+  <td>Different background for even rows</td>
+</tr>
+<tr>
+  <td><code>.table-bordered</code></td>
+  <td>Default bordered table</td>
+</tr>
+<tr>
+  <td><code>.table-hover</code></td>
+  <td>Change background color for rows on hover</td>
+</tr>
+<tr>
+  <td><code>.table-condensed</code></td>
+  <td>Smaller padding</td>
+</tr>
+<tr>
+  <td><code>.table-checkable</code></td>
+  <td>Each row is checkable if a checkbox is provided</td>
+</tr>
+<tr>
+  <td><code>.table-no-inner-border</code></td>
+  <td>Remove inner borders if borders were applied</td>
+</tr>
+<tr>
+  <td><code>.table-highlight-head</code></td>
+  <td>Darker background for table-head</td>
+</tr>
+<tr>
+  <td><code>.table-checkable</code></td>
+  <td>Table with checkboxes</td>
+</tr>
+<tr>
+  <td><code>div.table-footer</code></td>
+  <td>Footer for static tables. Goes after table</td>
+</tr>
+<tr>
+  <td><code>div.widget-content.no-padding</code></td>
+  <td>Removes padding from widget</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>For examples have a look at the <a href="http://getbootstrap.com/css/#tables">Bootstrap 3 documentation section Tables</a>.</p>
+
+<h2>Dynamic/ Managed Tables</h2>
+
+<p>Melon supports the super cool <a href="http://datatables.net/">DataTables</a> plugin for dynamic/ managed tables. To turn the static table into a dynamic table, you can simply add the class <code>.datatable</code> to the <code>&lt;table&gt;</code>-element. Now you have the default options. If you want to have more functions, you can add these classes:</p>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>Class</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>.table-tabletools</code></td>
+  <td>TableTools adds a toolbar to a table to provide options for saving files (CSV, XLS, PDF), copying to system Clipboard, or printing the table. Row selection options are also available.</td>
+</tr>
+<tr>
+  <td><code>.table-colvis</code></td>
+  <td>ColVis presents the end user with a list of columns in the table and options to enable or disable their current visibility.</td>
+</tr>
+<tr>
+  <td><code>.table-checkable</code></td>
+  <td>Sorting will be disabled at the first column</td>
+</tr>
+<tr>
+  <td><code>.table-responsive</code></td>
+  <td>Add responsive functionality to DataTables</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>Additionally, you can set some options directly in your HTML:</p>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>Attribute</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>data-display-length="10"</code></td>
+  <td>Default number of entries displayed at the DataTable</td>
+</tr>
+<tr>
+  <td><code>data-horizontal-width="150%"</code></td>
+  <td>Wider DataTable with horizontal scrolling</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>You can use these attributes like:</p>
+
+<div class="code"><pre class="brush:html">&lt;table class="table datatable" data-horizontal-width="150%"&gt;
+</pre></div>
+
+<h3>Other DataTable-Configurations like Ajax-Source</h3>
+
+<p>Since v1.1.0 you can simply add any paramteres that DataTables knows in <code>data-dataTable='{}'</code>, for example for <code>sAjaxSource</code>:</p>
+
+<div class="code"><pre class="brush:html">&lt;table class="table datatable" data-dataTable='{"bProcessing": true, "bServerSide": true, "sAjaxSource": "../examples_support/server_processing.php"}'&gt;
+</pre></div>
+
+<h2>Responsive Tables</h2>
+
+<ol>
+<li>Add class <code>.table-responsive</code> to the <code>&lt;table&gt;</code></li>
+<li>Add the <code>data-class="expand"</code> attribute to the th element for the respective column that will you want to display the expand icon in. This th elment cannot be a column that will be hidden.</li>
+<li>Add <code>data-hide="phone,tablet"</code> to the th element for the respective column that will you want to hide when the window is resized.</li>
+</ol>
+
+<div class="code"><pre class="brush:html">&lt;table class="table table-responsive datatable"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th data-class="expand"&gt;First Name&lt;/th&gt;
+            &lt;th&gt;Last Name&lt;/th&gt;
+            &lt;th data-hide="phone"&gt;Username&lt;/th&gt;
+            &lt;th data-hide="phone,tablet"&gt;Status&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Joey&lt;/td&gt;
+            &lt;td&gt;Greyson&lt;/td&gt;
+            &lt;td&gt;joey123&lt;/td&gt;
+            &lt;td&gt;Approved&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre></div>
+</div><div id="forms"><div class="box"><h1>Forms</h1></div>
+
+<p>Basically you can decide between horizontal and vertical forms.</p>
+
+<h2>Horizontal Forms</h2>
+
+<p>General markup:</p>
+
+<div class="code"><pre class="brush:html">&lt;form class="form-horizontal" action="#"&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label class="col-md-2 control-label"&gt;Lorem Ipsum:&lt;/label&gt;
+        &lt;div class="col-md-10"&gt;
+            &lt;input type="text" name="regular" class="form-control"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</pre></div>
+
+<p>In this example the input-field will have a 100%-width. If you want to manually set the width, you can choose between these classes which must be applied to the corresponding <code>input</code>:</p>
+
+<ul>
+<li><code>.input-width-mini</code></li>
+<li><code>.input-width-small</code></li>
+<li><code>.input-width-medium</code></li>
+<li><code>.input-width-large</code></li>
+<li><code>.input-width-xlarge</code></li>
+<li><code>.input-width-xxlarge</code></li>
+<li><code>.input-block-level</code></li>
+</ul>
+
+<h2>Vertical Forms</h2>
+
+<p>General markup:</p>
+
+<div class="code"><pre class="brush:html">&lt;form class="form-vertical" action="#"&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label class="control-label"&gt;Lorem Ipsum:&lt;/label&gt;
+        &lt;input type="text" name="regular" class="form-control"&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</pre></div>
+
+<h2>Additional Notes</h2>
+
+<p>If you want to have borders between the <code>.form-groups</code>, add the class <code>.row-border</code> to <code>&lt;form&gt;</code>.</p>
+
+<p>For further information and examples, have a look at the <a href="http://getbootstrap.com/css/#forms">Bootstrap 3 documentation section "Forms"</a>.</p>
+</div><div id="buttons"><div class="box"><h1>Buttons</h1></div>
+
+<h2>General</h2>
+
+<p>Please have a look at the <a href="http://getbootstrap.com/css/#buttons">Bootstrap 3 documentation section "Buttons"</a>.</p>
+
+<h2>Big Buttons</h2>
+
+<p>General markup:</p>
+
+<div class="code"><pre class="brush:html">&lt;div class="row"&gt;
+    &lt;div class="col-md-3"&gt;
+        &lt;a href="javascript:void(0);" class="btn btn-icon input-block-level"&gt;
+            &lt;i class="icon-reorder"&gt;&lt;/i&gt;
+            &lt;div&gt;Lorem Ipsum&lt;/div&gt;
+            &lt;span class="label label-danger"&gt;2&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre></div>
+</div><div id="icons"><div class="box"><h1>Icons</h1></div>
+
+<p>Melon uses two main icon fonts:</p>
+
+<ul>
+<li><a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a></li>
+<li><a href="http://glyphicons.com/">Glyphicons</a></li>
+</ul>
+
+<h2>Font Awesome</h2>
+
+<p>Head over to the <a href="http://fortawesome.github.io/Font-Awesome/icons/">official icon list</a> for a complete list of available icons.</p>
+
+<h3>Example</h3>
+
+<div class="code"><pre class="brush:html">&lt;i class="icon-reorder"&gt;&lt;/i&gt;
+</pre></div>
+
+<h2>Glyphicons</h2>
+
+<p>Glyphicons are the icons that comes with Bootstrap 3, so for a list of available icons have a look at their <a href="http://getbootstrap.com/components/#glyphicons">documentation section "Glyphicons"</a>.</p>
+
+<h3>Example</h3>
+
+<div class="code"><pre class="brush:html">&lt;i class="glyphicon glyphicon-align-justify"&gt;&lt;/i&gt;
+</pre></div>
+</div><div id="fixed_header_sidebar"><div class="box"><h1>Fixed Header / Sidebar</h1></div>
+
+<p>Per default the header and the sidebar are fixed, this will provide the best user experience for the user. Nonetheless, you can change this behaviour.</p>
+
+<h2>Disable Fixed Header</h2>
+
+<p>Remove the class <code>.navbar-fixed-top</code> from <code>&lt;header&gt;</code>. Example:</p>
+
+<div class="code"><pre class="brush:html">&lt;header class="header navbar" role="banner"&gt;
+</pre></div>
+
+<h2>Disable Fixed Sidebar</h2>
+
+<p>Remove the class <code>.sidebar-fixed</code> from <code>&lt;div id="sidebar"&gt;</code>. Example:</p>
+
+<div class="code"><pre class="brush:html">&lt;div id="sidebar"&gt;
+</pre></div>
+</div><div id="recompile_less"><div class="box"><h1>Recompile LESS</h1></div>
+
+<p>First of all you should be aware of the structure from the LESS-file, which you will see in the section <a href="#files_and_directories">"Files and Directories"</a>.</p>
+
+<p>So you will see that whenever you change a file in <code>_less/general/</code> you must only recompile <code>_less/main.less</code> because it imports all other files. Same with <code>_less/general/variables.less</code>. Save the compiled less as <code>assets/css/main.css</code>.</p>
+
+<p>However for plugins there is another behaviour, because each file in <code>_less/plugins/</code> is manually compiled and saved into <code>assets/css/plugins/</code>. If you add a new file for a plugin, remember to include it into the <code>assets/plugins.css</code> which is not compiled via less.</p>
+
+<p><em>Remember: If you make changes directly in the CSS and/ or LESS-files from Melon, it will be hard to update if I release an update. So I would recommend to <a href="#own_css">create a new CSS/ LESS-file</a> for this purpose.</em></p>
+
+<h2>less-monitor (*nix only)</h2>
+
+<p><strong><a href="https://github.com/gdupont/less-monitor">https://github.com/gdupont/less-monitor</a></strong></p>
+
+<p>If you want to automate your less-compiling, you can install a watchdog, which will automatically compile your file when it's saved. For this purpose I can definitely recommend <a href="https://github.com/gdupont/less-monitor">less-monitor</a>.</p>
+
+<blockquote>
+  <p>Monitor and recompile your .less files and dependencies.</p>
+</blockquote>
+
+<p>If you're using less-monitor, you can use this commands:</p>
+
+<div class="code"><pre class="brush:bash">less-monitor -d "/your_path/_less/" -o "../assets/css/" --master true --ignore "**/plugins"
+less-monitor -d "/your_path/_less/plugins/" -o "../../assets/css/plugins/" --master true
+</pre></div>
+
+<p><em>Note: I'm not giving support for this application neither for the installation or configuration. I just recommend this little tool for everyone. If you need help, look at their <a href="https://github.com/gdupont/less-monitor">GitHub page</a>.</em></p>
+</div><div id="change_color"><div class="box"><h1>Change Color</h1></div>
+
+<h2>Dark Theme</h2>
+
+<p>I provide you with a dark theme, where mainly the sidebar is dark blue. To activate it, add the class <code>.theme-dark</code> to the <code>&lt;body&gt;</code>:</p>
+
+<div class="code"><pre class="brush:html">&lt;body class="theme-dark"&gt;
+</pre></div>
+
+<h2>Own Colors</h2>
+
+<p>You can completely change the default template color (blue) to any color you want.</p>
+
+<p>Open <code>_less/general/variables.less</code> and change <code>@mainColor</code>. After that, you should recompile your <code>main.less</code> and all .less's in <code>_less/plugins/</code>. See section <a href="#recompile_less">Recompile LESS</a>.</p>
+</div><div id="own_css"><div class="box"><h1>Own CSS</h1></div>
+
+<p>As already mentioned in <a href="#recompile_less">Recompile LESS</a>, it would be a better idea to outsource all your additional CSS to another file, because it will be hard to update if I release an update. It would overwrite your changes.</p>
+
+<p>Simply create a new file e.g. called <code>assets/css/custom.css</code> and include it in your HTML-files. Make sure to include it after all the other CSS-files (e.g. <code>main.css</code> to overwrite CSS-rules).</p>
+
+<div class="code"><pre class="brush:html">&lt;link href="assets/css/custom.css" rel="stylesheet" type="text/css" /&gt;
+</pre></div>
+</div><div id="miscellaneous"><div class="box"><h1>Miscellaneous</h1></div>
+
+<h2>Disable resizeable sidebar</h2>
+
+<p>Remove the class <code>.resizeable</code> from <code>&lt;div id="divider"&gt;</code>. Example:</p>
+
+<div class="code"><pre class="brush:html">&lt;div id="divider"&gt;&lt;/div&gt;
+</pre></div>
+
+<h2>Row Background</h2>
+
+<p>You can simply put any content in a row with a fancy background. You need to add the class <code>.row-bg</code> to the <code>&lt;div class="row"</code>>. Example:</p>
+
+<div class="code"><pre class="brush:html">&lt;div class="row row-bg"&gt;
+</pre></div>
+
+<h2>Hide / Remove Sidebar</h2>
+
+<p>To remove the sidebar from specific pages, you can remove the <code>#sidebar</code>-div-container (this is optional!) and then add the class <code>.sidebar-closed</code> to the <code>#container</code>-div, e.g.:</p>
+
+<div class="code"><pre class="brush:html">&lt;div id="container" class="fixed-header sidebar-closed"&gt;
+</pre></div>
+</div><div id="faq"><div class="box"><h1>Frequently Asked Questions (FAQ)</h1></div>
+
+<h4>I get the JavaScript-error <code>Uncaught TypeError: Cannot set property 'w' of undefined</code>.</h4>
+
+<p>This is an error in the flot-resize library (<code>jquery.flot.resize.js</code>). To solve it, simply move the flot-libraries before all the other jQuery-plugins (but after jQuery).</p>
+
+<h4>Why do you put all the JavaScript at the top? All cool guidelines are saying: "Put it at the bottom".</h4>
+
+<p>Well, this guidelines are for landing pages, company pages and so on. If you put the JavaScript at the bottom, the browser will start rendering the text and afterwards it will load the JavaScript. I agree, this is perfect for nearly all sites, excluding backend solutions or admin templates.</p>
+
+<p>But nearly all admin templates need the JavaScript otherwise the user can perform some actions where actually JavaScript should step in which will result in a bad user experience.</p>
+
+<h3>Note: The FAQ will grow in time as buyers ask questions.</h3>
+</div><div id="changelog"><div class="box"><h1>Changelog</h1></div>
+
+<h2>Version 1.1.0 (15 September 2013)</h2>
+
+<ul>
+<li><strong>Features:</strong>
+
+<ul>
+<li>Login has now built-in validation</li>
+<li>Full featured Google Maps Widgets</li>
+<li>Zoomable Charts with Overview</li>
+<li>"Display Length" from DataTables can now configured via <code>data-display-length="10"</code>-attribute directly in HTML</li>
+<li>Added "Horizontal Scrolling"-example and possibility for <code>data-horizontal-width="150%"</code>-attribute</li>
+<li>Added <code>data-dataTable="{}"</code>-attribute for DataTables to set something like an ajax-source directly in HTML</li>
+<li>Added Horizontal Scrolling example for DataTables</li>
+<li>Removed Underscore.js and switched to Lo-Dash (resulting in faster page load)</li>
+<li>Multiple Project Switcher are now possible</li>
+<li>Added Slim Progress Bars (like on YouTube) for Ajax-Requests or similiar (using <a href="http://ricostacruz.com/nprogress/">http://ricostacruz.com/nprogress/</a>)</li>
+</ul></li>
+<li><strong>Bugfixes:</strong>
+
+<ul>
+<li>Removed accents in filenames
+
+<ul>
+<li>/assets/img/icons/iconsweets/is2(white|dark)/exposé.png to expose.png</li>
+</ul></li>
+<li>Added if-clause in app.js for $.cookie</li>
+<li>Fixed displaying white space instead of sidebar on Android-tablets (only landscape) with Chrome</li>
+<li>Headers from DataTables on resize are now aligning correctly</li>
+<li>Selects are now styling correctly with an ajax-source in DataTables</li>
+<li>Fixed some IE8-issues</li>
+</ul></li>
+</ul>
+
+<h2>Version 1.0.0 (1 September 2013)</h2>
+
+<ul>
+<li>Initial Release</li>
+</ul>
+
+<h3>Versioning Policy</h3>
+
+<p>Melon follows the <a href="http://semver.org/">SemVer versioning guidelines</a>:</p>
+
+<blockquote>
+  <p><strong>Summary</strong></p>
+  
+  <p>Given a version number MAJOR.MINOR.PATCH, increment the:</p>
+  
+  <ol>
+  <li>MAJOR version when you make incompatible API changes,</li>
+  <li>MINOR version when you add functionality in a backwards-compatible manner, and</li>
+  <li>PATCH version when you make backwards-compatible bug fixes.</li>
+  </ol>
+  
+  <p>Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.</p>
+</blockquote>
+</div><div id="credits"><div class="box"><h1>Credits</h1></div>
+
+<div class="table-spacing"><table class="table table-bordered table-striped">
+<thead>
+<tr>
+  <th>Name</th>
+  <th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>jQuery</td>
+  <td><a href="http://jquery.com/">http://jquery.com/</a></td>
+</tr>
+<tr>
+  <td>jQuery UI</td>
+  <td><a href="http://jqueryui.com/">http://jqueryui.com/</a></td>
+</tr>
+<tr>
+  <td>jQuery UI Bootstrap</td>
+  <td><a href="https://github.com/addyosmani/jquery-ui-bootstrap">https://github.com/addyosmani/jquery-ui-bootstrap</a></td>
+</tr>
+<tr>
+  <td>Lo-Dash</td>
+  <td><a href="http://lodash.com/">http://lodash.com/</a></td>
+</tr>
+<tr>
+  <td>Breakpoints.js</td>
+  <td><a href="https://github.com/xoxco/breakpoints">https://github.com/xoxco/breakpoints</a></td>
+</tr>
+<tr>
+  <td>html5shiv</td>
+  <td><a href="https://code.google.com/p/html5shiv/">https://code.google.com/p/html5shiv/</a></td>
+</tr>
+<tr>
+  <td>jQuery Autosize</td>
+  <td><a href="https://github.com/jackmoore/autosize">https://github.com/jackmoore/autosize</a></td>
+</tr>
+<tr>
+  <td>jQuery BlockUI</td>
+  <td><a href="http://jquery.malsup.com/block/#download">http://jquery.malsup.com/block/#download</a></td>
+</tr>
+<tr>
+  <td>jQuery-Dual-Listbox</td>
+  <td><a href="https://github.com/parvez/jQuery-Dual-Listbox">https://github.com/parvez/jQuery-Dual-Listbox</a></td>
+</tr>
+<tr>
+  <td>jQuery slimScroll</td>
+  <td><a href="https://github.com/rochal/jQuery-slimScroll">https://github.com/rochal/jQuery-slimScroll</a></td>
+</tr>
+<tr>
+  <td>jQuery Sparkline</td>
+  <td><a href="http://omnipotent.net/jquery.sparkline/">http://omnipotent.net/jquery.sparkline/</a></td>
+</tr>
+<tr>
+  <td>jQuery Tags Input</td>
+  <td><a href="https://github.com/xoxco/jQuery-Tags-Input">https://github.com/xoxco/jQuery-Tags-Input</a></td>
+</tr>
+<tr>
+  <td>jQuery UI Touch Punch</td>
+  <td><a href="https://github.com/webjars/jquery-ui-touch-punch">https://github.com/webjars/jquery-ui-touch-punch</a></td>
+</tr>
+<tr>
+  <td>jQuery Validation Plugin</td>
+  <td><a href="https://github.com/jzaefferer/jquery-validation">https://github.com/jzaefferer/jquery-validation</a></td>
+</tr>
+<tr>
+  <td>Colorpicker for Bootstrap</td>
+  <td><a href="https://github.com/xaguilars/bootstrap-colorpicker">https://github.com/xaguilars/bootstrap-colorpicker</a></td>
+</tr>
+<tr>
+  <td>bootstrap-daterangepicker</td>
+  <td><a href="https://github.com/dangrossman/bootstrap-daterangepicker">https://github.com/dangrossman/bootstrap-daterangepicker</a></td>
+</tr>
+<tr>
+  <td>bootstrap-fileupload</td>
+  <td><a href="http://jasny.github.io/bootstrap/javascript.html#fileupload">http://jasny.github.io/bootstrap/javascript.html#fileupload</a></td>
+</tr>
+<tr>
+  <td>bootstrap-inputmask.js</td>
+  <td><a href="http://jasny.github.io/bootstrap/javascript.html#inputmask">http://jasny.github.io/bootstrap/javascript.html#inputmask</a></td>
+</tr>
+<tr>
+  <td>bootstrap-multiselect</td>
+  <td><a href="https://github.com/davidstutz/bootstrap-multiselect">https://github.com/davidstutz/bootstrap-multiselect</a></td>
+</tr>
+<tr>
+  <td>bootstrap-wysihtml5</td>
+  <td><a href="https://github.com/artillery/bootstrap-wysihtml5">https://github.com/artillery/bootstrap-wysihtml5</a></td>
+</tr>
+<tr>
+  <td>Bootbox</td>
+  <td><a href="https://github.com/makeusabrew/bootbox">https://github.com/makeusabrew/bootbox</a></td>
+</tr>
+<tr>
+  <td>jQuery Cookie</td>
+  <td><a href="https://github.com/carhartl/jquery-cookie">https://github.com/carhartl/jquery-cookie</a></td>
+</tr>
+<tr>
+  <td>DataTables</td>
+  <td><a href="https://github.com/DataTables/DataTables">https://github.com/DataTables/DataTables</a></td>
+</tr>
+<tr>
+  <td>TableTools</td>
+  <td><a href="https://github.com/DataTables/TableTools">https://github.com/DataTables/TableTools</a></td>
+</tr>
+<tr>
+  <td>ColVis</td>
+  <td><a href="https://github.com/DataTables/ColVis">https://github.com/DataTables/ColVis</a></td>
+</tr>
+<tr>
+  <td>datatables-responsive</td>
+  <td><a href="https://github.com/Comanche/datatables-responsive">https://github.com/Comanche/datatables-responsive</a></td>
+</tr>
+<tr>
+  <td>easy pie chart</td>
+  <td><a href="https://github.com/rendro/easy-pie-chart">https://github.com/rendro/easy-pie-chart</a></td>
+</tr>
+<tr>
+  <td>jquery.event.move</td>
+  <td><a href="https://github.com/stephband/jquery.event.move">https://github.com/stephband/jquery.event.move</a></td>
+</tr>
+<tr>
+  <td>jquery.event.swipe</td>
+  <td><a href="https://github.com/stephband/jquery.event.swipe">https://github.com/stephband/jquery.event.swipe</a></td>
+</tr>
+<tr>
+  <td>Flot</td>
+  <td><a href="http://www.flotcharts.org/">http://www.flotcharts.org/</a></td>
+</tr>
+<tr>
+  <td>Flot Tooltip</td>
+  <td><a href="https://github.com/krzysu/flot.tooltip">https://github.com/krzysu/flot.tooltip</a></td>
+</tr>
+<tr>
+  <td>flot-orderBars</td>
+  <td><a href="https://github.com/emmerich/flot-orderBars">https://github.com/emmerich/flot-orderBars</a></td>
+</tr>
+<tr>
+  <td>Flot Growraf</td>
+  <td><a href="https://github.com/thgreasi/growraf">https://github.com/thgreasi/growraf</a></td>
+</tr>
+<tr>
+  <td>FullCalendar</td>
+  <td><a href="https://github.com/arshaw/fullcalendar">https://github.com/arshaw/fullcalendar</a></td>
+</tr>
+<tr>
+  <td>Globalize</td>
+  <td><a href="https://github.com/jquery/globalize">https://github.com/jquery/globalize</a></td>
+</tr>
+<tr>
+  <td>GMaps</td>
+  <td><a href="https://github.com/HPNeo/gmaps">https://github.com/HPNeo/gmaps</a></td>
+</tr>
+<tr>
+  <td>jQuery Input Limiter</td>
+  <td><a href="http://rustyjeans.com/jquery-plugins/input-limiter">http://rustyjeans.com/jquery-plugins/input-limiter</a></td>
+</tr>
+<tr>
+  <td>jQuery Knob</td>
+  <td><a href="https://github.com/aterrien/jQuery-Knob">https://github.com/aterrien/jQuery-Knob</a></td>
+</tr>
+<tr>
+  <td>Nestable</td>
+  <td><a href="https://github.com/dbushell/Nestable">https://github.com/dbushell/Nestable</a></td>
+</tr>
+<tr>
+  <td>Noty</td>
+  <td><a href="https://github.com/needim/noty">https://github.com/needim/noty</a></td>
+</tr>
+<tr>
+  <td>pickadate.js</td>
+  <td><a href="http://amsul.ca/pickadate.js/">http://amsul.ca/pickadate.js/</a></td>
+</tr>
+<tr>
+  <td>Respond.js</td>
+  <td><a href="https://github.com/scottjehl/Respond">https://github.com/scottjehl/Respond</a></td>
+</tr>
+<tr>
+  <td>select2</td>
+  <td><a href="https://github.com/ivaynberg/select2/">https://github.com/ivaynberg/select2/</a></td>
+</tr>
+<tr>
+  <td>typeahead.js</td>
+  <td><a href="https://github.com/twitter/typeahead.js">https://github.com/twitter/typeahead.js</a></td>
+</tr>
+<tr>
+  <td>Uniform</td>
+  <td><a href="https://github.com/pixelmatrix/uniform">https://github.com/pixelmatrix/uniform</a></td>
+</tr>
+<tr>
+  <td>wysihtml5</td>
+  <td><a href="https://github.com/xing/wysihtml5">https://github.com/xing/wysihtml5</a></td>
+</tr>
+<tr>
+  <td>Font Awesome</td>
+  <td><a href="http://fortawesome.github.io/Font-Awesome/">http://fortawesome.github.io/Font-Awesome/</a></td>
+</tr>
+<tr>
+  <td>Fugue</td>
+  <td><a href="http://p.yusukekamiyamane.com/">http://p.yusukekamiyamane.com/</a></td>
+</tr>
+<tr>
+  <td>iconSweets</td>
+  <td><a href="http://iconsweets.com/">http://iconsweets.com/</a></td>
+</tr>
+<tr>
+  <td>iconSweets 2</td>
+  <td><a href="http://www.iconsweets2.com/">http://www.iconsweets2.com/</a></td>
+</tr>
+</tbody>
+</table></div>
+
+<h2>Special Thanks</h2>
+
+<p>Last but not least I want to thank <a href="http://www.dennisoderwald.de/">Dennis Oderwald</a>. Without him Melon were not that perfect as it is now. He continuously motivated me and provided me truly valuable feedback. In addition he completely tested Melon in a few browsers.</p>
+
+<p>So, Dennis: <strong>Thank you!</strong></p>
+
+<p>Additionally, a "thank you" goes to my friend <a href="http://m-siemens.de/">Markus Siemens</a>, who also gave me valuable feedback.</p>
+</div>
+
+					<div class="small-space"></div>
+
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+
+		<div id="footer">
+			<div id="footer-content">Footer</div>
+		</div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="template/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+		<script src="template/js/plugins.js"></script>
+
+		<script src="template/js/plugins/one-page-nav/jquery.scrollTo.js"></script>
+		<script src="template/js/plugins/one-page-nav/jquery.nav.js"></script>
+
+		<script src="template/js/plugins/syntaxhighlighter/shCore.js"></script>
+		<script src="template/js/plugins/syntaxhighlighter/shAutoloader.js"></script>
+
+		<script src="template/js/main.js"></script>
+	</body>
+</html>

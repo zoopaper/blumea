@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.blumea.cms.dao.ArticleDao">
+    <sql id="allAttribute">
+        <![CDATA[
+
+            id,
+            title,
+            content,
+            summary,
+            author,
+            status,
+            user_id,
+            category_id,
+            favorit_num,
+            comment_num,
+            year,
+            month,
+            day,
+            word_count,
+            create_time,
+            update_time
+
+        ]]>
+    </sql>
+    <insert id="save" parameterType="Article" useGeneratedKeys="true" keyProperty="id">
+        insert into ms_article(
+            title,
+            content,
+            summary,
+            author,
+            status,
+            user_id,
+            category_id,
+            favorit_num,
+            comment_num,
+            year,
+            month,
+            day,
+            word_count,
+            create_time
+        )
+        values(
+          #{title},
+          #{content},
+          #{summary},
+          #{author},
+          #{status},
+          #{userId},
+          #{categoryId},
+          #{favoritNum},
+          #{commentNum},
+          #{year},
+          #{month},
+          #{day},
+          #{wordCount},
+          #{createTime}
+        );
+    </insert>
+
+    <select id="get" parameterType="long" resultType="Article">
+        select
+        <include refid="allAttribute"/>
+        from ms_article
+        where id=#{id};
+    </select>
+
+    <update id="update" parameterType="Article">
+      update ms_article set
+          title=#{title},
+          content=#{content},
+          update_time = now()
+      where id = #{id}
+    </update>
+
+    <update id="delete" parameterType="int">
+        update ms_article set status =1 where id =#{id}
+    </update>
+
+    <delete id="deleteArticleById" parameterType="int">
+        update ms_article set status =1 where id =#{id}
+    </delete>
+
+    <select id="getArticleTotalNum" resultType="int">
+        select count(id) from ms_article
+        where (#{title}='' or title like "%"#{title}"%") and a.status = 0 and category_id = ${categoryId}
+
+    </select>
+
+    <select id="getArticleWithPage" resultType="Article">
+        select
+        <include refid="allAttribute"/>
+        from ms_article
+        where
+        (#{title}='' or title like "%"#{title}"%") and status=0 and cagegory_id= ${category_id}
+        order by create_time desc
+        limit #{from},#{size};
+    </select>
+
+</mapper>

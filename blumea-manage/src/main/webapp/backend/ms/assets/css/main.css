@@ -39,7 +39,7 @@ body {
 ================================================== */
 .container {
   max-width: none !important;
-  padding: 0 20px;
+  padding: 0px 20px 0px 0px;
 }
 .row-no-margin {
   margin-left: 0 !important;
@@ -666,7 +666,7 @@ span.red {
 /* # Sidebar & Navigation
 ================================================== */
 #sidebar {
-  width: 250px;
+  width: 200px;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -712,7 +712,7 @@ span.red {
   position: absolute;
   margin-left: 250px;
   right: -1px;
-  width: 8px;
+  width: 6px;
   border-left: 1px solid #d1d1d1;
   border-right: 1px solid #d1d1d1;
 }

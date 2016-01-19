@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>全局配置</comment>
+    <entry key="image.upload.path">/usr/masksalt.com/image/</entry>
+    <entry key="image.avatar.path">/usr/masksalt.com/avatar</entry>
+    <entry key="env.profile">development</entry>
+    <entry key="domain">http://127.0.0.1:8099/</entry>
+
+    
+</properties>

@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/*")
 public class HomeController extends BaseController {
 
-
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView home(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();

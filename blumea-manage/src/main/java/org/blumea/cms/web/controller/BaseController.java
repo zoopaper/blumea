@@ -5,10 +5,13 @@ import org.blumea.cms.auth.AuthToken;
 import org.blumea.cms.auth.Principal;
 import org.blumea.cms.constants.token.TokenConstant;
 import org.blumea.cms.service.auth.IAuthService;
+import org.blumea.cms.web.util.PageData;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -49,5 +52,15 @@ public class BaseController {
     }
 
 
+    /**
+     * 封装请求数据
+     */
+    public PageData getPageData() {
+        return new PageData(this.getRequest());
+    }
 
+    public HttpServletRequest getRequest() {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        return request;
+    }
 }

@@ -3,6 +3,8 @@ package org.blumea.cms.web.util;
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Strings;
 import net.common.utils.escapehtml.StdEscapeHTMLSerializerProvider;
+import org.blumea.cms.model.FlexigridData;
+import org.blumea.cms.model.Pagination;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
 import org.codehaus.jackson.map.introspect.BasicClassIntrospector;
@@ -14,8 +16,6 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
-import org.blumea.cms.model.FlexigridData;
-import org.blumea.cms.model.Pagination;
 
 /**
  * <p/>
@@ -29,6 +29,7 @@ public class ResponseUtil {
 
     public static final String MAPPING_LOGIN = "/login/login";
 
+    public static final String MAPPING_REGISTER = "/register/register";
     /**
      * JSON序列化工具(html转码)
      */

@@ -12,11 +12,15 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-
     <context:annotation-config/>
-
-    <context:property-placeholder location="classpath:/jdbc.properties"/>
-
+    <!--<context:property-placeholder location="classpath:/jdbc.properties"/>-->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath*:/jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
         <property name="url" value="${jdbc.url}"/>
@@ -46,8 +50,6 @@
         <aop:pointcut id="transactionPointcut" expression="execution(* org.blumea.cms.service..*.*(..))"/>
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
     </aop:config>
-
-
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:sqlMapConfig.xml"/>
@@ -60,10 +62,8 @@
 
     <!-- 使用annotation注解方式配置事务 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
-
     <!-- 配置SQLSession模板 -->
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
-
 </beans>

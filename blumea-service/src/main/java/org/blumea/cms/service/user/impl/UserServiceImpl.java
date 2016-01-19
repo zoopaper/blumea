@@ -5,9 +5,9 @@ import org.blumea.cms.dao.IUserDao;
 import org.blumea.cms.entity.UserBean;
 import org.blumea.cms.model.Pagination;
 import org.blumea.cms.service.user.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements IUserService {
 
-    @Autowired
+    @Resource
     private IUserDao userDao;
 
     @Override

@@ -90,7 +90,7 @@
       //总数据条数
       totalRecords: '${page.total}',
       //链接前部
-      hrefFormer: '/adm/entry/entryList',
+      hrefFormer: '/adm/article/list',
       //链接尾部
       hrefLatter: '',
       getLink: function (n) {

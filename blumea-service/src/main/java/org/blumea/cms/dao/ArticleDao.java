@@ -2,8 +2,9 @@ package org.blumea.cms.dao;
 
 import org.blumea.cms.dao.base.IMybatisDao;
 import org.blumea.cms.entity.ArticleEntity;
-import org.blumea.cms.model.Pagination;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * User: shijingui
@@ -24,7 +25,7 @@ public interface ArticleDao extends IMybatisDao<ArticleEntity> {
      * @param size
      * @return
      */
-    public Pagination<ArticleEntity> getArticleWithPage(String title, int from, int size, int category_id);
+    public List<ArticleEntity> getArticleListWithPage(String title, int from, int size, int category_id);
 
     /**
      * @param id

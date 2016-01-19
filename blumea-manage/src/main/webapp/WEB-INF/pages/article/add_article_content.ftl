@@ -7,7 +7,7 @@
             <div class="widget-content align-center">
                 <div class="btn-toolbar btn-toolbar-demo">
                     <input class="form-control" type="text" placeholder="请输入分类" style="display: block; margin-top: 6px;">
-                    <button class="btn btn-sm btn-primary">&nbsp;添加&nbsp; </button>
+                    <button class="btn btn-sm btn-primary">&nbsp; 添加 &nbsp; </button>
 
                     <br>
                     <br>

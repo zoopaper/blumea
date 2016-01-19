@@ -1,6 +1,8 @@
 package org.blumea.cms.web.controller;
 
+import org.blumea.cms.core.model.ServiceResponse;
 import org.blumea.cms.entity.ArticleEntity;
+import org.blumea.cms.model.Pagination;
 import org.blumea.cms.service.ArticleService;
 import org.blumea.cms.web.util.PageData;
 import org.slf4j.Logger;
@@ -28,8 +30,20 @@ public class ArticleControler extends BaseController {
     private ArticleService articleService;
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
-    public Object listArticle() {
+    public ModelAndView listArticle() {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("article/list_article");
+        PageData pd = this.getPageData();
+        String title = pd.getString("title");
+        int page = pd.getInt("page");
+        int categoryId = pd.getInt("categoryId");
+        try {
+            ServiceResponse<Pagination<ArticleEntity>> serviceResponse = articleService.getArticleListWithPage(title, categoryId, page, 15);
+            modelAndView.addObject("page", serviceResponse.getResponseData());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return modelAndView;
     }
@@ -46,13 +60,9 @@ public class ArticleControler extends BaseController {
         ModelAndView modelAndView = new ModelAndView();
         PageData pageData = this.getPageData();
 
-        ArticleEntity article2 = new ArticleEntity();
-        article2.setTitle(pageData.getString("title"));
-        article2.setContent(pageData.getString("content"));
-        article2.setCategoryId(Long.valueOf(pageData.getString("categoryId")));
-        article2.setCreateTime(new Date(System.currentTimeMillis()));
         try {
-            articleService.addArticle(article2);
+            article.setCreateTime(new Date(System.currentTimeMillis()));
+            articleService.addArticle(article);
         } catch (Exception e) {
             e.printStackTrace();
         }

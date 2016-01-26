@@ -1,4 +1,4 @@
-package org.blumea.cms.web.util;
+package org.blumea.cms.utils;
 
 import com.google.common.base.Joiner;
 
@@ -59,11 +59,11 @@ public class PageData extends ConcurrentHashMap implements Map {
     }
 
     public String getString(Object key) {
-        return (String) get(key);
+        return String.valueOf(get(key));
     }
 
     public Integer getInt(Object key) {
-        return Integer.valueOf((String) get(key));
+        return Integer.valueOf(get(key).toString());
     }
 
     @Override

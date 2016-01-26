@@ -23,6 +23,12 @@
 
         ]]>
     </sql>
+    <resultMap id="articleListMap" type="Article">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
     <insert id="save" parameterType="Article" useGeneratedKeys="true" keyProperty="id">
         insert into ms_article(
             title,
@@ -81,18 +87,18 @@
         update ms_article set status =1 where id =#{id}
     </delete>
 
-    <select id="getArticleTotalNum" resultType="int">
+    <select id="getTotalNum" resultType="int" parameterType="pd">
         select count(id) from ms_article
-        where (#{title}='' or title like "%"#{title}"%") and a.status = 0 and category_id = ${categoryId}
+        where (#{title}='' or title like "%"#{title}"%") and status = 0 and category_id = ${categoryId}
 
     </select>
 
-    <select id="getArticleWithPage" resultType="Article">
+    <select id="getArticleListWithPage" resultMap="articleListMap" parameterType="pd">
         select
         <include refid="allAttribute"/>
         from ms_article
         where
-        (#{title}='' or title like "%"#{title}"%") and status=0 and cagegory_id= ${category_id}
+        (#{title}='' or title like "%"#{title}"%") and status = 0 and category_id = ${categoryId}
         order by create_time desc
         limit #{from},#{size};
     </select>

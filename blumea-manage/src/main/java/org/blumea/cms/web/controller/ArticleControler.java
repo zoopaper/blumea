@@ -4,15 +4,17 @@ import org.blumea.cms.core.model.ServiceResponse;
 import org.blumea.cms.entity.ArticleEntity;
 import org.blumea.cms.model.Pagination;
 import org.blumea.cms.service.ArticleService;
-import org.blumea.cms.web.util.PageData;
+import org.blumea.cms.utils.PageData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
@@ -30,17 +32,20 @@ public class ArticleControler extends BaseController {
     private ArticleService articleService;
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView listArticle() {
+    public ModelAndView listArticle(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("article/list_article");
         PageData pd = this.getPageData();
-        String title = pd.getString("title");
-        int page = pd.getInt("page");
-        int categoryId = pd.getInt("categoryId");
+        int page = ServletRequestUtils.getIntParameter(request, "page", 1);
+        int categoryId = ServletRequestUtils.getIntParameter(request, "categoryId", 1);
+        String title = ServletRequestUtils.getStringParameter(request, "title", "");
+        pd.put("page", page);
+        pd.put("categoryId", categoryId);
+        pd.put("pageSize", 10);
+        pd.put("title", title);
         try {
-            ServiceResponse<Pagination<ArticleEntity>> serviceResponse = articleService.getArticleListWithPage(title, categoryId, page, 15);
+            ServiceResponse<Pagination<ArticleEntity>> serviceResponse = articleService.getArticleListWithPage(pd);
             modelAndView.addObject("page", serviceResponse.getResponseData());
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,6 +74,4 @@ public class ArticleControler extends BaseController {
         modelAndView.setViewName("article/add_article");
         return modelAndView;
     }
-
-
 }

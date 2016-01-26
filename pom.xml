@@ -7,7 +7,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>blumea-service</module>
-        <module>blumea-config</module>
+        <!--<module>blumea-config</module>-->
         <module>blumea-entity</module>
         <module>blumea-base</module>
         <module>blumea-web-site</module>

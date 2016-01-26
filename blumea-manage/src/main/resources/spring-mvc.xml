@@ -53,7 +53,7 @@
         <property name="contentType" value="text/html; charset=utf-8"/>
         <property name="cache" value="false"/>
         <property name="prefix" value=""/>
-        <property name="suffix" value=".ftl"/>
+        <property name="suffix" value=".html"/>
         <property name="order" value="1"/>
 
         <property name="requestContextAttribute" value="request"/>

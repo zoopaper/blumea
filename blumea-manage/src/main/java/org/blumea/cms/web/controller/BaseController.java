@@ -5,7 +5,7 @@ import org.blumea.cms.auth.AuthToken;
 import org.blumea.cms.auth.Principal;
 import org.blumea.cms.constants.token.TokenConstant;
 import org.blumea.cms.service.auth.IAuthService;
-import org.blumea.cms.web.util.PageData;
+import org.blumea.cms.utils.PageData;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.WebDataBinder;

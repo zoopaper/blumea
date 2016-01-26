@@ -1,0 +1,51 @@
+<div class="row">
+    <!--=== Advanced Table ===-->
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <!--<h4><i class="icon-reorder"></i>文章列表</h4>-->
+
+            </div>
+            <div class="widget-content">
+                <table class="table table-striped table-bordered table-checkable table-highlight-head table-no-inner-border table-hover">
+                    <thead>
+                    <tr>
+                        <th class="checkbox-column">
+                            <input type="checkbox" class="uniform">
+                        </th>
+                        <th>标题</th>
+                        <th class="align-center">创建时间</th>
+                        <th class="align-center">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <#list page.items as article>
+                        <tr>
+                            <td class="checkbox-column">
+                                <input type="checkbox" class="uniform">
+                            </td>
+                            <td>
+                                ${article.title}
+                            </td>
+                            <td class="align-center">
+                                <#if article.createTime?exists>
+                                    ${article.createTime?datetime}
+
+                                </#if>
+                            </td>
+                            <td class="align-center">
+                                <ul class="table-controls">
+                                    <li><a href="javascript:void(0);" class="bs-tooltip" title="编辑"><i class="icon-pencil"></i></a></li>
+                                    <li><a href="javascript:void(0);" class="bs-tooltip" title="删除"><i class="icon-trash"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </#list>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="kkpager" class="page_s" style="width: 490px;"></div>
+    <!-- /Advanced Table -->
+</div>

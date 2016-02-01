@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * é”™è¯¯ä¿¡æ¯
+ * ´íÎóĞÅÏ¢
  * <p/>
  * User : krisibm@163.com
  * Date: 2015/5/27
@@ -26,11 +26,11 @@ public final class ErrorKeyUtil {
     }
 
     private static void init() {
-        put(ErrorKey.ERROR_LOGIN_ACCOUNT_EMPTY, "è´¦å·ä¸èƒ½ä¸ºç©º");
-        put(ErrorKey.ERROR_LOGIN_PASSWORD_EMPTY, "å¯†ç ä¸èƒ½ä¸ºç©º");
-        put(ErrorKey.ERROR_LOGIN_ACCOUNT_NOT_EXIST, "è´¦æˆ·ä¸å­˜åœ¨");
-        put(ErrorKey.ERROR_LOGIN_PASSWORD_INCORRECT, "ç™»å½•å¯†ç ä¸æ­£ç¡®");
-        put(ErrorKey.ERROR_CHANNEL_NAME_REPEAT, "é¢‘é“åç§°ä¸èƒ½é‡å¤");
+        put(ErrorKey.ERROR_LOGIN_ACCOUNT_EMPTY, "ÕËºÅ²»ÄÜÎª¿Õ");
+        put(ErrorKey.ERROR_LOGIN_PASSWORD_EMPTY, "ÃÜÂë²»ÄÜÎª¿Õ");
+        put(ErrorKey.ERROR_LOGIN_ACCOUNT_NOT_EXIST, "ÕË»§²»´æÔÚ");
+        put(ErrorKey.ERROR_LOGIN_PASSWORD_INCORRECT, "µÇÂ¼ÃÜÂë²»ÕıÈ·");
+        put(ErrorKey.ERROR_CHANNEL_NAME_REPEAT, "ÆµµÀÃû³Æ²»ÄÜÖØ¸´");
 
     }
 

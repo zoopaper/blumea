@@ -5,16 +5,15 @@ import net.common.data.redis.IRedis;
 import org.blumea.cms.config.ServiceRedis;
 
 /**
- * 缂撳瓨鎿嶄綔鐨勭浉鍏冲伐鍏风被
+ * 缓存操作的相关工具类
  */
 public final class CacheUtils {
 
     private CacheUtils() {
-
     }
 
     /**
-     * 鐢熸垚key
+     * 生成key
      *
      * @param key
      * @param values
@@ -25,7 +24,7 @@ public final class CacheUtils {
     }
 
     /**
-     * 鑾峰緱鎸囧畾鍚嶅瓧鐨処Redis : 杩欓噷濡傛灉鍙戠幇缂撳瓨鏈嶅姟涓嶅瓨鍦紝鏆傛椂鐩存帴鎶涘嚭寮傚父锛屼笉鍏佽璁块棶鏈畾涔夌殑缂撳瓨鏈嶅姟
+     * 获得指定名字的IRedis : 这里如果发现缓存服务不存在，暂时直接抛出异常，不允许访问未定义的缓存服务
      *
      * @param name
      * @return
@@ -42,4 +41,10 @@ public final class CacheUtils {
         }
     }
 
+
+    public static void main(String[] args) {
+        for (int i = 44; i < 8000; i++) {
+            System.out.println("INSERT into ms_article(id,title,content,category_id,create_time)VALUES("+i+",\"创建一个ThreadLocal对象\",\"创建一个ThreadLocal对象\",1,NOW());");
+        }
+    }
 }

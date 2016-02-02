@@ -1,55 +1,216 @@
 <!DOCTYPE html>
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <title>mas</title>
-    <#include "../common/assets.html">
-        <!--<script type="text/javascript" src="/backend/ms/assets/js/libs/jquery-1.10.2.min.js"></script>-->
-        <link rel="stylesheet" type="text/css" href="/backend/ms/plugins/kkpager/kkpager_blue.css">
-        <script type="text/javascript" src="/backend/ms/plugins/kkpager/kkpager.min.js"></script>
+    <#include "../common/assets.html"/>
+    <!--<script type="text/javascript" src="/backend/ms/assets/js/libs/jquery-1.10.2.min.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="/backend/ms/plugins/kkpager/kkpager_blue.css">
+    <script type="text/javascript" src="/backend/ms/plugins/kkpager/kkpager.min.js"></script>
 </head>
-
 <body>
-<#include "../common/header.html">
-    <div id="container">
-        <#include "../common/sidebar.html">
-            <div id="content">
-                <div class="container">
-                    <div class="crumbs">
-                        <ul id="breadcrumbs" class="breadcrumb">
-                            <li>
-                                <i class="icon-home"></i>
-                                <a href="index.html">文章列表</a>
-                            </li>
-                            <li class="current">
-                            </li>
-                        </ul>
+<#include "../common/header.html"/>
+<div id="container">
+    <#include "../common/sidebar.html"/>
+    <div id="content">
+        <div class="container">
+            <div class="crumbs">
+                <ul id="breadcrumbs" class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        <a href="#">文章分类</a>
+                    </li>
+                    <li class="current">
+                    </li>
+                </ul>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <!--=== Big Buttons ===-->
+                <div class="col-md-12">
+                    <div class="widget">
+                        <div class="widget-header" style="text-align: center;">
+                            <a data-toggle="modal" href="#myModal1" class=""><i class="icon-plus-sign icon-large">添加</i></a>
+                        </div>
 
+                        <!-- Modal dialog -->
+                        <div class="modal fade" id="myModal1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">创建文章分类</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal row-border" id="validate-1" action="#">
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">分类名称<span class="required">*</span></label>
+
+                                                <div class="col-md-9">
+                                                    <input type="password" name="cpass1" class="form-control required" minlength="5" equalTo="[name='pass1']">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">分类别名<span class="required">*</span></label>
+
+                                                <div class="col-md-9">
+                                                    <input type="text" name="digits1" class="form-control required digits">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">保 存</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+
+                        <div class="row row-bg"> <!-- .row-bg -->
+                            <div class="col-sm-6 col-md-3 hidden-xs">
+                                <div class="statbox widget box box-shadow">
+                                    <div class="widget-content">
+                                        <div class="visual red">
+                                            <i class="icon-align-justify"></i>
+                                        </div>
+                                        <div class="title">人工智能</div>
+                                        <div class="value">233</div>
+                                        <a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>
+
+                                        <ul class="dropdown-menu pull-right" style="text-align: left;">
+                                            <li><a href="#"><i class="icon-edit"></i> 编辑</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-remove"></i>删除</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-3 hidden-xs">
+                                <div class="statbox widget box box-shadow">
+                                    <div class="widget-content">
+                                        <div class="visual red">
+                                            <i class="icon-align-justify"></i>
+                                        </div>
+                                        <div class="title">人工智能</div>
+                                        <div class="value">233</div>
+                                        <a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>
+
+                                        <ul class="dropdown-menu pull-right" style="text-align: left;">
+                                            <li><a href="#"><i class="icon-edit"></i> 编辑</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-remove"></i>删除</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6 col-md-3 hidden-xs">
+                                <div class="statbox widget box box-shadow">
+                                    <div class="widget-content">
+                                        <div class="visual red">
+                                            <i class="icon-align-justify"></i>
+                                        </div>
+                                        <div class="title">人工智能</div>
+                                        <div class="value">233</div>
+                                        <a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>
+
+                                        <ul class="dropdown-menu pull-right" style="text-align: left;">
+                                            <li><a href="#"><i class="icon-edit"></i> 编辑</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-remove"></i>删除</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-3 hidden-xs">
+                                <div class="statbox widget box box-shadow">
+                                    <div class="widget-content">
+                                        <div class="visual red">
+                                            <i class="icon-align-justify"></i>
+                                        </div>
+                                        <div class="title">人工智能</div>
+                                        <div class="value">233</div>
+                                        <a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>
+
+                                        <ul class="dropdown-menu pull-right" style="text-align: left;">
+                                            <li><a href="#"><i class="icon-edit"></i> 编辑</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-remove"></i>删除</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6 col-md-3 hidden-xs">
+                                <div class="statbox widget box box-shadow">
+                                    <div class="widget-content">
+                                        <div class="visual red">
+                                            <i class="icon-align-justify"></i>
+                                        </div>
+                                        <div class="title">人工智能</div>
+                                        <div class="value">233</div>
+                                        <a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>
+
+                                        <ul class="dropdown-menu pull-right" style="text-align: left;">
+                                            <li><a href="#"><i class="icon-edit"></i>编辑</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-remove"></i>删除</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-3 hidden-xs">
+                                <div class="statbox widget box box-shadow">
+                                    <div class="widget-content">
+                                        <div class="visual green">
+                                            <i class="icon-align-justify"></i>
+                                        </div>
+                                        <div class="title">人工智能</div>
+                                        <div class="value">233</div>
+                                        <a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>
+
+                                        <ul class="dropdown-menu pull-right" style="text-align: left;">
+                                            <li><a href="#"><i class="icon-edit"></i>编辑</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-trash"></i>删除</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                    <#include "../article/list_article_content.html">
                 </div>
             </div>
+        </div>
     </div>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var param = "";
-            kkpager.generPageHtml({
-                pno: '${page.pageIndex}',
-                //总页码
-                total: '${page.maxPage}',
-                //总数据条数
-                totalRecords: '${page.total}',
-                //链接前部
-                hrefFormer: '/adm/article/list',
-                //链接尾部
-                hrefLatter: '',
-                getLink: function (n) {
-                    return this.hrefFormer + this.hrefLatter + "?page=" + n + param;
-                }
-            });
-        });
-    </script>
+</div>
 </body>
+<script type="text/javascript">
+
+    function addCategory() {
+
+
+    }
+
+    function editCategory() {
+
+    }
+
+    function deleteCategory() {
+
+    }
+
+</script>
 </html>

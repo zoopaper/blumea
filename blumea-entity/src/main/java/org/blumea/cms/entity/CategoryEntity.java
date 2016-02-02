@@ -9,7 +9,7 @@ import java.util.Date;
  * User: shijingui
  * Date: 2016/1/15
  */
-public class ArticleCategoryEntity extends IMybatisEntity {
+public class CategoryEntity extends IMybatisEntity {
 
     private static final long serialVersionUID = -7914083067154063956L;
 

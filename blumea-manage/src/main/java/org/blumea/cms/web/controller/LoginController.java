@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * <p/>
  * User : shijingui
  * Date: 2015/5/26
  * Time: 21:48
@@ -45,6 +45,13 @@ public class LoginController extends BaseController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ModelAndView register() {
+        ModelAndView modelAndView = new ModelAndView();
+
+
+        return modelAndView;
+    }
 
     @RequestMapping(value = "/doLogin", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView doLogin(@RequestParam(value = "username", required = true) String username,
@@ -53,18 +60,6 @@ public class LoginController extends BaseController {
         ModelAndView modelAndView = new ModelAndView();
 
         try {
-//            if (Strings.isNullOrEmpty(username)) {
-//                modelAndView.addObject("loginTip", ErrorKeyUtil.getErrorMsg(ErrorKey.ERROR_LOGIN_ACCOUNT_EMPTY));
-//                modelAndView.addObject("password", password);
-//                ResponseUtil.handleLongin(modelAndView);
-//                return modelAndView;
-//            }
-//            if (Strings.isNullOrEmpty(password)) {
-//                modelAndView.addObject("loginTip", ErrorKeyUtil.getErrorMsg(ErrorKey.ERROR_LOGIN_PASSWORD_EMPTY));
-//                modelAndView.addObject("account", username);
-//                ResponseUtil.handleLongin(modelAndView);
-//                return modelAndView;
-//            }
             UserBean userBean = userService.getUserByAccount(username);
             if (userBean == null) {
                 modelAndView.addObject("loginTip", ErrorKeyUtil.getErrorMsg(ErrorKey.ERROR_LOGIN_ACCOUNT_NOT_EXIST));
@@ -83,6 +78,7 @@ public class LoginController extends BaseController {
             }
             Principal principal = new Principal();
             principal.setUserId(userBean.getId());
+            principal.setAccount(userBean.getAccount());
             AuthToken token = buildAuthToken(principal);
             CookieUtil.setTokenCookie(response, TokenConstant.USER_COOKIE_NAME, token.getCookie(), TokenConstant.TOKEN_LIFE_TIME, "");
             CookieUtil.setTokenCookie(response, COOKIE_USER_NAME, userBean.getAccount(), TokenConstant.TOKEN_LIFE_TIME, "");
@@ -97,6 +93,9 @@ public class LoginController extends BaseController {
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
+        HttpServletRequest request = this.getRequest();
+        Principal principal = this.getLoginPrincipal(this.getRequest());
+        Cookie[] cookies = request.getCookies();
         return modelAndView;
     }
 
@@ -112,5 +111,6 @@ public class LoginController extends BaseController {
         return modelAndView;
 
     }
+
 
 }

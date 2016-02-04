@@ -54,7 +54,7 @@
         <!-- /Login Formular -->
 
         <!-- Register Formular (hidden by default) -->
-        <form class="form-vertical register-form" action="/register" method="post" style="display: none;">
+        <form class="form-vertical register-form" action="/adm/register" method="post" style="display: none;">
             <!-- Title -->
             <h3 class="form-title">注册</h3>
             <!-- Input Fields -->
@@ -96,7 +96,7 @@
                 <button type="button" class="back btn btn-default pull-left">
                     <i class="icon-angle-left"></i> 返 回</i>
                 </button>
-                <button type="submit" class="submit btn btn-primary pull-right">
+                <button type="submit" class="submit btn btn-primary pull-right" onclick="register();">
                     注册 <i class="icon-angle-right"></i>
                 </button>
             </div>
@@ -152,5 +152,10 @@
     <a href="#" class="sign-up">还没有账号? <strong>注册</strong></a>
 </div>
 <!-- /Footer -->
+<script type="text/javascript">
+    function register() {
+
+    }
+</script>
 </body>
 </html>

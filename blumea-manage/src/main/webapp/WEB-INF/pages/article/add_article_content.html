@@ -1,22 +1,22 @@
 <div class="row" style="margin-top: 15px;">
-    <div class="col-md-2">
-        <div class="widget box">
-            <div class="widget-header">
-                <h4><i class="icon-reorder"></i> 分类</h4>
-            </div>
-            <div class="widget-content align-center">
-                <div class="btn-toolbar btn-toolbar-demo">
-                    <input class="form-control" type="text" placeholder="请输入分类" style="display: block; margin-top: 6px;">
-                    <button class="btn btn-sm btn-primary">&nbsp; 添加 &nbsp; </button>
+    <!--<div class="col-md-2">-->
+    <!--<div class="widget box">-->
+    <!--<div class="widget-header">-->
+    <!--<h4><i class="icon-reorder"></i> 分类</h4>-->
+    <!--</div>-->
+    <!--<div class="widget-content align-center">-->
+    <!--<div class="btn-toolbar btn-toolbar-demo">-->
+    <!--<input class="form-control" type="text" placeholder="请输入分类" style="display: block; margin-top: 6px;">-->
+    <!--<button class="btn btn-sm btn-primary">&nbsp; 添加 &nbsp; </button>-->
 
-                    <br>
-                    <br>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!--<br>-->
+    <!--<br>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
 
-    <div class="col-md-10">
+    <div class="col-md-12">
         <div class="widget box">
             <div class="widget-header">
                 <h4><i class="icon-reorder"></i>写文章</h4>
@@ -33,7 +33,7 @@
                         <label class="col-md-1 control-label">标题</label>
 
                         <div class="col-md-11">
-                            <input type="text" name="title" id="title" class="form-control" autofocus="autofocus" data-rule-required="true" data-msg-required="请输入您的用户名.">
+                            <input type="text" name="title" id="title" class="form-control">
 
                         </div>
                     </div>
@@ -44,9 +44,12 @@
                             <div class="row next-row">
                                 <div class="col-md-12">
                                     <select class="form-control" name="categoryId" id="categoryId">
-                                        <option value="1">ddddd</option>
-                                        <option value="2">aaaa</option>
-                                        <option value="3">bbbb</option>
+                                        <#if (categoryList?size >0) >
+                                            <#list  categoryList as category>
+                                                <option value="${category.id}">${category.categoryName}</option>
+
+                                            </#list>
+                                        </#if>
                                     </select>
                                 </div>
                             </div>
@@ -71,17 +74,22 @@
         var categoryId = $("#categoryId").val();
         var content = $("#textarea1").val();
         if (title == "") {
-            alert("文章标题不能为空!");
+            bootbox.alert("文章标题不能为空!", function () {
+
+            });
             $("#title").focus();
             return false;
         }
-        if (categoryId == "") {
-            alert("文章分类不能为空");
+        alert(categoryId);
+        if (categoryId == null || categoryId == "") {
+            bootbox.alert("分类不能为空!", function () {
+            });
             $("#categoryId").focus();
             return false;
         }
         if (content == "") {
-            alert("正文不能为空");
+            bootbox.alert("正文不能为空!", function () {
+            });
             $("#textarea1").focus();
             return false;
         }

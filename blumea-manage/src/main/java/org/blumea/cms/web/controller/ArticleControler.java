@@ -2,8 +2,10 @@ package org.blumea.cms.web.controller;
 
 import org.blumea.cms.core.model.ServiceResponse;
 import org.blumea.cms.entity.ArticleEntity;
+import org.blumea.cms.entity.CategoryEntity;
 import org.blumea.cms.model.Pagination;
 import org.blumea.cms.service.ArticleService;
+import org.blumea.cms.service.CategoryService;
 import org.blumea.cms.utils.PageData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 文章控制器
@@ -30,6 +34,9 @@ public class ArticleControler extends BaseController {
 
     @Autowired
     private ArticleService articleService;
+
+    @Resource
+    private CategoryService categoryService;
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView listArticle(HttpServletRequest request) {
@@ -49,7 +56,6 @@ public class ArticleControler extends BaseController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return modelAndView;
     }
 
@@ -57,6 +63,9 @@ public class ArticleControler extends BaseController {
     public ModelAndView addAritcle() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("article/add_article");
+
+        List<CategoryEntity> categoryEntityList = categoryService.getAllCategory();
+        modelAndView.addObject("categoryList", categoryEntityList);
         return modelAndView;
     }
 
@@ -64,7 +73,6 @@ public class ArticleControler extends BaseController {
     public ModelAndView saveArticle(ArticleEntity article) {
         ModelAndView modelAndView = new ModelAndView();
         PageData pageData = this.getPageData();
-
         try {
             article.setCreateTime(new Date(System.currentTimeMillis()));
             articleService.addArticle(article);

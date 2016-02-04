@@ -156,7 +156,7 @@ var Login = function () {
                 },
 
                 submitHandler: function (form) {
-                    window.location.href = "/adm/doLogin";
+                    //window.location.href = "/adm/doLogin";
                     $(form).submit();
                 }
             });
@@ -202,10 +202,11 @@ var Login = function () {
                 },
 
                 submitHandler: function (form) {
-                    window.location.href = "index.html";
+                    //window.location.href = "index.html";
 
                     // Maybe you want here something like:
-                    // $(form).submit();
+
+                     $(form).submit();
                 }
             });
         }

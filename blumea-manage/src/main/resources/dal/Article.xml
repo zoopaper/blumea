@@ -98,7 +98,9 @@
         <include refid="allAttribute"/>
         from ms_article
         where
-        (#{title}='' or title like "%"#{title}"%") and status = 0 and category_id = ${categoryId}
+        (#{title}='' or title like "%"#{title}"%")
+        and status = 0
+        and category_id = ${categoryId}
         order by create_time desc
         limit #{from},#{size};
     </select>

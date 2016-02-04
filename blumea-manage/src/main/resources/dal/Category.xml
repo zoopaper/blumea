@@ -3,36 +3,55 @@
 <mapper namespace="org.blumea.cms.dao.CategoryDao">
     <sql id="allAttribute">
         <![CDATA[
+
             id,
-            name,
-            dir,
-            isDel,
-            createTime
+            category_name,
+            category_alias,
+            user_id,
+            article_num,
+            create_time,
+            status
+
         ]]>
     </sql>
-
-    <insert id="save"  useGeneratedKeys="true" keyProperty="id">
-        insert into t_channel(name,dir,createTime)
-        VALUES(#{name},#{dir},#{createTime})
+    <resultMap id="CategoryMap" type="Category">
+        <id column="id" property="id"/>
+        <result column="category_name" property="categoryName"/>
+        <result column="category_alias" property="categoryAlias"/>
+        <result column="article_num" property="articleNum"/>
+        <result column="user_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="status" property="status"/>
+    </resultMap>
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into ms_category(
+            category_name,
+            category_alias,
+            user_id,
+            article_num,
+            create_time
+        )
+        values(
+            #{categoryName},
+            #{categoryAlias},
+            #{userId},
+            #{articleNum},
+            #{createTime}
+        )
     </insert>
-    <select id="get" parameterType="long" resultType="org.blumea.cms.entity.ChannelBean">
+    <select id="get" parameterType="long" resultMap="CategoryMap">
         select
         <include refid="allAttribute"/>
-        from t_channel
-        where id=#{0} and isDel=0;
+        from ms_category
+        where id=#{0};
     </select>
 
-    <select id="getAllChannel" resultType="org.blumea.cms.entity.ChannelBean">
-      select
+    <select id="getAllCategory" resultMap="CategoryMap">
+        select
         <include refid="allAttribute"/>
-        from t_channel where isDel =0 order by createTime desc;
+        from ms_category where status = 0 order by create_time asc;
     </select>
 
-    <select id="getChannelByName" resultType="org.blumea.cms.entity.ChannelBean" parameterType="String">
-      SELECT
-      <include refid="allAttribute"/>
-        from t_channel where isDel=0 and name=#{0}
-    </select>
 
     <update id="update" parameterType="org.blumea.cms.entity.ChannelBean">
       update t_channel set
@@ -42,6 +61,6 @@
     </update>
 
     <update id="delete" parameterType="org.blumea.cms.entity.ChannelBean">
-        update t_channel set isDel=1  where id =#{id}
+        update ms_category set status=1  where id =#{id}
     </update>
 </mapper>

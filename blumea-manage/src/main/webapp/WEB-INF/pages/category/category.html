@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <title>mas</title>
     <#include "../common/assets.html"/>
-    <!--<script type="text/javascript" src="/backend/ms/assets/js/libs/jquery-1.10.2.min.js"></script>-->
-    <link rel="stylesheet" type="text/css" href="/backend/ms/plugins/kkpager/kkpager_blue.css">
-    <script type="text/javascript" src="/backend/ms/plugins/kkpager/kkpager.min.js"></script>
+    <script type="text/javascript" src="/backend/ms/assets/js/libs/jquery-1.10.2.min.js"></script>
 </head>
 <body>
 <#include "../common/header.html"/>
@@ -49,21 +47,21 @@
                                                 <label class="col-md-3 control-label">分类名称<span class="required">*</span></label>
 
                                                 <div class="col-md-9">
-                                                    <input type="password" name="cpass1" class="form-control required" minlength="5" equalTo="[name='pass1']">
+                                                    <input type="text" name="categoryName" id="categoryName" class="form-control required" minlength="5" equalTo="[name='pass1']">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">分类别名<span class="required">*</span></label>
 
                                                 <div class="col-md-9">
-                                                    <input type="text" name="digits1" class="form-control required digits">
+                                                    <input type="text" name="categoryAlias" id="categoryAlias" class="form-control required digits">
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">保 存</button>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addCategory();">保 存</button>
                                     </div>
                                 </div>
                                 <!-- /.modal-content -->
@@ -72,123 +70,7 @@
                         </div>
                         <!-- /.modal -->
 
-                        <div class="row row-bg"> <!-- .row-bg -->
-                            <div class="col-sm-6 col-md-3 hidden-xs">
-                                <div class="statbox widget box box-shadow">
-                                    <div class="widget-content">
-                                        <div class="visual red">
-                                            <i class="icon-align-justify"></i>
-                                        </div>
-                                        <div class="title">人工智能</div>
-                                        <div class="value">233</div>
-                                        <a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>
-
-                                        <ul class="dropdown-menu pull-right" style="text-align: left;">
-                                            <li><a href="#"><i class="icon-edit"></i> 编辑</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#"><i class="icon-remove"></i>删除</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-3 hidden-xs">
-                                <div class="statbox widget box box-shadow">
-                                    <div class="widget-content">
-                                        <div class="visual red">
-                                            <i class="icon-align-justify"></i>
-                                        </div>
-                                        <div class="title">人工智能</div>
-                                        <div class="value">233</div>
-                                        <a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>
-
-                                        <ul class="dropdown-menu pull-right" style="text-align: left;">
-                                            <li><a href="#"><i class="icon-edit"></i> 编辑</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#"><i class="icon-remove"></i>删除</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-sm-6 col-md-3 hidden-xs">
-                                <div class="statbox widget box box-shadow">
-                                    <div class="widget-content">
-                                        <div class="visual red">
-                                            <i class="icon-align-justify"></i>
-                                        </div>
-                                        <div class="title">人工智能</div>
-                                        <div class="value">233</div>
-                                        <a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>
-
-                                        <ul class="dropdown-menu pull-right" style="text-align: left;">
-                                            <li><a href="#"><i class="icon-edit"></i> 编辑</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#"><i class="icon-remove"></i>删除</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-3 hidden-xs">
-                                <div class="statbox widget box box-shadow">
-                                    <div class="widget-content">
-                                        <div class="visual red">
-                                            <i class="icon-align-justify"></i>
-                                        </div>
-                                        <div class="title">人工智能</div>
-                                        <div class="value">233</div>
-                                        <a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>
-
-                                        <ul class="dropdown-menu pull-right" style="text-align: left;">
-                                            <li><a href="#"><i class="icon-edit"></i> 编辑</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#"><i class="icon-remove"></i>删除</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-sm-6 col-md-3 hidden-xs">
-                                <div class="statbox widget box box-shadow">
-                                    <div class="widget-content">
-                                        <div class="visual red">
-                                            <i class="icon-align-justify"></i>
-                                        </div>
-                                        <div class="title">人工智能</div>
-                                        <div class="value">233</div>
-                                        <a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>
-
-                                        <ul class="dropdown-menu pull-right" style="text-align: left;">
-                                            <li><a href="#"><i class="icon-edit"></i>编辑</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#"><i class="icon-remove"></i>删除</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-3 hidden-xs">
-                                <div class="statbox widget box box-shadow">
-                                    <div class="widget-content">
-                                        <div class="visual green">
-                                            <i class="icon-align-justify"></i>
-                                        </div>
-                                        <div class="title">人工智能</div>
-                                        <div class="value">233</div>
-                                        <a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>
-
-                                        <ul class="dropdown-menu pull-right" style="text-align: left;">
-                                            <li><a href="#"><i class="icon-edit"></i>编辑</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#"><i class="icon-trash"></i>删除</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <div class="row row-bg" id="category_list"> <!-- .row-bg -->
                         </div>
                     </div>
                 </div>
@@ -198,19 +80,108 @@
 </div>
 </body>
 <script type="text/javascript">
-
+    var rootDiv = '<div class="col-sm-6 col-md-3 hidden-xs">';
+    var div01 = '<div class="statbox widget box box-shadow"><div class="widget-content"><div class="visual green"><i class="icon-align-justify"></i>  </div><div class="title">';
+    var divTitle = ' <div class="title">';
+    var divValue = '<div class="value">';
+    var divMore = '<a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>';
     function addCategory() {
+        var categoryName = $("#categoryName").val();
+        $.ajax({
+            type: "POST",
+            url: '/adm/category/add?tm=' + new Date().getTime(),
+            data: {categoryName: categoryName},
+            dataType: 'json',
+            cache: false,
+            success: function (response) {
+                var categoryName = response.data.categoryName;
+                var categoryId = response.data.categoryId;
+                var divContent = $("#category_list");
+                var uuid = getUUID();
+                var newCate = '<div class="col-sm-6 col-md-3 hidden-xs" id="' + uuid + '">'
+                        + '<div class="statbox widget box box-shadow">'
+                        + '<div class="widget-content">'
+                        + '<div class="visual green">'
+                        + '<i class="icon-align-justify"></i>'
+                        + '</div>'
+                        + '<div class="title">' + categoryName + '</div>'
+                        + '<div class="value">0</div>'
+                        + '<a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>'
 
+                        + '<ul class="dropdown-menu pull-right" style="text-align: left;">'
+                        + '<li><a href="editCategory(' + categoryId + ',' + uuid + '")><i class="icon-edit"></i>编辑</a></li>'
+                        + '<li class="divider"></li>'
+                        + ' <li><a onclick="deleteCategory(\'' + categoryId + '\',\'' + uuid + '\')"><i class="icon-trash"></i>删除</a></li>'
+                        + '</ul>'
+                        + '</div>'
+                        + '</div>'
+                        + '</div>';
+                divContent.append(newCate);
+                bootbox.alert("添加成功!", function () {
+
+                });
+            }
+        });
 
     }
 
-    function editCategory() {
+    function editCategory(categoryId, divId) {
 
     }
 
-    function deleteCategory() {
+    function deleteCategory(categoryId, divId) {
+        $.ajax({
+                    type: "POST",
+                    url: '/adm/category/deleteCategory?tm=' + new Date().getTime(),
+                    data: {id: categoryId},
+                    dataType: 'json',
+                    cache: false,
+                    success: function (response) {
+                        $("#" + divId).remove();
+                        bootbox.alert("删除成功!", function () {
 
+                        });
+                    }
+                }
+        )
     }
 
+
+    $(document).ready(function () {
+
+        $.ajax({
+            type: "POST",
+            url: '/adm/category/getAllCategory?tm=' + new Date().getTime(),
+            data: {},
+            dataType: 'json',
+            cache: false,
+            success: function (response) {
+                var result = "";
+                $.each(response.data, function (n, value) {
+                    var uuid = getUUID();
+                    var newCate = '<div class="col-sm-6 col-md-3 hidden-xs" id="' + uuid + '">'
+                            + '<div class="statbox widget box box-shadow">'
+                            + '<div class="widget-content">'
+                            + '<div class="visual green">'
+                            + '<i class="icon-align-justify"></i>'
+                            + '</div>'
+                            + '<div class="title">' + value.categoryName + '</div>'
+                            + '<div class="value">0</div>'
+                            + '<a class="more" data-toggle="dropdown">&nbsp; <i class="pull-right icon-angle-right"></i></a>'
+
+                            + '<ul class="dropdown-menu pull-right" style="text-align: left;">'
+                            + '<li><a href="editCategory(' + value.categoryId + ',' + uuid + '")><i class="icon-edit"></i>编辑</a></li>'
+                            + '<li class="divider"></li>'
+                            + ' <li><a href="javascript:void(0)" onclick="deleteCategory(\'' + value.categoryId + '\',\'' + uuid + '\')"><i class="icon-trash"></i>删除</a></li>'
+                            + '</ul>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div>';
+                    result += newCate;
+                });
+                $("#category_list").append(result);
+            }
+        });
+    });
 </script>
 </html>

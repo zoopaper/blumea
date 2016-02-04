@@ -17,8 +17,8 @@ public class CategoryService {
     @Autowired
     private CategoryDao categoryDao;
 
-    public void addCategory(CategoryEntity categoryEntity) throws Exception {
-        categoryDao.save(categoryEntity);
+    public long addCategory(CategoryEntity categoryEntity) throws Exception {
+        return categoryDao.save(categoryEntity);
     }
 
     public void updateCategory(CategoryEntity categoryEntity) throws Exception {

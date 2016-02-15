@@ -5,54 +5,56 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <title>mas</title>
-    <#include "../common/assets.html">
-        <link rel="stylesheet" type="text/css" href="/backend/ms/plugins/highlightJS/styles/github.css">
+    <#include "../common/assets.html"/>
+    <link rel="stylesheet" type="text/css" href="/backend/ms/plugins/highlightJS/styles/github.css">
+    <script type="text/javascript" src="/assets/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/backend/ms/assets/js/jquery.tips.js"></script>
 </head>
 
 <body>
-<#include "../common/header.html">
+<#include "../common/header.html"/>
 
-    <div id="container">
-        <#include "../common/sidebar.html">
-            <div id="content">
-                <div class="container">
-                    <div class="crumbs">
-                        <ul id="breadcrumbs" class="breadcrumb">
-                            <li>
-                                <i class="icon-home"></i>
-                                创建文章
-                            </li>
-                            <li class="current">
-                            </li>
-                        </ul>
-                    </div>
-                    <#include "../article/add_article_content.html">
-                </div>
+<div id="container">
+    <#include "../common/sidebar.html"/>
+    <div id="content">
+        <div class="container">
+            <div class="crumbs">
+                <ul id="breadcrumbs" class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        创建文章
+                    </li>
+                    <li class="current">
+                    </li>
+                </ul>
             </div>
+            <#include "../article/add_article_content.html"/>
+        </div>
     </div>
-    <script type="text/javascript" src="/backend/ms/assets/js/libs/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="/backend/ms/plugins/wangeditor/js/wangEditor.min.js"></script>
-    <script type="text/javascript" src="/backend/ms/plugins/highlightJS/highlight.pack.js"></script>
+</div>
+<script type="text/javascript" src="/backend/ms/assets/js/libs/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/backend/ms/plugins/wangeditor/js/wangEditor.min.js"></script>
+<script type="text/javascript" src="/backend/ms/plugins/highlightJS/highlight.pack.js"></script>
 
-    <!--注意：javascript必须放在body最后，否则可能会出现问题-->
-    <script type="text/javascript">
-        $(function () {
-            var editor = $('#textarea1').wangEditor(
-                    {
-                        'menuConfig': [
-                            ['bold', 'underline', 'italic', 'foreColor', 'backgroundColor'],
-                            ['blockquote', 'fontFamily', 'fontSize', 'setHead', 'list', 'justify'],
-                            ['createLink', 'unLink', 'insertTable'],
-                            ['insertImage', 'insertVideo', 'insertLocation', 'insertCode']
-                        ]
-                    }
-            );
+<!--注意：javascript必须放在body最后，否则可能会出现问题-->
+<script type="text/javascript">
+    $(function () {
+        var editor = $('#textarea1').wangEditor(
+                {
+                    'menuConfig': [
+                        ['bold', 'underline', 'italic', 'foreColor', 'backgroundColor'],
+                        ['blockquote', 'fontFamily', 'fontSize', 'setHead', 'list', 'justify'],
+                        ['createLink', 'unLink', 'insertTable'],
+                        ['insertImage', 'insertVideo', 'insertLocation', 'insertCode']
+                    ]
+                }
+        );
+    });
+    $(function () {
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
         });
-        $(function () {
-            $('pre code').each(function (i, block) {
-                hljs.highlightBlock(block);
-            });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>

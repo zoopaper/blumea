@@ -195,6 +195,10 @@ var Login = function () {
      * Validation for Registering
      * * * * * * * * * * * */
     var initRegisterValidation = function () {
+        var account = $("#accountReg").val();
+        var password = $("passwordReg").val();
+        var email = $("#emailReg").val();
+
         if ($.validator) {
             $('.register-form').validate({
                 invalidHandler: function (event, validator) {
@@ -202,11 +206,21 @@ var Login = function () {
                 },
 
                 submitHandler: function (form) {
-                    //window.location.href = "index.html";
+                    $.ajax({
+                        url: '/register',
+                        type: 'post',
+                        data: $(form).serialize(),
+                        async: true,
+                        cache:false,
+                        error: function () {
+                            alert('error');
+                        },
+                        success: function (data) {
+                            alert(11);
+                        }
+                    });
 
-                    // Maybe you want here something like:
-
-                     $(form).submit();
+                    //$(form).submit();
                 }
             });
         }

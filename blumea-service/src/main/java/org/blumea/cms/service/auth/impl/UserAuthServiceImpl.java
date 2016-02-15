@@ -3,7 +3,7 @@ package org.blumea.cms.service.auth.impl;
 import com.google.common.base.Preconditions;
 import org.blumea.cms.auth.AuthToken;
 import org.blumea.cms.auth.Principal;
-import org.blumea.cms.entity.UserBean;
+import org.blumea.cms.entity.UserEntity;
 import org.blumea.cms.service.auth.IAuthService;
 import org.blumea.cms.service.token.ITokenService;
 import org.blumea.cms.service.user.IUserService;
@@ -39,7 +39,7 @@ public class UserAuthServiceImpl implements IAuthService {
             return null;
         }
         // 如果当前用户不存在于数据库中，返回null
-        UserBean adminBean = userService.getUser(userId);
+        UserEntity adminBean = userService.getUser(userId);
         if (adminBean == null) {
             return null;
         }

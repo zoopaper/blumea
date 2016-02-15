@@ -52,15 +52,4 @@
         from ms_category where status = 0 order by create_time asc;
     </select>
 
-
-    <update id="update" parameterType="org.blumea.cms.entity.ChannelBean">
-      update t_channel set
-      name=#{name},
-      dir=#{dir}
-      where id=#{id}
-    </update>
-
-    <update id="delete" parameterType="org.blumea.cms.entity.ChannelBean">
-        update ms_category set status=1  where id =#{id}
-    </update>
 </mapper>

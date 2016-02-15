@@ -1,7 +1,7 @@
 package org.blumea.cms.service.user;
 
 import org.blumea.cms.core.model.ServiceResponse;
-import org.blumea.cms.entity.UserBean;
+import org.blumea.cms.entity.UserEntity;
 import org.blumea.cms.model.Pagination;
 
 /**
@@ -12,15 +12,15 @@ import org.blumea.cms.model.Pagination;
  */
 public interface IUserService {
 
-    public void addUser(UserBean userBean);
+    public void addUser(UserEntity userEntity);
 
     public void deleteUser(String ids);
 
-    public void updateUser(UserBean userBean);
+    public void updateUser(UserEntity userEntity);
 
-    public UserBean getUser(long id);
+    public UserEntity getUser(long id);
 
-    public UserBean getUserByAccount(String account);
+    public UserEntity getUserByAccount(String account);
 
     /**
      * @param userName
@@ -28,5 +28,5 @@ public interface IUserService {
      * @param pageSize
      * @return
      */
-    public ServiceResponse<Pagination<UserBean>> getUserWithPage(String userName, int page, int pageSize);
+    public ServiceResponse<Pagination<UserEntity>> getUserWithPage(String userName, int page, int pageSize);
 }

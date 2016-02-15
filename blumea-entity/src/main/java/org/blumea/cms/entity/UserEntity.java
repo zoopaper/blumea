@@ -5,47 +5,25 @@ import org.blumea.cms.entity.base.IMybatisEntity;
 import java.util.Date;
 
 /**
- * 用户
- * User: shijingui
- * Date: 2016/1/15
+ * <p/>
+ * User : krisibm@163.com
+ * Date: 2015/5/25
+ * Time: 21:51
  */
 public class UserEntity extends IMybatisEntity {
 
-    private static final long serialVersionUID = 2157558330102156568L;
+    private String username;
 
     private String account;
 
-    private String nickName;
+    private String password;
 
     private String email;
 
-    private String password;
+    private int isDel;
 
-    private Date createTime;
+    private Date createDate;
 
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getPassword() {
         return password;
@@ -55,11 +33,43 @@ public class UserEntity extends IMybatisEntity {
         this.password = password;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public int getIsDel() {
+        return isDel;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setIsDel(int isDel) {
+        this.isDel = isDel;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -24,25 +24,25 @@
         ]]>
     </sql>
 
-    <insert id="save" parameterType="org.blumea.cms.entity.UserBean" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="org.blumea.cms.entity.UserEntity" useGeneratedKeys="true" keyProperty="id">
         insert into t_user(account,userName,password,age,sex,email,work,workYear,city,mobileTel,createDate)
         VALUES(#{account},#{userName},#{password},#{age},#{sex},#{email},#{work},#{workYear},#{city},#{mobileTel},#{createDate})
     </insert>
 
-    <select id="getUserByAccount" parameterType="String" resultType="org.blumea.cms.entity.UserBean">
+    <select id="getUserByAccount" parameterType="String" resultType="org.blumea.cms.entity.UserEntity">
         select
         <include refid="allAttribute"/>
         from t_user where account=#{account} and isDel=0
     </select>
 
-    <select id="get" parameterType="long" resultType="org.blumea.cms.entity.UserBean">
+    <select id="get" parameterType="long" resultType="org.blumea.cms.entity.UserEntity">
         select
         <include refid="allAttribute"/>
         from t_user
         where id=#{0} and isDel=0;
     </select>
 
-    <update id="update" parameterType="org.blumea.cms.entity.UserBean">
+    <update id="update" parameterType="org.blumea.cms.entity.UserEntity">
       update t_user set
       account=#{account},
       userName=#{userName},
@@ -72,7 +72,7 @@
         and (#{0}='' or userName like "%"#{0}"%");
     </select>
 
-    <select id="getUserWithPage" resultType="org.blumea.cms.entity.UserBean">
+    <select id="getUserWithPage" resultType="org.blumea.cms.entity.UserEntity">
         select
         <include refid="allAttribute"/>
         from t_user

@@ -1,7 +1,7 @@
 package org.blumea.cms.dao;
 
 import org.blumea.cms.dao.base.IMybatisDao;
-import org.blumea.cms.entity.UserBean;
+import org.blumea.cms.entity.UserEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,13 +13,13 @@ import java.util.List;
  * Time: 13:56
  */
 @Repository
-public interface IUserDao extends IMybatisDao<UserBean> {
+public interface IUserDao extends IMybatisDao<UserEntity> {
 
     /**
      * @param account
      * @return
      */
-    public UserBean getUserByAccount(String account);
+    public UserEntity getUserByAccount(String account);
 
 
     /**
@@ -34,7 +34,7 @@ public interface IUserDao extends IMybatisDao<UserBean> {
      * @param size
      * @return
      */
-    public List<UserBean> getUserWithPage(String userName, int from, int size);
+    public List<UserEntity> getUserWithPage(String userName, int from, int size);
 
 
     public boolean delteUserBatch(String ids);

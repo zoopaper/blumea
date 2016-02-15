@@ -33,7 +33,7 @@
                     <div class="tabbable tabbable-custom tabbable-full-width">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#tab_overview" data-toggle="tab">个人资料</a></li>
-                            <li><a href="#tab_edit_account" data-toggle="tab">修改密码</a></li>
+                            <li><a href="#tab_edit_account" data-toggle="tab" onclick="modifyPassword();">修改密码</a></li>
                             <li><a href="#tab_edit_email" data-toggle="tab">修改邮箱</a></li>
                             <li><a href="#tab_edit_email" data-toggle="tab">编辑头像</a></li>
                         </ul>
@@ -74,6 +74,7 @@
 
                                                         <div class="form-group">
                                                             <label class="col-md-4 control-label"></label>
+
                                                             <div class="col-md-8">
                                                                 <button class="btn btn-primary btn-block">保存</button>
                                                             </div>
@@ -93,7 +94,9 @@
     </div>
 </div>
 <script type="text/javascript">
-
+    function modifyPassword() {
+        alert();
+    }
 </script>
 </body>
 </html>

@@ -2,7 +2,11 @@ package org.blumea.cms.web.controller;
 
 import com.google.common.base.Joiner;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.blumea.cms.auth.Principal;
 import org.blumea.cms.config.AppConfigContext;
+import org.blumea.cms.core.model.ServiceResponse;
+import org.blumea.cms.entity.UserEntity;
+import org.blumea.cms.model.Pagination;
 import org.blumea.cms.service.user.IUserService;
 import org.blumea.cms.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -13,10 +17,6 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.blumea.cms.auth.Principal;
-import org.blumea.cms.core.model.ServiceResponse;
-import org.blumea.cms.entity.UserBean;
-import org.blumea.cms.model.Pagination;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,7 +29,7 @@ import java.util.Date;
  * Time: 22:24
  */
 @Controller
-@RequestMapping("/adm/user")
+@RequestMapping("/user")
 public class UserController extends BaseController {
 
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
@@ -49,45 +49,31 @@ public class UserController extends BaseController {
 
     @RequestMapping(value = "/doAddUser", method = RequestMethod.POST)
     public ModelAndView doAddUser(HttpServletRequest request, HttpServletResponse response) {
-
         ModelAndView modelAndView = new ModelAndView();
         try {
-
             Principal principal = this.getLoginPrincipal(request);
             if (principal == null) {
                 ResponseUtil.handleLongin(modelAndView);
                 return modelAndView;
             }
 
-            String userName = ServletRequestUtils.getStringParameter(request, "userName", "");
+            String userName = ServletRequestUtils.getStringParameter(request, "username", "");
             String account = ServletRequestUtils.getStringParameter(request, "account", "");
             String password = ServletRequestUtils.getStringParameter(request, "password", "");
             String email = ServletRequestUtils.getStringParameter(request, "email", "");
-            int age = ServletRequestUtils.getIntParameter(request, "age", 100);
-            int sex = ServletRequestUtils.getIntParameter(request, "sex", 0);
-            String city = ServletRequestUtils.getStringParameter(request, "city", "");
-            String work = ServletRequestUtils.getStringParameter(request, "work", "");
-            String workYear = ServletRequestUtils.getStringParameter(request, "workYear", "");
-            String mobileTel = ServletRequestUtils.getStringParameter(request, "mobileTel", "");
 
             String passwd = DigestUtils.md5Hex(password);
 
-            UserBean userBean = new UserBean();
+            UserEntity userEntity = new UserEntity();
             {
-                userBean.setAccount(account);
-                userBean.setUserName(userName);
-                userBean.setPassword(passwd);
-                userBean.setAge(age);
-                userBean.setSex(sex);
-                userBean.setCity(city);
-                userBean.setEmail(email);
-                userBean.setWork(work);
-                userBean.setWorkYear(workYear);
-                userBean.setMobileTel(mobileTel);
-                userBean.setCreateDate(new Date(System.currentTimeMillis()));
+                userEntity.setAccount(account);
+                userEntity.setUsername(userName);
+                userEntity.setPassword(passwd);
+                userEntity.setEmail(email);
+                userEntity.setCreateDate(new Date(System.currentTimeMillis()));
             }
 
-            userService.addUser(userBean);
+            userService.addUser(userEntity);
         } catch (Exception e) {
             log.info("Controller doAddUser exception", e);
         }
@@ -109,7 +95,7 @@ public class UserController extends BaseController {
             int page = ServletRequestUtils.getIntParameter(request, "page", 1);
             String userName = ServletRequestUtils.getStringParameter(request, "userName", "");
 
-            ServiceResponse<Pagination<UserBean>> serviceResponse = userService.getUserWithPage(userName, page, 15);
+            ServiceResponse<Pagination<UserEntity>> serviceResponse = userService.getUserWithPage(userName, page, 15);
 
             if (serviceResponse.isSuccess()) {
                 modelAndView.addObject("page", serviceResponse.getResponseData());
@@ -161,9 +147,9 @@ public class UserController extends BaseController {
                 return modelAndView;
             }
             long id = ServletRequestUtils.getLongParameter(request, "id", -1);
-            UserBean userBean = userService.getUser(id);
-            if (userBean != null) {
-                modelAndView.addObject("user", userBean);
+            UserEntity userEntity = userService.getUser(id);
+            if (userEntity != null) {
+                modelAndView.addObject("user", userEntity);
 
             } else {
                 modelAndView.addObject("error", "操作出问题了!");
@@ -191,29 +177,15 @@ public class UserController extends BaseController {
             String userName = ServletRequestUtils.getStringParameter(request, "userName", "");
             String account = ServletRequestUtils.getStringParameter(request, "account", "");
             String email = ServletRequestUtils.getStringParameter(request, "email", "");
-            int age = ServletRequestUtils.getIntParameter(request, "age", 100);
-            int sex = ServletRequestUtils.getIntParameter(request, "sex", 0);
-            String city = ServletRequestUtils.getStringParameter(request, "city", "");
-            String work = ServletRequestUtils.getStringParameter(request, "work", "");
-            String workYear = ServletRequestUtils.getStringParameter(request, "workYear", "");
-            String mobileTel = ServletRequestUtils.getStringParameter(request, "mobileTel", "");
-
-
-            UserBean userBean = new UserBean();
+            UserEntity userEntity = new UserEntity();
             {
-                userBean.setId(id);
-                userBean.setAccount(account);
-                userBean.setUserName(userName);
-                userBean.setAge(age);
-                userBean.setSex(sex);
-                userBean.setCity(city);
-                userBean.setEmail(email);
-                userBean.setWork(work);
-                userBean.setWorkYear(workYear);
-                userBean.setMobileTel(mobileTel);
-                userBean.setCreateDate(new Date(System.currentTimeMillis()));
+                userEntity.setId(id);
+                userEntity.setAccount(account);
+                userEntity.setUsername(userName);
+                userEntity.setEmail(email);
+                userEntity.setCreateDate(new Date(System.currentTimeMillis()));
             }
-            userService.updateUser(userBean);
+            userService.updateUser(userEntity);
         } catch (Exception e) {
             log.info("Controller doModifyUser exception", e);
         }

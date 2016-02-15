@@ -3,8 +3,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>加盐</title>
-    <#include "../common/assets_login.html">
+    <title>欢迎加入加盐</title>
+    <#include "../common/assets_login.html"/>
+    <!--<script type="text/javascript" src="/backend/ms/assets/js/libs/jquery-1.10.2.min.js"></script>-->
 </head>
 
 <body class="login">
@@ -18,8 +19,7 @@
 <div class="box">
     <div class="content">
         <!-- Login Formular -->
-        <form class="form-vertical login-form" action="/adm/doLogin" method="post">
-            <!-- Title -->
+        <form class="form-vertical login-form" action="/doLogin" method="post">
             <h3 class="form-title">登录</h3>
             <!-- 错误提示信息 -->
             <div class="" style="display: none;">
@@ -29,7 +29,7 @@
                 <!--<label for="username">Username:</label>-->
                 <div class="input-icon">
                     <i class="icon-user"></i>
-                    <input type="text" name="username" class="form-control" placeholder="用户名" autofocus="autofocus" data-rule-required="true" data-msg-required="请输入您的用户名."/>
+                    <input type="text" name="account" id="account" class="form-control" placeholder="账号" autofocus="autofocus" data-rule-required="true" data-msg-required="请输入您的用户名."/>
                 </div>
             </div>
             <div class="form-group">
@@ -54,32 +54,38 @@
         <!-- /Login Formular -->
 
         <!-- Register Formular (hidden by default) -->
-        <form class="form-vertical register-form" action="/adm/register" method="post" style="display: none;">
+        <form class="form-vertical register-form" action="/register" method="post" style="display: none;">
             <!-- Title -->
             <h3 class="form-title">注册</h3>
             <!-- Input Fields -->
+            <!--<div class="form-group">-->
+            <!--<div class="input-icon">-->
+            <!--<i class="icon-user"></i>-->
+            <!--<input type="text" name="username" class="form-control" placeholder="昵称" autofocus="autofocus" data-rule-required="true"/>-->
+            <!--</div>-->
+            <!--</div>-->
             <div class="form-group">
                 <div class="input-icon">
                     <i class="icon-user"></i>
-                    <input type="text" name="username" class="form-control" placeholder="账号" autofocus="autofocus" data-rule-required="true"/>
+                    <input type="text" name="account" id="account"  class="form-control" placeholder="账号" autofocus="autofocus" data-rule-required="true"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-icon">
                     <i class="icon-lock"></i>
-                    <input type="password" name="password" class="form-control" placeholder="密码" id="register_password" data-rule-required="true"/>
+                    <input type="password" name="password" class="form-control" placeholder="密码" id="password" data-rule-required="true"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-icon">
                     <i class="icon-ok"></i>
-                    <input type="password" name="password_confirm" class="form-control" placeholder="确认密码" data-rule-required="true" data-rule-equalTo="#register_password"/>
+                    <input type="password" name="passwordConfirmReg" class="form-control" placeholder="确认密码" data-rule-required="true" data-rule-equalTo="#password"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-icon">
                     <i class="icon-envelope"></i>
-                    <input type="text" name="Email" class="form-control" placeholder="邮件" data-rule-required="true" data-rule-email="true"/>
+                    <input type="text" name="email" id="email" class="form-control" placeholder="邮件" data-rule-required="true" data-rule-email="true"/>
                 </div>
             </div>
             <div class="form-group spacing-top">

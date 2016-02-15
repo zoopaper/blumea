@@ -1,12 +1,13 @@
 package org.blumea.cms.web.controller;
 
 import net.common.utils.cookie.CookieUtil;
+import net.common.utils.json.JsonWrite;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.blumea.cms.auth.AuthToken;
 import org.blumea.cms.auth.Principal;
 import org.blumea.cms.constants.error.ErrorKey;
 import org.blumea.cms.constants.token.TokenConstant;
-import org.blumea.cms.entity.UserBean;
+import org.blumea.cms.entity.UserEntity;
 import org.blumea.cms.service.user.IUserService;
 import org.blumea.cms.utils.ErrorKeyUtil;
 import org.blumea.cms.web.util.ResponseUtil;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -29,7 +31,6 @@ import javax.servlet.http.HttpServletResponse;
  * Time: 21:48
  */
 @Controller
-@RequestMapping("/adm/*")
 public class LoginController extends BaseController {
     private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
@@ -46,43 +47,43 @@ public class LoginController extends BaseController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView register() {
-        ModelAndView modelAndView = new ModelAndView();
+    @ResponseBody
+    public Object register(UserEntity userEntity) {
+        JsonWrite jsonWrite = new JsonWrite();
 
-
-        return modelAndView;
+        return jsonWrite;
     }
 
     @RequestMapping(value = "/doLogin", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView doLogin(@RequestParam(value = "username", required = true) String username,
+    public ModelAndView doLogin(@RequestParam(value = "account", required = true) String account,
                                 @RequestParam(value = "password", required = true) String password,
                                 HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
 
         try {
-            UserBean userBean = userService.getUserByAccount(username);
-            if (userBean == null) {
+            UserEntity userEntity = userService.getUserByAccount(account);
+            if (userEntity == null) {
                 modelAndView.addObject("loginTip", ErrorKeyUtil.getErrorMsg(ErrorKey.ERROR_LOGIN_ACCOUNT_NOT_EXIST));
                 modelAndView.addObject("password", password);
-                modelAndView.addObject("username", username);
+                modelAndView.addObject("username", account);
                 ResponseUtil.handleLongin(modelAndView);
                 return modelAndView;
             }
             String passwd = DigestUtils.md5Hex(password);
-            if (!userBean.getPassword().equals(passwd)) {
+            if (!userEntity.getPassword().equals(passwd)) {
                 modelAndView.addObject("loginTip", ErrorKeyUtil.getErrorMsg(ErrorKey.ERROR_LOGIN_PASSWORD_INCORRECT));
                 modelAndView.addObject("password", password);
-                modelAndView.addObject("account", username);
+                modelAndView.addObject("account", account);
                 ResponseUtil.handleLongin(modelAndView);
                 return modelAndView;
             }
             Principal principal = new Principal();
-            principal.setUserId(userBean.getId());
-            principal.setAccount(userBean.getAccount());
+            principal.setUserId(userEntity.getId());
+            principal.setAccount(userEntity.getAccount());
             AuthToken token = buildAuthToken(principal);
             CookieUtil.setTokenCookie(response, TokenConstant.USER_COOKIE_NAME, token.getCookie(), TokenConstant.TOKEN_LIFE_TIME, "");
-            CookieUtil.setTokenCookie(response, COOKIE_USER_NAME, userBean.getAccount(), TokenConstant.TOKEN_LIFE_TIME, "");
-            modelAndView.setViewName("redirect:/adm/index");
+            CookieUtil.setTokenCookie(response, COOKIE_USER_NAME, userEntity.getAccount(), TokenConstant.TOKEN_LIFE_TIME, "");
+            modelAndView.setViewName("redirect:/index");
         } catch (Exception e) {
             log.info("doLogin controller exception ", e);
         }
@@ -102,14 +103,13 @@ public class LoginController extends BaseController {
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/adm/login");
+        modelAndView.setViewName("redirect:/login");
         try {
             CookieUtil.removeCookie(response, TokenConstant.USER_COOKIE_NAME, "");
         } catch (Exception e) {
             log.info("Controller logout exception", e);
         }
         return modelAndView;
-
     }
 
 

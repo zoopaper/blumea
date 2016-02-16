@@ -12,7 +12,7 @@ import org.blumea.cms.model.Pagination;
  */
 public interface IUserService {
 
-    public void addUser(UserEntity userEntity);
+    public void addUser(UserEntity userEntity) throws Exception;
 
     public void deleteUser(String ids);
 

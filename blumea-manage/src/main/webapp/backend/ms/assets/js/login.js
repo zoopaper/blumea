@@ -152,12 +152,30 @@ var Login = function () {
         if ($.validator) {
             $('.login-form').validate({
                 invalidHandler: function (event, validator) { // display error alert on form submit
-                    $('.login-form .alert-danger').show();
+                    //$('.login-form .alert-danger').show();
                 },
 
                 submitHandler: function (form) {
                     //window.location.href = "/adm/doLogin";
-                    $(form).submit();
+                    $.ajax({
+                        url: '/doLogin',
+                        type: 'post',
+                        data: $(form).serialize(),
+                        async: true,
+                        cache: false,
+                        error: function () {
+                            alert('error');
+                        },
+                        success: function (response) {
+                            if (response.success) {
+                                window.location.href = "/admin";
+                            } else {
+                                $('.login-form .alert-danger').show();
+                            }
+                        }
+                    });
+
+                    //$(form).submit();
                 }
             });
         }
@@ -211,15 +229,14 @@ var Login = function () {
                         type: 'post',
                         data: $(form).serialize(),
                         async: true,
-                        cache:false,
+                        cache: false,
                         error: function () {
                             alert('error');
                         },
                         success: function (data) {
-                            alert(11);
+                            $('.register-form .alert-success').show();
                         }
                     });
-
                     //$(form).submit();
                 }
             });

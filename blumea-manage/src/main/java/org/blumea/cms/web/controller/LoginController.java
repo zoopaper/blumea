@@ -1,5 +1,6 @@
 package org.blumea.cms.web.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import net.common.utils.cookie.CookieUtil;
 import net.common.utils.json.JsonWrite;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -39,6 +40,13 @@ public class LoginController extends BaseController {
 
     private String COOKIE_USER_NAME = "USERNAME";
 
+    /**
+     * 登录跳转
+     *
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView jumpLogin(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
@@ -46,36 +54,44 @@ public class LoginController extends BaseController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    /**
+     * 登录
+     *
+     * @param account
+     * @param password
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = "/doLogin", method = {RequestMethod.POST})
     @ResponseBody
-    public Object register(UserEntity userEntity) {
+    public Object doLogin(@RequestParam(value = "account", required = true) String account,
+                          @RequestParam(value = "password", required = true) String password,
+                          HttpServletRequest request, HttpServletResponse response) {
         JsonWrite jsonWrite = new JsonWrite();
-
-        return jsonWrite;
-    }
-
-    @RequestMapping(value = "/doLogin", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView doLogin(@RequestParam(value = "account", required = true) String account,
-                                @RequestParam(value = "password", required = true) String password,
-                                HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView modelAndView = new ModelAndView();
-
+        JSONObject jsonObj = new JSONObject();
         try {
             UserEntity userEntity = userService.getUserByAccount(account);
             if (userEntity == null) {
-                modelAndView.addObject("loginTip", ErrorKeyUtil.getErrorMsg(ErrorKey.ERROR_LOGIN_ACCOUNT_NOT_EXIST));
-                modelAndView.addObject("password", password);
-                modelAndView.addObject("username", account);
-                ResponseUtil.handleLongin(modelAndView);
-                return modelAndView;
+//                modelAndView.addObject("loginTip", ErrorKeyUtil.getErrorMsg(ErrorKey.ERROR_LOGIN_ACCOUNT_NOT_EXIST));
+                jsonObj.put("loginTip", "账号不能为空");
+                jsonWrite.setSuccess(false);
+                jsonWrite.setData(jsonObj);
+//                modelAndView.addObject("password", password);
+//                modelAndView.addObject("account", account);
+//                ResponseUtil.handleLongin(modelAndView);
+                return jsonWrite;
             }
             String passwd = DigestUtils.md5Hex(password);
             if (!userEntity.getPassword().equals(passwd)) {
-                modelAndView.addObject("loginTip", ErrorKeyUtil.getErrorMsg(ErrorKey.ERROR_LOGIN_PASSWORD_INCORRECT));
-                modelAndView.addObject("password", password);
-                modelAndView.addObject("account", account);
-                ResponseUtil.handleLongin(modelAndView);
-                return modelAndView;
+//                modelAndView.addObject("loginTip", ErrorKeyUtil.getErrorMsg(ErrorKey.ERROR_LOGIN_PASSWORD_INCORRECT));
+                jsonObj.put("loginTip", ErrorKeyUtil.getErrorMsg(ErrorKey.ERROR_LOGIN_PASSWORD_INCORRECT));
+                jsonWrite.setSuccess(false);
+//                modelAndView.addObject("password", password);
+//                modelAndView.addObject("account", account);
+//                ResponseUtil.handleLongin(modelAndView);
+                jsonWrite.setData(jsonObj);
+                return jsonWrite;
             }
             Principal principal = new Principal();
             principal.setUserId(userEntity.getId());
@@ -83,14 +99,17 @@ public class LoginController extends BaseController {
             AuthToken token = buildAuthToken(principal);
             CookieUtil.setTokenCookie(response, TokenConstant.USER_COOKIE_NAME, token.getCookie(), TokenConstant.TOKEN_LIFE_TIME, "");
             CookieUtil.setTokenCookie(response, COOKIE_USER_NAME, userEntity.getAccount(), TokenConstant.TOKEN_LIFE_TIME, "");
-            modelAndView.setViewName("redirect:/index");
+
+            jsonWrite.setSuccess(true);
+            jsonWrite.setData(jsonObj);
         } catch (Exception e) {
+            jsonWrite.setSuccess(false);
             log.info("doLogin controller exception ", e);
         }
-        return modelAndView;
+        return jsonWrite;
     }
 
-    @RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/admin", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");

@@ -3,79 +3,79 @@
 <mapper namespace="org.blumea.cms.dao.IUserDao">
     <sql id="allAttribute">
         <![CDATA[
-
-
             id,
             account,
-            userName,
             password,
-            mobileTel,
-            age,
-            sex,
             email,
-            work,
-            workYear,
-            city,
-            createDate,
-            updateDate,
-            isDel
-
-
+            create_time,
+            activation,
+            status
         ]]>
     </sql>
+    <resultMap id="UserMap" type="User">
+        <id column="id" property="id"/>
+        <result column="account" property="account"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+        <result column="create_time" property="createTime"/>
+        <result column="activation" property="activation"/>
+        <result column="status" property="status"/>
+    </resultMap>
 
-    <insert id="save" parameterType="org.blumea.cms.entity.UserEntity" useGeneratedKeys="true" keyProperty="id">
-        insert into t_user(account,userName,password,age,sex,email,work,workYear,city,mobileTel,createDate)
-        VALUES(#{account},#{userName},#{password},#{age},#{sex},#{email},#{work},#{workYear},#{city},#{mobileTel},#{createDate})
+    <insert id="save"  useGeneratedKeys="true" keyProperty="id">
+        insert into ms_user(
+            account,
+            password,
+            email,
+            create_time
+            )
+          VALUES(
+            #{account},
+            #{password},
+            #{email},
+            #{createTime}
+            )
     </insert>
 
-    <select id="getUserByAccount" parameterType="String" resultType="org.blumea.cms.entity.UserEntity">
+    <select id="getUserByAccount" parameterType="String" resultMap="UserMap">
         select
         <include refid="allAttribute"/>
-        from t_user where account=#{account} and isDel=0
+        from ms_user where account=#{account} and status = 0
     </select>
 
-    <select id="get" parameterType="long" resultType="org.blumea.cms.entity.UserEntity">
+    <select id="get"  resultMap="UserMap">
         select
         <include refid="allAttribute"/>
-        from t_user
-        where id=#{0} and isDel=0;
+        from ms_user
+        where id = #{id} and status = 0;
     </select>
 
-    <update id="update" parameterType="org.blumea.cms.entity.UserEntity">
-      update t_user set
-      account=#{account},
-      userName=#{userName},
-      password=#{password},
-      age=#{age},
-      sex=#{sex},
-      email=#{email},
-      work=#{work},
-      workYear=#{workYear},
-      city=#{city},
-      updateDate=#{updateDate},
-      mobileTel=#{mobileTel}
-      where id=#{id}
+    <update id="update">
+      update ms_user set
+          account=#{account},
+          password=#{password},
+          email=#{email},
+      where id = #{id}
     </update>
 
-    <update id="delete" parameterType="string">
-        update t_user set isDel=1,updateDate=now() where id =#{0}
+    <update id="delete">
+        update ms_user set status = 1 where id = #{id}
     </update>
 
     <update id="delteUserBatch" parameterType="string">
-        update t_user set isDel=1,updateDate=now() where FIND_IN_SET(id,#{0})
+        update ms_user set status = 1 where FIND_IN_SET(id,#{0})
     </update>
 
     <select id="getUserTotalNum" resultType="int">
-        select count(id) from t_user
-        where isDel=0
-        and (#{0}='' or userName like "%"#{0}"%");
+        select count(id) from ms_user
+        where status =0
+        and (#{0}='' or account like "%"#{0}"%");
     </select>
 
     <select id="getUserWithPage" resultType="org.blumea.cms.entity.UserEntity">
         select
         <include refid="allAttribute"/>
-        from t_user
+        from ms_user
         where isDel=0
         and (#{0}='' or userName like "%"#{0}"%")
         order by if(updateDate is null,createDate,updateDate) desc

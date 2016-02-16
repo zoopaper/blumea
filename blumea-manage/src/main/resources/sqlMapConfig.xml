@@ -46,6 +46,7 @@
     <typeAliases>
         <typeAlias type="org.blumea.cms.entity.ArticleEntity" alias="Article"/>
         <typeAlias type="org.blumea.cms.entity.CategoryEntity" alias="Category"/>
+        <typeAlias type="org.blumea.cms.entity.UserEntity" alias="User"/>
         <typeAlias type="org.blumea.cms.utils.PageData" alias="pd"/>
     </typeAliases>
 

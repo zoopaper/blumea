@@ -20,10 +20,11 @@ public class UserEntity extends IMybatisEntity {
 
     private String email;
 
-    private int isDel;
+    private short status;
 
-    private Date createDate;
+    private Date createTime;
 
+    private short activation;
 
     public String getPassword() {
         return password;
@@ -31,22 +32,6 @@ public class UserEntity extends IMybatisEntity {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getIsDel() {
-        return isDel;
-    }
-
-    public void setIsDel(int isDel) {
-        this.isDel = isDel;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
     }
 
     public String getUsername() {
@@ -71,5 +56,29 @@ public class UserEntity extends IMybatisEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public short getStatus() {
+        return status;
+    }
+
+    public void setStatus(short status) {
+        this.status = status;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public short getActivation() {
+        return activation;
+    }
+
+    public void setActivation(short activation) {
+        this.activation = activation;
     }
 }

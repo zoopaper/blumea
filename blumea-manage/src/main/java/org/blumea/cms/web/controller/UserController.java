@@ -70,7 +70,7 @@ public class UserController extends BaseController {
                 userEntity.setUsername(userName);
                 userEntity.setPassword(passwd);
                 userEntity.setEmail(email);
-                userEntity.setCreateDate(new Date(System.currentTimeMillis()));
+                userEntity.setCreateTime(new Date(System.currentTimeMillis()));
             }
 
             userService.addUser(userEntity);
@@ -183,7 +183,7 @@ public class UserController extends BaseController {
                 userEntity.setAccount(account);
                 userEntity.setUsername(userName);
                 userEntity.setEmail(email);
-                userEntity.setCreateDate(new Date(System.currentTimeMillis()));
+                userEntity.setCreateTime(new Date(System.currentTimeMillis()));
             }
             userService.updateUser(userEntity);
         } catch (Exception e) {

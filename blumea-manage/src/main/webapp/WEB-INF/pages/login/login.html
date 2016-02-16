@@ -22,7 +22,9 @@
         <form class="form-vertical login-form" action="/doLogin" method="post">
             <h3 class="form-title">登录</h3>
             <!-- 错误提示信息 -->
-            <div class="" style="display: none;">
+            <div class="alert fade in alert-danger" style="display: none;">
+                <i class="icon-remove close" data-dismiss="alert"></i>
+                账号或密码不正确
             </div>
             <!-- Input Fields -->
             <div class="form-group">
@@ -64,10 +66,14 @@
             <!--<input type="text" name="username" class="form-control" placeholder="昵称" autofocus="autofocus" data-rule-required="true"/>-->
             <!--</div>-->
             <!--</div>-->
+            <div class="alert fade in alert-success" style="display: none;">
+                <i class="icon-remove close" data-dismiss="alert"></i>
+                注册成功，请去邮箱激活账号！
+            </div>
             <div class="form-group">
                 <div class="input-icon">
                     <i class="icon-user"></i>
-                    <input type="text" name="account" id="account"  class="form-control" placeholder="账号" autofocus="autofocus" data-rule-required="true"/>
+                    <input type="text" name="account" id="account" class="form-control" placeholder="账号" autofocus="autofocus" data-rule-required="true"/>
                 </div>
             </div>
             <div class="form-group">

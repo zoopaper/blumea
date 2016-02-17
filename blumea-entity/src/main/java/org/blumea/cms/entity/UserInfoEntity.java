@@ -11,6 +11,10 @@ public class UserInfoEntity extends IMybatisEntity {
 
     private static final long serialVersionUID = 5873606063288287279L;
 
+    private long userId;
+
+    private String nickName;
+
     private short sex;
 
     private short age;
@@ -32,6 +36,8 @@ public class UserInfoEntity extends IMybatisEntity {
     private String interest;
 
     private String specialSkill;
+
+    private String avatar;
 
     public short getSex() {
         return sex;
@@ -119,5 +125,29 @@ public class UserInfoEntity extends IMybatisEntity {
 
     public void setSpecialSkill(String specialSkill) {
         this.specialSkill = specialSkill;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }

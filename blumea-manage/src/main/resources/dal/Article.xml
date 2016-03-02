@@ -4,6 +4,7 @@
     <sql id="allAttribute">
         <![CDATA[
 
+
             id,
             title,
             content,
@@ -20,6 +21,7 @@
             word_count,
             create_time,
             update_time
+
 
         ]]>
     </sql>
@@ -89,7 +91,11 @@
 
     <select id="getTotalNum" resultType="int" parameterType="pd">
         select count(id) from ms_article
-        where (#{title}='' or title like "%"#{title}"%") and status = 0 and category_id = ${categoryId}
+        where
+        (#{title}='' or title like "%"#{title}"%")
+        and status =0
+        and (-1 = -1 or category_id = ${categoryId})
+        and user_id =${userId}
 
     </select>
 
@@ -100,7 +106,8 @@
         where
         (#{title}='' or title like "%"#{title}"%")
         and status = 0
-        and category_id = ${categoryId}
+        and ( -1 = -1 or category_id = ${categoryId})
+        and user_id =${userId}
         order by create_time desc
         limit #{from},#{size};
     </select>

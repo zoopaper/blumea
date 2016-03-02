@@ -1,5 +1,6 @@
 package org.blumea.cms.web.controller;
 
+import org.blumea.cms.auth.Principal;
 import org.blumea.cms.core.model.ServiceResponse;
 import org.blumea.cms.entity.ArticleEntity;
 import org.blumea.cms.entity.CategoryEntity;
@@ -41,16 +42,26 @@ public class ArticleControler extends BaseController {
     @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView listArticle(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
+        Principal principal = this.getPrincipal();
+        if (principal == null) {
+            modelAndView.setViewName("login");
+            return modelAndView;
+        }
         modelAndView.setViewName("article/list_article");
         PageData pd = this.getPageData();
         int page = ServletRequestUtils.getIntParameter(request, "page", 1);
-        int categoryId = ServletRequestUtils.getIntParameter(request, "categoryId", 1);
+        int categoryId = ServletRequestUtils.getIntParameter(request, "categoryId", -1);
         String title = ServletRequestUtils.getStringParameter(request, "title", "");
+
+
+        pd.put("userId", principal.getUserId());
         pd.put("page", page);
         pd.put("categoryId", categoryId);
         pd.put("pageSize", 10);
         pd.put("title", title);
+
         try {
+
             ServiceResponse<Pagination<ArticleEntity>> serviceResponse = articleService.getArticleListWithPage(pd);
             modelAndView.addObject("page", serviceResponse.getResponseData());
         } catch (Exception e) {
@@ -72,14 +83,20 @@ public class ArticleControler extends BaseController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView saveArticle(ArticleEntity article) {
         ModelAndView modelAndView = new ModelAndView();
+        Principal principal = this.getPrincipal();
+        if (principal == null) {
+            modelAndView.setViewName("login");
+            return modelAndView;
+        }
         PageData pageData = this.getPageData();
         try {
+            article.setUserId(principal.getUserId());
             article.setCreateTime(new Date(System.currentTimeMillis()));
             articleService.addArticle(article);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        modelAndView.setViewName("article/add_article");
+        modelAndView.setViewName("redirect:/adm/article/add");
         return modelAndView;
     }
 }

@@ -1,7 +1,7 @@
 package org.blumea.cms.auth;
 
 /**
- * 用户主体
+ * 用户凭证
  * <p/>
  * User: krisibm@163.com
  */
@@ -13,9 +13,9 @@ public class Principal {
 
     private String account;
 
-    private long timestamp;
+    private String username;
 
-    private String pId;
+    private long timestamp;
 
     public long getUserId() {
         return userId;
@@ -49,11 +49,11 @@ public class Principal {
         this.timestamp = timestamp;
     }
 
-    public String getpId() {
-        return pId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setpId(String pId) {
-        this.pId = pId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

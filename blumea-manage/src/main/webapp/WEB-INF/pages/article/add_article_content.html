@@ -73,24 +73,24 @@
         var title = $("#title").val();
         var categoryId = $("#categoryId").val();
         var content = $("#textarea1").val();
-//        if (title == "") {
-//            bootbox.alert("文章标题不能为空!", function () {
-//
-//            });
-//            $("#title").focus();
-//            return false;
-//        }
-        alert(title);
         if (title == "") {
-            $("#title").tips({
-                side: 3,
-                msg: '文章标题不能为空',
-                bg: '#AE81FF',
-                time: 2
+            bootbox.alert("文章标题不能为空!", function () {
+
             });
             $("#title").focus();
             return false;
         }
+//        alert(title);
+//        if (title == "") {
+//            $("#title").tips({
+//                side: 3,
+//                msg: '文章标题不能为空',
+//                bg: '#AE81FF',
+//                time: 2
+//            });
+//            $("#title").focus();
+//            return false;
+//        }
 
         if (categoryId == null || categoryId == "") {
             bootbox.alert("分类不能为空!", function () {

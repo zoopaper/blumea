@@ -19,28 +19,30 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <#list page.items as article>
-                        <tr>
-                            <td class="checkbox-column">
-                                <input type="checkbox" class="uniform">
-                            </td>
-                            <td>
-                                ${article.title}
-                            </td>
-                            <td class="align-center">
-                                <#if article.createTime?exists>
-                                    ${article.createTime?datetime}
+                        <#if (page.items??)>
 
-                                </#if>
-                            </td>
-                            <td class="align-center">
-                                <ul class="table-controls">
-                                    <li><a href="javascript:void(0);" class="bs-tooltip" title="编辑"><i class="icon-pencil"></i></a></li>
-                                    <li><a href="javascript:void(0);" class="bs-tooltip" title="删除"><i class="icon-trash"></i></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </#list>
+                        <#list page.items as article>
+                            <tr>
+                                <td class="checkbox-column">
+                                    <input type="checkbox" class="uniform">
+                                </td>
+                                <td>
+                                    ${article.title}
+                                </td>
+                                <td class="align-center">
+                                    <#if article.createTime?exists>
+                                        ${article.createTime?datetime}
+                                    </#if>
+                                </td>
+                                <td class="align-center">
+                                    <ul class="table-controls">
+                                        <li><a href="javascript:void(0);" class="bs-tooltip" title="编辑"><i class="icon-pencil"></i></a></li>
+                                        <li><a href="javascript:void(0);" class="bs-tooltip" title="删除"><i class="icon-trash"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </#list>
+                    </#if>
                     </tbody>
                 </table>
             </div>

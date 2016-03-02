@@ -37,7 +37,11 @@ public class ArticleService {
         articleDao.deleteArticleById(id);
     }
 
-
+    /**
+     * @param pd
+     * @return
+     * @throws Exception
+     */
     public ServiceResponse<Pagination<ArticleEntity>> getArticleListWithPage(PageData pd) throws Exception {
         Pagination<ArticleEntity> articlePagination = new Pagination<ArticleEntity>(pd.getInt("page"), pd.getInt("pageSize"));
         int total = articleDao.getTotalNum(pd);

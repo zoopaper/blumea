@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * 分页
  * <p/>
- * User : krisibm@163.com
+ * User : shijingui
  * Date: 2015/5/29
  * Time: 19:59
  */

@@ -3,7 +3,7 @@ package org.blumea.cms.auth;
 /**
  * 用户凭证
  * <p/>
- * User: krisibm@163.com
+ * User: shijingui
  */
 public class Principal {
 

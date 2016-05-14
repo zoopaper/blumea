@@ -38,23 +38,41 @@
 
 <!--注意：javascript必须放在body最后，否则可能会出现问题-->
 <script type="text/javascript">
-    $(function () {
-        var editor = $('#textarea1').wangEditor(
-                {
-                    'menuConfig': [
-                        ['bold', 'underline', 'italic', 'foreColor', 'backgroundColor'],
-                        ['blockquote', 'fontFamily', 'fontSize', 'setHead', 'list', 'justify'],
-                        ['createLink', 'unLink', 'insertTable'],
-                        ['insertImage', 'insertVideo', 'insertLocation', 'insertCode']
-                    ]
-                }
-        );
-    });
+    var editor = new wangEditor('textarea1');
+
+    editor.config.menus = [
+        'source',
+        '|',     // '|' 是菜单组的分割线
+        'bold',
+        'underline',
+        'italic',
+        'strikethrough',
+        'eraser',
+        'forecolor',
+        'bgcolor',
+            'img'
+    ];
+
+    editor.create();
+//    $(function () {
+//        var editor = $('#textarea1').wangEditor(
+//                {
+//                    'menuConfig': [
+//                        ['bold', 'underline', 'italic', 'foreColor', 'backgroundColor'],
+//                        ['blockquote', 'fontFamily', 'fontSize', 'setHead', 'list', 'justify'],
+//                        ['createLink', 'unLink', 'insertTable'],
+//                        ['insertImage', 'insertVideo', 'insertLocation', 'insertCode']
+//                    ]
+//                }
+//        );
+//    });
     $(function () {
         $('pre code').each(function (i, block) {
             hljs.highlightBlock(block);
         });
     });
+</script>
+<script type="text/javascript">
 </script>
 </body>
 </html>

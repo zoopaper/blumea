@@ -2,7 +2,7 @@ package org.blumea.cms.constants.error;
 
 /**
  * <p/>
- * User : krisibm@163.com
+ * User : shijingui
  * Date: 2015/5/27
  * Time: 14:58
  */

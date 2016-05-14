@@ -1,6 +1,6 @@
 package org.blumea.cms.dao;
 
-import org.blumea.cms.dao.base.IMybatisDao;
+import org.blumea.cms.dao.base.BaseDao;
 import org.blumea.cms.entity.RoleBean;
 import org.springframework.stereotype.Repository;
 
@@ -8,12 +8,12 @@ import java.util.List;
 
 /**
  * <p/>
- * User : krisibm@163.com
+ * User : shijingui
  * Date: 2015/6/24
  * Time: 22:22
  */
 @Repository
-public interface IRoleDao extends IMybatisDao<RoleBean> {
+public interface IRoleDao extends BaseDao<RoleBean> {
 
     /**
      * @param name

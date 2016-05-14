@@ -1,13 +1,13 @@
 package org.blumea.cms.entity;
 
-import org.blumea.cms.entity.base.IMybatisEntity;
+import org.blumea.cms.entity.base.BaseEntity;
 
 /**
  * 用户博客设置
  * User: shijingui
  * Date: 2016/1/15
  */
-public class BlogConfigEntity extends IMybatisEntity {
+public class BlogConfigEntity extends BaseEntity {
 
     private static final long serialVersionUID = -8291231251985984165L;
 

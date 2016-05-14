@@ -11,7 +11,7 @@ import javax.annotation.PostConstruct;
 
 /**
  * <p/>
- * User : krisibm@163.com
+ * User : shijingui
  * Date: 2015/7/1
  * Time: 21:46
  */

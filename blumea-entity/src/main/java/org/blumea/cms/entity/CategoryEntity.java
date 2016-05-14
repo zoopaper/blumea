@@ -1,6 +1,6 @@
 package org.blumea.cms.entity;
 
-import org.blumea.cms.entity.base.IMybatisEntity;
+import org.blumea.cms.entity.base.BaseEntity;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import java.util.Date;
  * User: shijingui
  * Date: 2016/1/15
  */
-public class CategoryEntity extends IMybatisEntity {
+public class CategoryEntity extends BaseEntity {
 
     private static final long serialVersionUID = -7914083067154063956L;
 

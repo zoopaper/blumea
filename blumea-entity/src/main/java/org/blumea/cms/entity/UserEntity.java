@@ -1,16 +1,16 @@
 package org.blumea.cms.entity;
 
-import org.blumea.cms.entity.base.IMybatisEntity;
+import org.blumea.cms.entity.base.BaseEntity;
 
 import java.util.Date;
 
 /**
  * <p/>
- * User : krisibm@163.com
+ * User : shijingui
  * Date: 2015/5/25
  * Time: 21:51
  */
-public class UserEntity extends IMybatisEntity {
+public class UserEntity extends BaseEntity {
 
     private String username;
 

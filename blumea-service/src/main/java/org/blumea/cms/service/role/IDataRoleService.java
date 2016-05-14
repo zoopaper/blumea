@@ -1,17 +1,17 @@
 package org.blumea.cms.service.role;
 
-import org.blumea.cms.base.service.IMybatisEntityDataService;
+import org.blumea.cms.base.service.EntityDataService;
 import org.blumea.cms.entity.RoleBean;
 
 import java.util.List;
 
 /**
  * <p/>
- * User : krisibm@163.com
+ * User : shijingui
  * Date: 2015/7/2
  * Time: 8:13
  */
-public interface IDataRoleService extends IMybatisEntityDataService<RoleBean> {
+public interface IDataRoleService extends EntityDataService<RoleBean> {
     /**
      * @param name
      * @return

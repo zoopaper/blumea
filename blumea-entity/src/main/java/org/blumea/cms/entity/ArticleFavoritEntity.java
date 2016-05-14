@@ -1,13 +1,13 @@
 package org.blumea.cms.entity;
 
-import org.blumea.cms.entity.base.IMybatisEntity;
+import org.blumea.cms.entity.base.BaseEntity;
 
 /**
  * 文章喜欢属性对象
  * User: shijingui
  * Date: 2016/1/16
  */
-public class ArticleFavoritEntity extends IMybatisEntity {
+public class ArticleFavoritEntity extends BaseEntity {
 
     private static final long serialVersionUID = -4544665159080852749L;
 

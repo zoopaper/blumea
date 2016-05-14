@@ -1,18 +1,18 @@
 package org.blumea.cms.entity;
 
 
-import org.blumea.cms.entity.base.IMybatisEntity;
+import org.blumea.cms.entity.base.BaseEntity;
 
 import java.sql.Timestamp;
 
 /**
  * <p/>
- * User : krisibm@163.com
+ * User : shijingui
  * Date: 2015/6/24
  * Time: 0:11
  */
 
-public class RoleBean extends IMybatisEntity {
+public class RoleBean extends BaseEntity {
 
     private String name;
 

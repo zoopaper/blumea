@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * <p/>
- * User : krisibm@163.com
+ * User : shijingui
  * Date: 2015/5/26
  * Time: 21:51
  */

@@ -5,7 +5,7 @@ import org.blumea.cms.auth.Principal;
 
 /**
  * <p/>
- * User : krisibm@163.com
+ * User : shijingui
  * Date: 2015/5/26
  * Time: 12:48
  */

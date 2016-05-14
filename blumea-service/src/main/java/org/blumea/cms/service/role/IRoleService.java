@@ -6,7 +6,7 @@ import org.blumea.cms.model.Pagination;
 
 /**
  * <p/>
- * User : krisibm@163.com
+ * User : shijingui
  * Date: 2015/6/29
  * Time: 21:50
  */

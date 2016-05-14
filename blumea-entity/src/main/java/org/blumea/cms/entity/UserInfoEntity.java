@@ -1,13 +1,13 @@
 package org.blumea.cms.entity;
 
-import org.blumea.cms.entity.base.IMybatisEntity;
+import org.blumea.cms.entity.base.BaseEntity;
 
 /**
  * 用户基本信息
  * User: shijingui
  * Date: 2016/1/15
  */
-public class UserInfoEntity extends IMybatisEntity {
+public class UserInfoEntity extends BaseEntity {
 
     private static final long serialVersionUID = 5873606063288287279L;
 

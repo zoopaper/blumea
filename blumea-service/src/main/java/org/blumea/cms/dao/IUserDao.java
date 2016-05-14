@@ -1,6 +1,6 @@
 package org.blumea.cms.dao;
 
-import org.blumea.cms.dao.base.IMybatisDao;
+import org.blumea.cms.dao.base.BaseDao;
 import org.blumea.cms.entity.UserEntity;
 import org.springframework.stereotype.Repository;
 
@@ -8,12 +8,12 @@ import java.util.List;
 
 /**
  * <p/>
- * User : krisibm@163.com
+ * User : shijingui
  * Date: 2015/5/25
  * Time: 13:56
  */
 @Repository
-public interface IUserDao extends IMybatisDao<UserEntity> {
+public interface IUserDao extends BaseDao<UserEntity> {
 
     /**
      * @param account

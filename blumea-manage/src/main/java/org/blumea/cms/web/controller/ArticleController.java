@@ -23,15 +23,15 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 文章控制器
+ * 文章管理
  * User: shijingui
  * Date: 2016/1/16
  */
 @Controller
 @RequestMapping("/adm/article")
-public class ArticleControler extends BaseController {
+public class ArticleController extends BaseController {
 
-    private static final Logger log = LoggerFactory.getLogger(ArticleControler.class);
+    private static final Logger log = LoggerFactory.getLogger(ArticleController.class);
 
     @Autowired
     private ArticleService articleService;

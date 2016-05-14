@@ -3,13 +3,13 @@ package org.blumea.cms.base.service;
 import net.common.data.redis.IRedis;
 import net.common.data.redis.client.BaseShardedJedisPipeline;
 import org.blumea.cms.config.ServiceRedis;
-import org.blumea.cms.dao.base.IMybatisDao;
-import org.blumea.cms.entity.base.IMybatisEntity;
+import org.blumea.cms.dao.base.BaseDao;
+import org.blumea.cms.entity.base.BaseEntity;
 import org.blumea.cms.utils.CacheUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.Resource;
 import java.lang.reflect.ParameterizedType;
 
 /**
@@ -17,25 +17,15 @@ import java.lang.reflect.ParameterizedType;
  * <p/>
  * 只处理单个数据库对象的缓存
  */
-public abstract class MybatisEntityDataService<T extends IMybatisEntity> {
+public abstract class BaseEntityDataService<T extends BaseEntity> {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(MybatisEntityDataService.class);
+    protected static final Logger LOGGER = LoggerFactory.getLogger(BaseEntityDataService.class);
 
-
-    @Autowired
+    @Resource
     protected ServiceRedis cacheService;
 
-    /**
-     * cache的服务名
-     */
     private final String cacheServiceName;
-    /**
-     * entity cache key
-     */
     private final String cacheKey;
-    /**
-     * 缓存默认时间
-     */
     private final int cacheTime;
 
     /**
@@ -46,14 +36,14 @@ public abstract class MybatisEntityDataService<T extends IMybatisEntity> {
     /**
      * 取得当前注入dal的抽象类
      */
-    protected abstract IMybatisDao<T> getDao();
+    protected abstract BaseDao<T> getDao();
 
     /**
      * 获得关联子key
      */
     protected abstract String[] getSubKeys(T entity);
 
-    public MybatisEntityDataService(String cacheServiceName, String cacheKey, int cacheTime) {
+    public BaseEntityDataService(String cacheServiceName, String cacheKey, int cacheTime) {
         this.cacheServiceName = cacheServiceName;
         this.cacheKey = cacheKey;
         this.cacheTime = cacheTime;
@@ -80,12 +70,6 @@ public abstract class MybatisEntityDataService<T extends IMybatisEntity> {
         return null;
     }
 
-    /**
-     * 根据id取得T对象Service操作
-     *
-     * @param id 对象id
-     * @return 取得的对象
-     */
     public T get(long id) {
         T t = this.getFromCache(id);
         if (t == null) {
@@ -97,12 +81,6 @@ public abstract class MybatisEntityDataService<T extends IMybatisEntity> {
         return t;
     }
 
-    /**
-     * 修改T对象Service操作
-     *
-     * @param t 要修改的对象内容
-     * @return 修改是否成功
-     */
     public boolean update(T t) {
         boolean isSuccess = getDao().update(t);
         if (isSuccess) {
@@ -111,12 +89,6 @@ public abstract class MybatisEntityDataService<T extends IMybatisEntity> {
         return isSuccess;
     }
 
-    /**
-     * 删除T对象Service操作
-     *
-     * @param t 要删除的对象内容
-     * @return 删除是否成功
-     */
     public boolean delete(T t) {
         boolean isSuccess = getDao().delete(t);
         if (isSuccess) {
@@ -125,12 +97,6 @@ public abstract class MybatisEntityDataService<T extends IMybatisEntity> {
         return isSuccess;
     }
 
-    /**
-     * 通过id删除
-     *
-     * @param id
-     * @return
-     */
     public boolean delete(long id) {
         T entity = this.get(id);
         if (entity != null) {
@@ -195,7 +161,6 @@ public abstract class MybatisEntityDataService<T extends IMybatisEntity> {
      * @param t 对象
      */
     protected void delFromCache(T t) {
-
         final String key = CacheUtils.genCacheKey(this.cacheKey, String.valueOf(t.getId()));
         final String[] subKeys = this.getSubKeys(t);
         if (subKeys != null && subKeys.length > 0) {
@@ -214,11 +179,6 @@ public abstract class MybatisEntityDataService<T extends IMybatisEntity> {
 
     }
 
-    /**
-     * 获得缓存客户端
-     *
-     * @return
-     */
     protected IRedis getCacheClient() {
         return CacheUtils.getRedisCacheClient(this.cacheService, cacheServiceName);
     }

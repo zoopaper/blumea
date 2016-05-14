@@ -3,7 +3,7 @@ package org.blumea.cms.auth;
 /**
  * 用户认证Token
  * <p/>
- * User: krisibm@163.com
+ * User: shijingui
  */
 public class AuthToken {
     /**

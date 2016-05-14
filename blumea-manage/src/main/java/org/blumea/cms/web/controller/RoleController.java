@@ -21,7 +21,7 @@ import java.sql.Timestamp;
 
 /**
  * <p/>
- * User : krisibm@163.com
+ * User : shijingui
  * Date: 2015/6/24
  * Time: 22:23
  */
